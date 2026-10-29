@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALGO-MATRIX 3D: Enciclopedia & Laboratorio Interactivo de Algoritmos y Big-O</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Bootstrap Icons CDN (para Footer & Perfil) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Three.js & OrbitControls -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <!-- Google Fonts: Space Grotesk & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          colors: {
+            neoYellow: '#FFDE59',
+            neoPink: '#FF90E8',
+            neoCyan: '#38E5FF',
+            neoGreen: '#54F18F',
+            neoOrange: '#FF7A00',
+            neoPurple: '#C084FC',
+            neoRed: '#FF5757',
+            neoCream: '#FFFDF0',
+            neoDark: '#0A0A0A'
+          },
+          boxShadow: {
+            neoSm: '3px 3px 0px #000000',
+            neo: '5px 5px 0px #000000',
+            neoLg: '8px 8px 0px #000000'
+          }
+        }
+      }
+    }
+  </script>
+
+
+  <!-- Estilos CSS Personalizados Neo-Brutalistas -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="selection:bg-neoYellow selection:text-black">
+  <!-- =========================================================================
+       BARRA DE NAVEGACIÓN PRINCIPAL CON LOGO OFICIAL DATAIADEV & ANCLAS
+  ========================================================================== -->
+  <nav class="sticky top-0 z-50 bg-white border-b-3 border-black shadow-[0_4px_0_#000000] px-3 sm:px-6 py-2.5 mb-6">
+    <div class="max-w-7xl mx-auto flex items-center justify-between flex-wrap gap-2">
+      
+      <!-- Brand & Logo DataIADev Oficial -->
+      <a href="#inicio" class="flex items-center gap-2.5 text-black no-underline group hover:opacity-95">
+        <img src="assets/LOGO_DATAIADEV.png" alt="DataIADev Logo Oficial" class="h-9 w-auto max-h-9 object-contain transition-transform group-hover:scale-105">
+        <span class="neo-badge bg-black text-[#FFDE59] px-2.5 py-1 text-xs font-mono font-black uppercase tracking-wider">
+          ALGO-MATRIX 3D
+        </span>
+        <span class="hidden lg:inline font-black text-xs uppercase tracking-tight text-black">
+          Enciclopedia &amp; Laboratorio
+        </span>
+      </a>
+
+      <!-- Botón Toggle Móvil -->
+      <button onclick="document.getElementById('navbarLinks').classList.toggle('hidden');" class="md:hidden neo-button bg-neoYellow px-3 py-1.5 text-xs text-black font-black flex items-center gap-1.5" aria-label="Menú">
+        <i class="fa-solid fa-bars"></i> Menú
+      </button>
+
+      <!-- Anclas de Navegación de Escritorio -->
+      <div id="navbarLinks" class="hidden md:flex items-center gap-1 sm:gap-2 flex-wrap w-full md:w-auto mt-2 md:mt-0 pt-2 md:pt-0 border-t-2 md:border-t-0 border-black">
+        <a href="#inicio" class="px-2.5 py-1.5 text-xs font-mono font-black text-black hover:bg-neoYellow rounded border-2 border-transparent hover:border-black hover:shadow-neoSm transition-all">
+          <i class="fa-solid fa-house me-1 text-neoOrange"></i> Inicio
+        </a>
+        <a href="#fundamentos-teoria" class="px-2.5 py-1.5 text-xs font-mono font-black text-black hover:bg-neoYellow rounded border-2 border-transparent hover:border-black hover:shadow-neoSm transition-all">
+          <i class="fa-solid fa-brain me-1 text-neoPink"></i> Fundamentos
+        </a>
+        <a href="#panel-dataset" class="px-2.5 py-1.5 text-xs font-mono font-black text-black hover:bg-neoYellow rounded border-2 border-transparent hover:border-black hover:shadow-neoSm transition-all">
+          <i class="fa-solid fa-sliders me-1 text-neoGreen"></i> Dataset (n)
+        </a>
+        <a href="#laboratorio-algoritmos" class="px-2.5 py-1.5 text-xs font-mono font-black text-black hover:bg-neoYellow rounded border-2 border-transparent hover:border-black hover:shadow-neoSm transition-all">
+          <i class="fa-solid fa-cube me-1 text-neoCyan"></i> Lab 2D/3D
+        </a>
+        <a href="#matriz-comparativa" class="px-2.5 py-1.5 text-xs font-mono font-black text-black hover:bg-neoYellow rounded border-2 border-transparent hover:border-black hover:shadow-neoSm transition-all">
+          <i class="fa-solid fa-table-cells me-1 text-neoOrange"></i> Matriz
+        </a>
+        <a href="#perfil-profesional" class="px-2.5 py-1.5 text-xs font-mono font-black text-black hover:bg-neoYellow rounded border-2 border-transparent hover:border-black hover:shadow-neoSm transition-all">
+          <i class="fa-solid fa-user-graduate me-1 text-neoPurple"></i> Perfil Pro
+        </a>
+        <a href="#laboratorio-algoritmos" onclick="if(!isPlaying) togglePlayPause();" class="neo-button bg-neoGreen text-black px-3 py-1.5 text-xs font-mono font-black uppercase flex items-center gap-1.5 ms-1 shadow-neoSm">
+          <i class="fa-solid fa-play text-[10px]"></i> Simular
+        </a>
+      </div>
+
+    </div>
+  </nav>
+
+  <div class="max-w-7xl mx-auto px-3 md:px-6 space-y-6 pb-8">
+
+    <!-- NUEVO TÍTULO PRINCIPAL & HERO HEADER -->
+    <header id="inicio" class="neo-box-static p-6 bg-neoYellow flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div>
+        <div class="flex flex-wrap items-center gap-2 mb-2">
+          <span class="neo-badge bg-black text-white px-3 py-1 text-xs font-mono uppercase tracking-widest">
+            🎓 Máster en Ciencias de la Computación
+          </span>
+          <span class="neo-badge bg-neoCyan text-black px-2.5 py-1 text-xs font-mono font-black uppercase">
+            Teoría + Práctica 3D
+          </span>
+          <span class="neo-badge bg-neoGreen text-black px-2.5 py-1 text-xs font-mono font-black uppercase">
+            Edición Neo-Brutalista
+          </span>
+        </div>
+        <h1 class="text-3xl md:text-5xl font-black tracking-tight text-black uppercase">
+          ALGO-MATRIX 3D: La Enciclopedia Interactiva de Algoritmos &amp; Big-O
+        </h1>
+        <p class="text-xs md:text-sm font-bold text-black mt-2 max-w-3xl">
+          Fundamentos teóricos, matemáticas del orden computacional y simulación cinemática tridimensional de estructuras de datos en tiempo real.
+        </p>
+      </div>
+
+      <div class="neo-box-static bg-white p-3 text-right">
+        <span class="text-[10px] font-mono font-black uppercase text-gray-600 block">ESTADO DEL MOTOR:</span>
+        <div id="simStatusBadge" class="text-xs md:text-sm font-mono font-black text-black flex items-center justify-end gap-1.5">
+          <span class="w-3 h-3 rounded-full bg-neoGreen border-2 border-black inline-block"></span> Listo para Simular
+        </div>
+      </div>
+    </header>
+
+    <!-- =========================================================================
+         NUEVA SECCIÓN TEÓRICA ILUSTRADA: ALGORITMOS, BIG-O, ORDEN Y BÚSQUEDA
+         ========================================================================= -->
+    <section id="fundamentos-teoria" class="neo-box-static p-6 bg-white space-y-6">
+      
+      <!-- Section Title & Intro Pill -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 pb-4 border-b-3 border-black">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">🧠</span>
+            <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tight text-black">
+              Fundamentos Magistrales de la Computación
+            </h2>
+          </div>
+          <p class="text-xs md:text-sm font-bold text-gray-700 mt-1">
+            Todo lo que necesitas comprender antes de ejecutar los experimentos en el laboratorio 3D.
+          </p>
+        </div>
+        <span class="neo-badge bg-neoPink text-black text-xs font-mono px-3 py-1 uppercase">
+          📚 Guía de Estudio Esencial
+        </span>
+      </div>
+
+      <!-- Grid de 4 Bloques Teóricos Clave -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <!-- Bloque 1: ¿Qué es un Algoritmo? -->
+        <div class="neo-box p-4 bg-neoYellow flex flex-col justify-between space-y-3">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-2xl">⚡</span>
+              <span class="neo-badge bg-black text-white text-[10px] font-mono px-1.5 py-0.5">Definición</span>
+            </div>
+            <h3 class="text-base font-black uppercase text-black">¿Qué es un Algoritmo?</h3>
+            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+              Es un <strong>conjunto finito, ordenado y determinista de instrucciones</strong> no ambiguas que recibe una entrada (<em>input</em>), ejecuta transformaciones lógicas y genera una solución predecible (<em>output</em>).
+            </p>
+          </div>
+          <div class="bg-white p-2.5 border-2 border-black space-y-1 text-[11px] font-bold">
+            <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-black"></i> <span><strong>Finitud:</strong> Siempre termina.</span></div>
+            <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-black"></i> <span><strong>Precisión:</strong> Sin ambigüedades.</span></div>
+            <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-black"></i> <span><strong>Eficacia:</strong> Pasos realizables.</span></div>
+          </div>
+        </div>
+
+        <!-- Bloque 2: Complejidad & Notación Big-O -->
+        <div class="neo-box p-4 bg-neoCyan flex flex-col justify-between space-y-3">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-2xl">📐</span>
+              <span class="neo-badge bg-black text-white text-[10px] font-mono px-1.5 py-0.5">Big-O Notation</span>
+            </div>
+            <h3 class="text-base font-black uppercase text-black">Complejidad Algorítmica</h3>
+            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+              Mide el <strong>costo de ejecución</strong> a medida que el tamaño de los datos (<code class="bg-white px-1 border border-black font-mono">n</code>) tiende a infinito. No mide segundos de reloj, sino la <strong>tasa de crecimiento</strong> de operaciones.
+            </p>
+          </div>
+          <div class="bg-white p-2.5 border-2 border-black space-y-1 text-[11px] font-bold">
+            <div><strong>Temporal ($T$):</strong> Cantidad de operaciones CPU.</div>
+            <div><strong>Espacial ($S$):</strong> Memoria RAM auxiliar requerida.</div>
+            <div><strong>Peor Caso ($\mathcal{O}$):</strong> Límite superior garantizado.</div>
+          </div>
+        </div>
+
+        <!-- Bloque 3: Algoritmos de Ordenamiento -->
+        <div class="neo-box p-4 bg-neoGreen flex flex-col justify-between space-y-3">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-2xl">🔄</span>
+              <span class="neo-badge bg-black text-white text-[10px] font-mono px-1.5 py-0.5">Sorting</span>
+            </div>
+            <h3 class="text-base font-black uppercase text-black">Algoritmos de Ordenamiento</h3>
+            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+              Reorganizan los elementos de una colección en una secuencia homogénea (ascendente o descendente) bajo una relación de orden estricta.
+            </p>
+          </div>
+          <div class="bg-white p-2.5 border-2 border-black space-y-1 text-[11px] font-bold">
+            <div><strong>Comparativos:</strong> Bubble, Quick, Merge ($O(n \log n)$ límite inferior).</div>
+            <div><strong>No Comparativos:</strong> Counting, Radix ($O(n)$ por frecuencias/dígitos).</div>
+            <div><strong>Estabilidad:</strong> Conserva el orden de claves idénticas.</div>
+          </div>
+        </div>
+
+        <!-- Bloque 4: Algoritmos de Búsqueda -->
+        <div class="neo-box p-4 bg-neoPink flex flex-col justify-between space-y-3">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-2xl">🔍</span>
+              <span class="neo-badge bg-black text-white text-[10px] font-mono px-1.5 py-0.5">Searching</span>
+            </div>
+            <h3 class="text-base font-black uppercase text-black">Algoritmos de Búsqueda</h3>
+            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+              Localizan la posición de un valor clave objetivo (<em>target</em>) dentro de un espacio de memoria, o confirman su ausencia.
+            </p>
+          </div>
+          <div class="bg-white p-2.5 border-2 border-black space-y-1 text-[11px] font-bold">
+            <div><strong>Secuencial $O(n)$:</strong> Funciona sin orden previo (fuerza bruta).</div>
+            <div><strong>Bisección $O(\log n)$:</strong> Requiere orden; descarta el 50% por iteración.</div>
+            <div><strong>Estimativa $O(\log \log n)$:</strong> Salto predictivo por interpolación.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Resumen Visual de la Jerarquía de Eficiencia (Semáforo Neo-Brutalist) -->
+      <div class="neo-box-static p-4 bg-[#FFFDF0] border-2 border-black">
+        <div class="flex items-center justify-between mb-3 border-b-2 border-black pb-2">
+          <span class="text-xs font-black uppercase tracking-wider flex items-center gap-1.5">
+            <i class="fa-solid fa-chart-line text-neoOrange"></i> Escala Universal de Eficiencia Computacional:
+          </span>
+          <span class="text-[10px] font-mono text-gray-700 font-bold">De lo óptimo a lo computacionalmente prohibitivo</span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 text-center text-xs font-mono font-bold">
+          <div class="p-2 border-2 border-black bg-neoGreen shadow-neoSm">
+            <span class="text-base block">🟢</span>
+            <div class="font-black text-sm">O(1)</div>
+            <div class="text-[10px] text-gray-800">Constante</div>
+          </div>
+          <div class="p-2 border-2 border-black bg-neoCyan shadow-neoSm">
+            <span class="text-base block">💎</span>
+            <div class="font-black text-sm">O(log n)</div>
+            <div class="text-[10px] text-gray-800">Logarítmica</div>
+          </div>
+          <div class="p-2 border-2 border-black bg-neoYellow shadow-neoSm">
+            <span class="text-base block">⚡</span>
+            <div class="font-black text-sm">O(n)</div>
+            <div class="text-[10px] text-gray-800">Lineal</div>
+          </div>
+          <div class="p-2 border-2 border-black bg-neoCyan shadow-neoSm">
+            <span class="text-base block">⚖️</span>
+            <div class="font-black text-sm">O(n log n)</div>
+            <div class="text-[10px] text-gray-800">Linealítmica</div>
+          </div>
+          <div class="p-2 border-2 border-black bg-neoOrange shadow-neoSm">
+            <span class="text-base block">⚠️</span>
+            <div class="font-black text-sm">O(n²)</div>
+            <div class="text-[10px] text-gray-800">Cuadrática</div>
+          </div>
+          <div class="p-2 border-2 border-black bg-neoRed shadow-neoSm text-white">
+            <span class="text-base block">💣</span>
+            <div class="font-black text-sm">O(2ⁿ) / O(n!)</div>
+            <div class="text-[10px] text-white">Exponencial / Fact</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- DATASET CONTROLS & TYPE SELECTOR -->
+    <section id="panel-dataset" class="neo-box-static p-5 bg-white space-y-4">
+      
+      <!-- Upper Controls: Data Type & Generation presets -->
+      <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b-2 border-black">
+        <div class="flex flex-wrap items-center gap-2">
+          <label class="text-xs font-black uppercase tracking-wider flex items-center gap-1.5">
+            <i class="fa-solid fa-shapes text-neoOrange"></i> Tipo de Datos del Arreglo:
+          </label>
+          <div class="flex flex-wrap gap-1.5">
+            <button onclick="setDataType('numbers')" id="btn-type-numbers" class="neo-button bg-neoCyan px-3 py-1 text-xs uppercase">
+              123 Números
+            </button>
+            <button onclick="setDataType('letters')" id="btn-type-letters" class="neo-button bg-white px-3 py-1 text-xs uppercase">
+              ABC Letras
+            </button>
+            <button onclick="setDataType('objects')" id="btn-type-objects" class="neo-button bg-white px-3 py-1 text-xs uppercase">
+              📦 Objetos (Peso/ID)
+            </button>
+            <button onclick="setDataType('colors')" id="btn-type-colors" class="neo-button bg-white px-3 py-1 text-xs uppercase">
+              🎨 Gráficos Arcoíris
+            </button>
+          </div>
+        </div>
+
+        <!-- Preset buttons -->
+        <div class="flex flex-wrap items-center gap-1.5 text-xs">
+          <span class="font-bold text-gray-700">Presets:</span>
+          <button onclick="generateDatasetPreset('random')" class="neo-button bg-white px-2.5 py-1 text-xs"><i class="fa-solid fa-shuffle"></i> Aleatorio</button>
+          <button onclick="generateDatasetPreset('sorted')" class="neo-button bg-neoGreen px-2.5 py-1 text-xs"><i class="fa-solid fa-arrow-up-1-9"></i> Ordenado</button>
+          <button onclick="generateDatasetPreset('reverse')" class="neo-button bg-neoOrange px-2.5 py-1 text-xs"><i class="fa-solid fa-arrow-down-9-1"></i> Invertido</button>
+          <button onclick="generateDatasetPreset('nearly')" class="neo-button bg-neoYellow px-2.5 py-1 text-xs"><i class="fa-solid fa-wave-square"></i> Casi Ordenado</button>
+        </div>
+      </div>
+
+      <!-- Main Input Bar & Parameters -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+        <!-- Input Array -->
+        <div class="lg:col-span-8 space-y-1.5">
+          <div class="flex justify-between items-center text-xs">
+            <span class="font-black uppercase flex items-center gap-1.5">
+              <i class="fa-solid fa-code text-neoPurple"></i> Arreglo de Entrada editable:
+            </span>
+            <span class="neo-badge bg-neoPink px-2 py-0.5 text-[11px] font-mono">
+              Elementos (n): <strong id="arrayLengthLabel">11</strong>
+            </span>
+          </div>
+          <div class="flex gap-2">
+            <input type="text" id="dataInputBox" value="45, 12, 89, 34, 67, 23, 91, 5, 58, 17, 73"
+              class="w-full bg-[#FFFBEA] text-black font-mono font-bold text-sm px-4 py-2 border-3 border-black shadow-neoSm focus:outline-none focus:bg-white focus:shadow-neo transition">
+            <button onclick="applyCustomInput()" class="neo-button bg-neoGreen px-4 py-2 text-xs uppercase whitespace-nowrap">
+              <i class="fa-solid fa-check"></i> Cargar
+            </button>
+          </div>
+        </div>
+
+        <!-- Target & Speed Slider -->
+        <div class="lg:col-span-4 bg-neoCream p-3 border-2 border-black space-y-2">
+          <div class="flex items-center justify-between">
+            <label class="text-[11px] font-black uppercase">Target (Búsquedas):</label>
+            <div class="flex items-center gap-1">
+              <input type="text" id="targetValueInput" value="67" 
+                class="w-20 bg-white border-2 border-black px-2 py-1 text-xs font-mono font-bold text-center">
+              <button onclick="pickRandomTarget()" class="neo-button bg-neoYellow px-2 py-1 text-xs" title="Elegir al azar">
+                <i class="fa-solid fa-crosshairs"></i>
+              </button>
+            </div>
+          </div>
+          <div class="flex items-center justify-between text-xs pt-1 border-t border-black">
+            <span class="font-bold">Velocidad:</span>
+            <input type="range" id="animSpeedSlider" min="20" max="600" value="220" step="20"
+              class="w-32 h-2 bg-black rounded-none appearance-none cursor-pointer accent-neoYellow">
+            <span id="speedValueLabel" class="font-mono font-bold text-[11px] text-neoOrange">220 ms</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALGORITHM HUB SELECTOR (Categorized Tabs) -->
+    <section id="laboratorio-algoritmos" class="space-y-3">
+      <!-- Category Tabs -->
+      <div class="flex flex-wrap gap-2">
+        <button onclick="filterAlgoCategory('all')" id="tab-all" class="neo-button bg-black text-white px-4 py-1.5 text-xs uppercase font-mono tracking-wider">
+          Todos (<span id="count-all">21</span>)
+        </button>
+        <button onclick="filterAlgoCategory('sort')" id="tab-sort" class="neo-button bg-white text-black px-4 py-1.5 text-xs uppercase font-mono tracking-wider">
+          ⚡ Ordenamientos (9)
+        </button>
+        <button onclick="filterAlgoCategory('search')" id="tab-search" class="neo-button bg-white text-black px-4 py-1.5 text-xs uppercase font-mono tracking-wider">
+          🔍 Búsquedas (6)
+        </button>
+        <button onclick="filterAlgoCategory('complexity')" id="tab-complexity" class="neo-button bg-white text-black px-4 py-1.5 text-xs uppercase font-mono tracking-wider">
+          📐 Clases Big-O Puras (6)
+        </button>
+      </div>
+
+      <!-- Algorithmic Cards Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-2.5" id="algoCardsGrid">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+
+    <!-- MAIN INTERACTIVE SANDBOX (PERFECTLY BALANCED 2-COLUMN GRID) -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+      
+      <!-- ================= LEFT COLUMN: 2D VISUAL ARENA & LIVE MONITOR ================= -->
+      <div class="neo-box-static p-5 bg-white flex flex-col justify-between space-y-5">
+        
+        <!-- Header Info & Controls -->
+        <div>
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b-3 border-black">
+            <div>
+              <div class="flex items-center gap-2">
+                <span id="activeBadge" class="neo-badge bg-neoGreen text-black text-xs px-2.5 py-0.5 font-mono font-black">
+                  O(n²)
+                </span>
+                <span id="activeTypeBadge" class="neo-badge bg-white text-black text-[10px] px-2 py-0.5 font-mono uppercase">
+                  Ordenamiento
+                </span>
+                <h3 id="activeTitle" class="text-xl font-black text-black">Bubble Sort</h3>
+              </div>
+              <p id="activeDescription" class="text-xs font-bold text-gray-700 mt-1">
+                Compara pares adyacentes continuos e intercambia sus posiciones si están fuera de orden.
+              </p>
+            </div>
+
+            <!-- Playback Controls -->
+            <div class="flex items-center gap-1.5">
+              <button id="btnRunSim" onclick="togglePlayPause()" class="neo-button bg-neoYellow px-3.5 py-2 text-xs uppercase flex items-center gap-1.5">
+                <i id="btnRunIcon" class="fa-solid fa-play"></i> <span id="btnRunText">Ejecutar</span>
+              </button>
+              <button onclick="stepForwardSimulation()" class="neo-button bg-neoCyan px-3 py-2 text-xs font-mono" title="Paso a Paso">
+                <i class="fa-solid fa-forward-step"></i> Paso
+              </button>
+              <button onclick="resetSimulationView()" class="neo-button bg-white px-3 py-2 text-xs" title="Reiniciar">
+                <i class="fa-solid fa-rotate-left"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- ENLARGED 2D STAGE (Sin Scrollbars, escalado adaptativo) -->
+          <div id="canvasViewport" class="min-h-[340px] my-4 p-4 bg-[#FFFDF0] border-3 border-black flex items-end justify-center overflow-hidden relative shadow-neoSm">
+            <!-- 2D dynamic cards track injected here -->
+          </div>
+        </div>
+
+        <!-- ZERO-SCROLL LIVE EXECUTION MONITOR (Abajo del gráfico) -->
+        <div class="border-3 border-black bg-white p-4 shadow-neoSm space-y-3">
+          <div class="flex items-center justify-between border-b-2 border-black pb-2">
+            <span class="text-xs uppercase font-black tracking-wider flex items-center gap-2">
+              <i class="fa-solid fa-bolt text-neoOrange"></i> Monitor de Ejecución en Vivo:
+            </span>
+            <span id="currentStepCounter" class="neo-badge bg-neoYellow text-black px-2 py-0.5 text-[10px] font-mono">
+              Paso: 0 / 0
+            </span>
+          </div>
+
+          <!-- Active Step Spotlight Card -->
+          <div id="spotlightCard" class="p-3 bg-[#FFFBEA] border-2 border-black flex items-center justify-between gap-3 shadow-neoSm">
+            <div class="flex items-center gap-3">
+              <span id="spotlightActionBadge" class="neo-badge bg-black text-white px-2 py-1 text-xs font-mono uppercase font-black">
+                STANDBY
+              </span>
+              <div>
+                <div id="spotlightMainText" class="text-xs md:text-sm font-black text-black">
+                  Sistema preparado. Presiona "Ejecutar" o "Paso".
+                </div>
+                <div id="spotlightSubText" class="text-[11px] font-mono font-bold text-gray-700">
+                  Esperando activación del generador atómico...
+                </div>
+              </div>
+            </div>
+            <div id="spotlightIcon" class="text-2xl text-neoOrange">
+              <i class="fa-solid fa-circle-play"></i>
+            </div>
+          </div>
+
+          <!-- Recent Operations Breadcrumb (Fixed 3-slot live feed, no scroll) -->
+          <div>
+            <div class="text-[10px] font-black uppercase text-gray-600 mb-1">Últimos Eventos Procesados:</div>
+            <div id="liveStepHistory" class="space-y-1.5 font-mono text-xs">
+              <div class="p-1.5 bg-white border border-black flex items-center justify-between text-gray-400">
+                <span>&bull; Esperando inicio...</span>
+                <span class="text-[10px]">-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ================= RIGHT COLUMN: 3D CINEMATIC & FULL CODE VIEWER ================= -->
+      <div class="neo-box-static p-5 bg-white flex flex-col justify-between space-y-5">
+        
+        <!-- 3D Spatial Canvas Section -->
+        <div>
+          <div class="flex items-center justify-between pb-3 border-b-3 border-black">
+            <div>
+              <h3 class="font-black text-black text-lg flex items-center gap-2">
+                <i class="fa-solid fa-cubes text-neoPurple"></i> Cinemática Espacial 3D (WebGL)
+              </h3>
+              <p class="text-[11px] font-bold text-gray-700">Traslación física e interpolación en arco durante el swap.</p>
+            </div>
+            <button onclick="reset3DCamera()" class="neo-button bg-white text-xs px-2.5 py-1" title="Restaurar Cámara">
+              <i class="fa-solid fa-compass"></i>
+            </button>
+          </div>
+
+          <!-- WebGL Three.js Container -->
+          <div id="threeContainer" class="mt-4"></div>
+
+          <!-- 3D Legend -->
+          <div class="pt-3 border-t-2 border-black grid grid-cols-2 sm:grid-cols-4 gap-2 text-[10px] font-mono font-bold">
+            <span class="flex items-center gap-1"><span class="w-3 h-3 bg-neoCyan border border-black inline-block"></span> Normal</span>
+            <span class="flex items-center gap-1"><span class="w-3 h-3 bg-neoYellow border border-black inline-block"></span> Comparación</span>
+            <span class="flex items-center gap-1"><span class="w-3 h-3 bg-neoPink border border-black inline-block"></span> Swap / Arco</span>
+            <span class="flex items-center gap-1"><span class="w-3 h-3 bg-neoGreen border border-black inline-block"></span> Fijado</span>
+          </div>
+        </div>
+
+        <!-- FULL CODE VIEWER (100% VISIBLE EN LA DERECHA, SIN SCROLL) -->
+        <div class="border-3 border-black bg-black p-4 shadow-neoSm space-y-2">
+          <div class="flex items-center justify-between border-b border-gray-700 pb-2">
+            <span class="text-xs uppercase font-black text-white tracking-wider flex items-center gap-1.5">
+              <i class="fa-solid fa-code text-neoCyan"></i> Código Fuente Completo del Algoritmo:
+            </span>
+            <span class="neo-badge bg-neoYellow text-black px-2 py-0.5 text-[10px] font-mono font-bold">JavaScript Canónico</span>
+          </div>
+          <!-- Full height pre tag, visible vertically & horizontally -->
+          <pre id="codePreview" class="font-mono text-xs leading-relaxed text-neoYellow bg-black p-1 m-0 whitespace-pre-wrap break-words overflow-visible w-full"></pre>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- METRICS & HARDWARE BENCHMARK HUD -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+      
+      <!-- Metric 1: CPU Time -->
+      <div class="neo-box p-3 bg-neoCyan">
+        <div class="text-[10px] font-black uppercase text-gray-800">Tiempo de CPU:</div>
+        <div id="metricExecutionTime" class="text-xl md:text-2xl font-black font-mono">0.00 ms</div>
+        <div class="text-[9px] font-mono font-bold mt-0.5">performance.now()</div>
+      </div>
+
+      <!-- Metric 2: Comparisons -->
+      <div class="neo-box p-3 bg-neoYellow">
+        <div class="text-[10px] font-black uppercase text-gray-800">Comparaciones:</div>
+        <div id="metricComparisons" class="text-xl md:text-2xl font-black font-mono">0</div>
+        <div class="text-[9px] font-mono font-bold mt-0.5" id="metricTheoreticalOps">f(n) teórico</div>
+      </div>
+
+      <!-- Metric 3: Swaps -->
+      <div class="neo-box p-3 bg-neoPink">
+        <div class="text-[10px] font-black uppercase text-gray-800">Intercambios / Swaps:</div>
+        <div id="metricSwaps" class="text-xl md:text-2xl font-black font-mono">0</div>
+        <div class="text-[9px] font-mono font-bold mt-0.5">Movimientos físicos</div>
+      </div>
+
+      <!-- Metric 4: Memory Accesses -->
+      <div class="neo-box p-3 bg-neoGreen">
+        <div class="text-[10px] font-black uppercase text-gray-800">Accesos Memoria:</div>
+        <div id="metricMemAccess" class="text-xl md:text-2xl font-black font-mono">0</div>
+        <div class="text-[9px] font-mono font-bold mt-0.5">Lecturas + Escrituras</div>
+      </div>
+
+      <!-- Metric 5: Auxiliary Space -->
+      <div class="neo-box p-3 bg-neoOrange">
+        <div class="text-[10px] font-black uppercase text-black">Espacio Auxiliar:</div>
+        <div id="metricAuxSpace" class="text-xl md:text-2xl font-black font-mono">O(1)</div>
+        <div class="text-[9px] font-mono font-bold mt-0.5" id="metricAuxDetail">In-place</div>
+      </div>
+
+      <!-- Metric 6: Growth Grade -->
+      <div class="neo-box p-3 bg-white">
+        <div class="text-[10px] font-black uppercase text-gray-800">Escalabilidad:</div>
+        <div id="metricScalability" class="text-base md:text-lg font-black font-mono uppercase truncate">Óptima</div>
+        <div class="text-[9px] font-mono text-gray-600 truncate" id="metricFormulaLabel">f(n)</div>
+      </div>
+
+    </div>
+
+    <!-- COMPLETE COMPARATIVE MATRIX -->
+    <section class="neo-box-static p-5 bg-white mb-8">
+      <div class="flex flex-col sm:flex-row justify-between sm:items-center pb-3 border-b-3 border-black gap-2 mb-3">
+        <div>
+          <h3 class="font-black text-black text-xl uppercase flex items-center gap-2">
+            <i class="fa-solid fa-table-cells text-neoOrange"></i> Matriz Comparativa General de Algoritmos
+          </h3>
+          <p class="text-xs font-bold text-gray-600">Calculada en tiempo real para el arreglo cargado n = <strong class="text-black font-mono activeNVal">11</strong></p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="bg-black text-white font-mono uppercase font-black">
+              <th class="p-2.5 border-2 border-black">Algoritmo</th>
+              <th class="p-2.5 border-2 border-black">Tipo</th>
+              <th class="p-2.5 border-2 border-black">Mejor Caso</th>
+              <th class="p-2.5 border-2 border-black">Caso Promedio</th>
+              <th class="p-2.5 border-2 border-black">Peor Caso</th>
+              <th class="p-2.5 border-2 border-black font-mono">Operaciones Calculadas</th>
+              <th class="p-2.5 border-2 border-black font-mono">Espacio Auxiliar</th>
+              <th class="p-2.5 border-2 border-black">Estable</th>
+            </tr>
+          </thead>
+          <tbody id="matrixTableBody" class="divide-y-2 divide-black font-mono font-bold">
+            <!-- Dynamic rows injected here -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+
+    <!-- =========================================================================
+         SECCIÓN: BIOGRAFÍA PROFESIONAL, FILOSOFÍA & STACK TECNOLÓGICO
+    ========================================================================== -->
+    <section id="perfil-profesional" class="mb-5">
+      <div class="footer-profile-card">
+        <div class="row g-4 align-items-center">
+          
+          <!-- LATERAL IZQUIERDO: ADN PROFESIONAL, FILOSOFÍA Y DOCENCIA (SIN REPETIR LOGOS) -->
+          <div class="col-lg-7">
+            
+            <!-- Encabezado con Foto y Badges de Rol -->
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <img 
+                src="https://avatars.githubusercontent.com/u/38921558?v=4" 
+                alt="Ing. Juancito Peña Vizcaíno" 
+                style="width: 86px; height: 86px; object-fit: cover; border-radius: 50%; border: 2.5px solid #000000; box-shadow: 3px 3px 0px #000000; flex-shrink: 0;"
+              >
+              <div>
+                <h4 class="fw-bold mb-1">Ing. Juancito Peña Vizcaíno</h4>
+                <div class="d-flex flex-wrap gap-1">
+                  <span class="badge bg-dark text-white">Data Analyst</span>
+                  <span class="badge bg-danger text-white">Full Stack Dev</span>
+                  <span class="badge bg-primary text-white">AI &amp; API Expert</span>
+                  <span class="badge bg-warning text-dark">Líder I+D+i</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- PÁRRAFO 1: Trayectoria, Formación y Foco en I+D+i -->
+            <p class="mb-3">
+              <strong>Ingeniero en Sistemas y Computación</strong> con Postgrado en <strong>Ingeniería de Software</strong> y Maestría en <strong>Sistemas Mención Gerencial</strong> (<em>Universidad Dominicana O&amp;M</em>). Con más de <strong>15 años de trayectoria</strong>, transformo problemas de alta complejidad en soluciones escalables. Durante el último año, he centrado mi trabajo en <strong>I+D+i (Investigación, Desarrollo e Innovación)</strong>, explorando arquitecturas de <strong>IA Generativa (RAG / LLMs)</strong>, integración de agentes autónomos con bases de datos y orquestación de APIs empresariales.
+            </p>
+    
+            <!-- PÁRRAFO 2: ADN Técnico, Pasión por los Casos de Uso y Docencia Práctica -->
+            <p class="mb-0">
+              🔬 <strong>Mi motor es el aprendizaje a través de los retos:</strong> me apasionan los <em>casos de uso reales</em>, las <strong>pruebas técnicas rigurosas</strong>, la investigación profunda y el diseño de soluciones directas a problemas de ingeniería. 🎓 Como <strong>docente universitario</strong> y creador del canal educativo <strong>@JuancitoDevV</strong>, comparto este conocimiento práctico mediante ejercicios y proyectos de código abierto para acercar la tecnología a problemas reales. 🚀
+            </p>
+    
+          </div>
+    
+          <!-- LATERAL DERECHO: STACK VISUAL AGRUPADO & CONTACTO DIRECTO -->
+          <div class="col-lg-5">
+            
+            <div class="mb-4">
+              <h6 class="fw-bold mb-2 text-dark">
+                <i class="bi bi-stack text-danger me-1"></i> Ecosistema de Tecnologías:
+              </h6>
+    
+              <!-- 1. Frontend -->
+              <div class="mb-2">
+                <small class="d-block fw-bold text-dark" style="font-size: 0.78rem;">🖥️ Frontend &amp; Web:</small>
+                <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"> HTML5</span>
+                <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"> CSS3</span>
+                <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"> JavaScript</span>
+                <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"> React</span>
+                <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js"> Next.js</span>
+              </div>
+    
+              <!-- 2. Backend & Móvil -->
+              <div class="mb-2">
+                <small class="d-block fw-bold text-dark" style="font-size: 0.78rem;">⚙️ Backend &amp; Multiplataforma:</small>
+                <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#"> C#</span>
+                <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" alt=".NET"> .NET / MAUI</span>
+                <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"> Python</span>
+                <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP"> PHP</span>
+              </div>
+    
+              <!-- 3. Datos & Analítica -->
+              <div class="mb-2">
+                <small class="d-block fw-bold text-dark" style="font-size: 0.78rem;">📊 Data Analytics &amp; Bases de Datos:</small>
+                <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server"> SQL Server</span>
+                <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"> PostgreSQL</span>
+                <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"> MySQL</span>
+                <span class="tech-pill"><i class="bi bi-bar-chart-fill text-warning fs-6"></i> Power BI / DAX</span>
+              </div>
+    
+              <!-- 4. IA, APIs & Despliegue -->
+              <div class="mb-0">
+                <small class="d-block fw-bold text-dark" style="font-size: 0.78rem;">🤖 IA + APIs &amp; Despliegue (I+D+i):</small>
+                <span class="tech-pill"><i class="bi bi-plug-fill text-primary fs-6"></i> APIs REST</span>
+                <span class="tech-pill"><i class="bi bi-cpu-fill text-danger fs-6"></i> IA + LLMs (RAG)</span>
+                <span class="tech-pill"><i class="bi bi-robot text-success fs-6"></i> Agentes IA</span>
+                <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"> Git</span>
+                <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"> GitHub</span>
+                <span class="tech-pill"><i class="bi bi-triangle-fill text-dark" style="font-size: 0.75rem;"></i> Vercel</span>
+              </div>
+            </div>
+    
+            <!-- Enlaces a Redes Oficiales -->
+            <div class="text-lg-end">
+              <h6 class="fw-bold mb-2">Canales Oficiales &amp; Redes:</h6>
+              
+              <div class="d-flex gap-2 justify-content-lg-end flex-wrap mb-3">
+                <a href="https://www.linkedin.com/in/juancitope%C3%B1a/" target="_blank" class="social-btn" title="LinkedIn Oficial" rel="noopener noreferrer">
+                  <i class="bi bi-linkedin"></i>
+                </a>
+    
+                <a href="https://www.youtube.com/@JuancitoDevV" target="_blank" class="social-btn" title="YouTube @JuancitoDevV" rel="noopener noreferrer">
+                  <i class="bi bi-youtube text-danger"></i>
+                </a>
+    
+                <a href="https://github.com/JUANCITOPENA" target="_blank" class="social-btn" title="GitHub @JUANCITOPENA" rel="noopener noreferrer">
+                  <i class="bi bi-github"></i>
+                </a>
+    
+                <a href="https://twitter.com/JuancitoPenaV" target="_blank" class="social-btn" title="X (Twitter) @JuancitoPenaV" rel="noopener noreferrer">
+                  <i class="bi bi-twitter-x"></i>
+                </a>
+    
+                <a href="mailto:juancito.pena@gmail.com" class="social-btn" title="Correo Electrónico">
+                  <i class="bi bi-envelope-at-fill"></i>
+                </a>
+              </div>
+    
+              <!-- Tarjeta Directa de YouTube -->
+              <div class="p-2 bg-white border border-2 border-dark rounded-3 d-inline-block text-start shadow-sm w-100">
+                <div class="d-flex align-items-center gap-2">
+                  <i class="bi bi-play-circle-fill text-danger fs-2"></i>
+                  <div>
+                    <small class="d-block fw-bold text-danger">Canal Educativo de YouTube:</small>
+                    <a href="https://www.youtube.com/@JuancitoDevV" target="_blank" class="fw-bold text-dark text-decoration-none" rel="noopener noreferrer">
+                      @JuancitoDevV · Algoritmos, SQL, IA &amp; .NET <i class="bi bi-box-arrow-up-right small"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+    
+            </div>
+    
+          </div>
+    
+        </div>
+    </section>
+
+  </div>
+
+    <!-- =========================================================================
+         FOOTER OFICIAL
+    ========================================================================== -->
+    <footer>
+      <div class="container-fluid px-4 px-lg-5">
+        <div class="row align-items-center g-3">
+          <div class="col-md-6">
+            <span class="navbar-brand-badge me-2" style="background: #000000; color: #FFDE59 !important; border: 2px solid #000000;">ALGO-MATRIX 3D</span>
+            <strong>Enciclopedia &amp; Laboratorio Interactivo de Algoritmos y Big-O</strong>
+            <p class="small text-muted mb-0 mt-1">Plataforma interactiva de visualización y análisis cinemático desarrollada por el <strong>Ing. Juancito Peña Vizcaíno</strong>.</p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <a href="#inicio" class="text-danger fw-bold text-decoration-none">
+              <i class="bi bi-arrow-up-circle-fill"></i> Volver al Inicio
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  <!-- Logica y Algoritmos JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
