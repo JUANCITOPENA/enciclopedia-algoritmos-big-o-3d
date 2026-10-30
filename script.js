@@ -1472,3 +1472,609 @@ function onWindowResize() {
   camera.updateProjectionMatrix();
   renderer.setSize(container.clientWidth, container.clientHeight);
 }
+
+/* =========================================================================
+   SISTEMA MAESTRO DE MODALES BIG-O & NARRACIÓN DE VOZ TTS (ESTÁNDAR JPV PRO)
+   Arquitectura: Web Speech API Nativo + Neo-Brutalist High-Contrast UI
+   ========================================================================= */
+
+const BIG_O_CATALOG = {
+  'O(1)': {
+    key: 'O(1)',
+    title: 'O(1) · Tiempo Constante',
+    name: 'Constante',
+    icon: '🟢',
+    badge: 'Óptimo Absoluto',
+    headerColor: 'bg-neoGreen',
+    definition: 'El tiempo de ejecución del algoritmo es estrictamente independiente del volumen total de datos de entrada (n). Ya sea que el conjunto contenga un elemento o diez mil millones de registros, la operación se completa en un número fijo y determinista de ciclos de CPU.',
+    kinetic: 'Ecuación: T(n) = c (donde c es una constante fija de tiempo). La curva de crecimiento es una línea perfectamente horizontal paralela al eje de entrada. No experimenta degradación computacional.',
+    growth: [
+      { n: 'n = 10', ops: '1 operación', impact: 'Instantáneo (< 1 microsegundo)' },
+      { n: 'n = 100', ops: '1 operación', impact: 'Instantáneo (< 1 microsegundo)' },
+      { n: 'n = 1,000', ops: '1 operación', impact: 'Instantáneo (< 1 microsegundo)' },
+      { n: 'n = 1,000,000', ops: '1 operación', impact: 'Instantáneo (< 1 microsegundo)' }
+    ],
+    viability: {
+      title: 'Aprobado para Alta Escala Global',
+      desc: 'El estándar de oro indiscutible para microservicios, bases de datos clave-valor y operaciones en memoria masiva.',
+      bg: 'bg-neoGreen/20',
+      icon: 'fa-circle-check text-green-700'
+    },
+    gif: 'assets/nearest_neighbor_search.gif',
+    gifCaption: 'Acceso directo a posición en memoria sin recorridos iterativos.',
+    algorithms: [
+      'Acceso por Índice en Arreglo (arr[i])',
+      'Inserción / Búsqueda en Hash Table (Map/Dictionary)',
+      'Operaciones de Pila (Stack Push / Pop)',
+      'Operaciones de Cola (Queue Enqueue / Dequeue)',
+      'Comprobación de Paridad (n % 2 === 0)'
+    ],
+    codeType: 'Acceso Inmediato Directo',
+    code: `// Acceso a memoria en tiempo constante O(1)
+function getFirstElement(arr) {
+  return arr[0]; // Operación única directa por dirección de memoria
+}
+
+// Búsqueda en tabla hash en O(1) amortizado
+function getUserById(userMap, userId) {
+  return userMap[userId] || null; // Cálculo hash directo
+}`,
+    codeExplanation: 'La CPU calcula la dirección física mediante la fórmula: DirecciónBase + (Índice * TamañoElemento) en una única instrucción atómica.',
+    uses: [
+      'Tablas de Hash y Cachés distribuidas en memoria (Redis, Memcached).',
+      'Acceso a registros por Clave Primaria en índices hash de bases de datos.',
+      'Planificación de interrupciones de hardware en sistemas operativos.',
+      'Controladores de red y buffers circulares de alta frecuencia (trading).'
+    ],
+    goldenRule: 'Siempre que diseñes un sistema con millones de lecturas por segundo, estructura tus datos en Maps o Hashes para garantizar acceso O(1).',
+    speechText: 'Bienvenido a la clase de complejidad O de uno, conocida como Tiempo Constante, la cima indiscutible de la eficiencia en la ciencia de la computación. En esta clase, el tiempo de ejecución y el consumo de CPU son estrictamente independientes del volumen total de datos de entrada. No importa si tu colección contiene diez elementos o diez mil millones de registros, la operación siempre se ejecuta en un número fijo y determinista de ciclos de procesador. Observa con atención la animación en pantalla: representa el acceso directo a una posición en memoria física mediante dirección base y desplazamiento, sin necesidad de recorrer ni iterar sobre los demás elementos. La computadora calcula la posición al instante. Es exactamente lo que sucede al consultar un arreglo por su índice numérico o al buscar una clave en una tabla hash o en una base de datos en memoria masiva como Redis. En la arquitectura moderna de sistemas, diseñar flujos de tiempo constante O de uno es el estándar de oro para garantizar respuestas en microsegundos y soportar millones de usuarios concurrentes.'
+  },
+
+  'O(log n)': {
+    key: 'O(log n)',
+    title: 'O(log n) · Tiempo Logarítmico',
+    name: 'Logarítmica',
+    icon: '💎',
+    badge: 'Excelente Rendimiento',
+    headerColor: 'bg-neoCyan',
+    definition: 'El tiempo de ejecución crece de forma extremadamente lenta en relación con n. En cada iteración o paso del algoritmo, el espacio de búsqueda restante se reduce a la mitad (división por dos). Incluso con mil millones de elementos, solo se requieren aproximadamente 30 comparaciones.',
+    kinetic: 'Ecuación: T(n) = c · log₂(n). La curva sube ligeramente al inicio y luego se aplana casi por completo. Duplicar el tamaño de la entrada solo añade una única operación adicional a la ejecución.',
+    growth: [
+      { n: 'n = 10', ops: '~ 3 a 4 operaciones', impact: 'Imperceptible (~ 0.001 ms)' },
+      { n: 'n = 100', ops: '~ 6 a 7 operaciones', impact: 'Imperceptible (~ 0.002 ms)' },
+      { n: 'n = 1,000', ops: '~ 10 operaciones', impact: 'Ultrarrápido (~ 0.005 ms)' },
+      { n: 'n = 1,000,000', ops: '~ 20 operaciones', impact: 'Casi instantáneo (< 0.02 ms)' }
+    ],
+    viability: {
+      title: 'Excelente para Big Data & Motores de Búsqueda',
+      desc: 'Capaz de buscar entre billones de registros en cuestión de microsegundos mediante bisección o árboles balanceados.',
+      bg: 'bg-neoCyan/20',
+      icon: 'fa-circle-check text-cyan-700'
+    },
+    gif: 'assets/binary_search.gif',
+    gifCaption: 'Búsqueda Binaria: Bisección continua y descarte del 50% en cada paso.',
+    algorithms: [
+      'Búsqueda Binaria (Binary Search)',
+      'Búsqueda en Árboles Binarios Balanceados (AVL / Red-Black)',
+      'Búsqueda en Índices B-Tree / B+Tree (SQL Server / PostgreSQL)',
+      'Algoritmo de Exponenciación Rápida (Binary Exponentiation)',
+      'Algoritmo de Euclides para el MCD'
+    ],
+    codeType: 'Bisección Logarítmica',
+    code: `// Búsqueda Binaria O(log n) en arreglo ordenado
+function binarySearch(arr, target) {
+  let left = 0, right = arr.length - 1;
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+    if (arr[mid] === target) return mid; // Encontrado
+    if (arr[mid] < target) left = mid + 1; // Descartar mitad izquierda
+    else right = mid - 1; // Descartar mitad derecha
+  }
+  return -1; // No existe
+}`,
+    codeExplanation: 'En cada ciclo while, el rango [left, right] se divide exactamente entre 2. Para n = 1,000,000, log₂(10⁶) ≈ 20 iteraciones máximas.',
+    uses: [
+      'Motores relacionales de bases de datos para búsqueda de índices (SQL Server, Oracle, MySQL).',
+      'Sistemas de archivos (NTFS, ext4) para localizar inodos en discos duros.',
+      'Búsqueda de versiones en Git mediante "git bisect" para aislar errores.',
+      'Sistemas de renderizado y detección de colisiones espaciales (Octrees/BSP).'
+    ],
+    goldenRule: 'Si tus datos están previamente ordenados o indexados, utiliza siempre búsqueda binaria o estructuras arbóreas para garantizar tiempos logarítmicos O(log n).',
+    speechText: 'Analizando la complejidad O de logaritmo de n, conocida como Tiempo Logarítmico, uno de los pilares matemáticos más poderosos para el procesamiento masivo de datos. Su enorme eficiencia se fundamenta en la estrategia de divide y vencerás: en cada iteración o comparación, el algoritmo descarta de inmediato el cincuenta por ciento del espacio de búsqueda restante. En la animación visual que estás observando en pantalla, se aprecia con claridad la Búsqueda Binaria sobre un arreglo ordenado. Fíjate cómo el algoritmo evalúa el elemento central: al verificar si el objetivo es menor o mayor, descarta inmediatamente toda la mitad que no puede contener el valor y continúa dividiendo la porción restante. Gracias a esta reducción exponencial del problema, buscar entre un millón de registros ordenados solo requiere unas veinte comparaciones, y buscar entre mil millones apenas treinta pasos. Esta es la estructura matemática que sustenta los árboles balanceados y los índices de bases de datos relacionales como SQL Server, PostgreSQL y Oracle, permitiendo consultas ultrarrápidas en tablas gigantescas.'
+  },
+
+  'O(n)': {
+    key: 'O(n)',
+    title: 'O(n) · Tiempo Lineal',
+    name: 'Lineal',
+    icon: '⚡',
+    badge: 'Eficiencia Aceptable',
+    headerColor: 'bg-neoYellow',
+    definition: 'El tiempo de ejecución crece en proporción directa y lineal con el tamaño de los datos de entrada (n). Si la cantidad de elementos se duplica, el tiempo consumido también se duplicará exactamente. El algoritmo debe examinar cada elemento al menos una vez.',
+    kinetic: 'Ecuación: T(n) = c · n. La curva es una línea diagonal perfecta con pendiente constante. Es el límite inferior teórico para cualquier algoritmo que requiera leer todos los datos de entrada.',
+    growth: [
+      { n: 'n = 10', ops: '10 operaciones', impact: 'Ultra fluido (< 0.01 ms)' },
+      { n: 'n = 100', ops: '100 operaciones', impact: 'Fluido (~ 0.05 ms)' },
+      { n: 'n = 1,000', ops: '1,000 operaciones', impact: 'Rápido (~ 0.5 ms)' },
+      { n: 'n = 1,000,000', ops: '1,000,000 operaciones', impact: 'Aceptable (~ 5 a 15 ms en JS)' }
+    ],
+    viability: {
+      title: 'Comportamiento Aceptable y Predecible',
+      desc: 'Adecuado para procesamiento en lote, transformaciones de arreglos y lecturas completas de secuencias de datos.',
+      bg: 'bg-neoYellow/20',
+      icon: 'fa-triangle-exclamation text-amber-700'
+    },
+    gif: 'assets/linear_search.gif',
+    gifCaption: 'Búsqueda Lineal: Inspección secuencial celda por celda de inicio a fin.',
+    algorithms: [
+      'Búsqueda Lineal / Secuencial',
+      'Búsqueda del Valor Máximo o Mínimo en arreglo desordenado',
+      'Conteo y Recorrido de Listas Enlazadas',
+      'Algoritmo de Kadane (Subarreglo de suma máxima)',
+      'Counting Sort (en el caso de rango finito)'
+    ],
+    codeType: 'Recorrido Secuencial Simple',
+    code: `// Búsqueda Lineal O(n)
+function linearSearch(arr, target) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === target) return i; // Inspección uno a uno
+  }
+  return -1;
+}
+
+// Búsqueda de máximo O(n)
+function findMax(arr) {
+  let max = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > max) max = arr[i];
+  }
+  return max;
+}`,
+    codeExplanation: 'Un único bucle for que visita cada elemento del arreglo una sola vez. No existen bucles anidados ni divisiones de rango.',
+    uses: [
+      'Procesamiento de flujos de texto (Stream parsing) y pipelines de ETL.',
+      'Transformaciones funcionales de colecciones (.map, .filter, .reduce).',
+      'Escaneo de tablas completas (Table Scan) en bases de datos sin índice.',
+      'Cálculo de estadísticas descriptivas (Media, Varianza, Suma total).'
+    ],
+    goldenRule: 'El tiempo lineal O(n) es perfectamente aceptable para colecciones en memoria, pero evita hacer Table Scans O(n) en tablas de bases de datos con millones de filas.',
+    speechText: 'Pasamos a la complejidad O de n, denominada Tiempo Lineal. Aquí el costo computacional mantiene una proporción directa y uniforme con respecto al volumen de información procesada. Si la cantidad de datos se duplica, el tiempo consumido se duplica de manera exacta y predecible. En la animación gráfica en pantalla, se ilustra la Búsqueda Lineal o Secuencial. El puntero examina elemento por elemento, de izquierda a derecha, recorriendo celda por celda hasta encontrar el elemento buscado o alcanzar el final del arreglo. Es el procedimiento natural de fuerza bruta cuando los datos se encuentran desordenados o cuando no disponemos de un índice estructurado. El tiempo lineal representa el límite inferior insuperable para cualquier tarea que requiera procesar, inspeccionar o transformar la totalidad de los datos, tales como calcular sumas, promedios, filtros y mapeos funcionales. En la práctica de ingeniería, es un costo totalmente aceptable y habitual en memoria, pero en bases de datos a gran escala debe evitarse el escaneo completo de tablas creando índices adecuados.'
+  },
+
+  'O(n log n)': {
+    key: 'O(n log n)',
+    title: 'O(n log n) · Tiempo Linealítmico',
+    name: 'Linealítmica',
+    icon: '⚖️',
+    badge: 'Estándar en Ordenamiento',
+    headerColor: 'bg-[#C084FC]',
+    definition: 'El tiempo de ejecución combina la división recursiva logarítmica (log n) con un procesamiento lineal (n) en cada nivel de recursión. Representa el límite inferior matemático demostrado para cualquier algoritmo de ordenamiento basado en comparaciones.',
+    kinetic: 'Ecuación: T(n) = c · n · log₂(n). Crece un poco más rápido que O(n), pero exponencialmente más lento que O(n²). Para n = 1,000,000, n log n realiza alrededor de 20 millones de operaciones frente a un billón de O(n²).',
+    growth: [
+      { n: 'n = 10', ops: '~ 33 operaciones', impact: 'Instantáneo (< 0.05 ms)' },
+      { n: 'n = 100', ops: '~ 664 operaciones', impact: 'Imperceptible (~ 0.2 ms)' },
+      { n: 'n = 1,000', ops: '~ 9,966 operaciones', impact: 'Muy rápido (~ 2 a 4 ms)' },
+      { n: 'n = 1,000,000', ops: '~ 19,931,568 operaciones', impact: 'Eficiente (~ 60 a 120 ms)' }
+    ],
+    viability: {
+      title: 'El Estándar de Oro para Ordenamiento Masivo',
+      desc: 'Es la cota de máxima eficiencia teórica para ordenar colecciones arbitrarias por comparación en la industria.',
+      bg: 'bg-purple-100',
+      icon: 'fa-circle-check text-purple-700'
+    },
+    gif: 'assets/merge_sort.gif',
+    gifCaption: 'Merge Sort: División recursiva en mitades y combinación ordenada en O(n log n).',
+    algorithms: [
+      'Merge Sort (Ordenamiento por Mezcla - O(n log n) en todos los casos)',
+      'Quick Sort (Caso Promedio y Mejor Caso)',
+      'Heap Sort (Ordenamiento por Montículo)',
+      'TimSort (Algoritmo nativo de Python y Java Arrays.sort)',
+      'Transformada Rápida de Fourier (FFT)'
+    ],
+    codeType: 'Divide y Vencerás Recursivo',
+    code: `// Estructura de Merge Sort O(n log n)
+function mergeSort(arr) {
+  if (arr.length <= 1) return arr;
+  const mid = Math.floor(arr.length / 2);
+  const left = mergeSort(arr.slice(0, mid)); // log n divisiones
+  const right = mergeSort(arr.slice(mid));
+  return merge(left, right); // Combinación lineal O(n)
+}
+
+function merge(left, right) {
+  const result = [];
+  let i = 0, j = 0;
+  while (i < left.length && j < right.length) {
+    if (left[i] <= right[j]) result.push(left[i++]);
+    else result.push(right[j++]);
+  }
+  return result.concat(left.slice(i)).concat(right.slice(j));
+}`,
+    codeExplanation: 'El árbol de recursión tiene una profundidad de log₂(n) niveles. En cada nivel se procesan y mezclan los n elementos acumulados.',
+    uses: [
+      'Comando Array.prototype.sort() en navegadores (V8 usa TimSort).',
+      'Procesamiento de señales de audio e imágenes (Fast Fourier Transform).',
+      'Ordenamiento de tablas gigantes en motores SQL y Big Data (Apache Spark).',
+      'Geometría computacional (Cálculo del casco convexo / Convex Hull).'
+    ],
+    goldenRule: 'Nunca utilices algoritmos cuadráticos como Bubble Sort en producción; reemplázalos siempre por Merge Sort, Quick Sort o TimSort que garantizan O(n log n).',
+    speechText: 'Explorando la complejidad O de n log n, conocida como tiempo linealítmico o cuasi-lineal. Esta clase de complejidad representa la cota de máxima eficiencia matemática demostrada para ordenar colecciones arbitrarias mediante comparaciones. Mira atentamente la animación oficial en pantalla de Merge Sort u ordenamiento por mezcla. Nota cómo el proceso se divide en dos fases cinemáticas: primero, divide recursivamente la lista completa en mitades más pequeñas hasta llegar a elementos individuales, consumiendo log n niveles de profundidad; segundo, realiza una fase de mezcla o fusión lineal, combinando sub-listas de forma ordenada en tiempo proporcional a n. Algoritmos emblemáticos de la industria como Merge Sort, Quick Sort en su caso promedio, Heap Sort y el célebre TimSort implementado nativamente en Python y Java, operan en este orden de magnitud. Para ordenar un millón de registros, un algoritmo linealítmico realiza apenas unos veinte millones de operaciones, superando por miles de veces a los métodos cuadráticos y convirtiéndose en el estándar de oro de la ingeniería de software.'
+  },
+
+  'O(n²)': {
+    key: 'O(n²)',
+    title: 'O(n²) · Tiempo Cuadrático',
+    name: 'Cuadrática',
+    icon: '⚠️',
+    badge: 'Ineficiente / Alerta',
+    headerColor: 'bg-neoOrange',
+    definition: 'El tiempo de ejecución crece con el cuadrado del tamaño de entrada. Es provocado típicamente por dos bucles anidados donde cada elemento del conjunto se compara contra todos los demás elementos. Duplicar la entrada multiplica el tiempo de cómputo por cuatro.',
+    kinetic: 'Ecuación: T(n) = c · n². La curva se dispara hacia arriba en una parábola empinada. Para n = 1,000 realiza 1 millón de operaciones; para n = 1,000,000 demandaría un billón de operaciones (inviable en tiempo real).',
+    growth: [
+      { n: 'n = 10', ops: '100 operaciones', impact: 'Imperceptible (< 0.1 ms)' },
+      { n: 'n = 100', ops: '10,000 operaciones', impact: 'Aceptable (~ 1 ms)' },
+      { n: 'n = 1,000', ops: '1,000,000 operaciones', impact: 'Lento (~ 50 a 150 ms)' },
+      { n: 'n = 100,000', ops: '10,000,000,000 operaciones', impact: 'Prohibitivo (> 30 segundos)' }
+    ],
+    viability: {
+      title: 'Peligro de Cuello de Botella en Producción',
+      desc: 'Solo aceptable para fines didácticos o conjuntos microscópicos de menos de 100 elementos.',
+      bg: 'bg-neoOrange/20',
+      icon: 'fa-triangle-exclamation text-amber-800'
+    },
+    gif: 'assets/bubble_sort.gif',
+    gifCaption: 'Bubble Sort: Doble bucle anidado que compara e intercambia parejas adyacentes.',
+    algorithms: [
+      'Bubble Sort (Ordenamiento Burbuja)',
+      'Selection Sort (Ordenamiento por Selección)',
+      'Insertion Sort (En su caso promedio y peor caso)',
+      'Comparación de todos contra todos (Naive Duplicate Detection)',
+      'Multiplicación elemental de matrices cuadradas'
+    ],
+    codeType: 'Doble Bucle Anidado',
+    code: `// Algoritmo Cuadrático O(n²) con bucles anidados
+function bubbleSort(arr) {
+  let n = arr.length;
+  for (let i = 0; i < n; i++) {          // Bucle exterior: n veces
+    for (let j = 0; j < n - i - 1; j++) { // Bucle interior: n veces
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      }
+    }
+  }
+  return arr;
+}`,
+    codeExplanation: 'Dos bucles for anidados que iteran sobre la longitud n. Total de pasos: (n * (n - 1)) / 2 ≈ n² / 2 operaciones de comparación.',
+    uses: [
+      'Enseñanza pedagógica inicial de lógica de control en escuelas y universidades.',
+      'Arreglos diminutos en dispositivos embebidos con muy poca memoria RAM.',
+      'Cálculo de matrices de correlación pequeñas en análisis estadístico.',
+      'Detección básica de colisiones entre un número pequeño de sprites en videojuegos 2D.'
+    ],
+    goldenRule: 'Si detectas dos bucles anidados en tu código que operan sobre listas que pueden crecer con el tiempo, refactoriza a mapas O(1) o algoritmos O(n log n).',
+    speechText: 'Atención a la complejidad O de n al cuadrado, conocida como Tiempo Cuadrático. Esta categoría marca una zona de alerta crítica en el diseño de software debido a su acelerada degradación de rendimiento. En la animación de Bubble Sort u ordenamiento burbuja que observas en pantalla, se muestra el comportamiento clásico de dos bucles anidados. El algoritmo compara de manera repetitiva parejas de elementos adyacentes y los intercambia cuando están desordenados, haciendo que los valores mayores asciendan gradualmente como burbujas hacia el extremo final. Esto implica comparar casi cada dato contra todos los demás miembros de la colección. Bajo esta complejidad, si el conjunto de datos se duplica, el tiempo de cómputo se cuadruplica. Con diez mil elementos ya se demandan cien millones de operaciones, generando congelamiento en la interfaz o saturación del procesador. Aunque Bubble Sort y Selection Sort son excelentes para la enseñanza pedagógica inicial, en entornos reales de producción deben erradicarse y reemplazarse por soluciones lineales o linealítmicas.'
+  },
+
+  'O(2ⁿ)': {
+    key: 'O(2ⁿ)',
+    title: 'O(2ⁿ) / O(n!) · Tiempo Exponencial & Factorial',
+    name: 'Exponencial / Fact',
+    icon: '💣',
+    badge: 'Computacionalmente Prohibitivo',
+    headerColor: 'bg-neoRed',
+    definition: 'El tiempo de ejecución se duplica con cada elemento unitario adicional agregado a n en el caso exponencial, o se multiplica por n en el caso factorial. Representa la explosión combinatoria donde el número de operaciones supera rápidamente la cantidad de átomos en el universo observable.',
+    kinetic: 'Ecuación: T(n) = c · 2ⁿ o T(n) = c · n!. La curva es prácticamente una pared vertical. Con n = 30 ya se requieren más de mil millones de operaciones; con n = 100, la computadora tardaría miles de millones de años en completarlo.',
+    growth: [
+      { n: 'n = 5', ops: '32 (2ⁿ) | 120 (n!)', impact: 'Rápido (< 0.1 ms)' },
+      { n: 'n = 10', ops: '1,024 (2ⁿ) | 3,628,800 (n!)', impact: 'Notorio (~ 5 a 20 ms)' },
+      { n: 'n = 20', ops: '1,048,576 (2ⁿ) | 2.43 × 10¹⁸ (n!)', impact: 'Crítico (Congelamiento de CPU)' },
+      { n: 'n = 50', ops: '1.12 × 10¹⁵ (2ⁿ) | 3.04 × 10⁶⁴ (n!)', impact: 'Imposible (Siglos de cómputo)' }
+    ],
+    viability: {
+      title: 'Inviable sin Técnicas Heurísticas o Poda',
+      desc: 'Perteneciente al conjunto de problemas NP-Hard. Requiere programación dinámica, algoritmos genéticos o heurísticas.',
+      bg: 'bg-neoRed/20',
+      icon: 'fa-skull-crossbones text-red-700'
+    },
+    gif: 'assets/backtracking_search.gif',
+    gifCaption: 'Backtracking / Búsqueda Exhaustiva: Exploración exponencial de combinaciones con poda.',
+    algorithms: [
+      'Fibonacci Recursivo sin memorización (Naive O(2ⁿ))',
+      'Problema del Viajante de Comercio por fuerza bruta (TSP - O(n!))',
+      'Generación de todos los Subconjuntos de un Set (Power Set - O(2ⁿ))',
+      'Problema de las N Reinas por Backtracking exhaustivo',
+      'Bogo Sort (Ordenamiento por permutación aleatoria - O(n!))'
+    ],
+    codeType: 'Bifurcación Recursiva Doble',
+    code: `// Fibonacci recursivo ineficiente O(2ⁿ)
+function fibonacci(n) {
+  if (n <= 1) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2); // 2 llamadas por nodo
+}
+
+// Bogo Sort O(n!)
+function bogoSort(arr) {
+  while (!isSorted(arr)) {
+    shuffle(arr); // Permutaciones aleatorias infinitas
+  }
+  return arr;
+}`,
+    codeExplanation: 'Cada llamada a la función genera dos nuevas llamadas recursivas, creando un árbol binario completo de profundidad n con 2ⁿ nodos hojas.',
+    uses: [
+      'Criptografía y seguridad informática (la dificultad de romper claves RSA radica en la complejidad exponencial).',
+      'Resolución de puzles complejos mediante poda (Sudoku Solver, Cubo de Rubik).',
+      'Problemas de optimización combinatoria y logística (Rutas de camiones de reparto).',
+      'Plegamiento de proteínas y simulaciones moleculares en bioinformática.'
+    ],
+    goldenRule: 'Nunca dejes un algoritmo exponencial en producción; utiliza Programación Dinámica (Memoization/Tabulation) para reducir O(2ⁿ) a O(n).',
+    speechText: 'Llegamos al límite extremo del cálculo computacional: O de dos a la n y O de n factorial, correspondientes a los tiempos exponencial y factorial. Este es el territorio de la explosión combinatoria y los problemas computacionalmente intratables de la familia NP-Hard. Mira con detalle la animación en pantalla: representa la Búsqueda por Backtracking y Exploración Exhaustiva. En cada decisión o nivel, el algoritmo se bifurca en múltiples ramas alternativas, retrocediendo cuando encuentra una restricción inválida. Cada nuevo elemento que se incorpora al problema duplica o multiplica el número total de estados posibles. Para ilustrar su magnitud, intentar resolver el problema del viajante de comercio por fuerza bruta para apenas cincuenta ciudades requeriría más operaciones que los segundos transcurridos desde el origen del universo. En la ingeniería moderna, esta complejidad es la base que hace prácticamente inviolable la criptografía y la seguridad informática, como el cifrado RSA. Cuando los ingenieros debemos resolver problemas combinatorios en logística, rutas o bioinformática, recurrimos obligatoriamente a la programación dinámica con memorización, la poda heurística y técnicas de inteligencia artificial para obtener soluciones óptimas en tiempo real sin caer en la trampa del cálculo infinito.'
+  }
+};
+
+/* =========================================================================
+   CONTROLADOR DEL MODAL UNIVERSAL & SÍNTESIS DE VOZ TTS
+   ========================================================================= */
+
+let currentBigOModalKey = null;
+const synthBigO = window.speechSynthesis;
+let currentBigOUtterance = null;
+let currentBigOVolume = 1.0;
+
+// Normalización y aliases de claves Big-O
+BIG_O_CATALOG['O(n^2)'] = BIG_O_CATALOG['O(n²)'];
+BIG_O_CATALOG['O(2^n)'] = BIG_O_CATALOG['O(2ⁿ)'];
+BIG_O_CATALOG['O(n!)'] = BIG_O_CATALOG['O(2ⁿ)'];
+
+window.openBigOModal = function(key) {
+  let data = BIG_O_CATALOG[key];
+  if (!data && key) {
+    if (key.includes('2') && (key.includes('n') || key.includes('^'))) data = BIG_O_CATALOG['O(2ⁿ)'];
+    else if (key.includes('n') && (key.includes('2') || key.includes('²'))) data = BIG_O_CATALOG['O(n²)'];
+    else if (key.includes('log') && key.includes('n log')) data = BIG_O_CATALOG['O(n log n)'];
+    else if (key.includes('log')) data = BIG_O_CATALOG['O(log n)'];
+    else if (key.includes('1')) data = BIG_O_CATALOG['O(1)'];
+    else if (key === 'O(n)' || key.includes('n')) data = BIG_O_CATALOG['O(n)'];
+  }
+  if (!data) return;
+
+  currentBigOModalKey = data.key || key;
+  detenerNarracionBigO();
+
+  // Actualizar Header (compacto y panorámico)
+  const header = document.getElementById('modalBigOHeader');
+  header.className = `py-2 px-4 sm:px-5 border-b-3 border-black flex items-center justify-between flex-wrap gap-2 ${data.headerColor} transition-colors duration-200`;
+  
+  document.getElementById('modalBigOIcon').textContent = data.icon;
+  document.getElementById('modalBigOTitle').textContent = data.title;
+  document.getElementById('modalBigOBadge').textContent = data.badge;
+
+  // Actualizar Definición y Cinemática
+  document.getElementById('modalBigODefinition').textContent = data.definition;
+  document.getElementById('modalBigOKinetic').textContent = data.kinetic;
+
+  // Actualizar Tabla de Crecimiento
+  const tbody = document.getElementById('modalBigOGrowthTable');
+  tbody.innerHTML = '';
+  data.growth.forEach(row => {
+    const tr = document.createElement('tr');
+    tr.className = 'border-b border-black/30';
+    tr.innerHTML = `
+      <td class="p-2 border-r border-black font-bold bg-white">${row.n}</td>
+      <td class="p-2 border-r border-black font-black text-black">${row.ops}</td>
+      <td class="p-2 font-bold text-gray-800">${row.impact}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  // Actualizar Semáforo de Viabilidad
+  const viabBox = document.getElementById('modalBigOViabilityBox');
+  viabBox.className = `mt-4 p-3 border-2 border-black ${data.viability.bg} flex items-center gap-3`;
+  document.getElementById('modalBigOViabilityIcon').className = `fa-solid ${data.viability.icon} text-2xl`;
+  document.getElementById('modalBigOViabilityTitle').textContent = data.viability.title;
+  document.getElementById('modalBigOViabilityDesc').textContent = data.viability.desc;
+
+  // Actualizar GIF y Algoritmos
+  document.getElementById('modalBigOGifImg').src = data.gif;
+  document.getElementById('modalBigOGifImg').alt = data.title;
+  document.getElementById('modalBigOGifCaption').textContent = data.gifCaption;
+
+  const algList = document.getElementById('modalBigOAlgList');
+  algList.innerHTML = '';
+  data.algorithms.forEach(alg => {
+    const span = document.createElement('span');
+    span.className = 'badge bg-white text-black border border-black text-[11px] shadow-sm font-bold';
+    span.textContent = alg;
+    algList.appendChild(span);
+  });
+
+  // Actualizar Código y Explicación
+  document.getElementById('modalBigOCodeType').textContent = data.codeType;
+  document.getElementById('modalBigOCode').textContent = data.code;
+  document.getElementById('modalBigOCodeExplanation').textContent = data.codeExplanation;
+
+  // Actualizar Usos Industriales y Regla de Oro
+  const usesList = document.getElementById('modalBigOUsesList');
+  usesList.innerHTML = '';
+  data.uses.forEach(useItem => {
+    const li = document.createElement('li');
+    li.textContent = useItem;
+    usesList.appendChild(li);
+  });
+  document.getElementById('modalBigOGoldenRule').textContent = data.goldenRule;
+
+  // Mostrar Modal con animación
+  const modal = document.getElementById('bigOModal');
+  modal.classList.remove('hidden');
+  document.body.classList.add('overflow-hidden');
+
+  // Restablecer botones de audio
+  setAudioButtonsState('idle');
+};
+
+window.closeBigOModal = function() {
+  detenerNarracionBigO();
+  const modal = document.getElementById('bigOModal');
+  if (modal) {
+    modal.classList.add('hidden');
+  }
+  document.body.classList.remove('overflow-hidden');
+  currentBigOModalKey = null;
+};
+
+window.handleModalBackdropClick = function(event) {
+  if (event.target.id === 'bigOModal') {
+    closeBigOModal();
+  }
+};
+
+// Atajo de teclado: Escape cierra el modal y apaga el audio
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    const modal = document.getElementById('bigOModal');
+    if (modal && !modal.classList.contains('hidden')) {
+      closeBigOModal();
+    }
+  }
+});
+
+/* =========================================================================
+   MOTOR DE NARRACIÓN POR VOZ TTS (WEB SPEECH API - JPV PRO)
+   ========================================================================= */
+
+window.narrarBigOActual = function() {
+  if (!synthBigO) {
+    alert("Tu navegador no soporta síntesis de voz nativa (Web Speech API).");
+    return;
+  }
+
+  if (synthBigO.paused) {
+    synthBigO.resume();
+    setAudioButtonsState('speaking');
+    return;
+  }
+
+  detenerNarracionBigO();
+
+  if (!currentBigOModalKey) return;
+  const data = BIG_O_CATALOG[currentBigOModalKey];
+  if (!data || !data.speechText) return;
+
+  const utterance = new SpeechSynthesisUtterance(data.speechText);
+  utterance.lang = 'es-ES';
+  utterance.rate = 0.98;
+  utterance.pitch = 1.0;
+  utterance.volume = currentBigOVolume;
+
+  // Búsqueda de voz en español natural
+  const voices = synthBigO.getVoices();
+  const esVoice = voices.find(v => v.lang.startsWith('es') && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Helena') || v.name.includes('Pablo') || v.name.includes('Sabina')));
+  if (esVoice) utterance.voice = esVoice;
+
+  utterance.onstart = () => {
+    setAudioButtonsState('speaking');
+    document.getElementById('bigOStatusText').textContent = `Narrando ${data.name}...`;
+  };
+
+  utterance.onend = () => {
+    setAudioButtonsState('idle');
+  };
+
+  utterance.onerror = () => {
+    setAudioButtonsState('idle');
+  };
+
+  currentBigOUtterance = utterance;
+  synthBigO.speak(utterance);
+};
+
+window.pausarNarracionBigO = function() {
+  if (synthBigO && synthBigO.speaking) {
+    synthBigO.pause();
+    setAudioButtonsState('paused');
+    document.getElementById('bigOStatusText').textContent = 'Pausado';
+  }
+};
+
+window.reanudarNarracionBigO = function() {
+  if (synthBigO && synthBigO.paused) {
+    synthBigO.resume();
+    setAudioButtonsState('speaking');
+    if (currentBigOModalKey && BIG_O_CATALOG[currentBigOModalKey]) {
+      document.getElementById('bigOStatusText').textContent = `Narrando ${BIG_O_CATALOG[currentBigOModalKey].name}...`;
+    }
+  }
+};
+
+window.detenerNarracionBigO = function() {
+  if (synthBigO) {
+    synthBigO.cancel();
+  }
+  setAudioButtonsState('idle');
+};
+
+function setAudioButtonsState(state) {
+  const btnPlay = document.getElementById('btnBigOPlay');
+  const btnPause = document.getElementById('btnBigOPause');
+  const btnResume = document.getElementById('btnBigOResume');
+  const btnStop = document.getElementById('btnBigOStop');
+  const badge = document.getElementById('bigOStatusBadge');
+
+  if (!btnPlay) return;
+
+  if (state === 'speaking') {
+    btnPlay.classList.add('hidden');
+    btnPause.classList.remove('hidden');
+    btnPause.classList.add('flex');
+    btnResume.classList.add('hidden');
+    btnStop.classList.remove('hidden');
+    btnStop.classList.add('flex');
+    badge.classList.remove('hidden');
+    badge.classList.add('flex');
+  } else if (state === 'paused') {
+    btnPlay.classList.add('hidden');
+    btnPause.classList.add('hidden');
+    btnResume.classList.remove('hidden');
+    btnResume.classList.add('flex');
+    btnStop.classList.remove('hidden');
+    btnStop.classList.add('flex');
+    badge.classList.remove('hidden');
+    badge.classList.add('flex');
+  } else {
+    btnPlay.classList.remove('hidden');
+    btnPlay.classList.add('flex');
+    btnPause.classList.add('hidden');
+    btnResume.classList.add('hidden');
+    btnStop.classList.add('hidden');
+    badge.classList.add('hidden');
+  }
+}
+
+window.setVolumenBigO = function(val) {
+  currentBigOVolume = Math.max(0, Math.min(1, parseFloat(val)));
+  actualizarUIVolumenBigO();
+  if (synthBigO && synthBigO.speaking && currentBigOUtterance) {
+    currentBigOUtterance.volume = currentBigOVolume;
+  }
+};
+
+window.cambiarVolumenBigO = function(delta) {
+  let nuevoVol = Math.round((currentBigOVolume + delta) * 100) / 100;
+  nuevoVol = Math.max(0, Math.min(1, nuevoVol));
+  window.setVolumenBigO(nuevoVol);
+};
+
+function actualizarUIVolumenBigO() {
+  const slider = document.getElementById('bigOVolumeSlider');
+  const badge = document.getElementById('bigOVolumeBadge');
+  const icon = document.getElementById('bigOVolumeIcon');
+
+  const porcentaje = Math.round(currentBigOVolume * 100);
+  if (slider) slider.value = currentBigOVolume;
+  if (badge) badge.textContent = porcentaje + '%';
+
+  if (icon) {
+    if (porcentaje === 0) icon.className = 'fa-solid fa-volume-xmark text-sm text-red-600';
+    else if (porcentaje < 50) icon.className = 'fa-solid fa-volume-low text-sm text-black';
+    else icon.className = 'fa-solid fa-volume-high text-sm text-black';
+  }
+}

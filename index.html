@@ -241,42 +241,62 @@
 
       <!-- Resumen Visual de la Jerarquía de Eficiencia (Semáforo Neo-Brutalist) -->
       <div class="neo-box-static p-4 bg-[#FFFDF0] border-2 border-black">
-        <div class="flex items-center justify-between mb-3 border-b-2 border-black pb-2">
+        <div class="flex items-center justify-between mb-3 border-b-2 border-black pb-2 flex-wrap gap-2">
           <span class="text-xs font-black uppercase tracking-wider flex items-center gap-1.5">
             <i class="fa-solid fa-chart-line text-neoOrange"></i> Escala Universal de Eficiencia Computacional:
           </span>
-          <span class="text-[10px] font-mono text-gray-700 font-bold">De lo óptimo a lo computacionalmente prohibitivo</span>
+          <span class="text-[11px] font-mono text-gray-900 font-bold bg-neoYellow px-2.5 py-1 border-2 border-black shadow-neoSm rounded-sm">
+            <i class="fa-solid fa-hand-pointer text-neoOrange me-1"></i> Clic en cualquier tarjeta para abrir Ficha Técnica &amp; Voz Narrada
+          </span>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 text-center text-xs font-mono font-bold">
-          <div class="p-2 border-2 border-black bg-neoGreen shadow-neoSm">
+          <div onclick="openBigOModal('O(1)')" tabindex="0" role="button" class="p-2 border-2 border-black bg-neoGreen shadow-neoSm bigo-card-clickable" title="Clic para abrir detalles de O(1)">
             <span class="text-base block">🟢</span>
-            <div class="font-black text-sm">O(1)</div>
-            <div class="text-[10px] text-gray-800">Constante</div>
+            <div class="font-black text-sm text-black">O(1)</div>
+            <div class="text-[10px] text-gray-900 font-bold">Constante</div>
+            <div class="mt-1 pt-1 border-t border-black/30 text-[9px] font-sans flex items-center justify-center gap-1 font-black text-black">
+              <i class="fa-solid fa-volume-high text-neoDark"></i> Ficha &amp; Voz
+            </div>
           </div>
-          <div class="p-2 border-2 border-black bg-neoCyan shadow-neoSm">
+          <div onclick="openBigOModal('O(log n)')" tabindex="0" role="button" class="p-2 border-2 border-black bg-neoCyan shadow-neoSm bigo-card-clickable" title="Clic para abrir detalles de O(log n)">
             <span class="text-base block">💎</span>
-            <div class="font-black text-sm">O(log n)</div>
-            <div class="text-[10px] text-gray-800">Logarítmica</div>
+            <div class="font-black text-sm text-black">O(log n)</div>
+            <div class="text-[10px] text-gray-900 font-bold">Logarítmica</div>
+            <div class="mt-1 pt-1 border-t border-black/30 text-[9px] font-sans flex items-center justify-center gap-1 font-black text-black">
+              <i class="fa-solid fa-volume-high text-neoDark"></i> Ficha &amp; Voz
+            </div>
           </div>
-          <div class="p-2 border-2 border-black bg-neoYellow shadow-neoSm">
+          <div onclick="openBigOModal('O(n)')" tabindex="0" role="button" class="p-2 border-2 border-black bg-neoYellow shadow-neoSm bigo-card-clickable" title="Clic para abrir detalles de O(n)">
             <span class="text-base block">⚡</span>
-            <div class="font-black text-sm">O(n)</div>
-            <div class="text-[10px] text-gray-800">Lineal</div>
+            <div class="font-black text-sm text-black">O(n)</div>
+            <div class="text-[10px] text-gray-900 font-bold">Lineal</div>
+            <div class="mt-1 pt-1 border-t border-black/30 text-[9px] font-sans flex items-center justify-center gap-1 font-black text-black">
+              <i class="fa-solid fa-volume-high text-neoDark"></i> Ficha &amp; Voz
+            </div>
           </div>
-          <div class="p-2 border-2 border-black bg-neoCyan shadow-neoSm">
+          <div onclick="openBigOModal('O(n log n)')" tabindex="0" role="button" class="p-2 border-2 border-black bg-[#C084FC] shadow-neoSm bigo-card-clickable" title="Clic para abrir detalles de O(n log n)">
             <span class="text-base block">⚖️</span>
-            <div class="font-black text-sm">O(n log n)</div>
-            <div class="text-[10px] text-gray-800">Linealítmica</div>
+            <div class="font-black text-sm text-black">O(n log n)</div>
+            <div class="text-[10px] text-gray-900 font-bold">Linealítmica</div>
+            <div class="mt-1 pt-1 border-t border-black/30 text-[9px] font-sans flex items-center justify-center gap-1 font-black text-black">
+              <i class="fa-solid fa-volume-high text-neoDark"></i> Ficha &amp; Voz
+            </div>
           </div>
-          <div class="p-2 border-2 border-black bg-neoOrange shadow-neoSm">
+          <div onclick="openBigOModal('O(n²)')" tabindex="0" role="button" class="p-2 border-2 border-black bg-neoOrange shadow-neoSm bigo-card-clickable" title="Clic para abrir detalles de O(n²)">
             <span class="text-base block">⚠️</span>
-            <div class="font-black text-sm">O(n²)</div>
-            <div class="text-[10px] text-gray-800">Cuadrática</div>
+            <div class="font-black text-sm text-black">O(n²)</div>
+            <div class="text-[10px] text-gray-900 font-bold">Cuadrática</div>
+            <div class="mt-1 pt-1 border-t border-black/30 text-[9px] font-sans flex items-center justify-center gap-1 font-black text-black">
+              <i class="fa-solid fa-volume-high text-neoDark"></i> Ficha &amp; Voz
+            </div>
           </div>
-          <div class="p-2 border-2 border-black bg-neoRed shadow-neoSm text-white">
+          <div onclick="openBigOModal('O(2ⁿ)')" tabindex="0" role="button" class="p-2 border-2 border-black bg-neoRed shadow-neoSm text-white bigo-card-clickable" title="Clic para abrir detalles de O(2ⁿ) / O(n!)">
             <span class="text-base block">💣</span>
-            <div class="font-black text-sm">O(2ⁿ) / O(n!)</div>
-            <div class="text-[10px] text-white">Exponencial / Fact</div>
+            <div class="font-black text-sm text-white">O(2ⁿ) / O(n!)</div>
+            <div class="text-[10px] text-white font-bold">Exponencial / Fact</div>
+            <div class="mt-1 pt-1 border-t border-white/40 text-[9px] font-sans flex items-center justify-center gap-1 font-black text-white">
+              <i class="fa-solid fa-volume-high text-neoYellow"></i> Ficha &amp; Voz
+            </div>
           </div>
         </div>
       </div>
@@ -756,6 +776,221 @@
     </footer>
 
   <!-- Logica y Algoritmos JavaScript -->
+    <!-- =========================================================================
+       MODAL UNIVERSAL PANORÁMICO NEO-BRUTALISTA DE COMPLEJIDAD BIG-O & NARRACIÓN TTS (JPV PRO)
+       DISEÑO DE 3 COLUMNAS EXPANDIDO HORIZONTAL Y VERTICALMENTE (CERO SCROLL EN ESCRITORIO)
+  ========================================================================== -->
+  <div id="bigOModal" class="fixed inset-0 z-[100] hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 big-o-modal-overlay" onclick="handleModalBackdropClick(event)" role="dialog" aria-modal="true" aria-labelledby="modalBigOTitle">
+    <div class="relative w-full max-w-[96vw] xl:max-w-[95vw] 2xl:max-w-[1720px] h-[92vh] max-h-[94vh] bg-[#FFFDF0] border-3 border-black shadow-neoLg rounded-lg flex flex-col overflow-hidden big-o-modal-content" onclick="event.stopPropagation()">
+      
+      <!-- Modal Header (Colores dinámicos según complejidad, compacto y legible) -->
+      <div id="modalBigOHeader" class="py-2 px-4 sm:px-5 border-b-3 border-black flex items-center justify-between flex-wrap gap-2 bg-neoGreen transition-colors duration-200">
+        <div class="flex items-center gap-3">
+          <span id="modalBigOIcon" class="text-3xl filter drop-shadow">🟢</span>
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <h2 id="modalBigOTitle" class="text-xl sm:text-2xl font-black font-mono tracking-tight text-black">O(1) · Tiempo Constante</h2>
+              <span id="modalBigOBadge" class="badge bg-black text-white px-2 py-0.5 text-xs uppercase font-mono tracking-wider font-bold">Óptimo Absoluto</span>
+            </div>
+            <p id="modalBigOSubtitle" class="text-[11px] sm:text-xs font-bold text-gray-900 mt-0.5">Escala Universal de Eficiencia Algorítmica</p>
+          </div>
+        </div>
+
+        <button onclick="closeBigOModal()" type="button" class="neo-button bg-white text-black hover:bg-neoRed hover:text-white px-3 py-1 text-xs sm:text-sm font-black transition-all flex items-center gap-1.5" title="Cerrar ventana (Esc)">
+          <i class="fa-solid fa-xmark"></i> <span>Cerrar</span>
+        </button>
+      </div>
+
+      <!-- Toolbar de Narración por Voz (Web Speech API - Estándar JPV Pro) -->
+      <div class="bg-white border-b-2 border-black py-1.5 px-4 sm:px-5 flex items-center justify-between flex-wrap gap-2 shadow-sm">
+        <div class="flex items-center gap-2 flex-wrap">
+          <!-- Botones de Reproducción TTS -->
+          <button id="btnBigOPlay" onclick="narrarBigOActual()" type="button" class="neo-button bg-neoYellow px-3 py-1 text-xs uppercase font-black flex items-center gap-1.5 text-black">
+            <i class="fa-solid fa-play text-neoDark"></i> <span>Escuchar Explicación Completa</span>
+          </button>
+          <button id="btnBigOPause" onclick="pausarNarracionBigO()" type="button" class="neo-button bg-white px-3 py-1 text-xs uppercase font-black hidden items-center gap-1.5 text-black">
+            <i class="fa-solid fa-pause text-neoOrange"></i> <span>Pausar</span>
+          </button>
+          <button id="btnBigOResume" onclick="reanudarNarracionBigO()" type="button" class="neo-button bg-neoCyan px-3 py-1 text-xs uppercase font-black hidden items-center gap-1.5 text-black">
+            <i class="fa-solid fa-play text-neoDark"></i> <span>Reanudar</span>
+          </button>
+          <button id="btnBigOStop" onclick="detenerNarracionBigO()" type="button" class="neo-button bg-neoRed text-white px-3 py-1 text-xs uppercase font-black hidden items-center gap-1.5">
+            <i class="fa-solid fa-stop"></i> <span>Detener</span>
+          </button>
+
+          <!-- Indicador de Estado del Audio con Onda Verde Pulsante -->
+          <div id="bigOStatusBadge" class="hidden items-center gap-2 px-2.5 py-0.5 bg-black text-white text-xs font-mono font-bold rounded-sm border border-black shadow-sm">
+            <span class="audio-wave-dot"></span>
+            <span id="bigOStatusText">Narrando concepto...</span>
+          </div>
+        </div>
+
+        <!-- Widget de Control de Volumen Táctil y Slider Sincronizado -->
+        <div class="flex items-center gap-1.5 p-1 bg-[#FFFDF0] border-2 border-black rounded shadow-neoSm">
+          <button type="button" onclick="cambiarVolumenBigO(-0.1)" class="neo-button bg-white px-2 py-0.5 text-xs font-black" title="Bajar volumen (-10%)">-</button>
+          <div class="flex items-center gap-1.5 px-1.5">
+            <i id="bigOVolumeIcon" class="fa-solid fa-volume-high text-sm text-black"></i>
+            <input id="bigOVolumeSlider" type="range" min="0" max="1" step="0.05" value="1" oninput="setVolumenBigO(this.value)" class="tts-volume-slider w-20 sm:w-24 h-2" style="accent-color: #DA291C;">
+          </div>
+          <button type="button" onclick="cambiarVolumenBigO(0.1)" class="neo-button bg-white px-2 py-0.5 text-xs font-black" title="Subir volumen (+10%)">+</button>
+          <span id="bigOVolumeBadge" class="bg-black text-white px-2 py-0.5 text-xs font-mono font-bold rounded-sm border border-black min-w-[42px] text-center">100%</span>
+        </div>
+      </div>
+
+      <!-- Modal Body (3 Columnas Panorámicas en Desktop, Cero Scroll Vertical en Pantalla Completa) -->
+      <div class="p-3 sm:p-4 flex-1 overflow-y-auto lg:overflow-hidden text-black font-sans leading-relaxed">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 h-full items-stretch">
+          
+          <!-- ================= COLUMNA 1: TEORÍA MATEMÁTICA, CRECIMIENTO & VIABILIDAD (4 cols) ================= -->
+          <div class="lg:col-span-4 flex flex-col justify-between gap-2.5 h-full">
+            
+            <!-- Definición Formal & Cinemática -->
+            <div class="neo-box p-3 bg-white border-2 border-black flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-1 pb-1 border-b-2 border-black text-xs font-black uppercase tracking-wider text-neoOrange">
+                  <span class="flex items-center gap-1.5"><i class="fa-solid fa-brain"></i> Fundamento Formal</span>
+                  <span class="badge bg-black text-white text-[10px] font-mono">Teoría Pura</span>
+                </div>
+                <p id="modalBigODefinition" class="text-xs sm:text-sm font-bold text-gray-900 leading-snug">
+                  Cargando definición...
+                </p>
+              </div>
+              <div id="modalBigOKinetic" class="mt-2 p-2 bg-[#F8FAFC] border-2 border-black/80 font-mono text-[11px] sm:text-xs text-gray-800 rounded-sm">
+                Cargando cinemática...
+              </div>
+            </div>
+
+            <!-- Tabla de Crecimiento vs N -->
+            <div class="neo-box p-3 bg-white border-2 border-black flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-1.5 mb-1.5 pb-1 border-b-2 border-black text-xs font-black uppercase tracking-wider text-neoDark">
+                  <i class="fa-solid fa-chart-simple text-neoGreen"></i> Tasa de Crecimiento Matemático
+                </div>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left font-mono text-[11px] border-2 border-black">
+                    <thead class="bg-black text-white font-bold">
+                      <tr>
+                        <th class="p-1 border-r border-gray-600">Entrada (n)</th>
+                        <th class="p-1 border-r border-gray-600">Operaciones</th>
+                        <th class="p-1">Impacto Real</th>
+                      </tr>
+                    </thead>
+                    <tbody id="modalBigOGrowthTable" class="divide-y border-t-2 border-black bg-[#FFFDF0]">
+                      <!-- Generado dinámicamente -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Semáforo de Viabilidad -->
+              <div id="modalBigOViabilityBox" class="mt-2 p-2 border-2 border-black bg-neoGreen/20 flex items-center gap-2.5">
+                <i id="modalBigOViabilityIcon" class="fa-solid fa-circle-check text-xl text-green-700"></i>
+                <div>
+                  <div id="modalBigOViabilityTitle" class="font-black text-[11px] uppercase tracking-wider">Aprobado para Alta Escala</div>
+                  <div id="modalBigOViabilityDesc" class="text-[10px] text-gray-800 font-bold leading-tight">Comportamiento ideal en entornos de producción masiva.</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ================= COLUMNA 2: REPRESENTACIÓN ANIMADA (.GIF) & ALGORITMOS (4 cols) ================= -->
+          <div class="lg:col-span-4 flex flex-col justify-between gap-2.5 h-full">
+            
+            <!-- Contenedor del GIF Animado Oficial (Expandido al 100% de Ancho sin Deformación) -->
+            <div class="neo-box p-3 bg-white border-2 border-black flex-1 flex flex-col justify-between h-full">
+              <div class="flex-1 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-1.5 pb-1 border-b-2 border-black flex-wrap gap-1">
+                  <span class="text-xs font-black uppercase tracking-wider text-neoDark flex items-center gap-1.5">
+                    <i class="fa-solid fa-film text-neoPurple"></i> Representación Animada (.GIF)
+                  </span>
+                  <span id="modalBigOGifLabel" class="badge bg-black text-neoYellow border border-black font-mono text-[10px]">Asset Oficial</span>
+                </div>
+                
+                <!-- Marco del GIF al 100% de Ancho, Altura Adaptativa Proporcional -->
+                <div class="w-full flex-1 p-2 bg-[#F4EFE6] border-2 border-black shadow-neoSm flex flex-col items-center justify-center min-h-[240px] sm:min-h-[260px] lg:min-h-[285px] max-h-[305px] overflow-hidden">
+                  <img id="modalBigOGifImg" src="" alt="Animación Algoritmo" class="w-full h-auto max-h-[245px] sm:max-h-[260px] lg:max-h-[265px] object-contain border border-black rounded shadow-sm bg-white transition-transform duration-200">
+                  <div id="modalBigOGifCaption" class="mt-1.5 text-center font-mono font-bold text-[11px] text-gray-900 leading-tight w-full px-1">
+                    Cargando visualización...
+                  </div>
+                </div>
+              </div>
+
+              <!-- Lista de Algoritmos en este grupo (Ajuste Compacto para Preservar Cero Scroll) -->
+              <div class="mt-2 pt-1.5 border-t-2 border-black">
+                <div class="text-[11px] font-mono font-black text-black uppercase mb-1">
+                  Algoritmos insignes en esta categoría:
+                </div>
+                <div id="modalBigOAlgList" class="flex flex-wrap gap-1 max-h-[80px] overflow-y-auto">
+                  <!-- Badges inyectados vía JS -->
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ================= COLUMNA 3: CÓDIGO CANÓNICO & USOS EN LA INDUSTRIA (4 cols) ================= -->
+          <div class="lg:col-span-4 flex flex-col justify-between gap-2.5 h-full">
+            
+            <!-- Código Canónico de Ejemplo -->
+            <div class="neo-box p-3 bg-white border-2 border-black flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-1 pb-1 border-b-2 border-black">
+                  <span class="text-xs font-black uppercase tracking-wider text-neoDark flex items-center gap-1.5">
+                    <i class="fa-solid fa-code text-neoOrange"></i> Código Modelo Canónico
+                  </span>
+                  <span id="modalBigOCodeType" class="badge bg-neoCyan text-black border border-black font-mono text-[10px]">Patrón Canónico</span>
+                </div>
+                <pre id="modalBigOCode" class="p-2 bg-[#0D1117] text-[#54F18F] font-mono text-[11px] leading-relaxed rounded border-2 border-black overflow-x-auto shadow-inner max-h-[140px] sm:max-h-[160px] lg:max-h-[175px]">
+                  // Código de ejemplo
+                </pre>
+                <p id="modalBigOCodeExplanation" class="text-[11px] font-bold text-gray-800 mt-1 leading-snug">
+                  Explicación del bloque de código.
+                </p>
+              </div>
+
+              <!-- Aplicaciones Industriales & Regla de Oro -->
+              <div class="mt-1.5 pt-1.5 border-t-2 border-black space-y-1.5">
+                <div>
+                  <div class="flex items-center gap-1 mb-1 text-[11px] font-black uppercase tracking-wider text-neoDark">
+                    <i class="fa-solid fa-industry text-neoPink"></i> Usos en Arquitectura Real:
+                  </div>
+                  <ul id="modalBigOUsesList" class="space-y-0.5 text-[10px] sm:text-[11px] font-bold text-gray-800 list-disc list-inside">
+                    <!-- Generado dinámicamente -->
+                  </ul>
+                </div>
+
+                <div class="p-1.5 bg-neoYellow/30 border-2 border-black rounded-sm">
+                  <div class="text-[10px] font-black uppercase tracking-wider text-neoOrange flex items-center gap-1">
+                    <i class="fa-solid fa-lightbulb"></i> Regla de Oro:
+                  </div>
+                  <div id="modalBigOGoldenRule" class="text-[10px] sm:text-[11px] font-bold text-gray-900 mt-0.5 leading-tight">
+                    Regla práctica.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="py-2 px-4 sm:px-5 bg-[#F8FAFC] border-t-3 border-black flex items-center justify-between flex-wrap gap-2">
+        <span class="text-xs font-mono font-bold text-gray-700 flex items-center gap-1.5">
+          <i class="fa-solid fa-circle-info text-neoCyan"></i> ALGO-MATRIX 3D · Plataforma Oficial Ing. Juancito Peña
+        </span>
+        <div class="flex items-center gap-2">
+          <button onclick="closeBigOModal()" type="button" class="neo-button bg-black text-white hover:bg-gray-800 px-4 py-1 text-xs font-black uppercase">
+            <i class="fa-solid fa-check me-1 text-neoGreen"></i> Entendido, Cerrar
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
