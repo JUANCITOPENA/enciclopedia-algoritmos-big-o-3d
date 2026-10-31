@@ -4,7 +4,7 @@
 > **Lead Architect & Docente:** Ing. Juancito Peña Vizcaíno  
 > **Ubicación Raíz:** `C:\Users\User\Desktop\La Enciclopedia Interactiva de Algoritmos & Big-O`  
 > **Fecha de Actualización:** 31 de Octubre de 2026  
-> **Versión:** v3.5.0-PRO (Integración Oficial de Mermaid.js para Diagramas de Flujo Canónicos estilo PSeInt, Operador de Asignación '<-', Comillas Simples en Mensajes y 21/21 Algoritmos Validados al 100%)  
+> **Versión:** v3.6.0-PRO (Sintaxis Oficial Estricta: PSeInt con Algoritmo/FinAlgoritmo, 'arr' declarado en Definir, asignación '<-' por línea, C# .NET 9 con Program.Main ejecutable y Span<T>, Mermaid.js interactivo y 100% de cobertura en los 21 algoritmos)
 > **Despliegue Oficial en GitHub Pages:** [https://juancitopena.github.io/enciclopedia-algoritmos-big-o-3d/](https://juancitopena.github.io/enciclopedia-algoritmos-big-o-3d/)
 
 ---
