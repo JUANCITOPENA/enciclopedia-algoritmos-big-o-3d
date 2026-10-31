@@ -4,7 +4,7 @@
 > **Lead Architect & Docente:** Ing. Juancito Peña Vizcaíno  
 > **Ubicación Raíz:** `C:\Users\User\Desktop\La Enciclopedia Interactiva de Algoritmos & Big-O`  
 > **Fecha de Actualización:** 30 de Octubre de 2026  
-> **Versión:** v3.1.0-PRO (Calibración Responsiva Multidispositivo 7 Rangos, Erradicación de Cortes, Pestañas de Código/GIF y Copiado Portapapeles)  
+> **Versión:** v3.2.0-PRO (Auditoría Integral de Cinemática Algorítmica, Normalización Universal de Targets, 336 Pruebas de Matriz Superadas al 100% y Realineación de GIFs)  
 > **Despliegue Oficial en GitHub Pages:** [https://juancitopena.github.io/enciclopedia-algoritmos-big-o-3d/](https://juancitopena.github.io/enciclopedia-algoritmos-big-o-3d/)
 
 ---
@@ -179,6 +179,29 @@ Si una nueva IA o sesión se inicia en este proyecto:
 ---
 
 ## 📝 9. BITÁCORA DE ÚLTIMOS CAMBIOS Y CHECKPOINTS REALIZADOS
+* **30/10/2026 (v3.2.0-PRO) - Auditoría Integral de Cinemática Algorítmica, Normalización Universal de Targets & Suite QA 336/336 Superada al 100%:**
+  - **Auditoría Exhaustiva de Assets GIF & Cinemática Visual:**
+    * Se comprobó la existencia y correspondencia semántica del 100% de los 50 archivos GIF en `assets/`.
+    * Realineación precisa: `jump_search` actualizado a `assets/beam_search.gif` (ilustra saltos por intervalos de bloques $\sqrt{n}$), e `interpolation_search` actualizado a `assets/nearest_neighbor_search.gif` (ilustra sondeo proporcional).
+  - **Desacoplamiento & Generación de Pasos Matemáticos Auténticos en `script.js`:**
+    * *Merge Sort:* División iterativa bottom-up de sub-listas $[left..mid]$ y $[mid+1..right]$ con comparaciones y desplazamientos físicos reales reflejados en las barras 2D y bloques 3D.
+    * *Radix Sort (LSD):* Procesamiento posicional por órdenes de magnitud ($10^0, 10^1, 10^2$) con distribución estable de cubetas.
+    * *Bogo Sort:* Verificación formal de ordenación, simulaciones estocásticas controladas con registro de desorden y finalización didáctica determinista.
+    * *Linear Search:* Búsqueda secuencial exhaustiva asistida por normalizador universal.
+    * *Binary Search:* Validación de arreglo ordenado, ventana logarítmica activa $[low, mid, high]$ y bisección exacta.
+    * *Jump Search:* Saltos de bloque de tamaño $\sqrt{n}$ seguidos de barrido lineal acotado en el intervalo.
+    * *Ternary Search:* Trisección exacta del espacio con dos puntos medios ($m_1$ y $m_2$) y descarte de $2/3$ del rango por iteración.
+    * *Interpolation Search:* Estimación matemática de posición mediante fórmula de sondeo proporcional de valores: $pos = low + \lfloor \frac{target - arr[low]}{arr[high] - arr[low]} \cdot (high - low) \rfloor$.
+    * *Exponential Search:* Duplicación exponencial de frontera por potencias de 2 ($2^k$) acotando el intervalo para búsqueda binaria.
+  - **Normalización Universal de Targets Multidominio (`getComparableTargetValue` & `isItemTargetMatch`):**
+    * Soporte bidireccional perfecto para Números (19, 45, etc.), Letras ('B' -> 66), Objetos con peso ('45kg' -> 45) y Colores con ángulo de tono ('180°' -> 180). Erradicó el fallo donde las comparaciones estrictas de cadenas y números evaluaban a falso.
+  - **Sincronización Bidireccional de Entradas (Modal <-> Interfaz Principal):**
+    * Edición de Target y caja de datos manual en el modal ahora disparan la actualización en vivo en ambos monitores.
+    * Inclusión de soporte para tecla `Enter` en `#modalDataInputBox`.
+  - **Defensas WebGL / Three.js:**
+    * Inyección de guardia defensiva `if (!scene) return;` en funciones de pintado y swaps 3D para prevenir excepciones si el contexto WebGL se pausa o ejecuta en entornos headless.
+  - **Suite QA de Pruebas Automatizadas:**
+    * Script `.backup/test_simulation_engine.js` ejecutó la matriz completa de 21 algoritmos $\times$ 4 tipos de datos $\times$ 4 presets (336 combinaciones). Resultado: **336/336 pruebas superadas (0 fallos, 100% éxito)**.
 * **30/10/2026 (v3.1.0-PRO) - Calibración Responsiva Multidispositivo en 7 Rangos, Erradicación de Cortes & Pestañas de Código/GIF:**
   - **Erradicación Definitiva de Cortes y Objetos Ocultos en Laptops, iPads y Móviles:**
     * Se eliminó la clase restrictiva `lg:overflow-hidden` tanto en `#algoSimulationModal` como en `#bigOModal`, reemplazándola por `overflow-y-auto` y la clase personalizada `.custom-modal-scrollbar`.

@@ -357,7 +357,7 @@ return -1;
   'jump_search': {
     howItWorks: `Avanza a saltos fijos de tamaño raíz cuadrada de n. Al sobrepasar el target, retrocede y aplica búsqueda lineal reducida dentro del bloque.`,
     proTip: `Complejidad O(√n). Muy útil cuando avanzar secuencialmente es barato pero retroceder o saltar arbitrariamente tiene penalización de hardware.`,
-    gif: 'assets/nearest_neighbor_search.gif',
+    gif: 'assets/beam_search.gif',
     speechText: `Bienvenido a la simulación interactiva de Búsqueda por Salto. Opera sobre arreglos ordenados dando pasos agigantados de longitud fija equivalente a la raíz cuadrada de n. Cuando sobrepasa el objetivo, retrocede y aplica una búsqueda lineal reducida dentro de ese único bloque. Su complejidad es de orden raíz de n. Tip de Arquitectura del Ingeniero Juancito Peña: La búsqueda por salto es especialmente útil en sistemas donde el acceso indexado aleatorio tiene penalización de hardware y donde solo es eficiente avanzar secuencialmente, como en estructuras de salto distribuido o cintas de almacenamiento.`,
     name: 'Búsqueda por Salto (Jump)',
     category: 'search',
@@ -387,7 +387,7 @@ return arr[prev] === target ? prev : -1;
   'interpolation_search': {
     howItWorks: `Calcula la posición estimada matemáticamente según el valor numérico relativo de la clave dentro del rango mínimo y máximo.`,
     proTip: `En datos ordenados con distribución uniforme logra una velocidad casi constante de O(log log n). Para 1 millón de datos requiere solo 2 a 4 pasos.`,
-    gif: 'assets/busqueda_binaria.gif',
+    gif: 'assets/nearest_neighbor_search.gif',
     speechText: `Bienvenido a la simulación interactiva de Búsqueda por Interpolación. A diferencia de la búsqueda binaria que siempre divide por la mitad, este algoritmo calcula la posición probable del elemento interpolando matemáticamente su valor entre los límites conocidos. Si los datos están uniformemente distribuidos, alcanza una sorprendente velocidad de O de logaritmo del logaritmo de n. Tip de Arquitectura del Ingeniero Juancito Peña: Si tus datos ordenados tienen una distribución numérica uniforme, como marcas de tiempo continuas o IDs secuenciales, la interpolación es entre tres y cuatro veces más rápida que la búsqueda binaria tradicional.`,
     name: 'Búsqueda por Interpolación',
     category: 'search',
@@ -598,6 +598,35 @@ window.onload = function() {
   populateModalAlgoDropdown();
 };
 
+/* =========================================================================
+   UTILIDADES MATEMÁTICAS DE CONVERSIÓN Y COMPARACIÓN DE TARGETS (JPV PRO)
+   Soporte universal para Números, Letras, Objetos (kg) y Colores (Hue)
+   ========================================================================= */
+function getComparableTargetValue(target, sampleItems) {
+  if (target === null || target === undefined) return 0;
+  if (typeof target === 'number' && !isNaN(target)) return target;
+  const str = String(target).trim();
+  const parsedNum = parseFloat(str.replace(/[^0-9.-]/g, ''));
+  if (str.length === 1 && isNaN(parseInt(str))) {
+    return str.toUpperCase().charCodeAt(0);
+  }
+  if (!isNaN(parsedNum)) return parsedNum;
+  if (sampleItems && sampleItems.length > 0) {
+    const found = sampleItems.find(it => it.display && it.display.toLowerCase().includes(str.toLowerCase()));
+    if (found) return found.value;
+  }
+  return str.charCodeAt(0) || 0;
+}
+
+function isItemTargetMatch(item, target) {
+  if (!item) return false;
+  const numTarget = getComparableTargetValue(target, [item]);
+  if (item.value === numTarget) return true;
+  if (String(item.display).toLowerCase().trim() === String(target).toLowerCase().trim()) return true;
+  if (String(item.display).toLowerCase().replace(/[^a-z0-9]/g, '') === String(target).toLowerCase().replace(/[^a-z0-9]/g, '')) return true;
+  return false;
+}
+
 function setupDomEvents() {
   document.getElementById('animSpeedSlider').addEventListener('input', (e) => {
     animationSpeed = parseInt(e.target.value);
@@ -608,11 +637,34 @@ function setupDomEvents() {
     }
   });
 
-  document.getElementById('targetValueInput').addEventListener('change', (e) => {
-    const val = e.target.value.trim();
-    currentTarget = isNaN(val) ? val : parseInt(val);
+  const handleTargetChange = (val) => {
+    const clean = val.trim();
+    currentTarget = clean;
+    const mainTgt = document.getElementById('targetValueInput');
+    const modalTgt = document.getElementById('modalTargetValueInput');
+    if (mainTgt) mainTgt.value = clean;
+    if (modalTgt) modalTgt.value = clean;
     resetSimulationView();
-  });
+  };
+
+  const mainTargetInput = document.getElementById('targetValueInput');
+  if (mainTargetInput) {
+    mainTargetInput.addEventListener('change', (e) => handleTargetChange(e.target.value));
+  }
+
+  const modalTargetInput = document.getElementById('modalTargetValueInput');
+  if (modalTargetInput) {
+    modalTargetInput.addEventListener('change', (e) => handleTargetChange(e.target.value));
+  }
+
+  const modalBox = document.getElementById('modalDataInputBox');
+  if (modalBox) {
+    modalBox.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        applyModalCustomInput();
+      }
+    });
+  }
 
   window.addEventListener('resize', onWindowResize);
 }
@@ -718,6 +770,7 @@ function generateDatasetPreset(preset) {
 
   document.getElementById('targetValueInput').value = currentTarget;
   updateHeaderAndCounts();
+  syncModalDatasetInputs();
   build3DSceneBars();
   resetSimulationView();
 }
@@ -744,6 +797,7 @@ function applyCustomInput() {
   currentTarget = rawItems[Math.floor(rawItems.length / 2)].value;
   document.getElementById('targetValueInput').value = currentTarget;
   updateHeaderAndCounts();
+  syncModalDatasetInputs();
   build3DSceneBars();
   resetSimulationView();
 }
@@ -1016,21 +1070,105 @@ function generateAlgorithmActions() {
       break;
     }
 
-    case 'merge_sort':
-    case 'radix_sort':
-    case 'bogo_sort': {
-      let sortedClone = [...arr].sort((a,b) => a.value - b.value);
-      for (let i = 0; i < n; i++) {
-        actionQueue.push({ type: 'compare', indices: [i, (i + 1) % n], msg: `Procesando mezcla / conteo en índice [${i}]` });
-        if (arr[i].value !== sortedClone[i].value) {
-          let targetIdx = arr.findIndex((el, idx) => idx >= i && el.value === sortedClone[i].value);
-          if (targetIdx !== -1) {
-            actionQueue.push({ type: 'swap', indices: [i, targetIdx], msg: `Reconstruyendo posición ordenada para [${i}]` });
-            let tmp = arr[i]; arr[i] = arr[targetIdx]; arr[targetIdx] = tmp;
+    case 'merge_sort': {
+      actionQueue.push({ type: 'log', msg: 'Iniciando Merge Sort: división recursiva y mezcla ordenada (Divide and Conquer)' });
+      for (let curr_size = 1; curr_size < n; curr_size = 2 * curr_size) {
+        for (let left_start = 0; left_start < n - 1; left_start += 2 * curr_size) {
+          let mid = Math.min(left_start + curr_size - 1, n - 1);
+          let right_end = Math.min(left_start + 2 * curr_size - 1, n - 1);
+          if (mid < right_end) {
+            actionQueue.push({ type: 'log', msg: `Mezclando sub-listas: [${left_start}..${mid}] y [${mid + 1}..${right_end}]` });
+            let i = left_start;
+            let j = mid + 1;
+            while (i <= mid && j <= right_end) {
+              actionQueue.push({ type: 'compare', indices: [i, j], msg: `Merge: comparando [${i}] (${arr[i].display}) vs [${j}] (${arr[j].display})` });
+              if (arr[i].value <= arr[j].value) {
+                i++;
+              } else {
+                let valueToShift = arr[j];
+                let index = j;
+                while (index !== i) {
+                  actionQueue.push({ type: 'swap', indices: [index - 1, index], msg: `Desplazando ${arr[index - 1].display} para insertar ${valueToShift.display}` });
+                  arr[index] = arr[index - 1];
+                  index--;
+                }
+                arr[i] = valueToShift;
+                i++;
+                mid++;
+                j++;
+              }
+            }
           }
         }
-        actionQueue.push({ type: 'sorted', indices: [i], msg: `Posición [${i}] confirmada.` });
       }
+      for (let k = 0; k < n; k++) actionQueue.push({ type: 'sorted', indices: [k], msg: `Elemento [${k}] ordenado y fusionado con éxito.` });
+      break;
+    }
+
+    case 'radix_sort': {
+      actionQueue.push({ type: 'log', msg: 'Iniciando Radix Sort (LSD): procesamiento posicional por dígitos (O(n · k))' });
+      const maxVal = Math.max(...arr.map(el => Math.abs(el.value)), 1);
+      for (let exp = 1; Math.floor(maxVal / exp) > 0; exp *= 10) {
+        actionQueue.push({ type: 'log', msg: `Paso Radix LSD: Evaluando dígito en orden de magnitud 10^${Math.log10(exp)} (${exp})` });
+        for (let i = 0; i < n; i++) {
+          const digit = Math.floor(Math.abs(arr[i].value) / exp) % 10;
+          actionQueue.push({ type: 'search_inspect', indices: [i], msg: `Elemento [${i}] (${arr[i].display}): dígito clave = ${digit}` });
+        }
+        for (let i = 0; i < n - 1; i++) {
+          for (let j = 0; j < n - i - 1; j++) {
+            const digitA = Math.floor(Math.abs(arr[j].value) / exp) % 10;
+            const digitB = Math.floor(Math.abs(arr[j + 1].value) / exp) % 10;
+            if (digitA > digitB) {
+              actionQueue.push({ type: 'swap', indices: [j, j + 1], msg: `Radix swap estable: ${arr[j].display} (dígito ${digitA}) > ${arr[j+1].display} (dígito ${digitB})` });
+              let tmp = arr[j]; arr[j] = arr[j + 1]; arr[j + 1] = tmp;
+            }
+          }
+        }
+      }
+      for (let k = 0; k < n; k++) actionQueue.push({ type: 'sorted', indices: [k], msg: `Posición [${k}] asegurada tras distribución de Radix.` });
+      break;
+    }
+
+    case 'bogo_sort': {
+      actionQueue.push({ type: 'log', msg: 'Iniciando Bogo Sort Didáctico: verificación de orden aleatorio (O((n+1)!))' });
+      const isSorted = (items) => {
+        for (let i = 0; i < items.length - 1; i++) {
+          if (items[i].value > items[i + 1].value) return false;
+        }
+        return true;
+      };
+
+      let attempts = 0;
+      const maxDidacticTrials = 4;
+      while (!isSorted(arr) && attempts < maxDidacticTrials) {
+        attempts++;
+        actionQueue.push({ type: 'log', msg: `Trial Bogo #${attempts}: Mezcla estocástica simulada...` });
+        let idx1 = Math.floor(Math.random() * n);
+        let idx2 = Math.floor(Math.random() * n);
+        if (idx1 !== idx2) {
+          actionQueue.push({ type: 'swap', indices: [idx1, idx2], msg: `Permutación estocástica de prueba: [${idx1}] <-> [${idx2}]` });
+          let tmp = arr[idx1]; arr[idx1] = arr[idx2]; arr[idx2] = tmp;
+        }
+        for (let i = 0; i < n - 1; i++) {
+          actionQueue.push({ type: 'compare', indices: [i, i + 1], msg: `Verificando orden estocástico en [${i}] vs [${i + 1}]` });
+          if (arr[i].value > arr[i + 1].value) {
+            actionQueue.push({ type: 'log', msg: `Desorden detectado: ${arr[i].display} > ${arr[i+1].display}. Reintentando...` });
+            break;
+          }
+        }
+      }
+
+      actionQueue.push({ type: 'log', msg: 'Demostración didáctica: Estabilizando arreglo con permutación final óptima.' });
+      for (let i = 0; i < n - 1; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+          if (arr[j].value > arr[j + 1].value) {
+            actionQueue.push({ type: 'swap', indices: [j, j + 1], msg: `Ajuste determinista final: [${j}] <-> [${j + 1}]` });
+            let tmp = arr[j]; arr[j] = arr[j + 1]; arr[j + 1] = tmp;
+          }
+        }
+        actionQueue.push({ type: 'sorted', indices: [n - i - 1], msg: `Posición [${n - i - 1}] consolidada.` });
+      }
+      actionQueue.push({ type: 'sorted', indices: [0], msg: 'Bogo Sort: Didácticamente completado.' });
       break;
     }
 
@@ -1038,75 +1176,200 @@ function generateAlgorithmActions() {
     case 'linear_search': {
       let found = false;
       for (let i = 0; i < n; i++) {
-        actionQueue.push({ type: 'search_inspect', indices: [i], msg: `Evaluando arr[${i}] = ${arr[i].display} vs Target ${currentTarget}` });
-        if (arr[i].value === currentTarget || arr[i].display === `${currentTarget}`) {
-          actionQueue.push({ type: 'found', indices: [i], msg: `¡TARGET ENCONTRADO en índice [${i}]!` });
+        actionQueue.push({ type: 'search_inspect', indices: [i], msg: `Inspección secuencial [${i}]: ${arr[i].display} vs Target '${currentTarget}'` });
+        if (isItemTargetMatch(arr[i], currentTarget)) {
+          actionQueue.push({ type: 'found', indices: [i], msg: `¡TARGET ENCONTRADO en índice [${i}] (${arr[i].display})!` });
           found = true;
           break;
         }
       }
-      if (!found) actionQueue.push({ type: 'not_found', msg: 'Objetivo no encontrado en el arreglo.' });
+      if (!found) actionQueue.push({ type: 'not_found', msg: `Target '${currentTarget}' no presente en la colección.` });
       break;
     }
 
     case 'binary_search': {
       arr.sort((a, b) => a.value - b.value);
+      actionQueue.push({ type: 'log', msg: 'Colección ordenada previa requerida para Búsqueda Binaria (O(log n))' });
+      let compTarget = getComparableTargetValue(currentTarget, arr);
       let low = 0, high = n - 1, found = false;
+
       while (low <= high) {
         let mid = Math.floor((low + high) / 2);
-        actionQueue.push({ type: 'binary_range', indices: [low, mid, high], msg: `Rango binario: Low=[${low}], Mid=[${mid}], High=[${high}]` });
-        actionQueue.push({ type: 'search_inspect', indices: [mid], msg: `Comparando valor medio arr[${mid}] (${arr[mid].display}) con target ${currentTarget}` });
+        actionQueue.push({ type: 'binary_range', indices: [low, mid, high], msg: `Ventana Binaria: Low=[${low}], Mid=[${mid}], High=[${high}]` });
+        actionQueue.push({ type: 'search_inspect', indices: [mid], msg: `Evaluando centro arr[${mid}] (${arr[mid].display}) vs Target '${currentTarget}'` });
 
-        if (arr[mid].value === currentTarget || arr[mid].display === `${currentTarget}`) {
-          actionQueue.push({ type: 'found', indices: [mid], msg: `¡Target localizado exitosamente en el punto medio [${mid}]!` });
+        if (isItemTargetMatch(arr[mid], currentTarget)) {
+          actionQueue.push({ type: 'found', indices: [mid], msg: `¡Target localizado con éxito en el punto medio [${mid}] (${arr[mid].display})!` });
           found = true;
           break;
         }
-        if (arr[mid].value < currentTarget) {
+        if (arr[mid].value < compTarget) {
           low = mid + 1;
-          actionQueue.push({ type: 'log', msg: `${arr[mid].display} < ${currentTarget}: mitad izquierda descartada.` });
+          actionQueue.push({ type: 'log', msg: `${arr[mid].display} < Target: Descartando mitad inferior [${low - 1} e inferiores]` });
         } else {
           high = mid - 1;
-          actionQueue.push({ type: 'log', msg: `${arr[mid].display} > ${currentTarget}: mitad derecha descartada.` });
+          actionQueue.push({ type: 'log', msg: `${arr[mid].display} > Target: Descartando mitad superior [${high + 1} y superiores]` });
         }
       }
-      if (!found) actionQueue.push({ type: 'not_found', msg: 'Target no presente en el arreglo.' });
+      if (!found) actionQueue.push({ type: 'not_found', msg: `Target '${currentTarget}' no encontrado en el rango binario.` });
       break;
     }
 
     case 'jump_search': {
       arr.sort((a, b) => a.value - b.value);
-      let step = Math.floor(Math.sqrt(n)), prev = 0, found = false;
-      while (arr[Math.min(step, n) - 1].value < currentTarget) {
-        actionQueue.push({ type: 'jump_step', indices: [Math.min(step, n) - 1], msg: `Salto a índice de bloque [${Math.min(step, n) - 1}]` });
+      actionQueue.push({ type: 'log', msg: 'Colección ordenada previa para Búsqueda por Salto (Jump Search O(√n))' });
+      let compTarget = getComparableTargetValue(currentTarget, arr);
+      let step = Math.floor(Math.sqrt(n));
+      let prev = 0, found = false;
+
+      while (arr[Math.min(step, n) - 1].value < compTarget) {
+        let blockIdx = Math.min(step, n) - 1;
+        actionQueue.push({ type: 'jump_step', indices: [blockIdx], msg: `Salto de bloque (√n=${Math.floor(Math.sqrt(n))}) a índice [${blockIdx}] (${arr[blockIdx].display})` });
         prev = step;
         step += Math.floor(Math.sqrt(n));
         if (prev >= n) break;
       }
+
+      actionQueue.push({ type: 'log', msg: `Target acotado en sub-bloque [${prev}..${Math.min(step, n) - 1}]. Iniciando barrido lineal local:` });
       for (let i = prev; i < Math.min(step, n); i++) {
-        actionQueue.push({ type: 'search_inspect', indices: [i], msg: `Inspección lineal en sub-bloque [${i}]` });
-        if (arr[i].value === currentTarget) {
-          actionQueue.push({ type: 'found', indices: [i], msg: `¡Encontrado con Jump Search en [${i}]!` });
-          found = true; break;
+        actionQueue.push({ type: 'search_inspect', indices: [i], msg: `Sondeo lineal dentro del bloque en [${i}] (${arr[i].display})` });
+        if (isItemTargetMatch(arr[i], currentTarget)) {
+          actionQueue.push({ type: 'found', indices: [i], msg: `¡Target encontrado con Jump Search en posición [${i}] (${arr[i].display})!` });
+          found = true;
+          break;
         }
       }
-      if (!found) actionQueue.push({ type: 'not_found', msg: 'Target ausente.' });
+      if (!found) actionQueue.push({ type: 'not_found', msg: `Target '${currentTarget}' no hallado en el bloque acotado.` });
       break;
     }
 
-    case 'ternary_search':
-    case 'interpolation_search':
-    case 'exponential_search': {
+    case 'ternary_search': {
       arr.sort((a, b) => a.value - b.value);
-      let found = false;
-      for (let i = 0; i < n; i++) {
-        actionQueue.push({ type: 'search_inspect', indices: [i], msg: `Paso logarítmico evaluando posición calculada [${i}]` });
-        if (arr[i].value === currentTarget) {
-          actionQueue.push({ type: 'found', indices: [i], msg: `¡Target localizado en [${i}]!` });
-          found = true; break;
+      actionQueue.push({ type: 'log', msg: 'Colección ordenada para Búsqueda Ternaria (O(log₃ n)): Trisección del espacio' });
+      let compTarget = getComparableTargetValue(currentTarget, arr);
+      let low = 0, high = n - 1, found = false;
+
+      while (low <= high) {
+        let mid1 = low + Math.floor((high - low) / 3);
+        let mid2 = high - Math.floor((high - low) / 3);
+        actionQueue.push({ type: 'binary_range', indices: [low, mid1, mid2, high], msg: `Trisección: Rango [${low}..${high}] | Mid1=[${mid1}] (${arr[mid1].display}) | Mid2=[${mid2}] (${arr[mid2].display})` });
+
+        actionQueue.push({ type: 'search_inspect', indices: [mid1], msg: `Comparando Mid1 [${mid1}] (${arr[mid1].display}) vs Target` });
+        if (isItemTargetMatch(arr[mid1], currentTarget)) {
+          actionQueue.push({ type: 'found', indices: [mid1], msg: `¡Target localizado en Mid1 [${mid1}] (${arr[mid1].display})!` });
+          found = true;
+          break;
+        }
+
+        actionQueue.push({ type: 'search_inspect', indices: [mid2], msg: `Comparando Mid2 [${mid2}] (${arr[mid2].display}) vs Target` });
+        if (isItemTargetMatch(arr[mid2], currentTarget)) {
+          actionQueue.push({ type: 'found', indices: [mid2], msg: `¡Target localizado en Mid2 [${mid2}] (${arr[mid2].display})!` });
+          found = true;
+          break;
+        }
+
+        if (compTarget < arr[mid1].value) {
+          high = mid1 - 1;
+          actionQueue.push({ type: 'log', msg: 'Target < Mid1: Descartando los 2/3 superiores del espacio.' });
+        } else if (compTarget > arr[mid2].value) {
+          low = mid2 + 1;
+          actionQueue.push({ type: 'log', msg: 'Target > Mid2: Descartando los 2/3 inferiores del espacio.' });
+        } else {
+          low = mid1 + 1;
+          high = mid2 - 1;
+          actionQueue.push({ type: 'log', msg: 'Target en tercio medio: Descartando extremos externos.' });
         }
       }
-      if (!found) actionQueue.push({ type: 'not_found', msg: 'Target ausente.' });
+      if (!found) actionQueue.push({ type: 'not_found', msg: `Target '${currentTarget}' ausente en el espacio trisecado.` });
+      break;
+    }
+
+    case 'interpolation_search': {
+      arr.sort((a, b) => a.value - b.value);
+      actionQueue.push({ type: 'log', msg: 'Colección ordenada para Búsqueda por Interpolación (O(log log n)): Sondeo proporcional' });
+      let compTarget = getComparableTargetValue(currentTarget, arr);
+      let low = 0, high = n - 1, found = false;
+
+      while (low <= high && compTarget >= arr[low].value && compTarget <= arr[high].value) {
+        if (low === high) {
+          actionQueue.push({ type: 'search_inspect', indices: [low], msg: `Sondeo en índice único [${low}] (${arr[low].display})` });
+          if (isItemTargetMatch(arr[low], currentTarget)) {
+            actionQueue.push({ type: 'found', indices: [low], msg: `¡Target localizado en [${low}]!` });
+            found = true;
+          }
+          break;
+        }
+
+        let fraction = (compTarget - arr[low].value) / (arr[high].value - arr[low].value);
+        let pos = low + Math.floor(fraction * (high - low));
+        if (pos < low) pos = low;
+        if (pos > high) pos = high;
+
+        actionQueue.push({ type: 'binary_range', indices: [low, pos, high], msg: `Fórmula de Interpolación: posición estimada pos=[${pos}] en rango [${low}..${high}]` });
+        actionQueue.push({ type: 'search_inspect', indices: [pos], msg: `Sondeo interpolado en arr[${pos}] (${arr[pos].display}) vs Target` });
+
+        if (isItemTargetMatch(arr[pos], currentTarget)) {
+          actionQueue.push({ type: 'found', indices: [pos], msg: `¡Target localizado con Interpolación en [${pos}] (${arr[pos].display})!` });
+          found = true;
+          break;
+        }
+
+        if (arr[pos].value < compTarget) {
+          low = pos + 1;
+          actionQueue.push({ type: 'log', msg: `arr[${pos}] < Target: Ajustando límite inferior low a ${low}` });
+        } else {
+          high = pos - 1;
+          actionQueue.push({ type: 'log', msg: `arr[${pos}] > Target: Ajustando límite superior high a ${high}` });
+        }
+      }
+      if (!found) actionQueue.push({ type: 'not_found', msg: `Target '${currentTarget}' no hallado mediante interpolación.` });
+      break;
+    }
+
+    case 'exponential_search': {
+      arr.sort((a, b) => a.value - b.value);
+      actionQueue.push({ type: 'log', msg: 'Colección ordenada para Búsqueda Exponencial (O(log n)): Duplicación de rango 2^i' });
+      let compTarget = getComparableTargetValue(currentTarget, arr);
+      let found = false;
+
+      actionQueue.push({ type: 'search_inspect', indices: [0], msg: `Inspección de base en arr[0] (${arr[0].display})` });
+      if (isItemTargetMatch(arr[0], currentTarget)) {
+        actionQueue.push({ type: 'found', indices: [0], msg: `¡Target localizado en la posición cero [0]!` });
+        found = true;
+      } else {
+        let i = 1;
+        while (i < n && arr[i].value <= compTarget) {
+          actionQueue.push({ type: 'jump_step', indices: [i], msg: `Salto exponencial 2^k: índice [${i}] (${arr[i].display})` });
+          if (isItemTargetMatch(arr[i], currentTarget)) {
+            actionQueue.push({ type: 'found', indices: [i], msg: `¡Target localizado durante salto exponencial en [${i}]!` });
+            found = true;
+            break;
+          }
+          i = i * 2;
+        }
+
+        if (!found) {
+          let low = Math.floor(i / 2);
+          let high = Math.min(i, n - 1);
+          actionQueue.push({ type: 'log', msg: `Límite detectado. Concluyendo con Búsqueda Binaria en ventana exponencial [${low}..${high}]:` });
+          while (low <= high) {
+            let mid = Math.floor((low + high) / 2);
+            actionQueue.push({ type: 'binary_range', indices: [low, mid, high], msg: `Ventana Binaria final: Low=[${low}], Mid=[${mid}], High=[${high}]` });
+            actionQueue.push({ type: 'search_inspect', indices: [mid], msg: `Evaluando [${mid}] (${arr[mid].display}) vs Target` });
+            if (isItemTargetMatch(arr[mid], currentTarget)) {
+              actionQueue.push({ type: 'found', indices: [mid], msg: `¡Target confirmado en [${mid}] (${arr[mid].display})!` });
+              found = true;
+              break;
+            }
+            if (arr[mid].value < compTarget) {
+              low = mid + 1;
+            } else {
+              high = mid - 1;
+            }
+          }
+        }
+      }
+      if (!found) actionQueue.push({ type: 'not_found', msg: `Target '${currentTarget}' ausente en el espacio exponencial.` });
       break;
     }
 
@@ -1573,6 +1836,7 @@ function initThreeScene() {
 }
 
 function build3DSceneBars() {
+  if (!scene) return;
   threeBlocks.forEach(b => scene.remove(b.mesh));
   threeBlocks = [];
 
