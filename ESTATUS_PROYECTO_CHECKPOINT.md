@@ -4,7 +4,7 @@
 > **Lead Architect & Docente:** Ing. Juancito Peña Vizcaíno  
 > **Ubicación Raíz:** `C:\Users\User\Desktop\La Enciclopedia Interactiva de Algoritmos & Big-O`  
 > **Fecha de Actualización:** 31 de Octubre de 2026  
-> **Versión:** v3.3.0-PRO (Laboratorio Multi-Lenguaje Canónico en 4 Lenguajes: PSeInt, Python, HTML/CSS/JS y C# .NET 9, Diagramas de Flujo SVG, Terminal CLI, Sandbox DOM y 84/84 Bases de Código Verificadas)  
+> **Versión:** v3.4.0-PRO (Catálogo Multi-Lenguaje Blindado: PSeInt en Modo Estricto O&M con ';' Obligatorio, HTML5 Standalone Completo Monolítico, Python 3.12+ Tipado y C# .NET 9 con Zero-Alloc Span<T> en los 21 Algoritmos)  
 > **Despliegue Oficial en GitHub Pages:** [https://juancitopena.github.io/enciclopedia-algoritmos-big-o-3d/](https://juancitopena.github.io/enciclopedia-algoritmos-big-o-3d/)
 
 ---
@@ -179,6 +179,23 @@ Si una nueva IA o sesión se inicia en este proyecto:
 ---
 
 ## 📝 9. BITÁCORA DE ÚLTIMOS CAMBIOS Y CHECKPOINTS REALIZADOS
+* **31/10/2026 (v3.4.0-PRO) - Modo Estricto O&M en PSeInt & HTML5 Standalone Completo en los 21 Algoritmos:**
+  - **PSeInt en Modo Estricto O&M Canónico (21/21 algoritmos):**
+    * Todas las soluciones inician con `Proceso <Nombre_Proceso>` y finalizan con `FinProceso`.
+    * Declaración obligatoria explícita al tope: `Definir var1, var2 Como Entero;`, `Definir flag Como Logico;`, etc.
+    * Todas las líneas e instrucciones terminan obligatoriamente con punto y coma (`;`), incluyendo asignaciones (`=`), lecturas (`Leer`), escrituras (`Escribir`), llamadas a subprocesos y cierres de bloques (`FinPara;`, `FinSi;`, `FinMientras;`).
+    * Uso de funciones matemáticas estrictas como `TRUNC(...)` para divisiones enteras de índices o pivotes, y `MOD` para operaciones de residuo.
+  - **HTML5 / CSS / JS Standalone Completo Monolítico (21/21 algoritmos):**
+    * Cada snippet web es un documento HTML5 completo y autosuficiente: comienza con `<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>...</title><style>...</style></head><body>...<script>...</script></body></html>`.
+    * Al hacer clic en "Copiar Código", cualquier estudiante o desarrollador puede pegar el contenido en un archivo `.html`, hacer doble clic y ejecutarlo inmediatamente en cualquier navegador web moderno sin dependencias externas ni configuración.
+    * Incluye estilos Neo-Brutalistas integrados y animación fluida con `async/await` y manipulación del DOM.
+  - **Python 3.12+ Tipado y C# .NET 9 LTS:**
+    * Python con type hints `List[int]`, `Optional[int]` y bloque `if __name__ == '__main__':`.
+    * C# con tipado fuerte, `ReadOnlySpan<T>`, `stackalloc` para asignación en stack (zero heap allocation) y benchmarks de hardware.
+  - **QA & Testing Automatizado:**
+    * Script de validación estricta `.backup/test_strict_om_and_html5.js`: 21/21 PSeInt Estricto O&M y 21/21 HTML5 Standalone validados con 0 errores.
+    * Suite multi-lenguaje `.backup/test_multilang_system.js`: 84/84 bases de código verificadas con 0 errores.
+    * Suite de simulación matricial `.backup/test_simulation_engine.js`: 336/336 combinaciones exitosas con 0 errores.
 * **31/10/2026 (v3.3.0-PRO) - Laboratorio Multi-Lenguaje Canónico en 4 Lenguajes (PSeInt, Python, Web y C#), Diagramas SVG & 84/84 Suites Superadas:**
   - **4 Botones de Lenguaje en Cada Tarjeta del Grid Principal (`#algoCardsGrid`):**
     * Cada una de las tarjetas de los 21 algoritmos incorpora una botonera rápida en la base con sus badges e iconos canónicos:
