@@ -1712,22 +1712,34 @@
             <!-- Representación Animada (.GIF) & Código Canónico con Pestañas y Copiado Rápido (Cero Espacio Desperdiciado) -->
             <div class="neo-box p-3 bg-white border-2 border-black flex flex-col gap-2">
               <div class="flex items-center justify-between pb-1.5 border-b-2 border-black flex-wrap gap-2">
-                <!-- Pestañas Interactivas -->
-                <div class="flex items-center gap-1.5">
-                  <button id="tabBtnAlgoCode" onclick="switchAlgoModalMediaTab('code')" type="button" class="neo-button bg-neoYellow text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-neoSm transition-all" title="Ver código canónico">
-                    <i class="fa-solid fa-code text-neoDark"></i> <span>Código Canónico</span>
+                <!-- Pestañas Interactivas Multi-Lenguaje -->
+                <div class="flex items-center gap-1 flex-wrap">
+                  <button id="tabBtnAlgoGif" onclick="switchAlgoModalMediaTab('gif')" type="button" class="neo-button bg-neoPurple text-white px-2 py-1 text-xs font-mono font-black flex items-center gap-1 shadow-neoSm transition-all" title="Ver animación cinemática">
+                    <i class="fa-solid fa-film"></i> <span class="hidden sm:inline">GIF</span>
                   </button>
-                  <button id="tabBtnAlgoGif" onclick="switchAlgoModalMediaTab('gif')" type="button" class="neo-button bg-white text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 hover:bg-gray-100 transition-all" title="Ver animación cinemática">
-                    <i class="fa-solid fa-film text-neoPurple"></i> <span>Cinemática (.GIF)</span>
+                  <button id="tabBtnAlgoPseint" onclick="switchAlgoModalMediaTab('pseint')" type="button" class="neo-button bg-white text-black px-2 py-1 text-xs font-mono font-black flex items-center gap-1 hover:bg-gray-100 transition-all" title="Ver pseudocódigo PSeInt">
+                    <i class="fa-solid fa-diagram-project text-neoDark"></i> <span>PSeInt</span>
+                  </button>
+                  <button id="tabBtnAlgoPython" onclick="switchAlgoModalMediaTab('python')" type="button" class="neo-button bg-white text-black px-2 py-1 text-xs font-mono font-black flex items-center gap-1 hover:bg-gray-100 transition-all" title="Ver script Python">
+                    <i class="fa-brands fa-python text-[#3776AB]"></i> <span>Py</span>
+                  </button>
+                  <button id="tabBtnAlgoWeb" onclick="switchAlgoModalMediaTab('web')" type="button" class="neo-button bg-white text-black px-2 py-1 text-xs font-mono font-black flex items-center gap-1 hover:bg-gray-100 transition-all" title="Ver código Web HTML/CSS/JS">
+                    <i class="fa-brands fa-html5 text-[#E44D26]"></i> <span>Web</span>
+                  </button>
+                  <button id="tabBtnAlgoCsharp" onclick="switchAlgoModalMediaTab('csharp')" type="button" class="neo-button bg-white text-black px-2 py-1 text-xs font-mono font-black flex items-center gap-1 hover:bg-gray-100 transition-all" title="Ver código C# .NET">
+                    <i class="fa-solid fa-code text-[#512BD4]"></i> <span>C#</span>
                   </button>
                 </div>
 
-                <!-- Botón de Copiado y Lenguaje -->
-                <div class="flex items-center gap-1.5">
+                <!-- Botón de Copiado, Badge de Lenguaje y Apertura de Visor Dividido -->
+                <div class="flex items-center gap-1.5 flex-wrap">
                   <button id="btnCopyAlgoCode" onclick="copyModalAlgoCode()" type="button" class="neo-button bg-neoGreen text-black hover:bg-emerald-400 px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1 shadow-neoSm transition-all" title="Copiar código al portapapeles">
                     <i id="copyAlgoCodeIcon" class="fa-solid fa-copy"></i> <span id="copyAlgoCodeText">Copiar</span>
                   </button>
-                  <span class="badge bg-black text-white font-mono text-xs font-bold px-2 py-0.5">JS / TS</span>
+                  <span id="modalAlgoLangBadge" class="badge bg-black text-white font-mono text-xs font-bold px-2 py-0.5">JS / TS</span>
+                  <button onclick="openMultiLangModalFromCurrent()" type="button" class="neo-button bg-neoYellow text-black hover:bg-yellow-400 px-2 py-1 text-xs font-mono font-black flex items-center gap-1 shadow-neoSm" title="Abrir Laboratorio Dividido con Diagramas y Explicación">
+                    <i class="fa-solid fa-up-right-and-down-left-from-center"></i> <span class="hidden sm:inline">Laboratorio Dividido</span>
+                  </button>
                 </div>
               </div>
               
@@ -1771,6 +1783,226 @@
     </div>
   </div>
 
+  <script src="js/algo-multilang-data.js"></script>
   <script src="script.js"></script>
+
+  <!-- ==========================================================================
+       MODAL PANORÁMICO DEDICADO: LABORATORIO MULTI-LENGUAJE Y DIAGRAMAS (JPV PRO)
+       Vista dividida en 2 columnas: Código Fuente + Explicación Didáctica y Diagrama
+       ========================================================================== -->
+  <div id="algoMultiLangModal" class="fixed inset-0 z-[120] hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 big-o-modal-overlay" onclick="handleMultiLangBackdropClick(event)" role="dialog" aria-modal="true" aria-labelledby="multiLangModalTitle">
+    <div class="relative w-full max-w-[98vw] sm:max-w-[96vw] xl:max-w-[95vw] 2xl:max-w-[1720px] h-[94vh] sm:h-[92vh] max-h-[96vh] sm:max-h-[94vh] bg-[#FFFDF0] border-3 border-black shadow-neoLg rounded-lg flex flex-col overflow-hidden big-o-modal-content" onclick="event.stopPropagation()">
+      
+      <!-- Modal Header -->
+      <div id="multiLangHeader" class="py-2.5 px-4 sm:px-5 border-b-3 border-black flex items-center justify-between flex-wrap gap-2 bg-neoYellow transition-colors duration-200">
+        <div class="flex items-center gap-3">
+          <span id="multiLangAlgoIcon" class="text-3xl filter drop-shadow">⚡</span>
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <h2 id="multiLangModalTitle" class="text-xl sm:text-2xl font-black font-mono tracking-tight text-black">Bubble Sort</h2>
+              <span id="multiLangBigOBadge" class="badge bg-black text-white px-2 py-0.5 text-xs uppercase font-mono tracking-wider font-bold">O(n²)</span>
+              <span id="multiLangCategoryBadge" class="badge bg-white text-black border border-black px-2 py-0.5 text-xs uppercase font-mono font-bold">Ordenamiento</span>
+              <span id="multiLangSpaceBadge" class="badge bg-[#C084FC] text-black border border-black px-2 py-0.5 text-xs uppercase font-mono font-bold">Esp: O(1)</span>
+            </div>
+            <p class="text-xs sm:text-sm font-bold text-gray-900 mt-0.5">Laboratorio Multi-Lenguaje Canónico &amp; Representación Visual Panorámica</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 flex-wrap">
+          <!-- Selector de Algoritmo Rápido -->
+          <div class="flex items-center gap-1.5 bg-white border-2 border-black px-2 py-1 shadow-neoSm rounded-sm">
+            <label for="multiLangAlgoSelect" class="text-xs font-mono font-black uppercase text-black hidden sm:inline-flex items-center gap-1">
+              <i class="fa-solid fa-list-check text-neoOrange"></i> Algoritmo:
+            </label>
+            <select id="multiLangAlgoSelect" onchange="openMultiLangModal(this.value, currentMultiLang)" class="bg-transparent font-mono font-bold text-xs sm:text-sm focus:outline-none cursor-pointer">
+              <!-- Populated by JS -->
+            </select>
+          </div>
+
+          <button onclick="closeMultiLangModal()" type="button" class="neo-button bg-white text-black hover:bg-neoRed hover:text-white px-3 py-1 text-xs sm:text-sm font-black transition-all flex items-center gap-1.5" title="Cerrar visor (Esc)">
+            <i class="fa-solid fa-xmark"></i> <span>Cerrar</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Barra de Pestañas de Lenguajes -->
+      <div class="bg-white border-b-2 border-black py-2 px-4 sm:px-5 flex items-center justify-between flex-wrap gap-2 shadow-sm">
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="text-xs font-mono font-black uppercase text-gray-700 mr-1 hidden sm:inline">Lenguaje:</span>
+          <button id="btnLangTabPseint" onclick="switchMultiLangTab('pseint')" type="button" class="neo-button bg-neoCyan text-black px-3 py-1.5 text-xs font-mono font-black flex items-center gap-1.5 shadow-neoSm transition-all">
+            <i class="fa-solid fa-diagram-project"></i> <span>PSeInt (Pseudocódigo)</span>
+          </button>
+          <button id="btnLangTabPython" onclick="switchMultiLangTab('python')" type="button" class="neo-button bg-white text-black px-3 py-1.5 text-xs font-mono font-black flex items-center gap-1.5 hover:bg-gray-100 transition-all">
+            <i class="fa-brands fa-python text-[#3776AB]"></i> <span>Python 3</span>
+          </button>
+          <button id="btnLangTabWeb" onclick="switchMultiLangTab('web')" type="button" class="neo-button bg-white text-black px-3 py-1.5 text-xs font-mono font-black flex items-center gap-1.5 hover:bg-gray-100 transition-all">
+            <i class="fa-brands fa-html5 text-[#E44D26]"></i> <span>HTML / CSS / JS</span>
+          </button>
+          <button id="btnLangTabCsharp" onclick="switchMultiLangTab('csharp')" type="button" class="neo-button bg-white text-black px-3 py-1.5 text-xs font-mono font-black flex items-center gap-1.5 hover:bg-gray-100 transition-all">
+            <i class="fa-solid fa-code text-[#512BD4]"></i> <span>C# (.NET 9)</span>
+          </button>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button id="btnCopyMultiLangCode" onclick="copyMultiLangCode()" type="button" class="neo-button bg-neoGreen text-black hover:bg-emerald-400 px-3 py-1.5 text-xs font-mono font-black flex items-center gap-1.5 shadow-neoSm transition-all" title="Copiar código al portapapeles">
+            <i id="copyMultiLangIcon" class="fa-solid fa-copy"></i> <span id="copyMultiLangText">Copiar Código</span>
+          </button>
+          <button onclick="openAlgoSimulationFromMultiLang()" type="button" class="neo-button bg-neoOrange text-black px-3 py-1.5 text-xs font-mono font-black flex items-center gap-1.5 shadow-neoSm" title="Ver simulación 2D / 3D">
+            <i class="fa-solid fa-cube"></i> <span class="hidden sm:inline">Simular en 3D</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Cuerpo del Modal: Pantalla Dividida en 2 Columnas -->
+      <div class="flex-1 overflow-y-auto p-3 sm:p-5 custom-modal-scrollbar">
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-5 items-stretch min-h-full">
+          
+          <!-- COLUMNA IZQUIERDA: CÓDIGO FUENTE CANÓNICO -->
+          <div class="neo-box p-4 bg-white border-3 border-black flex flex-col justify-between space-y-3">
+            <div>
+              <div class="flex items-center justify-between pb-2 border-b-2 border-black flex-wrap gap-2">
+                <div class="flex items-center gap-2">
+                  <span id="multiLangActiveLangBadge" class="badge bg-neoCyan text-black font-mono text-xs font-black px-2.5 py-0.5">PSeInt Pro</span>
+                  <span class="text-xs font-mono font-bold text-gray-700">Implementación Canónica Completa</span>
+                </div>
+                <div class="text-xs font-mono font-bold text-gray-600 flex items-center gap-1">
+                  <i class="fa-solid fa-circle-check text-neoGreen"></i> <span id="multiLangLineCount">0 líneas</span>
+                </div>
+              </div>
+
+              <!-- Bloque de Código con Scroll Horizontal y Vertical Cómodo -->
+              <div class="mt-3 relative">
+                <pre id="multiLangCodeDisplay" class="w-full p-4 bg-[#0D1117] text-[#54F18F] font-mono text-xs sm:text-sm font-bold leading-relaxed rounded border-2 border-black overflow-auto shadow-inner min-h-[380px] max-h-[520px]">
+// Cargando código representativo...
+                </pre>
+              </div>
+            </div>
+
+            <!-- Conceptos Clave de Arquitectura en ese Lenguaje -->
+            <div class="pt-2 border-t-2 border-black/20">
+              <div class="text-xs font-mono font-black uppercase text-gray-800 mb-1 flex items-center gap-1">
+                <i class="fa-solid fa-tags text-neoOrange"></i> Conceptos Clave de Implementación:
+              </div>
+              <div id="multiLangKeyConcepts" class="flex items-center gap-1.5 flex-wrap">
+                <!-- Badges inyectados -->
+              </div>
+            </div>
+          </div>
+
+          <!-- COLUMNA DERECHA: EXPLICACIÓN DIDÁCTICA Y REPRESENTACIÓN VISUAL -->
+          <div class="neo-box p-4 bg-white border-3 border-black flex flex-col justify-between space-y-4">
+            <div>
+              <div class="flex items-center justify-between pb-2 border-b-2 border-black">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-book-open text-neoPurple"></i>
+                  <h3 class="font-black font-mono text-sm sm:text-base text-black">Explicación Didáctica &amp; Representación Visual</h3>
+                </div>
+                <span id="multiLangVisualTypeBadge" class="badge bg-black text-white font-mono text-xs font-bold px-2 py-0.5">Diagrama de Flujo</span>
+              </div>
+
+              <!-- Texto Explicativo Didáctico -->
+              <div class="mt-3 p-3 bg-neoYellow/20 border-2 border-black rounded">
+                <p id="multiLangExplanationText" class="text-xs sm:text-sm font-bold text-gray-900 leading-relaxed">
+                  Cargando explicación del algoritmo...
+                </p>
+              </div>
+
+              <!-- Contenedor Visual Dinámico según el Lenguaje Seleccionado -->
+              <div class="mt-4">
+                <div class="flex items-center justify-between mb-1.5">
+                  <span id="multiLangVisualTitle" class="text-xs font-mono font-black uppercase text-black flex items-center gap-1">
+                    <i class="fa-solid fa-eye text-neoCyan"></i> Representación Visual del Algoritmo
+                  </span>
+                  <div id="multiLangVisualActionToolbar">
+                    <!-- Botones interactivos según visualizador (Play, Replay, etc.) -->
+                  </div>
+                </div>
+
+                <!-- 1. Visor de Diagrama de Flujo SVG (para PSeInt) -->
+                <div id="visualPseintFlowchart" class="w-full bg-[#FFFDF0] border-2 border-black rounded p-3 min-h-[280px] max-h-[380px] overflow-auto shadow-inner flex flex-col items-center justify-center">
+                  <div id="flowchartSvgContainer" class="w-full flex items-center justify-center">
+                    <!-- SVG Procedural Inyectado -->
+                  </div>
+                </div>
+
+                <!-- 2. Terminal CLI Interactiva (para Python) -->
+                <div id="visualPythonTerminal" class="w-full bg-[#0D1117] border-2 border-black rounded p-3 min-h-[280px] max-h-[380px] overflow-auto shadow-inner font-mono text-xs hidden">
+                  <div class="flex items-center justify-between pb-1.5 mb-2 border-b border-gray-700 text-gray-400 text-[11px]">
+                    <span><i class="fa-solid fa-terminal text-neoGreen"></i> python3 interactive-trace.py</span>
+                    <span class="text-neoGreen">bash / zsh ready</span>
+                  </div>
+                  <div id="pythonTerminalOutput" class="space-y-1 text-gray-200">
+                    <!-- Terminal logs -->
+                  </div>
+                </div>
+
+                <!-- 3. Live DOM Sandbox (para HTML/CSS/JS) -->
+                <div id="visualWebSandbox" class="w-full bg-[#FFFDF0] border-2 border-black rounded p-3 min-h-[280px] max-h-[380px] overflow-auto shadow-inner hidden flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center justify-between pb-1.5 mb-2 border-b-2 border-black">
+                      <span class="text-xs font-mono font-bold text-black flex items-center gap-1">
+                        <i class="fa-solid fa-play text-neoGreen"></i> Sandbox Web en Vivo (DOM Render)
+                      </span>
+                      <button onclick="runWebSandboxDemo()" type="button" class="neo-button bg-neoGreen text-black px-2 py-0.5 text-xs font-mono font-black">
+                        Ejecutar Animación
+                      </button>
+                    </div>
+                    <div id="webSandboxBarsArena" class="w-full flex items-flex-end gap-1.5 h-[140px] p-2 bg-white border border-black rounded items-end">
+                      <!-- Rendered Bars -->
+                    </div>
+                  </div>
+                  <div id="webSandboxStatus" class="mt-2 text-xs font-mono font-bold text-gray-700">
+                    Estado: Listo para ejecutar demostración web.
+                  </div>
+                </div>
+
+                <!-- 4. Benchmark & Memoria (para C#) -->
+                <div id="visualCsharpBenchmark" class="w-full bg-white border-2 border-black rounded p-4 min-h-[280px] max-h-[380px] overflow-auto shadow-inner hidden">
+                  <div class="grid grid-cols-2 gap-3 mb-3">
+                    <div class="p-2.5 bg-neoPurple/20 border-2 border-black rounded">
+                      <div class="text-[11px] font-mono font-black uppercase text-neoPurple">Asignación de Memoria</div>
+                      <div id="csharpBenchMem" class="text-base font-mono font-black text-black mt-0.5">0 Bytes (In-Place)</div>
+                      <div class="text-[10px] font-mono text-gray-700">GC Zero Allocation con Span&lt;T&gt;</div>
+                    </div>
+                    <div class="p-2.5 bg-neoGreen/20 border-2 border-black rounded">
+                      <div class="text-[11px] font-mono font-black uppercase text-emerald-800">Caché de CPU</div>
+                      <div id="csharpBenchCache" class="text-base font-mono font-black text-black mt-0.5">L1/L2 Resident</div>
+                      <div class="text-[10px] font-mono text-gray-700">Máxima localidad espacial</div>
+                    </div>
+                  </div>
+                  <div class="p-3 bg-gray-50 border-2 border-black rounded space-y-1.5 text-xs font-mono font-bold">
+                    <div class="flex justify-between"><span>Runtime de Destino:</span> <span id="csharpBenchRuntime" class="text-black">.NET 9.0 LTS</span></div>
+                    <div class="flex justify-between"><span>Complejidad Mejor Caso:</span> <span id="csharpBenchBest" class="text-neoGreen">O(n)</span></div>
+                    <div class="flex justify-between"><span>Complejidad Peor Caso:</span> <span id="csharpBenchWorst" class="text-neoRed">O(n²)</span></div>
+                    <div class="flex justify-between"><span>Optimización JIT:</span> <span class="text-blue-700">Tier 1 Loop Unrolling</span></div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Footer Informativo -->
+            <div class="pt-2 border-t-2 border-black/20 flex items-center justify-between text-xs font-mono font-bold text-gray-600">
+              <span><i class="fa-solid fa-code-compare text-neoDark"></i> ALGO-MATRIX 3D Multi-Language Engine</span>
+              <span class="text-black">Ing. Juancito Peña Vizcaíno</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="py-2 px-4 sm:px-5 bg-[#F8FAFC] border-t-3 border-black flex items-center justify-between flex-wrap gap-2">
+        <span class="text-xs font-mono font-bold text-gray-700 flex items-center gap-1.5">
+          <i class="fa-solid fa-terminal text-neoCyan"></i> Catálogo Multi-Lenguaje Oficial: PSeInt · Python · HTML/CSS/JS · C# .NET 9
+        </span>
+        <button onclick="closeMultiLangModal()" type="button" class="neo-button bg-white text-black hover:bg-gray-100 px-3 py-1 text-xs font-mono font-black border-2 border-black">
+          Cerrar Visor
+        </button>
+      </div>
+
+    </div>
+  </div>
+
 </body>
 </html>

@@ -850,7 +850,7 @@ function renderAlgorithmCards() {
 
     const isSelected = (key === selectedAlgoId);
     html += `
-      <button onclick="openAlgoModal('${key}')" id="card-${key}"
+      <div onclick="openAlgoModal('${key}')" id="card-${key}"
         class="neo-box p-2 text-left flex flex-col justify-between cursor-pointer hover:translate-y-[-2px] transition-transform ${isSelected ? 'active-card' : 'bg-white'}"
         title="Clic para abrir laboratorio y simulación interactiva de ${item.name}">
         <div>
@@ -868,7 +868,22 @@ function renderAlgorithmCards() {
             <i class="fa-solid fa-play text-neoOrange"></i> Simular
           </span>
         </div>
-      </button>
+        <!-- 4 Botones Canónicos de Lenguajes con Iconos Oficiales -->
+        <div class="mt-1.5 pt-1 border-t border-black/20 flex items-center justify-between gap-1 w-full" onclick="event.stopPropagation()">
+          <button onclick="openMultiLangModal('${key}', 'pseint')" class="flex-1 py-0.5 px-0.5 text-[10px] font-mono font-black rounded bg-neoCyan text-black hover:brightness-110 flex items-center justify-center gap-0.5 shadow-sm border border-black" title="Ver pseudocódigo PSeInt y diagrama de flujo">
+            <i class="fa-solid fa-diagram-project text-[9px]"></i> PSeInt
+          </button>
+          <button onclick="openMultiLangModal('${key}', 'python')" class="flex-1 py-0.5 px-0.5 text-[10px] font-mono font-black rounded bg-[#3776AB] text-white hover:brightness-110 flex items-center justify-center gap-0.5 shadow-sm border border-black" title="Ver script Python 3 y traza CLI">
+            <i class="fa-brands fa-python text-[9px]"></i> Py
+          </button>
+          <button onclick="openMultiLangModal('${key}', 'web')" class="flex-1 py-0.5 px-0.5 text-[10px] font-mono font-black rounded bg-[#E44D26] text-white hover:brightness-110 flex items-center justify-center gap-0.5 shadow-sm border border-black" title="Ver código Web HTML/CSS/JS y sandbox">
+            <i class="fa-brands fa-html5 text-[9px]"></i> Web
+          </button>
+          <button onclick="openMultiLangModal('${key}', 'csharp')" class="flex-1 py-0.5 px-0.5 text-[10px] font-mono font-black rounded bg-[#512BD4] text-white hover:brightness-110 flex items-center justify-center gap-0.5 shadow-sm border border-black" title="Ver código C# .NET y benchmark">
+            <i class="fa-solid fa-code text-[9px]"></i> C#
+          </button>
+        </div>
+      </div>
     `;
   }
   grid.innerHTML = html;
@@ -3375,26 +3390,61 @@ function populateAlgoModalData(key) {
    SISTEMA DE PESTAÑAS (TABS) PARA CÓDIGO Y GIF EN EL MODAL DE ALGORITMOS (JPV PRO)
    ========================================================================= */
 window.switchAlgoModalMediaTab = function(tab) {
-  const btnCode = document.getElementById('tabBtnAlgoCode');
   const btnGif = document.getElementById('tabBtnAlgoGif');
+  const btnPseint = document.getElementById('tabBtnAlgoPseint');
+  const btnPython = document.getElementById('tabBtnAlgoPython');
+  const btnWeb = document.getElementById('tabBtnAlgoWeb');
+  const btnCsharp = document.getElementById('tabBtnAlgoCsharp');
+
   const contentCode = document.getElementById('tabContentAlgoCode');
   const contentGif = document.getElementById('tabContentAlgoGif');
+  const codeEl = document.getElementById('modalAlgoCode');
+  const badgeEl = document.getElementById('modalAlgoLangBadge');
   const btnCopy = document.getElementById('btnCopyAlgoCode');
 
-  if (!btnCode || !btnGif || !contentCode || !contentGif) return;
+  const allBtns = [
+    { el: btnGif, id: 'gif', activeCls: 'bg-neoPurple text-white' },
+    { el: btnPseint, id: 'pseint', activeCls: 'bg-neoCyan text-black' },
+    { el: btnPython, id: 'python', activeCls: 'bg-[#3776AB] text-white' },
+    { el: btnWeb, id: 'web', activeCls: 'bg-[#E44D26] text-white' },
+    { el: btnCsharp, id: 'csharp', activeCls: 'bg-[#512BD4] text-white' }
+  ];
 
-  if (tab === 'code') {
-    contentCode.classList.remove('hidden');
-    contentGif.classList.add('hidden');
-    btnCode.className = 'neo-button bg-neoYellow text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-neoSm transition-all';
-    btnGif.className = 'neo-button bg-white text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 hover:bg-gray-100 transition-all';
-    if (btnCopy) btnCopy.style.display = 'inline-flex';
-  } else if (tab === 'gif') {
-    contentCode.classList.add('hidden');
-    contentGif.classList.remove('hidden');
-    btnCode.className = 'neo-button bg-white text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 hover:bg-gray-100 transition-all';
-    btnGif.className = 'neo-button bg-neoPurple text-white px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-neoSm transition-all';
+  allBtns.forEach(b => {
+    if (b.el) {
+      if (b.id === tab) {
+        b.el.className = `neo-button ${b.activeCls} px-2 py-1 text-xs font-mono font-black flex items-center gap-1 shadow-neoSm transition-all`;
+      } else {
+        b.el.className = 'neo-button bg-white text-black px-2 py-1 text-xs font-mono font-black flex items-center gap-1 hover:bg-gray-100 transition-all';
+      }
+    }
+  });
+
+  if (tab === 'gif') {
+    if (contentCode) contentCode.classList.add('hidden');
+    if (contentGif) contentGif.classList.remove('hidden');
     if (btnCopy) btnCopy.style.display = 'none';
+    if (badgeEl) badgeEl.style.display = 'none';
+  } else {
+    if (contentCode) contentCode.classList.remove('hidden');
+    if (contentGif) contentGif.classList.add('hidden');
+    if (btnCopy) btnCopy.style.display = 'inline-flex';
+    if (badgeEl) badgeEl.style.display = 'inline-block';
+
+    const algoData = window.ALGO_MULTILANG_DATA && window.ALGO_MULTILANG_DATA[selectedAlgoId];
+    if (algoData && algoData.langs && algoData.langs[tab]) {
+      const langObj = algoData.langs[tab];
+      if (codeEl) codeEl.textContent = langObj.code.trim();
+      if (badgeEl) {
+        badgeEl.textContent = langObj.langBadge;
+        badgeEl.className = `badge font-mono text-xs font-bold px-2 py-0.5 ${langObj.badgeColor}`;
+      }
+    } else {
+      // Fallback
+      const meta = ALGORITHMS_CATALOG[selectedAlgoId];
+      if (codeEl && meta) codeEl.textContent = (meta.code || '').trim();
+      if (badgeEl) { badgeEl.textContent = 'ES6+ / TS'; badgeEl.className = 'badge bg-black text-white font-mono text-xs font-bold px-2 py-0.5'; }
+    }
   }
 };
 
@@ -3631,3 +3681,363 @@ window.cambiarVolumenAlgoModal = function(delta) {
   slider.value = nuevo;
   window.setVolumenAlgoModal(nuevo);
 };
+
+/* =========================================================================
+   6. MOTOR MAESTRO MULTI-LENGUAJE & LABORATORIO DIVIDIDO (JPV PRO)
+   Soporte para PSeInt (SVG Flowchart), Python (CLI Trace), Web Sandbox y C# Benchmark
+   Lead Architect: Ing. Juancito Peña Vizcaíno
+   ========================================================================= */
+
+window.currentMultiLang = 'pseint';
+window.currentMultiLangAlgoId = 'bubble_sort';
+
+window.openMultiLangModal = function(algoId, langId) {
+  if (algoId && window.ALGO_MULTILANG_DATA && window.ALGO_MULTILANG_DATA[algoId]) {
+    window.currentMultiLangAlgoId = algoId;
+  } else if (!window.currentMultiLangAlgoId) {
+    window.currentMultiLangAlgoId = selectedAlgoId || 'bubble_sort';
+  }
+
+  if (langId) {
+    window.currentMultiLang = langId;
+  }
+
+  const modal = document.getElementById('algoMultiLangModal');
+  if (!modal) return;
+
+  // Poblar dropdown de algoritmos si está vacío
+  const select = document.getElementById('multiLangAlgoSelect');
+  if (select && select.options.length === 0 && window.ALGO_MULTILANG_DATA) {
+    let opts = '';
+    for (const k in window.ALGO_MULTILANG_DATA) {
+      opts += `<option value="${k}">${window.ALGO_MULTILANG_DATA[k].name}</option>`;
+    }
+    select.innerHTML = opts;
+  }
+  if (select) select.value = window.currentMultiLangAlgoId;
+
+  // Actualizar datos del algoritmo activo
+  const data = window.ALGO_MULTILANG_DATA[window.currentMultiLangAlgoId];
+  if (!data) return;
+
+  const titleEl = document.getElementById('multiLangModalTitle');
+  if (titleEl) titleEl.textContent = data.name;
+
+  const bigOEl = document.getElementById('multiLangBigOBadge');
+  if (bigOEl) bigOEl.textContent = data.bigO;
+
+  const catEl = document.getElementById('multiLangCategoryBadge');
+  if (catEl) catEl.textContent = data.category.toUpperCase();
+
+  const spaceEl = document.getElementById('multiLangSpaceBadge');
+  if (spaceEl) spaceEl.textContent = `Esp: ${data.space}`;
+
+  // Actualizar pestaña de lenguaje
+  window.switchMultiLangTab(window.currentMultiLang);
+
+  // Mostrar modal y bloquear scroll de fondo
+  modal.classList.remove('hidden');
+  document.body.classList.add('overflow-hidden');
+};
+
+window.closeMultiLangModal = function() {
+  const modal = document.getElementById('algoMultiLangModal');
+  if (modal) modal.classList.add('hidden');
+  document.body.classList.remove('overflow-hidden');
+};
+
+window.handleMultiLangBackdropClick = function(e) {
+  if (e.target && e.target.id === 'algoMultiLangModal') {
+    closeMultiLangModal();
+  }
+};
+
+window.openMultiLangModalFromCurrent = function() {
+  openMultiLangModal(selectedAlgoId, window.currentMultiLang || 'pseint');
+};
+
+window.openAlgoSimulationFromMultiLang = function() {
+  closeMultiLangModal();
+  openAlgoModal(window.currentMultiLangAlgoId);
+};
+
+window.switchMultiLangTab = function(langId) {
+  window.currentMultiLang = langId;
+  const data = window.ALGO_MULTILANG_DATA[window.currentMultiLangAlgoId];
+  if (!data || !data.langs || !data.langs[langId]) return;
+
+  const langData = data.langs[langId];
+
+  // Actualizar estado visual de los botones de pestañas
+  const tabPseint = document.getElementById('btnLangTabPseint');
+  const tabPython = document.getElementById('btnLangTabPython');
+  const tabWeb = document.getElementById('btnLangTabWeb');
+  const tabCsharp = document.getElementById('btnLangTabCsharp');
+
+  const tabs = [
+    { el: tabPseint, id: 'pseint', active: 'bg-neoCyan text-black' },
+    { el: tabPython, id: 'python', active: 'bg-[#3776AB] text-white' },
+    { el: tabWeb, id: 'web', active: 'bg-[#E44D26] text-white' },
+    { el: tabCsharp, id: 'csharp', active: 'bg-[#512BD4] text-white' }
+  ];
+
+  tabs.forEach(t => {
+    if (t.el) {
+      if (t.id === langId) {
+        t.el.className = `neo-button ${t.active} px-3 py-1.5 text-xs font-mono font-black flex items-center gap-1.5 shadow-neoSm transition-all`;
+      } else {
+        t.el.className = 'neo-button bg-white text-black px-3 py-1.5 text-xs font-mono font-black flex items-center gap-1.5 hover:bg-gray-100 transition-all';
+      }
+    }
+  });
+
+  // Actualizar Badge del Lenguaje Activo
+  const langBadgeEl = document.getElementById('multiLangActiveLangBadge');
+  if (langBadgeEl) {
+    langBadgeEl.textContent = langData.langBadge;
+    langBadgeEl.className = `badge font-mono text-xs font-black px-2.5 py-0.5 ${langData.badgeColor}`;
+  }
+
+  // Código Fuente
+  const codeEl = document.getElementById('multiLangCodeDisplay');
+  if (codeEl) {
+    codeEl.textContent = langData.code.trim();
+  }
+
+  // Contador de Líneas
+  const lineCountEl = document.getElementById('multiLangLineCount');
+  if (lineCountEl) {
+    const lines = langData.code.trim().split('\n').length;
+    lineCountEl.textContent = `${lines} líneas de código`;
+  }
+
+  // Conceptos Clave
+  const conceptsEl = document.getElementById('multiLangKeyConcepts');
+  if (conceptsEl && langData.keyConcepts) {
+    conceptsEl.innerHTML = langData.keyConcepts.map(c => 
+      `<span class="neo-badge bg-[#FFFDF0] text-black border border-black text-[11px] font-mono font-bold px-2 py-0.5">${c}</span>`
+    ).join('');
+  }
+
+  // Explicación Didáctica
+  const expEl = document.getElementById('multiLangExplanationText');
+  if (expEl) expEl.textContent = langData.explanation;
+
+  // Selector del Contenedor Visual según el Lenguaje
+  const visualPseint = document.getElementById('visualPseintFlowchart');
+  const visualPython = document.getElementById('visualPythonTerminal');
+  const visualWeb = document.getElementById('visualWebSandbox');
+  const visualCsharp = document.getElementById('visualCsharpBenchmark');
+  const visualTypeBadge = document.getElementById('multiLangVisualTypeBadge');
+
+  if (visualPseint) visualPseint.classList.add('hidden');
+  if (visualPython) visualPython.classList.add('hidden');
+  if (visualWeb) visualWeb.classList.add('hidden');
+  if (visualCsharp) visualCsharp.classList.add('hidden');
+
+  if (langId === 'pseint') {
+    if (visualPseint) visualPseint.classList.remove('hidden');
+    if (visualTypeBadge) visualTypeBadge.textContent = 'Diagrama de Flujo (SVG Canónico)';
+    renderMultiLangFlowchart(langData.flowchart);
+  } else if (langId === 'python') {
+    if (visualPython) visualPython.classList.remove('hidden');
+    if (visualTypeBadge) visualTypeBadge.textContent = 'Traza de Terminal Interactiva';
+    renderMultiLangTerminal(langData.terminalOutput);
+  } else if (langId === 'web') {
+    if (visualWeb) visualWeb.classList.remove('hidden');
+    if (visualTypeBadge) visualTypeBadge.textContent = 'Sandbox Web DOM Interactivo';
+    renderMultiLangWebSandbox(langData.demoData || [45, 12, 88, 30, 65, 19, 94], window.currentMultiLangAlgoId);
+  } else if (langId === 'csharp') {
+    if (visualCsharp) visualCsharp.classList.remove('hidden');
+    if (visualTypeBadge) visualTypeBadge.textContent = 'Benchmark & Memoria .NET 9';
+    renderMultiLangBenchmark(langData.benchmark);
+  }
+};
+
+/* =========================================================================
+   GENERADOR SVG PROCEDURAL DE DIAGRAMAS DE FLUJO (PSeInt Pro - ISO 5807)
+   ========================================================================= */
+window.renderMultiLangFlowchart = function(flowchart) {
+  const container = document.getElementById('flowchartSvgContainer');
+  if (!container || !flowchart || !flowchart.nodes) return;
+
+  const nodes = flowchart.nodes;
+  const nodeWidth = 240;
+  const nodeHeight = 36;
+  const verticalSpacing = 28;
+  const totalHeight = nodes.length * (nodeHeight + verticalSpacing) + 20;
+
+  let svg = `<svg width="100%" height="${totalHeight}" viewBox="0 0 280 ${totalHeight}" xmlns="http://www.w3.org/2000/svg" class="overflow-visible font-mono font-bold text-[11px]">
+    <defs>
+      <marker id="arrowhead" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+        <polygon points="0 0, 7 3.5, 0 7" fill="#000" />
+      </marker>
+    </defs>`;
+
+  nodes.forEach((node, idx) => {
+    const y = 15 + idx * (nodeHeight + verticalSpacing);
+    const x = 20;
+
+    // Conectar nodo con el siguiente si no es el último
+    if (idx < nodes.length - 1) {
+      const nextY = 15 + (idx + 1) * (nodeHeight + verticalSpacing);
+      svg += `<line x1="140" y1="${y + nodeHeight}" x2="140" y2="${nextY}" stroke="#000" stroke-width="2.5" marker-end="url(#arrowhead)" />`;
+    }
+
+    if (node.type === 'start' || node.type === 'end') {
+      // Óvalo o píldora de inicio / fin
+      const fill = node.type === 'start' ? '#54F18F' : '#FF3366';
+      const textColor = node.type === 'start' ? '#000' : '#FFF';
+      svg += `
+        <rect x="${x}" y="${y}" rx="18" ry="18" width="${nodeWidth}" height="${nodeHeight}" fill="${fill}" stroke="#000" stroke-width="2.5" filter="drop-shadow(2px 2px 0px #000)" />
+        <text x="140" y="${y + 22}" text-anchor="middle" fill="${textColor}" font-size="11" font-weight="900">${node.text}</text>
+      `;
+    } else if (node.type === 'decision') {
+      // Rombo de decisión
+      svg += `
+        <polygon points="140,${y} 255,${y + 18} 140,${y + 36} 25,${y + 18}" fill="#FFE600" stroke="#000" stroke-width="2.5" filter="drop-shadow(2px 2px 0px #000)" />
+        <text x="140" y="${y + 22}" text-anchor="middle" fill="#000" font-size="10.5" font-weight="900">${node.text}</text>
+      `;
+    } else {
+      // Rectángulo de proceso
+      svg += `
+        <rect x="${x}" y="${y}" width="${nodeWidth}" height="${nodeHeight}" fill="#FFF" stroke="#000" stroke-width="2.5" filter="drop-shadow(2px 2px 0px #000)" />
+        <text x="140" y="${y + 22}" text-anchor="middle" fill="#000" font-size="10.5" font-weight="800">${node.text}</text>
+      `;
+    }
+  });
+
+  svg += `</svg>`;
+  container.innerHTML = svg;
+};
+
+/* =========================================================================
+   SIMULADOR DE TERMINAL CLI INTERACTIVA (PYTHON)
+   ========================================================================= */
+window.renderMultiLangTerminal = function(logs) {
+  const container = document.getElementById('pythonTerminalOutput');
+  if (!container || !logs) return;
+
+  container.innerHTML = logs.map(line => {
+    let colorClass = 'text-gray-300';
+    if (line.startsWith('$')) colorClass = 'text-neoYellow font-black';
+    else if (line.startsWith('[+]')) colorClass = 'text-neoCyan font-bold';
+    else if (line.startsWith('[*]')) colorClass = 'text-neoOrange';
+    else if (line.startsWith('[✓]')) colorClass = 'text-neoGreen font-bold';
+    return `<div class="${colorClass}">${line}</div>`;
+  }).join('');
+};
+
+/* =========================================================================
+   SANDBOX WEB DOM INTERACTIVO (HTML / CSS / JS)
+   ========================================================================= */
+window.webSandboxItems = [];
+window.renderMultiLangWebSandbox = function(data, algoId) {
+  window.webSandboxItems = [...data];
+  const arena = document.getElementById('webSandboxBarsArena');
+  const status = document.getElementById('webSandboxStatus');
+  if (!arena) return;
+
+  const maxVal = Math.max(...window.webSandboxItems, 1);
+  arena.innerHTML = window.webSandboxItems.map((val, idx) => {
+    const heightPercent = Math.max(Math.round((val / maxVal) * 100), 15);
+    return `<div id="webBar-${idx}" class="flex-1 bg-neoGreen border-2 border-black flex flex-col justify-end items-center text-[10px] font-mono font-black transition-all duration-150" style="height: ${heightPercent}%;">
+      <span class="mb-0.5">${val}</span>
+    </div>`;
+  }).join('');
+
+  if (status) status.textContent = `Colección cargada con ${window.webSandboxItems.length} elementos. Presiona 'Ejecutar Animación'.`;
+};
+
+window.runWebSandboxDemo = async function() {
+  const status = document.getElementById('webSandboxStatus');
+  if (status) status.textContent = 'Ejecutando simulación en el DOM...';
+  const n = window.webSandboxItems.length;
+
+  for (let i = 0; i < n - 1; i++) {
+    for (let j = 0; j < n - i - 1; j++) {
+      const barA = document.getElementById(`webBar-${j}`);
+      const barB = document.getElementById(`webBar-${j + 1}`);
+      if (barA) barA.className = barA.className.replace('bg-neoGreen', 'bg-neoYellow');
+      if (barB) barB.className = barB.className.replace('bg-neoGreen', 'bg-neoYellow');
+      await new Promise(r => setTimeout(r, 120));
+
+      if (window.webSandboxItems[j] > window.webSandboxItems[j + 1]) {
+        if (barA) barA.className = barA.className.replace('bg-neoYellow', 'bg-neoRed text-white');
+        if (barB) barB.className = barB.className.replace('bg-neoYellow', 'bg-neoRed text-white');
+
+        let tmp = window.webSandboxItems[j];
+        window.webSandboxItems[j] = window.webSandboxItems[j + 1];
+        window.webSandboxItems[j + 1] = tmp;
+
+        // Re-render
+        renderMultiLangWebSandbox(window.webSandboxItems, window.currentMultiLangAlgoId);
+        await new Promise(r => setTimeout(r, 120));
+      }
+
+      if (barA) barA.className = barA.className.replace('bg-neoYellow', 'bg-neoGreen').replace('bg-neoRed text-white', 'bg-neoGreen');
+      if (barB) barB.className = barB.className.replace('bg-neoYellow', 'bg-neoGreen').replace('bg-neoRed text-white', 'bg-neoGreen');
+    }
+  }
+
+  if (status) status.textContent = '¡Demostración finalizada con éxito en el Sandbox Web!';
+};
+
+/* =========================================================================
+   DASHBOARD DE BENCHMARK & MEMORIA (C# .NET 9)
+   ========================================================================= */
+window.renderMultiLangBenchmark = function(bench) {
+  if (!bench) return;
+  const memEl = document.getElementById('csharpBenchMem');
+  const cacheEl = document.getElementById('csharpBenchCache');
+  const runtimeEl = document.getElementById('csharpBenchRuntime');
+  const bestEl = document.getElementById('csharpBenchBest');
+  const worstEl = document.getElementById('csharpBenchWorst');
+
+  if (memEl) memEl.textContent = bench.memoryAlloc || '0 Bytes';
+  if (cacheEl) cacheEl.textContent = bench.registersUsed || 'CPU L1 Cache';
+  if (runtimeEl) runtimeEl.textContent = bench.targetFramework || '.NET 9.0 LTS';
+  if (bestEl) bestEl.textContent = bench.complexityBest || 'O(n)';
+  if (worstEl) worstEl.textContent = bench.complexityWorst || 'O(n²)';
+};
+
+/* =========================================================================
+   COPIADO RÁPIDO CON FEEDBACK EN VISOR MULTI-LENGUAJE
+   ========================================================================= */
+window.copyMultiLangCode = function() {
+  const codeEl = document.getElementById('multiLangCodeDisplay');
+  const text = codeEl ? codeEl.textContent : '';
+  if (!text) return;
+
+  const btnIcon = document.getElementById('copyMultiLangIcon');
+  const btnText = document.getElementById('copyMultiLangText');
+
+  const showFeedback = () => {
+    if (btnIcon) btnIcon.className = 'fa-solid fa-check text-black';
+    if (btnText) btnText.textContent = '¡Código Copiado!';
+    setTimeout(() => {
+      if (btnIcon) btnIcon.className = 'fa-solid fa-copy';
+      if (btnText) btnText.textContent = 'Copiar Código';
+    }, 2000);
+  };
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(showFeedback).catch(() => {
+      fallbackCopyText(text);
+      showFeedback();
+    });
+  } else {
+    fallbackCopyText(text);
+    showFeedback();
+  }
+};
+
+// Listener global de teclado para cerrar modal con Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const modal = document.getElementById('algoMultiLangModal');
+    if (modal && !modal.classList.contains('hidden')) {
+      closeMultiLangModal();
+    }
+  }
+});
