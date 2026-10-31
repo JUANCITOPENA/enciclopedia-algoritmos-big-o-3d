@@ -25,6 +25,7 @@ C:\Users\User\Desktop\La Enciclopedia Interactiva de Algoritmos & Big-O\
 ├── 🎨 style.css                         # Estilos Neo-Brutalistas, reglas de contraste WCAG 2.2 AAA y diseño responsive
 ├── 📚 README.md                         # Documentación pública y técnica de la plataforma
 ├── 📑 ESTATUS_PROYECTO_CHECKPOINT.md     # ESTE ARCHIVO: Punto de restauración y memoria técnica viva
+├── 📐 PUNTO_RESTAURACION_DIAGRAMAS_CANONICOS_PSEINT.md # PROTOCOLO MAESTRO DE EMULACIÓN DE DIAGRAMAS PSEINT/MERMAID
 ├── ⚖️ LICENSE                           # Licencia de código abierto MIT
 ├── 🚫 .gitignore                        # Reglas de exclusión de git
 ├── 📝 prueba.psc                        # Algoritmo de prueba en PSeInt
@@ -40,6 +41,7 @@ C:\Users\User\Desktop\La Enciclopedia Interactiva de Algoritmos & Big-O\
 │   └── 🎞️ *.gif (50 archivos)          # Animaciones para Bubble, Merge, Quick, Binary Search, BFS, DFS, etc.
 │
 └── 📂 .backup/                          # Puntos de restauración locales seguros y suites de QA
+    ├── REFERENCIA_CANONICA_PSEINT_MERMAID.html # ARCHIVO FUENTE ORIGINAL DEL USUARIO (77 KB)
     ├── test_multilang_v2_strict.js      # QA Gobernanza Estricta V2 (21/21)
     ├── test_multilang_system.js         # QA Catálogo Multi-Lenguaje (84/84)
     ├── test_simulation_engine.js        # QA Matriz Cinemática (336/336)
