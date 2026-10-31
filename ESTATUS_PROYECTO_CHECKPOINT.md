@@ -4,7 +4,7 @@
 > **Lead Architect & Docente:** Ing. Juancito Peña Vizcaíno  
 > **Ubicación Raíz:** `C:\Users\User\Desktop\La Enciclopedia Interactiva de Algoritmos & Big-O`  
 > **Fecha de Actualización:** 31 de Octubre de 2026  
-> **Versión:** v3.4.0-PRO (Catálogo Multi-Lenguaje Blindado: PSeInt en Modo Estricto O&M con ';' Obligatorio, HTML5 Standalone Completo Monolítico, Python 3.12+ Tipado y C# .NET 9 con Zero-Alloc Span<T> en los 21 Algoritmos)  
+> **Versión:** v3.5.0-PRO (Integración Oficial de Mermaid.js para Diagramas de Flujo Canónicos estilo PSeInt, Operador de Asignación '<-', Comillas Simples en Mensajes y 21/21 Algoritmos Validados al 100%)  
 > **Despliegue Oficial en GitHub Pages:** [https://juancitopena.github.io/enciclopedia-algoritmos-big-o-3d/](https://juancitopena.github.io/enciclopedia-algoritmos-big-o-3d/)
 
 ---
@@ -179,6 +179,24 @@ Si una nueva IA o sesión se inicia en este proyecto:
 ---
 
 ## 📝 9. BITÁCORA DE ÚLTIMOS CAMBIOS Y CHECKPOINTS REALIZADOS
+* **31/10/2026 (v3.5.0-PRO) - Integración de Mermaid.js para Diagramas de Flujo y Sintaxis PSeInt Canónica (<- y Comillas Simples):**
+  - **Sintaxis PSeInt Canónica y Universitaria (21/21 algoritmos):**
+    * Operador formal de asignación `<-` implementado en todas las asignaciones de variables (`n <- 7;`, `arr[1] <- 64;`, `suma <- n1 + n2;`, `intercambiado <- Falso;`, `disponible <- Falso;`).
+    * Mensajes en `Escribir` formateados con comillas simples `'...'` estándar: `Escribir 'Arreglo Inicial:';`, `Escribir 'Resultado: ', suma;`.
+    * Delimitación limpia de estructuras sin punto y coma espurio tras cabeceras: `Si ... Entonces`, `SiNo`, `FinSi`, `Para ... Hasta ... Con Paso ... Hacer`, `FinPara`, `Mientras ... Hacer`, `FinMientras`, `Proceso ...`, `FinProceso`.
+  - **Motor de Diagramas de Flujo Mermaid.js (ISO 5807 / PSeInt Style):**
+    * Integración de la librería `Mermaid.js v10` en `index.html`.
+    * Cada uno de los 21 algoritmos incorpora su código Mermaid canónico (`flowchart TD`) con paleta de colores oficial de PSeInt:
+      - `terminal` (`#fde047`, borde `#ca8a04`): Terminales `Proceso` y `FinProceso` (óvalos / stadium).
+      - `proceso` (`#fef08a`, borde `#ca8a04`): Declaraciones y asignaciones `<-` (rectángulos).
+      - `entrada` (`#fbcfe8`, borde `#db2777`): Instrucciones `Leer` (paralelogramos rosa).
+      - `salida` (`#bbf7d0`, borde `#16a34a`): Instrucciones `Escribir` (paralelogramos verde menta).
+      - `decision` (`#bae6fd`, borde `#0284c7`): Evaluaciones lógicas `Si`, `Mientras`, `Para` (rombos azul cielo).
+    * Botón interactivo "Copiar Mermaid" (`copyMermaidCode()`) en el visor visual con feedback de portapapeles.
+    * Fallback automático a generador SVG procedural si Mermaid no está disponible offline.
+  - **Auditoría QA Automatizada:**
+    * Script `.backup/test_mermaid_and_pseint_syntax.js`: 21/21 PSeInt con operador `<-` y 21/21 diagramas Mermaid.js validados (0 errores).
+    * Suites multi-lenguaje y cinemática: 84/84 y 336/336 superadas al 100%.
 * **31/10/2026 (v3.4.0-PRO) - Modo Estricto O&M en PSeInt & HTML5 Standalone Completo en los 21 Algoritmos:**
   - **PSeInt en Modo Estricto O&M Canónico (21/21 algoritmos):**
     * Todas las soluciones inician con `Proceso <Nombre_Proceso>` y finalizan con `FinProceso`.

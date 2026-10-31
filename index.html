@@ -14,6 +14,8 @@
   <!-- Three.js & OrbitControls -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <!-- Mermaid.js para Diagramas de Flujo Canónicos estilo PSeInt -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
   <!-- Google Fonts: Space Grotesk & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1919,7 +1921,15 @@
                 </div>
 
                 <!-- 1. Visor de Diagrama de Flujo SVG (para PSeInt) -->
-                <div id="visualPseintFlowchart" class="w-full bg-[#FFFDF0] border-2 border-black rounded p-3 min-h-[280px] max-h-[380px] overflow-auto shadow-inner flex flex-col items-center justify-center">
+                <div id="visualPseintFlowchart" class="w-full bg-[#FFFDF0] border-2 border-black rounded p-3 min-h-[300px] max-h-[420px] overflow-auto shadow-inner flex flex-col items-center justify-start">
+                  <div class="w-full flex items-center justify-between pb-1.5 mb-2 border-b-2 border-black">
+                    <span class="text-xs font-mono font-bold text-black flex items-center gap-1.5">
+                      <i class="fa-solid fa-diagram-project text-neoCyan"></i> Diagrama de Flujo Canónico (Mermaid.js / ISO 5807)
+                    </span>
+                    <button onclick="copyMermaidCode()" type="button" class="neo-button bg-white text-black hover:bg-neoYellow px-2.5 py-0.5 text-[11px] font-mono font-bold border-2 border-black flex items-center gap-1 shadow-neoSm">
+                      <i class="fa-solid fa-copy"></i> Copiar Mermaid
+                    </button>
+                  </div>
                   <div id="flowchartSvgContainer" class="w-full flex items-center justify-center">
                     <!-- SVG Procedural Inyectado -->
                   </div>

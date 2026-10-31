@@ -3855,11 +3855,57 @@ window.switchMultiLangTab = function(langId) {
 };
 
 /* =========================================================================
-   GENERADOR SVG PROCEDURAL DE DIAGRAMAS DE FLUJO (PSeInt Pro - ISO 5807)
+   GENERADOR DE DIAGRAMAS DE FLUJO CON MERMAID.JS & SVG (PSeInt Pro - ISO 5807)
    ========================================================================= */
-window.renderMultiLangFlowchart = function(flowchart) {
+window.mermaidInitialized = false;
+
+window.copyMermaidCode = function() {
+  const data = window.ALGO_MULTILANG_DATA ? window.ALGO_MULTILANG_DATA[window.currentMultiLangAlgoId] : null;
+  if (!data || !data.langs || !data.langs.pseint || !data.langs.pseint.flowchart) return;
+  const mermaidCode = data.langs.pseint.flowchart.mermaidCode || '';
+  if (mermaidCode) {
+    navigator.clipboard.writeText(mermaidCode).then(() => {
+      const btn = event ? event.currentTarget : null;
+      if (btn) {
+        const originalHtml = btn.innerHTML;
+        btn.innerHTML = '<i class="fa-solid fa-check text-neoGreen"></i> ¡Copiado!';
+        setTimeout(() => { btn.innerHTML = originalHtml; }, 2000);
+      }
+    });
+  }
+};
+
+window.renderMultiLangFlowchart = async function(flowchart) {
   const container = document.getElementById('flowchartSvgContainer');
-  if (!container || !flowchart || !flowchart.nodes) return;
+  if (!container || !flowchart) return;
+
+  // Renderizado de alta fidelidad con Mermaid.js
+  if (flowchart.mermaidCode && window.mermaid) {
+    try {
+      if (!window.mermaidInitialized) {
+        mermaid.initialize({
+          startOnLoad: false,
+          theme: 'neutral',
+          securityLevel: 'loose',
+          flowchart: {
+            useMaxWidth: true,
+            htmlLabels: true,
+            curve: 'basis'
+          }
+        });
+        window.mermaidInitialized = true;
+      }
+      const uniqueId = 'mermaid-' + Math.random().toString(36).substring(2, 9);
+      const { svg } = await mermaid.render(uniqueId, flowchart.mermaidCode);
+      container.innerHTML = `<div class="w-full flex justify-center py-2 overflow-x-auto">${svg}</div>`;
+      return;
+    } catch (err) {
+      console.warn('Fallo renderizando Mermaid, aplicando generador SVG alternativo:', err);
+    }
+  }
+
+  // Generador SVG procedural (Fallback de alta resiliencia)
+  if (!flowchart.nodes) return;
 
   const nodes = flowchart.nodes;
   const nodeWidth = 240;

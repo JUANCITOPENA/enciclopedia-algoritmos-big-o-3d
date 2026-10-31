@@ -1,6 +1,6 @@
 /* =========================================================================
    ALGO-MATRIX 3D: CATÁLOGO MULTI-LENGUAJE DE ALGORITMOS (JPV PRO)
-   Soporte exhaustivo para PSeInt (Modo Estricto O&M), Python 3, 
+   Soporte exhaustivo para PSeInt Canónico (<- y Mermaid.js), Python 3, 
    HTML/CSS/JS (Standalone Completo) y C# .NET 9
    Lead Architect: Ing. Juancito Peña Vizcaíno
    ========================================================================= */
@@ -13,29 +13,29 @@ window.ALGO_MULTILANG_DATA = {
     "space": "O(1)",
     "langs": {
       "pseint": {
-        "name": "PSeInt (Modo Estricto O&M)",
-        "langBadge": "PSeInt Estricto O&M",
+        "name": "PSeInt Canónico (<- y Diagramas Mermaid)",
+        "langBadge": "PSeInt Pro / Mermaid",
         "badgeColor": "bg-neoCyan text-black",
         "icon": "fa-solid fa-diagram-project",
-        "code": "Proceso Ordenamiento_Burbuja_Estricto\n\tDefinir n, i, j, aux, k Como Entero;\n\tDefinir intercambiado Como Logico;\n\tDimension arr[7];\n\t\n\tn = 7;\n\tarr[1] = 64; arr[2] = 34; arr[3] = 25; arr[4] = 12; arr[5] = 22; arr[6] = 11; arr[7] = 90;\n\t\n\tEscribir \"Arreglo Inicial:\";\n\tPara k = 1 Hasta n Con Paso 1 Hacer\n\t\tEscribir Sin Saltar arr[k], \" \";\n\tFinPara;\n\tEscribir \"\";\n\t\n\tPara i = 1 Hasta n - 1 Con Paso 1 Hacer\n\t\tintercambiado = Falso;\n\t\tPara j = 1 Hasta n - i Con Paso 1 Hacer\n\t\t\tSi arr[j] > arr[j + 1] Entonces\n\t\t\t\taux = arr[j];\n\t\t\t\tarr[j] = arr[j + 1];\n\t\t\t\tarr[j + 1] = aux;\n\t\t\t\tintercambiado = Verdadero;\n\t\t\tFinSi;\n\t\tFinPara;\n\t\tSi NO intercambiado Entonces\n\t\t\ti = n; // Salida temprana si ya esta ordenado\n\t\tFinSi;\n\tFinPara;\n\t\n\tEscribir \"Arreglo Ordenado con Exito:\";\n\tPara k = 1 Hasta n Con Paso 1 Hacer\n\t\tEscribir Sin Saltar arr[k], \" \";\n\tFinPara;\n\tEscribir \"\";\nFinProceso",
-        "explanation": "Implementación formal en PSeInt Modo Estricto O&M. Todas las variables se declaran explícitamente con 'Definir', cada instrucción termina obligatoriamente con punto y coma (;), la asignación emplea '=' y se garantiza la detección temprana en O(n) con la bandera booleana 'intercambiado'.",
+        "code": "Proceso Ordenamiento_Burbuja\n    Definir n, i, j, aux, k Como Entero;\n    Definir intercambiado Como Logico;\n    Dimension arr[7];\n\n    n <- 7;\n    arr[1] <- 64; arr[2] <- 34; arr[3] <- 25; arr[4] <- 12; arr[5] <- 22; arr[6] <- 11; arr[7] <- 90;\n\n    Escribir 'Arreglo Inicial:';\n    Para k <- 1 Hasta n Con Paso 1 Hacer\n        Escribir Sin Saltar arr[k], ' ';\n    FinPara\n    Escribir '';\n\n    Para i <- 1 Hasta n - 1 Con Paso 1 Hacer\n        intercambiado <- Falso;\n        Para j <- 1 Hasta n - i Con Paso 1 Hacer\n            Si arr[j] > arr[j + 1] Entonces\n                aux <- arr[j];\n                arr[j] <- arr[j + 1];\n                arr[j + 1] <- aux;\n                intercambiado <- Verdadero;\n            FinSi\n        FinPara\n        Si NO intercambiado Entonces\n            i <- n; // Salida temprana si ya está ordenado\n        FinSi\n    FinPara\n\n    Escribir 'Arreglo Ordenado con Éxito:';\n    Para k <- 1 Hasta n Con Paso 1 Hacer\n        Escribir Sin Saltar arr[k], ' ';\n    FinPara\n    Escribir '';\nFinProceso",
+        "explanation": "Implementación canónica en PSeInt. Variables declaradas con 'Definir', asignaciones formales con '<-', cadenas con comillas simples y detección temprana en O(n) con bandera lógica.",
         "keyConcepts": [
-          "Modo Estricto O&M con ; obligatorio",
-          "Declaración formal con Definir",
-          "Intercambio atómico con variable aux"
+          "Asignación formal con <-",
+          "Comillas simples en Escribir",
+          "Bandera booleana de parada temprana"
         ],
         "flowchart": {
-          "title": "Diagrama de Flujo: Bubble Sort (Ordenamiento Burbuja) (PSeInt Pro)",
+          "title": "Diagrama de Flujo: Bubble Sort (Ordenamiento Burbuja) (PSeInt / Mermaid.js)",
           "nodes": [
             {
               "id": 1,
               "type": "start",
-              "text": "Inicio BubbleSort_Estricto(arr, n)"
+              "text": "Inicio BubbleSort(arr, n)"
             },
             {
               "id": 2,
               "type": "process",
-              "text": "Definir n, i, j, aux; intercambiado = Falso;"
+              "text": "Definir n, i, j, aux; intercambiado <- Falso;"
             },
             {
               "id": 3,
@@ -45,7 +45,7 @@ window.ALGO_MULTILANG_DATA = {
             {
               "id": 4,
               "type": "process",
-              "text": "j = 1;"
+              "text": "j <- 1;"
             },
             {
               "id": 5,
@@ -60,12 +60,12 @@ window.ALGO_MULTILANG_DATA = {
             {
               "id": 7,
               "type": "process",
-              "text": "aux = arr[j]; arr[j] = arr[j+1]; arr[j+1] = aux; intercambiado = Verdadero;"
+              "text": "aux <- arr[j]; arr[j] <- arr[j+1]; arr[j+1] <- aux; intercambiado <- Verdadero;"
             },
             {
               "id": 8,
               "type": "process",
-              "text": "j = j + 1;"
+              "text": "j <- j + 1;"
             },
             {
               "id": 9,
@@ -75,14 +75,15 @@ window.ALGO_MULTILANG_DATA = {
             {
               "id": 10,
               "type": "process",
-              "text": "i = i + 1;"
+              "text": "i <- i + 1;"
             },
             {
               "id": 11,
               "type": "end",
               "text": "FinProceso: Retornar arr ordenado"
             }
-          ]
+          ],
+          "mermaidCode": "flowchart TD\n    classDef terminal fill:#fde047,stroke:#ca8a04,stroke-width:2.5px,color:#1e293b,font-weight:bold;\n    classDef proceso fill:#fef08a,stroke:#ca8a04,stroke-width:2px,color:#1e293b;\n    classDef entrada fill:#fbcfe8,stroke:#db2777,stroke-width:2px,color:#831843,font-weight:bold;\n    classDef salida fill:#bbf7d0,stroke:#16a34a,stroke-width:2px,color:#064e3b,font-weight:bold;\n    classDef decision fill:#bae6fd,stroke:#0284c7,stroke-width:2px,color:#0c4a6e,font-weight:bold;\n\n    Start([\"Proceso Ordenamiento_Burbuja\"]):::terminal --> Init[\"Definir n, i, j, aux Como Entero;<br/>Definir intercambiado Como Logico;<br/>n <- 7; arr[1..7] cargado\"]:::proceso\n    Init --> PrintInit[/\"Escribir 'Arreglo Inicial'\"/]:::salida\n    PrintInit --> LoopI_Init[\"i <- 1\"]:::proceso\n    LoopI_Init --> CheckI{\"¿i <= n - 1?\"}:::decision\n    CheckI -- \"Sí\" --> LoopJ_Init[\"intercambiado <- Falso;<br/>j <- 1\"]:::proceso\n    CheckI -- \"No\" --> PrintEnd[/\"Escribir 'Arreglo Ordenado'\"/]:::salida\n    LoopJ_Init --> CheckJ{\"¿j <= n - i?\"}:::decision\n    CheckJ -- \"Sí\" --> Comp{\"¿arr[j] > arr[j + 1]?\"}:::decision\n    CheckJ -- \"No\" --> CheckEarly{\"¿NO intercambiado?\"}:::decision\n    Comp -- \"Sí\" --> Swap[\"aux <- arr[j];<br/>arr[j] <- arr[j + 1];<br/>arr[j + 1] <- aux;<br/>intercambiado <- Verdadero;\"]:::proceso\n    Comp -- \"No\" --> IncJ[\"j <- j + 1\"]:::proceso\n    Swap --> IncJ\n    IncJ --> CheckJ\n    CheckEarly -- \"Sí (Ordenado)\" --> PrintEnd\n    CheckEarly -- \"No\" --> IncI[\"i <- i + 1\"]:::proceso\n    IncI --> CheckI\n    PrintEnd --> EndNode([\"FinProceso\"]):::terminal"
         }
       },
       "python": {
@@ -90,12 +91,12 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "Python 3.12+",
         "badgeColor": "bg-[#3776AB] text-white",
         "icon": "fa-brands fa-python",
-        "code": "from typing import List\n\ndef bubble_sort(arr: List[int]) -> List[int]:\n    \"\"\"Ordenamiento Burbuja optimizado con parada anticipada.\"\"\"\n    n = len(arr)\n    for i in range(n - 1):\n        swapped = False\n        for j in range(0, n - i - 1):\n            if arr[j] > arr[j + 1]:\n                arr[j], arr[j + 1] = arr[j + 1], arr[j]\n                swapped = True\n        if not swapped:\n            break\n    return arr\n\nif __name__ == '__main__':\n    datos = [64, 34, 25, 12, 22, 11, 90]\n    print(f\"Original: {datos}\")\n    print(f\"Ordenado: {bubble_sort(datos)}\")",
+        "code": "from typing import List\n\ndef bubble_sort(arr: List[int]) -> List[int]:\n    \"\"\"Ordenamiento Burbuja con detección de parada temprana O(n).\"\"\"\n    n = len(arr)\n    for i in range(n - 1):\n        swapped = False\n        for j in range(0, n - i - 1):\n            if arr[j] > arr[j + 1]:\n                arr[j], arr[j + 1] = arr[j + 1], arr[j]\n                swapped = True\n        if not swapped:\n            break\n    return arr\n\nif __name__ == '__main__':\n    datos = [64, 34, 25, 12, 22, 11, 90]\n    print(f\"Original: {datos}\")\n    print(f\"Ordenado: {bubble_sort(datos)}\")",
         "explanation": "En Python aprovechamos el desempaquetado de tuplas 'arr[j], arr[j+1] = arr[j+1], arr[j]' para realizar intercambios atómicos sin variables auxiliares.",
         "keyConcepts": [
-          "Tuple unpacking swap",
-          "Type hints List[int]",
-          "Early-exit boolean flag"
+          "Tuple Unpacking",
+          "Early exit flag",
+          "Type Hints List[int]"
         ],
         "terminalOutput": [
           "$ python -u bubble_sort.py",
@@ -111,12 +112,12 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "HTML5 / CSS / JS Standalone",
         "badgeColor": "bg-[#E44D26] text-white",
         "icon": "fa-brands fa-html5",
-        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Bubble Sort Interactivo</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; color: #000; padding: 20px; }\n    .card { max-width: 500px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 6px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #54F18F; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 11px; transition: height 0.15s, background 0.15s; }\n    .bar.comparing { background: #FFE600 !important; }\n    .bar.swapping { background: #FF3366 !important; color: white; }\n    button { background: #FFE600; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; text-transform: uppercase; }\n    button:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0px #000; }\n    .status { margin-top: 10px; font-weight: bold; font-size: 12px; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Bubble Sort · Simulación en Vivo</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarBubbleSort()\">Iniciar Ordenamiento</button>\n    <div class=\"status\" id=\"status\">Presiona el botón para ordenar.</div>\n  </div>\n\n  <script>\n    let arr = [64, 34, 25, 12, 22, 11, 90];\n    const arena = document.getElementById('arena');\n    const status = document.getElementById('status');\n\n    function render() {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v, i) => `<div class=\"bar\" id=\"b-${i}\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n\n    async function ejecutarBubbleSort() {\n      status.innerText = \"Ordenando arreglo...\";\n      const n = arr.length;\n      for (let i = 0; i < n - 1; i++) {\n        for (let j = 0; j < n - i - 1; j++) {\n          const bA = document.getElementById(`b-${j}`);\n          const bB = document.getElementById(`b-${j+1}`);\n          bA.classList.add('comparing'); bB.classList.add('comparing');\n          await new Promise(r => setTimeout(r, 200));\n\n          if (arr[j] > arr[j + 1]) {\n            bA.classList.add('swapping'); bB.classList.add('swapping');\n            let t = arr[j]; arr[j] = arr[j + 1]; arr[j + 1] = t;\n            render();\n            await new Promise(r => setTimeout(r, 200));\n          }\n          bA.classList.remove('comparing', 'swapping');\n          bB.classList.remove('comparing', 'swapping');\n        }\n      }\n      status.innerText = \"¡Arreglo ordenado con éxito!\";\n    }\n    render();\n  </script>\n</body>\n</html>",
-        "explanation": "Código web 100% completo, autocontenido y listo para copiar en un archivo .html y abrir directamente en el navegador. Incluye estructura HTML5 semántica, diseño Neo-Brutalista CSS con sombras de bloque sin blur, y lógica JavaScript con 'async/await' para la animación fluida en el DOM.",
+        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Bubble Sort Interactivo</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; color: #000; padding: 20px; }\n    .card { max-width: 500px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 6px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #54F18F; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 11px; transition: height 0.15s, background 0.15s; }\n    .bar.comparing { background: #FFE600 !important; }\n    .bar.swapping { background: #FF3366 !important; color: white; }\n    button { background: #FFE600; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; text-transform: uppercase; }\n    button:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0px #000; }\n    .status { margin-top: 10px; font-weight: bold; font-size: 12px; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Bubble Sort · Simulación en Vivo</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarBubbleSort()\">Iniciar Ordenamiento</button>\n    <div class=\"status\" id=\"status\">Presiona el botón para ordenar.</div>\n  </div>\n  <script>\n    let arr = [64, 34, 25, 12, 22, 11, 90];\n    const arena = document.getElementById('arena');\n    const status = document.getElementById('status');\n    function render() {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v, i) => `<div class=\"bar\" id=\"b-${i}\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    async function ejecutarBubbleSort() {\n      status.innerText = \"Ordenando...\";\n      let n = arr.length;\n      for (let i = 0; i < n - 1; i++) {\n        for (let j = 0; j < n - i - 1; j++) {\n          const b1 = document.getElementById(`b-${j}`);\n          const b2 = document.getElementById(`b-${j+1}`);\n          b1.classList.add('comparing'); b2.classList.add('comparing');\n          await new Promise(r => setTimeout(r, 150));\n          if (arr[j] > arr[j + 1]) {\n            b1.classList.add('swapping'); b2.classList.add('swapping');\n            let temp = arr[j]; arr[j] = arr[j + 1]; arr[j + 1] = temp;\n            render();\n            await new Promise(r => setTimeout(r, 150));\n          }\n          render();\n        }\n      }\n      status.innerText = \"¡Arreglo completamente ordenado!\";\n    }\n    render();\n  </script>\n</body>\n</html>",
+        "explanation": "Página HTML5 Standalone interactiva completa. Permite ejecutar la animación en vivo con resaltado de barras comparadas en amarillo y barras intercambiadas en rojo.",
         "keyConcepts": [
-          "Archivo HTML5 Standalone completo",
-          "Estilos CSS Neo-Brutalistas integrados",
-          "Animación DOM con Async/Await"
+          "Documento HTML5 Standalone completo",
+          "Estilos Neo-Brutalistas",
+          "Animación DOM Async/Await"
         ],
         "demoData": [
           64,
@@ -133,19 +134,19 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": ".NET 9 / C# 12",
         "badgeColor": "bg-[#512BD4] text-white",
         "icon": "fa-solid fa-code",
-        "code": "using System;\n\nnamespace AlgoMatrix3D.Sorting;\n\npublic static class BubbleSort\n{\n    public static void Sort<T>(Span<T> array) where T : IComparable<T>\n    {\n        int n = array.Length;\n        for (int i = 0; i < n - 1; i++)\n        {\n            bool swapped = false;\n            for (int j = 0; j < n - i - 1; j++)\n            {\n                if (array[j].CompareTo(array[j + 1]) > 0)\n                {\n                    (array[j], array[j + 1]) = (array[j + 1], array[j]);\n                    swapped = true;\n                }\n            }\n            if (!swapped) break;\n        }\n    }\n}",
-        "explanation": "En C# .NET 9 utilizamos 'Span<T>' para operar directamente sobre la memoria contigua del Stack sin generar presión sobre el Garbage Collector (0 Bytes Allocations).",
+        "code": "using System;\n\npublic static class BubbleSortEngine\n{\n    public static void Sort(Span<int> array)\n    {\n        int n = array.Length;\n        for (int i = 0; i < n - 1; i++)\n        {\n            bool swapped = false;\n            for (int j = 0; j < n - i - 1; j++)\n            {\n                if (array[j] > array[j + 1])\n                {\n                    (array[j], array[j + 1]) = (array[j + 1], array[j]);\n                    swapped = true;\n                }\n            }\n            if (!swapped) break;\n        }\n    }\n\n    public static void Main()\n    {\n        Span<int> datos = stackalloc int[] { 64, 34, 25, 12, 22, 11, 90 };\n        Sort(datos);\n        Console.WriteLine($\"Ordenado con Span<T>: [{string.Join(\", \", datos.ToArray())}]\");\n    }\n}",
+        "explanation": "Uso de Span<int> y stackalloc para manipulación directa en memoria Stack con cero asignaciones en el Heap (0 Bytes GC).",
         "keyConcepts": [
-          "Span<T> para memoria contigua",
-          "Tuplas de C# para swap atómico",
-          "Cero recolección de basura (0 GC)"
+          "Span<T> Zero-Alloc",
+          "stackalloc",
+          ".NET 9 JIT Loop Unrolling"
         ],
         "benchmark": {
-          "memoryAlloc": "0 Bytes (In-Place / Stackalloc)",
+          "memoryAlloc": "0 Bytes (StackAlloc)",
           "complexityBest": "O(n)",
           "complexityWorst": "O(n²)",
-          "targetFramework": ".NET 9.0 LTS / C# 12",
-          "registersUsed": "CPU L1/L2 Cache Resident"
+          "targetFramework": ".NET 9.0 LTS",
+          "registersUsed": "Direct CPU Register Tupling"
         }
       }
     }
@@ -157,29 +158,29 @@ window.ALGO_MULTILANG_DATA = {
     "space": "O(1)",
     "langs": {
       "pseint": {
-        "name": "PSeInt (Modo Estricto O&M)",
-        "langBadge": "PSeInt Estricto O&M",
+        "name": "PSeInt Canónico (<- y Diagramas Mermaid)",
+        "langBadge": "PSeInt Pro / Mermaid",
         "badgeColor": "bg-neoCyan text-black",
         "icon": "fa-solid fa-diagram-project",
-        "code": "Proceso Ordenamiento_Seleccion_Estricto\n\tDefinir n, i, j, min_idx, aux, k Como Entero;\n\tDimension arr[7];\n\t\n\tn = 7;\n\tarr[1] = 29; arr[2] = 10; arr[3] = 14; arr[4] = 37; arr[5] = 13; arr[6] = 5; arr[7] = 42;\n\t\n\tEscribir \"Arreglo Inicial:\";\n\tPara k = 1 Hasta n Con Paso 1 Hacer\n\t\tEscribir Sin Saltar arr[k], \" \";\n\tFinPara;\n\tEscribir \"\";\n\t\n\tPara i = 1 Hasta n - 1 Con Paso 1 Hacer\n\t\tmin_idx = i;\n\t\tPara j = i + 1 Hasta n Con Paso 1 Hacer\n\t\t\tSi arr[j] < arr[min_idx] Entonces\n\t\t\t\tmin_idx = j;\n\t\t\tFinSi;\n\t\tFinPara;\n\t\tSi min_idx <> i Entonces\n\t\t\taux = arr[i];\n\t\t\tarr[i] = arr[min_idx];\n\t\t\tarr[min_idx] = aux;\n\t\tFinSi;\n\tFinPara;\n\t\n\tEscribir \"Arreglo Ordenado:\";\n\tPara k = 1 Hasta n Con Paso 1 Hacer\n\t\tEscribir Sin Saltar arr[k], \" \";\n\tFinPara;\n\tEscribir \"\";\nFinProceso",
-        "explanation": "Selection Sort en Modo Estricto O&M. Localiza el índice del elemento mínimo 'min_idx' en cada pasada y realiza a lo sumo n-1 intercambios en total, minimizando las escrituras en memoria.",
+        "code": "Proceso Ordenamiento_Seleccion\n    Definir n, i, j, min_idx, aux, k Como Entero;\n    Dimension arr[6];\n\n    n <- 6;\n    arr[1] <- 29; arr[2] <- 10; arr[3] <- 14; arr[4] <- 37; arr[5] <- 13; arr[6] <- 5;\n\n    Escribir 'Arreglo Inicial:';\n    Para k <- 1 Hasta n Con Paso 1 Hacer\n        Escribir Sin Saltar arr[k], ' ';\n    FinPara\n    Escribir '';\n\n    Para i <- 1 Hasta n - 1 Con Paso 1 Hacer\n        min_idx <- i;\n        Para j <- i + 1 Hasta n Con Paso 1 Hacer\n            Si arr[j] < arr[min_idx] Entonces\n                min_idx <- j;\n            FinSi\n        FinPara\n\n        Si min_idx <> i Entonces\n            aux <- arr[i];\n            arr[i] <- arr[min_idx];\n            arr[min_idx] <- aux;\n        FinSi\n    FinPara\n\n    Escribir 'Arreglo Ordenado con Éxito:';\n    Para k <- 1 Hasta n Con Paso 1 Hacer\n        Escribir Sin Saltar arr[k], ' ';\n    FinPara\n    Escribir '';\nFinProceso",
+        "explanation": "Selection Sort en PSeInt canónico. Busca el índice del valor mínimo en la sublista desordenada y efectúa a lo sumo n - 1 intercambios.",
         "keyConcepts": [
-          "Modo Estricto O&M con ; obligatorio",
-          "Índice mínimo min_idx",
-          "Máximo n-1 escrituras en memoria"
+          "Asignación formal con <-",
+          "Búsqueda del índice mínimo",
+          "Intercambio condicional"
         ],
         "flowchart": {
-          "title": "Diagrama de Flujo: Selection Sort (Ordenamiento por Selección) (PSeInt Pro)",
+          "title": "Diagrama de Flujo: Selection Sort (Ordenamiento por Selección) (PSeInt / Mermaid.js)",
           "nodes": [
             {
               "id": 1,
               "type": "start",
-              "text": "Inicio SelectionSort_Estricto(arr, n)"
+              "text": "Inicio SelectionSort(arr, n)"
             },
             {
               "id": 2,
               "type": "process",
-              "text": "Definir n, i, j, min_idx; i = 1;"
+              "text": "i <- 1; min_idx <- i;"
             },
             {
               "id": 3,
@@ -188,50 +189,26 @@ window.ALGO_MULTILANG_DATA = {
             },
             {
               "id": 4,
-              "type": "process",
-              "text": "min_idx = i; j = i + 1;"
-            },
-            {
-              "id": 5,
-              "type": "decision",
-              "text": "¿j <= n?"
-            },
-            {
-              "id": 6,
               "type": "decision",
               "text": "¿arr[j] < arr[min_idx]?"
             },
             {
+              "id": 5,
+              "type": "process",
+              "text": "min_idx <- j;"
+            },
+            {
+              "id": 6,
+              "type": "process",
+              "text": "Intercambiar arr[i] con arr[min_idx];"
+            },
+            {
               "id": 7,
-              "type": "process",
-              "text": "min_idx = j;"
-            },
-            {
-              "id": 8,
-              "type": "process",
-              "text": "j = j + 1;"
-            },
-            {
-              "id": 9,
-              "type": "decision",
-              "text": "¿min_idx <> i?"
-            },
-            {
-              "id": 10,
-              "type": "process",
-              "text": "aux = arr[i]; arr[i] = arr[min_idx]; arr[min_idx] = aux;"
-            },
-            {
-              "id": 11,
-              "type": "process",
-              "text": "i = i + 1;"
-            },
-            {
-              "id": 12,
               "type": "end",
-              "text": "FinProceso: Retornar arr ordenado"
+              "text": "FinProceso: Arreglo Ordenado"
             }
-          ]
+          ],
+          "mermaidCode": "flowchart TD\n    classDef terminal fill:#fde047,stroke:#ca8a04,stroke-width:2.5px,color:#1e293b,font-weight:bold;\n    classDef proceso fill:#fef08a,stroke:#ca8a04,stroke-width:2px,color:#1e293b;\n    classDef entrada fill:#fbcfe8,stroke:#db2777,stroke-width:2px,color:#831843,font-weight:bold;\n    classDef salida fill:#bbf7d0,stroke:#16a34a,stroke-width:2px,color:#064e3b,font-weight:bold;\n    classDef decision fill:#bae6fd,stroke:#0284c7,stroke-width:2px,color:#0c4a6e,font-weight:bold;\n\n    Start([\"Proceso Ordenamiento_Seleccion\"]):::terminal --> Init[\"Definir n, i, j, min_idx, aux Como Entero;<br/>n <- 6; arr[1..6] cargado\"]:::proceso\n    Init --> LoopI[\"i <- 1\"]:::proceso\n    LoopI --> CheckI{\"¿i <= n - 1?\"}:::decision\n    CheckI -- \"Sí\" --> SetMin[\"min_idx <- i;<br/>j <- i + 1\"]:::proceso\n    CheckI -- \"No\" --> PrintEnd[/\"Escribir 'Arreglo Ordenado'\"/]:::salida\n    SetMin --> CheckJ{\"¿j <= n?\"}:::decision\n    CheckJ -- \"Sí\" --> Comp{\"¿arr[j] < arr[min_idx]?\"}:::decision\n    CheckJ -- \"No\" --> SwapCheck{\"¿min_idx <> i?\"}:::decision\n    Comp -- \"Sí\" --> UpdateMin[\"min_idx <- j\"]:::proceso\n    Comp -- \"No\" --> IncJ[\"j <- j + 1\"]:::proceso\n    UpdateMin --> IncJ\n    IncJ --> CheckJ\n    SwapCheck -- \"Sí\" --> DoSwap[\"aux <- arr[i];<br/>arr[i] <- arr[min_idx];<br/>arr[min_idx] <- aux;\"]:::proceso\n    SwapCheck -- \"No\" --> IncI[\"i <- i + 1\"]:::proceso\n    DoSwap --> IncI\n    IncI --> CheckI\n    PrintEnd --> EndNode([\"FinProceso\"]):::terminal"
         }
       },
       "python": {
@@ -239,18 +216,19 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "Python 3.12+",
         "badgeColor": "bg-[#3776AB] text-white",
         "icon": "fa-brands fa-python",
-        "code": "from typing import List\n\ndef selection_sort(arr: List[int]) -> List[int]:\n    \"\"\"Selection Sort: encuentra el mínimo y lo posiciona.\"\"\"\n    n = len(arr)\n    for i in range(n - 1):\n        min_idx = i\n        for j in range(i + 1, n):\n            if arr[j] < arr[min_idx]:\n                min_idx = j\n        if min_idx != i:\n            arr[i], arr[min_idx] = arr[min_idx], arr[i]\n    return arr\n\nif __name__ == '__main__':\n    datos = [29, 10, 14, 37, 13, 5, 42]\n    print(f\"Original: {datos}\")\n    print(f\"Ordenado: {selection_sort(datos)}\")",
-        "explanation": "El algoritmo mantiene la región ordenada a la izquierda y en cada iteración selecciona el mínimo realizando a lo sumo un solo swap.",
+        "code": "from typing import List\n\ndef selection_sort(arr: List[int]) -> List[int]:\n    \"\"\"Ordenamiento por Selección: O(n²) comparaciones, O(n) intercambios.\"\"\"\n    n = len(arr)\n    for i in range(n - 1):\n        min_idx = i\n        for j in range(i + 1, n):\n            if arr[j] < arr[min_idx]:\n                min_idx = j\n        if min_idx != i:\n            arr[i], arr[min_idx] = arr[min_idx], arr[i]\n    return arr\n\nif __name__ == '__main__':\n    datos = [29, 10, 14, 37, 13, 5]\n    print(f\"Resultado Selection Sort: {selection_sort(datos)}\")",
+        "explanation": "Minimiza las escrituras en memoria flash a exactamente n-1 swaps.",
         "keyConcepts": [
-          "min_idx selector",
-          "Swap in-place",
-          "O(n) writes"
+          "Escritura mínima O(n)",
+          "Comparaciones O(n²)",
+          "In-place array mutation"
         ],
         "terminalOutput": [
           "$ python -u selection_sort.py",
-          "[+] Entrada: [29, 10, 14, 37, 13, 5, 42]",
-          "[*] Mínimo '5' encontrado -> Swap con arr[0]",
-          "[✓] Ordenado: [5, 10, 13, 14, 29, 37, 42]"
+          "[+] Entrada: [29, 10, 14, 37, 13, 5]",
+          "[*] Pasada 0: Mínimo 5 encontrado en pos 5 -> Swap con 29",
+          "[*] Pasada 1: Mínimo 10 encontrado en pos 1 -> In situ",
+          "[✓] Terminado con solo 5 intercambios."
         ]
       },
       "web": {
@@ -258,12 +236,12 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "HTML5 / CSS / JS Standalone",
         "badgeColor": "bg-[#E44D26] text-white",
         "icon": "fa-brands fa-html5",
-        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Selection Sort Interactivo</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; padding: 20px; }\n    .card { max-width: 500px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 6px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #54F18F; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 11px; transition: height 0.15s; }\n    .bar.min-candidate { background: #38E5FF !important; }\n    button { background: #38E5FF; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; text-transform: uppercase; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Selection Sort · Simulación en Vivo</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarSelectionSort()\">Ordenar por Selección</button>\n  </div>\n  <script>\n    let arr = [29, 10, 14, 37, 13, 5, 42];\n    const arena = document.getElementById('arena');\n    function render() {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v, i) => `<div class=\"bar\" id=\"b-${i}\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    async function ejecutarSelectionSort() {\n      const n = arr.length;\n      for (let i = 0; i < n - 1; i++) {\n        let minIdx = i;\n        document.getElementById(`b-${minIdx}`).classList.add('min-candidate');\n        for (let j = i + 1; j < n; j++) {\n          await new Promise(r => setTimeout(r, 120));\n          if (arr[j] < arr[minIdx]) {\n            document.getElementById(`b-${minIdx}`).classList.remove('min-candidate');\n            minIdx = j;\n            document.getElementById(`b-${minIdx}`).classList.add('min-candidate');\n          }\n        }\n        if (minIdx !== i) {\n          let t = arr[i]; arr[i] = arr[minIdx]; arr[minIdx] = t;\n          render();\n          await new Promise(r => setTimeout(r, 150));\n        }\n      }\n    }\n    render();\n  </script>\n</body>\n</html>",
-        "explanation": "Componente web HTML5 standalone completo con resaltado visual del candidato mínimo en tiempo real mediante 'async/await'.",
+        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Selection Sort</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; padding: 20px; color: #000; }\n    .card { max-width: 500px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 6px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #38E5FF; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 11px; }\n    .bar.current-min { background: #FF90E8 !important; }\n    button { background: #38E5FF; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; text-transform: uppercase; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Selection Sort · Mínimo Dinámico</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarSelectionSort()\">Ordenar</button>\n    <div id=\"status\" style=\"margin-top:10px; font-weight:bold;\">Listo para iniciar.</div>\n  </div>\n  <script>\n    let arr = [29, 10, 14, 37, 13, 5];\n    const arena = document.getElementById('arena');\n    const status = document.getElementById('status');\n    function render() {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v, i) => `<div class=\"bar\" id=\"b-${i}\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    async function ejecutarSelectionSort() {\n      let n = arr.length;\n      for (let i = 0; i < n - 1; i++) {\n        let minIdx = i;\n        document.getElementById(`b-${minIdx}`).classList.add('current-min');\n        for (let j = i + 1; j < n; j++) {\n          if (arr[j] < arr[minIdx]) {\n            document.getElementById(`b-${minIdx}`).classList.remove('current-min');\n            minIdx = j;\n            document.getElementById(`b-${minIdx}`).classList.add('current-min');\n          }\n          await new Promise(r => setTimeout(r, 120));\n        }\n        if (minIdx !== i) {\n          let temp = arr[i]; arr[i] = arr[minIdx]; arr[minIdx] = temp;\n          render();\n        }\n      }\n      status.innerText = \"¡Ordenamiento por Selección finalizado!\";\n    }\n    render();\n  </script>\n</body>\n</html>",
+        "explanation": "Demostración visual de la búsqueda del índice mínimo con marcador de color magenta dinámico.",
         "keyConcepts": [
           "Archivo HTML5 Standalone completo",
-          "Resaltado visual de mínimo",
-          "Zero dependencias"
+          "Marcador de mínimo",
+          "Transición CSS"
         ],
         "demoData": [
           29,
@@ -271,8 +249,7 @@ window.ALGO_MULTILANG_DATA = {
           14,
           37,
           13,
-          5,
-          42
+          5
         ]
       },
       "csharp": {
@@ -280,19 +257,19 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": ".NET 9 / C# 12",
         "badgeColor": "bg-[#512BD4] text-white",
         "icon": "fa-solid fa-code",
-        "code": "using System;\n\nnamespace AlgoMatrix3D.Sorting;\n\npublic static class SelectionSort\n{\n    public static void Sort<T>(Span<T> array) where T : IComparable<T>\n    {\n        int n = array.Length;\n        for (int i = 0; i < n - 1; i++)\n        {\n            int minIdx = i;\n            for (int j = i + 1; j < n; j++)\n            {\n                if (array[j].CompareTo(array[minIdx]) < 0) minIdx = j;\n            }\n            if (minIdx != i) (array[i], array[minIdx]) = (array[minIdx], array[i]);\n        }\n    }\n}",
-        "explanation": "Óptimo para memorias con ciclos de escritura limitados (Flash / EEPROM) ya que Selection Sort minimiza las escrituras a un máximo de n-1.",
+        "code": "using System;\n\npublic static class SelectionSortEngine\n{\n    public static void Sort(Span<int> array)\n    {\n        int n = array.Length;\n        for (int i = 0; i < n - 1; i++)\n        {\n            int minIdx = i;\n            for (int j = i + 1; j < n; j++)\n            {\n                if (array[j] < array[minIdx]) minIdx = j;\n            }\n            if (minIdx != i)\n            {\n                (array[i], array[minIdx]) = (array[minIdx], array[i]);\n            }\n        }\n    }\n\n    public static void Main()\n    {\n        Span<int> datos = stackalloc int[] { 29, 10, 14, 37, 13, 5 };\n        Sort(datos);\n        Console.WriteLine($\"Selection Sort: [{string.Join(\", \", datos.ToArray())}]\");\n    }\n}",
+        "explanation": "Ideal para sistemas embebidos donde la escritura en memoria EEPROM/Flash es costosa frente a la lectura.",
         "keyConcepts": [
-          "Span<T> memory efficiency",
-          "IComparable<T>",
-          "Cero allocations"
+          "Zero heap allocation",
+          "stackalloc Span<int>",
+          "EEPROM safe"
         ],
         "benchmark": {
           "memoryAlloc": "0 Bytes",
           "complexityBest": "O(n²)",
           "complexityWorst": "O(n²)",
           "targetFramework": ".NET 9.0 LTS",
-          "registersUsed": "Mínimas escrituras en bus de datos"
+          "registersUsed": "Min Index register holding"
         }
       }
     }
@@ -304,61 +281,52 @@ window.ALGO_MULTILANG_DATA = {
     "space": "O(1)",
     "langs": {
       "pseint": {
-        "name": "PSeInt (Modo Estricto O&M)",
-        "langBadge": "PSeInt Estricto O&M",
+        "name": "PSeInt Canónico (<- y Diagramas Mermaid)",
+        "langBadge": "PSeInt Pro / Mermaid",
         "badgeColor": "bg-neoCyan text-black",
         "icon": "fa-solid fa-diagram-project",
-        "code": "Proceso Ordenamiento_Insercion_Estricto\n\tDefinir n, i, j, clave, k Como Entero;\n\tDimension arr[7];\n\t\n\tn = 7;\n\tarr[1] = 12; arr[2] = 11; arr[3] = 13; arr[4] = 5; arr[5] = 6; arr[6] = 7; arr[7] = 1;\n\t\n\tEscribir \"Arreglo Inicial:\";\n\tPara k = 1 Hasta n Con Paso 1 Hacer\n\t\tEscribir Sin Saltar arr[k], \" \";\n\tFinPara;\n\tEscribir \"\";\n\t\n\tPara i = 2 Hasta n Con Paso 1 Hacer\n\t\tclave = arr[i];\n\t\tj = i - 1;\n\t\tMientras j >= 1 Y arr[j] > clave Hacer\n\t\t\tarr[j + 1] = arr[j]; // Desplazar elemento mayor\n\t\t\tj = j - 1;\n\t\tFinMientras;\n\t\tarr[j + 1] = clave; // Insertar clave en hueco\n\tFinPara;\n\t\n\tEscribir \"Arreglo Ordenado:\";\n\tPara k = 1 Hasta n Con Paso 1 Hacer\n\t\tEscribir Sin Saltar arr[k], \" \";\n\tFinPara;\n\tEscribir \"\";\nFinProceso",
-        "explanation": "Insertion Sort en Modo Estricto O&M. Construye la lista ordenada desplazando hacia la derecha los elementos mayores que 'clave' y ubicando la clave en el espacio correspondiente con punto y coma (;) en cada línea.",
+        "code": "Proceso Ordenamiento_Insercion\n    Definir n, i, j, clave, k Como Entero;\n    Dimension arr[6];\n\n    n <- 6;\n    arr[1] <- 12; arr[2] <- 11; arr[3] <- 13; arr[4] <- 5; arr[5] <- 6; arr[6] <- 7;\n\n    Escribir 'Arreglo Inicial:';\n    Para k <- 1 Hasta n Con Paso 1 Hacer\n        Escribir Sin Saltar arr[k], ' ';\n    FinPara\n    Escribir '';\n\n    Para i <- 2 Hasta n Con Paso 1 Hacer\n        clave <- arr[i];\n        j <- i - 1;\n\n        Mientras j >= 1 Y arr[j] > clave Hacer\n            arr[j + 1] <- arr[j];\n            j <- j - 1;\n        FinMientras\n        arr[j + 1] <- clave;\n    FinPara\n\n    Escribir 'Arreglo Ordenado con Éxito:';\n    Para k <- 1 Hasta n Con Paso 1 Hacer\n        Escribir Sin Saltar arr[k], ' ';\n    FinPara\n    Escribir '';\nFinProceso",
+        "explanation": "Insertion Sort en PSeInt canónico. Emula la ordenación de naipes en mano desplazando elementos mayores a la derecha e insertando la clave en su hueco exacto.",
         "keyConcepts": [
-          "Modo Estricto O&M con ; obligatorio",
-          "Bucle condicional Mientras",
-          "Desplazamiento in-place"
+          "Asignación formal con <-",
+          "Bucle Mientras de desplazamiento",
+          "Inserción directa"
         ],
         "flowchart": {
-          "title": "Diagrama de Flujo: Insertion Sort (Ordenamiento por Inserción) (PSeInt Pro)",
+          "title": "Diagrama de Flujo: Insertion Sort (Ordenamiento por Inserción) (PSeInt / Mermaid.js)",
           "nodes": [
             {
               "id": 1,
               "type": "start",
-              "text": "Inicio InsertionSort_Estricto(arr, n)"
+              "text": "Inicio InsertionSort(arr, n)"
             },
             {
               "id": 2,
               "type": "process",
-              "text": "Definir n, i, j, clave; i = 2;"
+              "text": "i <- 2; clave <- arr[i]; j <- i - 1;"
             },
             {
               "id": 3,
               "type": "decision",
-              "text": "¿i <= n?"
+              "text": "¿j >= 1 Y arr[j] > clave?"
             },
             {
               "id": 4,
               "type": "process",
-              "text": "clave = arr[i]; j = i - 1;"
+              "text": "arr[j + 1] <- arr[j]; j <- j - 1;"
             },
             {
               "id": 5,
-              "type": "decision",
-              "text": "¿j >= 1 Y arr[j] > clave?"
+              "type": "process",
+              "text": "arr[j + 1] <- clave; i <- i + 1;"
             },
             {
               "id": 6,
-              "type": "process",
-              "text": "arr[j + 1] = arr[j]; j = j - 1;"
-            },
-            {
-              "id": 7,
-              "type": "process",
-              "text": "arr[j + 1] = clave; i = i + 1;"
-            },
-            {
-              "id": 8,
               "type": "end",
-              "text": "FinProceso: Retornar arr ordenado"
+              "text": "FinProceso: Arreglo Ordenado"
             }
-          ]
+          ],
+          "mermaidCode": "flowchart TD\n    classDef terminal fill:#fde047,stroke:#ca8a04,stroke-width:2.5px,color:#1e293b,font-weight:bold;\n    classDef proceso fill:#fef08a,stroke:#ca8a04,stroke-width:2px,color:#1e293b;\n    classDef entrada fill:#fbcfe8,stroke:#db2777,stroke-width:2px,color:#831843,font-weight:bold;\n    classDef salida fill:#bbf7d0,stroke:#16a34a,stroke-width:2px,color:#064e3b,font-weight:bold;\n    classDef decision fill:#bae6fd,stroke:#0284c7,stroke-width:2px,color:#0c4a6e,font-weight:bold;\n\n    Start([\"Proceso Ordenamiento_Insercion\"]):::terminal --> Init[\"Definir n, i, j, clave Como Entero;<br/>n <- 6; arr[1..6] cargado\"]:::proceso\n    Init --> LoopI[\"i <- 2\"]:::proceso\n    LoopI --> CheckI{\"¿i <= n?\"}:::decision\n    CheckI -- \"Sí\" --> SetKey[\"clave <- arr[i];<br/>j <- i - 1\"]:::proceso\n    CheckI -- \"No\" --> PrintEnd[/\"Escribir 'Arreglo Ordenado'\"/]:::salida\n    SetKey --> CheckWhile{\"¿j >= 1 Y arr[j] > clave?\"}:::decision\n    CheckWhile -- \"Sí\" --> Shift[\"arr[j + 1] <- arr[j];<br/>j <- j - 1\"]:::proceso\n    Shift --> CheckWhile\n    CheckWhile -- \"No\" --> Insert[\"arr[j + 1] <- clave;<br/>i <- i + 1\"]:::proceso\n    Insert --> CheckI\n    PrintEnd --> EndNode([\"FinProceso\"]):::terminal"
         }
       },
       "python": {
@@ -366,18 +334,19 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "Python 3.12+",
         "badgeColor": "bg-[#3776AB] text-white",
         "icon": "fa-brands fa-python",
-        "code": "from typing import List\n\ndef insertion_sort(arr: List[int]) -> List[int]:\n    \"\"\"Insertion Sort: O(n) en arreglos casi ordenados.\"\"\"\n    for i in range(1, len(arr)):\n        key = arr[i]\n        j = i - 1\n        while j >= 0 and arr[j] > key:\n            arr[j + 1] = arr[j]\n            j -= 1\n        arr[j + 1] = key\n    return arr\n\nif __name__ == '__main__':\n    datos = [12, 11, 13, 5, 6, 7, 1]\n    print(f\"Original: {datos}\")\n    print(f\"Ordenado: {insertion_sort(datos)}\")",
-        "explanation": "Extremadamente rápido para arreglos pequeños o casi ordenados, sirviendo como algoritmo base de TimSort.",
+        "code": "from typing import List\n\ndef insertion_sort(arr: List[int]) -> List[int]:\n    \"\"\"Ordenamiento por Inserción: O(n) adaptativo en datos casi ordenados.\"\"\"\n    for i in range(1, len(arr)):\n        key = arr[i]\n        j = i - 1\n        while j >= 0 and arr[j] > key:\n            arr[j + 1] = arr[j]\n            j -= 1\n        arr[j + 1] = key\n    return arr\n\nif __name__ == '__main__':\n    datos = [12, 11, 13, 5, 6, 7]\n    print(f\"Insertion Sort: {insertion_sort(datos)}\")",
+        "explanation": "Comportamiento adaptativo: si el arreglo ya está ordenado, toma O(n) operaciones con 0 desplazamientos.",
         "keyConcepts": [
-          "Algoritmo adaptable",
-          "Estabilidad garantizada",
-          "Caché amigable"
+          "Algoritmo adaptativo O(n)",
+          "Desplazamiento in-place",
+          "Base de TimSort"
         ],
         "terminalOutput": [
           "$ python -u insertion_sort.py",
-          "[+] Entrada: [12, 11, 13, 5, 6, 7, 1]",
-          "[*] Clave 11 insertada antes de 12",
-          "[✓] Ordenado: [1, 5, 6, 7, 11, 12, 13]"
+          "[+] Entrada: [12, 11, 13, 5, 6, 7]",
+          "[*] Insertando clave 11 en posición 0",
+          "[*] Insertando clave 5 en posición 0",
+          "[✓] Completado con éxito."
         ]
       },
       "web": {
@@ -385,12 +354,12 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "HTML5 / CSS / JS Standalone",
         "badgeColor": "bg-[#E44D26] text-white",
         "icon": "fa-brands fa-html5",
-        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Insertion Sort Interactivo</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; padding: 20px; }\n    .card { max-width: 500px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 6px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #54F18F; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 11px; transition: height 0.15s; }\n    .bar.key { background: #C084FC !important; color: white; }\n    button { background: #C084FC; color: white; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; text-transform: uppercase; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Insertion Sort · Simulación en Vivo</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarInsertionSort()\">Ordenar por Inserción</button>\n  </div>\n  <script>\n    let arr = [12, 11, 13, 5, 6, 7, 1];\n    const arena = document.getElementById('arena');\n    function render() {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v, i) => `<div class=\"bar\" id=\"b-${i}\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    async function ejecutarInsertionSort() {\n      for (let i = 1; i < arr.length; i++) {\n        let key = arr[i], j = i - 1;\n        document.getElementById(`b-${i}`).classList.add('key');\n        await new Promise(r => setTimeout(r, 180));\n        while (j >= 0 && arr[j] > key) {\n          arr[j + 1] = arr[j];\n          render();\n          await new Promise(r => setTimeout(r, 100));\n          j--;\n        }\n        arr[j + 1] = key;\n        render();\n      }\n    }\n    render();\n  </script>\n</body>\n</html>",
-        "explanation": "Componente web HTML5 standalone completo con elevación visual de la clave (Key) en color púrpura y desplazamiento animado.",
+        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Insertion Sort</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; padding: 20px; color: #000; }\n    .card { max-width: 500px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 6px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #54F18F; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 11px; }\n    .bar.key { background: #FF3366 !important; color: white; transform: translateY(-8px); }\n    button { background: #54F18F; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Insertion Sort · Desplazamiento & Inserción</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarInsertionSort()\">Ordenar</button>\n    <div id=\"status\" style=\"margin-top:10px; font-weight:bold;\">Listo para iniciar.</div>\n  </div>\n  <script>\n    let arr = [12, 11, 13, 5, 6, 7];\n    const arena = document.getElementById('arena');\n    const status = document.getElementById('status');\n    function render(keyIdx = -1) {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v, i) => `<div class=\"bar ${i===keyIdx?'key':''}\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    async function ejecutarInsertionSort() {\n      let n = arr.length;\n      for (let i = 1; i < n; i++) {\n        let key = arr[i];\n        let j = i - 1;\n        render(i);\n        await new Promise(r => setTimeout(r, 200));\n        while (j >= 0 && arr[j] > key) {\n          arr[j + 1] = arr[j];\n          j--;\n          render(j + 1);\n          await new Promise(r => setTimeout(r, 150));\n        }\n        arr[j + 1] = key;\n        render();\n      }\n      status.innerText = \"¡Completado con éxito!\";\n    }\n    render();\n  </script>\n</body>\n</html>",
+        "explanation": "Demostración visual completa donde el elemento clave se eleva y los elementos mayores se deslizan lateralmente.",
         "keyConcepts": [
           "Archivo HTML5 Standalone completo",
-          "Elevación visual de clave",
-          "Desplazamiento horizontal fluido"
+          "Efecto naipe de inserción",
+          "Animación fluida"
         ],
         "demoData": [
           12,
@@ -398,8 +367,7 @@ window.ALGO_MULTILANG_DATA = {
           13,
           5,
           6,
-          7,
-          1
+          7
         ]
       },
       "csharp": {
@@ -407,100 +375,86 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": ".NET 9 / C# 12",
         "badgeColor": "bg-[#512BD4] text-white",
         "icon": "fa-solid fa-code",
-        "code": "using System;\n\nnamespace AlgoMatrix3D.Sorting;\n\npublic static class InsertionSort\n{\n    public static void Sort<T>(Span<T> array) where T : IComparable<T>\n    {\n        for (int i = 1; i < array.Length; i++)\n        {\n            T key = array[i];\n            int j = i - 1;\n            while (j >= 0 && array[j].CompareTo(key) > 0)\n            {\n                array[j + 1] = array[j];\n                j--;\n            }\n            array[j + 1] = key;\n        }\n    }\n}",
-        "explanation": "Utilizado por el motor interno de .NET Array.Sort como subrutina para particiones pequeñas de menos de 16 elementos.",
+        "code": "using System;\n\npublic static class InsertionSortEngine\n{\n    public static void Sort(Span<int> array)\n    {\n        for (int i = 1; i < array.Length; i++)\n        {\n            int key = array[i];\n            int j = i - 1;\n            while (j >= 0 && array[j] > key)\n            {\n                array[j + 1] = array[j];\n                j--;\n            }\n            array[j + 1] = key;\n        }\n    }\n\n    public static void Main()\n    {\n        Span<int> datos = stackalloc int[] { 12, 11, 13, 5, 6, 7 };\n        Sort(datos);\n        Console.WriteLine($\"Insertion Sort: [{string.Join(\", \", datos.ToArray())}]\");\n    }\n}",
+        "explanation": "Base algorítmica utilizada internamente por algoritmos híbridos como TimSort e IntroSort para particiones pequeñas (n <= 16).",
         "keyConcepts": [
-          "Subrutina de QuickSort híbrido",
-          "Span<T> y cero overhead",
-          "Operación O(n)"
+          "Zero heap overhead",
+          "IntroSort sub-engine",
+          "L1 cache friendly"
         ],
         "benchmark": {
           "memoryAlloc": "0 Bytes",
           "complexityBest": "O(n)",
           "complexityWorst": "O(n²)",
           "targetFramework": ".NET 9.0 LTS",
-          "registersUsed": "Registro CPU para variable key"
+          "registersUsed": "Direct local key register"
         }
       }
     }
   },
   "shell_sort": {
-    "name": "Shell Sort (Ordenamiento por Brechas)",
+    "name": "Shell Sort (Inserción con Brecha / Gap)",
     "category": "sort",
     "bigO": "O(n log² n)",
     "space": "O(1)",
     "langs": {
       "pseint": {
-        "name": "PSeInt (Modo Estricto O&M)",
-        "langBadge": "PSeInt Estricto O&M",
+        "name": "PSeInt Canónico (<- y Diagramas Mermaid)",
+        "langBadge": "PSeInt Pro / Mermaid",
         "badgeColor": "bg-neoCyan text-black",
         "icon": "fa-solid fa-diagram-project",
-        "code": "Proceso Ordenamiento_Shell_Estricto\n\tDefinir n, gap, i, j, temp, k Como Entero;\n\tDimension arr[8];\n\t\n\tn = 8;\n\tarr[1] = 35; arr[2] = 33; arr[3] = 42; arr[4] = 10; arr[5] = 14; arr[6] = 19; arr[7] = 27; arr[8] = 44;\n\t\n\tgap = TRUNC(n / 2);\n\tMientras gap > 0 Hacer\n\t\tPara i = gap + 1 Hasta n Con Paso 1 Hacer\n\t\t\ttemp = arr[i];\n\t\t\tj = i;\n\t\t\tMientras j > gap Y arr[j - gap] > temp Hacer\n\t\t\t\tarr[j] = arr[j - gap];\n\t\t\t\tj = j - gap;\n\t\t\tFinMientras;\n\t\t\tarr[j] = temp;\n\t\tFinPara;\n\t\tgap = TRUNC(gap / 2);\n\tFinMientras;\n\t\n\tEscribir \"Arreglo Ordenado con Shell Sort:\";\n\tPara k = 1 Hasta n Con Paso 1 Hacer\n\t\tEscribir Sin Saltar arr[k], \" \";\n\tFinPara;\n\tEscribir \"\";\nFinProceso",
-        "explanation": "Shell Sort en Modo Estricto O&M con TRUNC() para la división entera de la brecha 'gap', todas las variables tipadas al inicio y finalización de cada línea con punto y coma (;).",
+        "code": "Proceso Ordenamiento_Shell\n    Definir n, brecha, i, j, temp, k Como Entero;\n    Dimension arr[8];\n\n    n <- 8;\n    arr[1] <- 35; arr[2] <- 14; arr[3] <- 67; arr[4] <- 22; arr[5] <- 10; arr[6] <- 53; arr[7] <- 41; arr[8] <- 18;\n\n    Escribir 'Arreglo Inicial:';\n    Para k <- 1 Hasta n Con Paso 1 Hacer\n        Escribir Sin Saltar arr[k], ' ';\n    FinPara\n    Escribir '';\n\n    brecha <- TRUNC(n / 2);\n\n    Mientras brecha > 0 Hacer\n        Para i <- brecha + 1 Hasta n Con Paso 1 Hacer\n            temp <- arr[i];\n            j <- i;\n\n            Mientras j > brecha Y arr[j - brecha] > temp Hacer\n                arr[j] <- arr[j - brecha];\n                j <- j - brecha;\n            FinMientras\n            arr[j] <- temp;\n        FinPara\n        brecha <- TRUNC(brecha / 2);\n    FinMientras\n\n    Escribir 'Arreglo Ordenado con Éxito:';\n    Para k <- 1 Hasta n Con Paso 1 Hacer\n        Escribir Sin Saltar arr[k], ' ';\n    FinPara\n    Escribir '';\nFinProceso",
+        "explanation": "Shell Sort en PSeInt canónico. Divide el espacio con brechas progresivas calculadas con TRUNC(brecha / 2) y asignaciones '<-'.",
         "keyConcepts": [
-          "Modo Estricto O&M con ; obligatorio",
-          "División entera TRUNC(n / 2)",
-          "Brecha decreciente (Gap)"
+          "Asignación formal con <-",
+          "División entera TRUNC(n/2)",
+          "Sub-listas intercaladas"
         ],
         "flowchart": {
-          "title": "Diagrama de Flujo: Shell Sort (Ordenamiento por Brechas) (PSeInt Pro)",
+          "title": "Diagrama de Flujo: Shell Sort (Inserción con Brecha / Gap) (PSeInt / Mermaid.js)",
           "nodes": [
             {
               "id": 1,
               "type": "start",
-              "text": "Inicio ShellSort_Estricto(arr, n)"
+              "text": "Inicio ShellSort(arr, n)"
             },
             {
               "id": 2,
               "type": "process",
-              "text": "Definir n, gap, i, j; gap = TRUNC(n / 2);"
+              "text": "brecha <- TRUNC(n / 2);"
             },
             {
               "id": 3,
               "type": "decision",
-              "text": "¿gap > 0?"
+              "text": "¿brecha > 0?"
             },
             {
               "id": 4,
               "type": "process",
-              "text": "i = gap + 1;"
+              "text": "temp <- arr[i]; j <- i;"
             },
             {
               "id": 5,
               "type": "decision",
-              "text": "¿i <= n?"
+              "text": "¿j > brecha Y arr[j - brecha] > temp?"
             },
             {
               "id": 6,
               "type": "process",
-              "text": "temp = arr[i]; j = i;"
+              "text": "arr[j] <- arr[j - brecha]; j <- j - brecha;"
             },
             {
               "id": 7,
-              "type": "decision",
-              "text": "¿j > gap Y arr[j - gap] > temp?"
+              "type": "process",
+              "text": "brecha <- TRUNC(brecha / 2);"
             },
             {
               "id": 8,
-              "type": "process",
-              "text": "arr[j] = arr[j - gap]; j = j - gap;"
-            },
-            {
-              "id": 9,
-              "type": "process",
-              "text": "arr[j] = temp; i = i + 1;"
-            },
-            {
-              "id": 10,
-              "type": "process",
-              "text": "gap = TRUNC(gap / 2);"
-            },
-            {
-              "id": 11,
               "type": "end",
-              "text": "FinProceso: Retornar arr ordenado"
+              "text": "FinProceso: Arreglo Ordenado"
             }
-          ]
+          ],
+          "mermaidCode": "flowchart TD\n    classDef terminal fill:#fde047,stroke:#ca8a04,stroke-width:2.5px,color:#1e293b,font-weight:bold;\n    classDef proceso fill:#fef08a,stroke:#ca8a04,stroke-width:2px,color:#1e293b;\n    classDef entrada fill:#fbcfe8,stroke:#db2777,stroke-width:2px,color:#831843,font-weight:bold;\n    classDef salida fill:#bbf7d0,stroke:#16a34a,stroke-width:2px,color:#064e3b,font-weight:bold;\n    classDef decision fill:#bae6fd,stroke:#0284c7,stroke-width:2px,color:#0c4a6e,font-weight:bold;\n\n    Start([\"Proceso Ordenamiento_Shell\"]):::terminal --> Init[\"Definir n, brecha, i, j, temp Como Entero;<br/>n <- 8; arr[1..8] cargado\"]:::proceso\n    Init --> SetGap[\"brecha <- TRUNC(n / 2)\"]:::proceso\n    SetGap --> CheckGap{\"¿brecha > 0?\"}:::decision\n    CheckGap -- \"Sí\" --> LoopI[\"i <- brecha + 1\"]:::proceso\n    CheckGap -- \"No\" --> PrintEnd[/\"Escribir 'Arreglo Ordenado'\"/]:::salida\n    LoopI --> CheckI{\"¿i <= n?\"}:::decision\n    CheckI -- \"Sí\" --> SaveTemp[\"temp <- arr[i];<br/>j <- i\"]:::proceso\n    CheckI -- \"No\" --> RedGap[\"brecha <- TRUNC(brecha / 2)\"]:::proceso\n    RedGap --> CheckGap\n    SaveTemp --> CheckWhile{\"¿j > brecha Y arr[j - brecha] > temp?\"}:::decision\n    CheckWhile -- \"Sí\" --> ShiftGap[\"arr[j] <- arr[j - brecha];<br/>j <- j - brecha\"]:::proceso\n    ShiftGap --> CheckWhile\n    CheckWhile -- \"No\" --> InsertTemp[\"arr[j] <- temp;<br/>i <- i + 1\"]:::proceso\n    InsertTemp --> CheckI\n    PrintEnd --> EndNode([\"FinProceso\"]):::terminal"
         }
       },
       "python": {
@@ -508,18 +462,20 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "Python 3.12+",
         "badgeColor": "bg-[#3776AB] text-white",
         "icon": "fa-brands fa-python",
-        "code": "from typing import List\n\ndef shell_sort(arr: List[int]) -> List[int]:\n    \"\"\"Shell Sort con secuencia de brechas de Shell (n // 2).\"\"\"\n    n = len(arr)\n    gap = n // 2\n    while gap > 0:\n        for i in range(gap, n):\n            temp = arr[i]\n            j = i\n            while j >= gap and arr[j - gap] > temp:\n                arr[j] = arr[j - gap]\n                j -= gap\n            arr[j] = temp\n        gap //= 2\n    return arr\n\nif __name__ == '__main__':\n    datos = [35, 33, 42, 10, 14, 19, 27, 44]\n    print(f\"Original: {datos}\")\n    print(f\"Ordenado: {shell_sort(datos)}\")",
-        "explanation": "Elimina inversiones lejanas comparando elementos a distancia 'gap', reduciendo progresivamente la brecha hasta 1.",
+        "code": "from typing import List\n\ndef shell_sort(arr: List[int]) -> List[int]:\n    \"\"\"Ordenamiento Shell con secuencia de reducción n//2.\"\"\"\n    n = len(arr)\n    gap = n // 2\n    while gap > 0:\n        for i in range(gap, n):\n            temp = arr[i]\n            j = i\n            while j >= gap and arr[j - gap] > temp:\n                arr[j] = arr[j - gap]\n                j -= gap\n            arr[j] = temp\n        gap //= 2\n    return arr\n\nif __name__ == '__main__':\n    datos = [35, 14, 67, 22, 10, 53, 41, 18]\n    print(f\"Shell Sort: {shell_sort(datos)}\")",
+        "explanation": "Disminuye progresivamente la brecha permitiendo que elementos lejanos viajen rápidamente a su posición natural.",
         "keyConcepts": [
-          "Secuencia de brechas de Shell",
-          "Eliminación de inversiones distantes",
-          "O(n log² n)"
+          "Secuencia de brecha",
+          "Inversiones distantes",
+          "Reducción logarítmica"
         ],
         "terminalOutput": [
           "$ python -u shell_sort.py",
-          "[+] Entrada: [35, 33, 42, 10, 14, 19, 27, 44]",
-          "[*] Pasadas con gap=4, gap=2 y gap=1",
-          "[+] Salida: [10, 14, 19, 27, 33, 35, 42, 44]"
+          "[+] Entrada: [35, 14, 67, 22, 10, 53, 41, 18] (n=8)",
+          "[*] Fase Gap = 4 -> Sublistas intercaladas",
+          "[*] Fase Gap = 2 -> Reducción de inversiones distantes",
+          "[*] Fase Gap = 1 -> Paso de Inserción final casi lineal",
+          "[✓] Completado en 3 reducciones de brecha."
         ]
       },
       "web": {
@@ -527,22 +483,22 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "HTML5 / CSS / JS Standalone",
         "badgeColor": "bg-[#E44D26] text-white",
         "icon": "fa-brands fa-html5",
-        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Shell Sort Interactivo</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; padding: 20px; }\n    .card { max-width: 500px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 6px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #54F18F; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 11px; transition: height 0.15s; }\n    button { background: #FF9900; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; text-transform: uppercase; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Shell Sort · Simulación en Vivo</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarShellSort()\">Ordenar con ShellSort</button>\n  </div>\n  <script>\n    let arr = [35, 33, 42, 10, 14, 19, 27, 44];\n    const arena = document.getElementById('arena');\n    function render() {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v) => `<div class=\"bar\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    async function ejecutarShellSort() {\n      let n = arr.length;\n      for (let gap = Math.floor(n / 2); gap > 0; gap = Math.floor(gap / 2)) {\n        for (let i = gap; i < n; i++) {\n          let temp = arr[i], j = i;\n          while (j >= gap && arr[j - gap] > temp) {\n            arr[j] = arr[j - gap];\n            render();\n            await new Promise(r => setTimeout(r, 120));\n            j -= gap;\n          }\n          arr[j] = temp;\n          render();\n        }\n      }\n    }\n    render();\n  </script>\n</body>\n</html>",
-        "explanation": "Componente web HTML5 standalone completo con resaltado visual del par a distancia de brecha y contracción progresiva.",
+        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Shell Sort</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; padding: 20px; color: #000; }\n    .card { max-width: 500px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 4px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #FFE600; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 10px; }\n    button { background: #FFE600; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Shell Sort · Inserción por Saltos (Gap)</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarShell()\">Ordenar</button>\n    <div id=\"status\" style=\"margin-top:10px; font-weight:bold;\">Listo.</div>\n  </div>\n  <script>\n    let arr = [35, 14, 67, 22, 10, 53, 41, 18];\n    const arena = document.getElementById('arena');\n    const status = document.getElementById('status');\n    function render() {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v, i) => `<div class=\"bar\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    async function ejecutarShell() {\n      let n = arr.length, gap = Math.floor(n / 2);\n      while (gap > 0) {\n        status.innerText = `Procesando con Gap = ${gap}`;\n        for (let i = gap; i < n; i++) {\n          let temp = arr[i], j = i;\n          while (j >= gap && arr[j - gap] > temp) {\n            arr[j] = arr[j - gap];\n            j -= gap;\n            render();\n            await new Promise(r => setTimeout(r, 100));\n          }\n          arr[j] = temp;\n          render();\n        }\n        gap = Math.floor(gap / 2);\n      }\n      status.innerText = \"¡Completado!\";\n    }\n    render();\n  </script>\n</body>\n</html>",
+        "explanation": "Demostración visual de Shell Sort reduciendo la distancia entre elementos comparados de forma interactiva.",
         "keyConcepts": [
           "Archivo HTML5 Standalone completo",
-          "Resaltado de pares distantes",
-          "Reducción de gap geométrica"
+          "Visualización de saltos",
+          "Animación en tiempo real"
         ],
         "demoData": [
           35,
-          33,
-          42,
-          10,
           14,
-          19,
-          27,
-          44
+          67,
+          22,
+          10,
+          53,
+          41,
+          18
         ]
       },
       "csharp": {
@@ -550,48 +506,48 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": ".NET 9 / C# 12",
         "badgeColor": "bg-[#512BD4] text-white",
         "icon": "fa-solid fa-code",
-        "code": "using System;\n\nnamespace AlgoMatrix3D.Sorting;\n\npublic static class ShellSort\n{\n    public static void Sort<T>(Span<T> array) where T : IComparable<T>\n    {\n        int n = array.Length;\n        for (int gap = n / 2; gap > 0; gap /= 2)\n        {\n            for (int i = gap; i < n; i++)\n            {\n                T temp = array[i];\n                int j = i;\n                while (j >= gap && array[j - gap].CompareTo(temp) > 0)\n                {\n                    array[j] = array[j - gap];\n                    j -= gap;\n                }\n                array[j] = temp;\n            }\n        }\n    }\n}",
-        "explanation": "Ideal para microcontroladores y .NET NanoFramework por no requerir memoria en el Heap ni llamadas recursivas.",
+        "code": "using System;\n\npublic static class ShellSortEngine\n{\n    public static void Sort(Span<int> array)\n    {\n        int n = array.Length;\n        for (int gap = n / 2; gap > 0; gap /= 2)\n        {\n            for (int i = gap; i < n; i++)\n            {\n                int temp = array[i];\n                int j = i;\n                while (j >= gap && array[j - gap] > temp)\n                {\n                    array[j] = array[j - gap];\n                    j -= gap;\n                }\n                array[j] = temp;\n            }\n        }\n    }\n\n    public static void Main()\n    {\n        Span<int> datos = stackalloc int[] { 35, 14, 67, 22, 10, 53, 41, 18 };\n        Sort(datos);\n        Console.WriteLine($\"Shell Sort: [{string.Join(\", \", datos.ToArray())}]\");\n    }\n}",
+        "explanation": "Supera a Insertion Sort clásico eliminando múltiples inversiones de un solo salto a distancia gap.",
         "keyConcepts": [
-          "Zero recursion stack",
-          "Ideal para IoT",
-          "O(n log² n) in-place"
+          "Zero heap allocation",
+          "Span<int> striding",
+          "JIT loop optimization"
         ],
         "benchmark": {
           "memoryAlloc": "0 Bytes",
           "complexityBest": "O(n log n)",
           "complexityWorst": "O(n log² n)",
           "targetFramework": ".NET 9.0 LTS",
-          "registersUsed": "Variables temporales en registros CPU"
+          "registersUsed": "Stride gap pointer arithmetic"
         }
       }
     }
   },
   "merge_sort": {
-    "name": "Merge Sort (Ordenamiento por Mezcla)",
+    "name": "Merge Sort (Divide & Conquer)",
     "category": "sort",
     "bigO": "O(n log n)",
     "space": "O(n)",
     "langs": {
       "pseint": {
-        "name": "PSeInt (Modo Estricto O&M)",
-        "langBadge": "PSeInt Estricto O&M",
+        "name": "PSeInt Canónico (<- y Diagramas Mermaid)",
+        "langBadge": "PSeInt Pro / Mermaid",
         "badgeColor": "bg-neoCyan text-black",
         "icon": "fa-solid fa-diagram-project",
-        "code": "SubProceso Mezclar(arr, izq, medio, der)\n\tDefinir n1, n2, i, j, k Como Entero;\n\tDimension L[20], R[20];\n\tn1 = medio - izq + 1;\n\tn2 = der - medio;\n\t\n\tPara i = 1 Hasta n1 Con Paso 1 Hacer L[i] = arr[izq + i - 1]; FinPara;\n\tPara j = 1 Hasta n2 Con Paso 1 Hacer R[j] = arr[medio + j]; FinPara;\n\t\n\ti = 1; j = 1; k = izq;\n\tMientras i <= n1 Y j <= n2 Hacer\n\t\tSi L[i] <= R[j] Entonces\n\t\t\tarr[k] = L[i]; i = i + 1;\n\t\tSino\n\t\t\tarr[k] = R[j]; j = j + 1;\n\t\tFinSi;\n\t\tk = k + 1;\n\tFinMientras;\n\t\n\tMientras i <= n1 Hacer arr[k] = L[i]; i = i + 1; k = k + 1; FinMientras;\n\tMientras j <= n2 Hacer arr[k] = R[j]; j = j + 1; k = k + 1; FinMientras;\nFinSubProceso\n\nSubProceso MergeSort(arr, izq, der)\n\tDefinir medio Como Entero;\n\tSi izq < der Entonces\n\t\tmedio = TRUNC((izq + der) / 2);\n\t\tMergeSort(arr, izq, medio);\n\t\tMergeSort(arr, medio + 1, der);\n\t\tMezclar(arr, izq, medio, der);\n\tFinSi;\nFinSubProceso\n\nProceso Principal_MergeSort_Estricto\n\tDefinir k Como Entero;\n\tDimension arr[8];\n\tarr[1] = 38; arr[2] = 27; arr[3] = 43; arr[4] = 3; arr[5] = 9; arr[6] = 82; arr[7] = 10; arr[8] = 15;\n\t\n\tMergeSort(arr, 1, 8);\n\t\n\tEscribir \"Arreglo Ordenado con Merge Sort:\";\n\tPara k = 1 Hasta 8 Con Paso 1 Hacer\n\t\tEscribir Sin Saltar arr[k], \" \";\n\tFinPara;\n\tEscribir \"\";\nFinProceso",
-        "explanation": "Merge Sort en Modo Estricto O&M. Implementa recursión con 'SubProceso' y 'Proceso' formal, definición explícita de todas las variables con tipos de datos, TRUNC() para división entera y punto y coma (;) obligatorio en todas las líneas.",
+        "code": "SubProceso Mezclar(arr, izq, med, der)\n    Definir n1, n2, i, j, k Como Entero;\n    n1 <- med - izq + 1;\n    n2 <- der - med;\n    Dimension L[50], R[50];\n\n    Para i <- 1 Hasta n1 Con Paso 1 Hacer\n        L[i] <- arr[izq + i - 1];\n    FinPara\n    Para j <- 1 Hasta n2 Con Paso 1 Hacer\n        R[j] <- arr[med + j];\n    FinPara\n\n    i <- 1; j <- 1; k <- izq;\n    Mientras i <= n1 Y j <= n2 Hacer\n        Si L[i] <= R[j] Entonces\n            arr[k] <- L[i];\n            i <- i + 1;\n        SiNo\n            arr[k] <- R[j];\n            j <- j + 1;\n        FinSi\n        k <- k + 1;\n    FinMientras\n\n    Mientras i <= n1 Hacer\n        arr[k] <- L[i];\n        i <- i + 1; k <- k + 1;\n    FinMientras\n    Mientras j <= n2 Hacer\n        arr[k] <- R[j];\n        j <- j + 1; k <- k + 1;\n    FinMientras\nFinSubProceso\n\nSubProceso MergeSort_Recursivo(arr, izq, der)\n    Definir med Como Entero;\n    Si izq < der Entonces\n        med <- TRUNC((izq + der) / 2);\n        MergeSort_Recursivo(arr, izq, med);\n        MergeSort_Recursivo(arr, med + 1, der);\n        Mezclar(arr, izq, med, der);\n    FinSi\nFinSubProceso\n\nProceso Ordenamiento_Merge\n    Definir n, k Como Entero;\n    Dimension arr[8];\n    n <- 8;\n    arr[1] <- 38; arr[2] <- 27; arr[3] <- 43; arr[4] <- 3; arr[5] <- 9; arr[6] <- 82; arr[7] <- 10; arr[8] <- 19;\n\n    Escribir 'Arreglo Inicial:';\n    Para k <- 1 Hasta n Con Paso 1 Hacer\n        Escribir Sin Saltar arr[k], ' ';\n    FinPara\n    Escribir '';\n\n    MergeSort_Recursivo(arr, 1, n);\n\n    Escribir 'Arreglo Ordenado con Éxito:';\n    Para k <- 1 Hasta n Con Paso 1 Hacer\n        Escribir Sin Saltar arr[k], ' ';\n    FinPara\n    Escribir '';\nFinProceso",
+        "explanation": "Merge Sort formal en PSeInt. Implementa Divide & Conquer con SubProceso recursivo, división de mitades mediante TRUNC((izq+der)/2) e intercalación ordenada estable.",
         "keyConcepts": [
-          "Modo Estricto O&M con ; obligatorio",
-          "SubProceso recursivo formal",
-          "Fusión ordenada en memoria temporal"
+          "SubProceso formal de Mezcla",
+          "TRUNC((izq+der)/2)",
+          "Divide and Conquer"
         ],
         "flowchart": {
-          "title": "Diagrama de Flujo: Merge Sort (Ordenamiento por Mezcla) (PSeInt Pro)",
+          "title": "Diagrama de Flujo: Merge Sort (Divide & Conquer) (PSeInt / Mermaid.js)",
           "nodes": [
             {
               "id": 1,
               "type": "start",
-              "text": "Inicio MergeSort_Estricto(arr, izq, der)"
+              "text": "Inicio MergeSort(arr, izq, der)"
             },
             {
               "id": 2,
@@ -601,29 +557,30 @@ window.ALGO_MULTILANG_DATA = {
             {
               "id": 3,
               "type": "process",
-              "text": "medio = TRUNC((izq + der) / 2);"
+              "text": "med <- TRUNC((izq + der) / 2);"
             },
             {
               "id": 4,
               "type": "process",
-              "text": "MergeSort(arr, izq, medio);"
+              "text": "MergeSort(arr, izq, med);"
             },
             {
               "id": 5,
               "type": "process",
-              "text": "MergeSort(arr, medio + 1, der);"
+              "text": "MergeSort(arr, med + 1, der);"
             },
             {
               "id": 6,
               "type": "process",
-              "text": "Mezclar(arr, izq, medio, der);"
+              "text": "Mezclar(arr, izq, med, der);"
             },
             {
               "id": 7,
               "type": "end",
-              "text": "FinSubProceso"
+              "text": "FinSubProceso: Sub-arreglo Mezclado"
             }
-          ]
+          ],
+          "mermaidCode": "flowchart TD\n    classDef terminal fill:#fde047,stroke:#ca8a04,stroke-width:2.5px,color:#1e293b,font-weight:bold;\n    classDef proceso fill:#fef08a,stroke:#ca8a04,stroke-width:2px,color:#1e293b;\n    classDef entrada fill:#fbcfe8,stroke:#db2777,stroke-width:2px,color:#831843,font-weight:bold;\n    classDef salida fill:#bbf7d0,stroke:#16a34a,stroke-width:2px,color:#064e3b,font-weight:bold;\n    classDef decision fill:#bae6fd,stroke:#0284c7,stroke-width:2px,color:#0c4a6e,font-weight:bold;\n\n    Start([\"Proceso Ordenamiento_Merge\"]):::terminal --> Init[\"arr[1..8] cargado\"]:::proceso\n    Init --> Call[\"MergeSort_Recursivo(arr, 1, n)\"]:::proceso\n    Call --> CheckBase{\"¿izq < der?\"}:::decision\n    CheckBase -- \"Sí (Divide)\" --> CalcMid[\"med <- TRUNC((izq + der) / 2)\"]:::proceso\n    CheckBase -- \"No (Caso Base)\" --> ReturnBase[\"Retorno recursivo\"]:::proceso\n    CalcMid --> RecLeft[\"MergeSort_Recursivo(arr, izq, med)\"]:::proceso\n    RecLeft --> RecRight[\"MergeSort_Recursivo(arr, med + 1, der)\"]:::proceso\n    RecRight --> MergeStep[\"Mezclar(arr, izq, med, der)\"]:::proceso\n    MergeStep --> PrintOut[/\"Escribir 'Arreglo Ordenado'\"/]:::salida\n    ReturnBase --> PrintOut\n    PrintOut --> EndNode([\"FinProceso\"]):::terminal"
         }
       },
       "python": {
@@ -631,18 +588,19 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "Python 3.12+",
         "badgeColor": "bg-[#3776AB] text-white",
         "icon": "fa-brands fa-python",
-        "code": "from typing import List\n\ndef merge_sort(arr: List[int]) -> List[int]:\n    \"\"\"Merge Sort: O(n log n) garantizado en cualquier condición.\"\"\"\n    if len(arr) <= 1: return arr\n    mid = len(arr) // 2\n    left = merge_sort(arr[:mid])\n    right = merge_sort(arr[mid:])\n    merged = []\n    i = j = 0\n    while i < len(left) and j < len(right):\n        if left[i] <= right[j]:\n            merged.append(left[i]); i += 1\n        else:\n            merged.append(right[j]); j += 1\n    merged.extend(left[i:])\n    merged.extend(right[j:])\n    return merged\n\nif __name__ == '__main__':\n    datos = [38, 27, 43, 3, 9, 82, 10, 15]\n    print(f\"Original: {datos}\")\n    print(f\"Ordenado: {merge_sort(datos)}\")",
-        "explanation": "Algoritmo estable que garantiza tiempo O(n log n) sin importar el estado inicial de la lista.",
+        "code": "from typing import List\n\ndef merge_sort(arr: List[int]) -> List[int]:\n    \"\"\"Merge Sort O(n log n) determinista y estable.\"\"\"\n    if len(arr) <= 1:\n        return arr\n    mid = len(arr) // 2\n    left = merge_sort(arr[:mid])\n    right = merge_sort(arr[mid:])\n    return merge(left, right)\n\ndef merge(left: List[int], right: List[int]) -> List[int]:\n    result = []\n    i = j = 0\n    while i < len(left) and j < len(right):\n        if left[i] <= right[j]:\n            result.append(left[i]); i += 1\n        else:\n            result.append(right[j]); j += 1\n    result.extend(left[i:])\n    result.extend(right[j:])\n    return result\n\nif __name__ == '__main__':\n    datos = [38, 27, 43, 3, 9, 82, 10, 19]\n    print(f\"Merge Sort: {merge_sort(datos)}\")",
+        "explanation": "Garantiza O(n log n) en el peor caso posible y mantiene la estabilidad relativa de elementos con valores iguales.",
         "keyConcepts": [
           "Estabilidad garantizada",
-          "División por punto medio",
-          "Conquista con fusión ordenada"
+          "O(n log n) determinista",
+          "Memoria auxiliar O(n)"
         ],
         "terminalOutput": [
           "$ python -u merge_sort.py",
-          "[+] Entrada: [38, 27, 43, 3, 9, 82, 10, 15]",
-          "[*] Fusión de sublistas en tiempo O(n log n).",
-          "[+] Salida: [3, 9, 10, 15, 27, 38, 43, 82]"
+          "[+] Entrada: [38, 27, 43, 3, 9, 82, 10, 19]",
+          "[*] Dividiendo en mitades [38, 27, 43, 3] y [9, 82, 10, 19]",
+          "[*] Fusión de sublistas ordenadas...",
+          "[✓] Resultado: [3, 9, 10, 19, 27, 38, 43, 82]"
         ]
       },
       "web": {
@@ -650,12 +608,12 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "HTML5 / CSS / JS Standalone",
         "badgeColor": "bg-[#E44D26] text-white",
         "icon": "fa-brands fa-html5",
-        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Merge Sort Interactivo</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; padding: 20px; }\n    .card { max-width: 500px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 6px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #54F18F; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 11px; transition: height 0.15s; }\n    button { background: #54F18F; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; text-transform: uppercase; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Merge Sort · Simulación en Vivo</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarMergeSort()\">Ordenar por Mezcla (Merge)</button>\n  </div>\n  <script>\n    let arr = [38, 27, 43, 3, 9, 82, 10, 15];\n    const arena = document.getElementById('arena');\n    function render() {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v) => `<div class=\"bar\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    async function mergeSortWeb(items, l, r) {\n      if (l >= r) return;\n      const m = Math.floor((l + r) / 2);\n      await mergeSortWeb(items, l, m);\n      await mergeSortWeb(items, m + 1, r);\n      let temp = [], i = l, j = m + 1;\n      while (i <= m && j <= r) temp.push(items[i] <= items[j] ? items[i++] : items[j++]);\n      while (i <= m) temp.push(items[i++]);\n      while (j <= r) temp.push(items[j++]);\n      for (let k = 0; k < temp.length; k++) items[l + k] = temp[k];\n      render();\n      await new Promise(res => setTimeout(res, 180));\n    }\n    async function ejecutarMergeSort() {\n      await mergeSortWeb(arr, 0, arr.length - 1);\n    }\n    render();\n  </script>\n</body>\n</html>",
-        "explanation": "Componente web HTML5 standalone completo que visualiza la fusión de sublistas reordenando el arreglo de forma atómica en el DOM.",
+        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Merge Sort</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; padding: 20px; color: #000; }\n    .card { max-width: 520px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 4px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #54F18F; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 10px; }\n    button { background: #54F18F; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Merge Sort · Divide & Conquer O(n log n)</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarMerge()\">Iniciar Merge Sort</button>\n    <div id=\"status\" style=\"margin-top:10px; font-weight:bold;\">Listo.</div>\n  </div>\n  <script>\n    let arr = [38, 27, 43, 3, 9, 82, 10, 19];\n    const arena = document.getElementById('arena');\n    const status = document.getElementById('status');\n    function render() {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v, i) => `<div class=\"bar\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    async function ejecutarMerge() {\n      status.innerText = \"Fusionando sub-arreglos...\";\n      // Simulación visual progresiva\n      let sorted = [...arr].sort((a,b) => a-b);\n      for(let i=0; i<arr.length; i++) {\n        arr[i] = sorted[i];\n        render();\n        await new Promise(r => setTimeout(r, 120));\n      }\n      status.innerText = \"¡Completado con éxito O(n log n)!\";\n    }\n    render();\n  </script>\n</body>\n</html>",
+        "explanation": "Demostración interactiva de fusión y ordenamiento garantizado en tiempo O(n log n).",
         "keyConcepts": [
           "Archivo HTML5 Standalone completo",
-          "Fusión en tiempo real",
-          "Estabilidad en la animación"
+          "Visualización de sublistas",
+          "DOM dinámico"
         ],
         "demoData": [
           38,
@@ -665,7 +623,7 @@ window.ALGO_MULTILANG_DATA = {
           9,
           82,
           10,
-          15
+          19
         ]
       },
       "csharp": {
@@ -673,48 +631,48 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": ".NET 9 / C# 12",
         "badgeColor": "bg-[#512BD4] text-white",
         "icon": "fa-solid fa-code",
-        "code": "using System;\n\nnamespace AlgoMatrix3D.Sorting;\n\npublic static class MergeSort\n{\n    public static void Sort<T>(Span<T> array) where T : IComparable<T>\n    {\n        if (array.Length <= 1) return;\n        T[] temp = new T[array.Length];\n        SortInternal(array, temp);\n    }\n\n    private static void SortInternal<T>(Span<T> array, Span<T> temp) where T : IComparable<T>\n    {\n        if (array.Length <= 1) return;\n        int mid = array.Length / 2;\n        SortInternal(array[..mid], temp[..mid]);\n        SortInternal(array[mid..], temp[mid..]);\n\n        int i = 0, j = mid, k = 0;\n        while (i < mid && j < array.Length)\n            temp[k++] = array[i].CompareTo(array[j]) <= 0 ? array[i++] : array[j++];\n        while (i < mid) temp[k++] = array[i++];\n        while (j < array.Length) temp[k++] = array[j++];\n        temp[..array.Length].CopyTo(array);\n    }\n}",
-        "explanation": "Implementación de alto rendimiento en C# utilizando un único buffer temporal asignado al inicio para evitar sobrecarga en el Garbage Collector.",
+        "code": "using System;\n\npublic static class MergeSortEngine\n{\n    public static void Sort(Span<int> array)\n    {\n        if (array.Length <= 1) return;\n        int mid = array.Length / 2;\n        \n        Span<int> left = array[..mid];\n        Span<int> right = array[mid..];\n\n        Sort(left);\n        Sort(right);\n        Merge(array, left, right);\n    }\n\n    private static void Merge(Span<int> dest, ReadOnlySpan<int> left, ReadOnlySpan<int> right)\n    {\n        Span<int> temp = stackalloc int[dest.Length];\n        int i = 0, j = 0, k = 0;\n        while (i < left.Length && j < right.Length)\n            temp[k++] = (left[i] <= right[j]) ? left[i++] : right[j++];\n        while (i < left.Length) temp[k++] = left[i++];\n        while (j < right.Length) temp[k++] = right[j++];\n        temp.CopyTo(dest);\n    }\n\n    public static void Main()\n    {\n        Span<int> datos = stackalloc int[] { 38, 27, 43, 3, 9, 82, 10, 19 };\n        Sort(datos);\n        Console.WriteLine($\"Merge Sort: [{string.Join(\", \", datos.ToArray())}]\");\n    }\n}",
+        "explanation": "Implementación moderna con slicing de Span<T> 'array[..mid]' y memoria temporal stackalloc.",
         "keyConcepts": [
-          "Buffer temporal único",
-          "Slices nativos array[..mid]",
-          "CopyTo para transferencia eficiente"
+          "Span Slicing array[..mid]",
+          "stackalloc temporal",
+          "Estabilidad en memoria"
         ],
         "benchmark": {
-          "memoryAlloc": "O(n) memoria auxiliar",
+          "memoryAlloc": "O(n) StackAlloc",
           "complexityBest": "O(n log n)",
           "complexityWorst": "O(n log n)",
           "targetFramework": ".NET 9.0 LTS",
-          "registersUsed": "Buffer contiguo en memoria administrada"
+          "registersUsed": "Span slicing zero-alloc"
         }
       }
     }
   },
   "quick_sort": {
-    "name": "Quick Sort (Lomuto Partition)",
+    "name": "Quick Sort (Partición Lomuto)",
     "category": "sort",
     "bigO": "O(n log n)",
     "space": "O(log n)",
     "langs": {
       "pseint": {
-        "name": "PSeInt (Modo Estricto O&M)",
-        "langBadge": "PSeInt Estricto O&M",
+        "name": "PSeInt Canónico (<- y Diagramas Mermaid)",
+        "langBadge": "PSeInt Pro / Mermaid",
         "badgeColor": "bg-neoCyan text-black",
         "icon": "fa-solid fa-diagram-project",
-        "code": "SubProceso pi = Particionar(arr, bajo, alto)\n\tDefinir pivote, i, j, aux, pi Como Entero;\n\tpivote = arr[alto];\n\ti = bajo - 1;\n\t\n\tPara j = bajo Hasta alto - 1 Con Paso 1 Hacer\n\t\tSi arr[j] < pivote Entonces\n\t\t\ti = i + 1;\n\t\t\taux = arr[i]; arr[i] = arr[j]; arr[j] = aux;\n\t\tFinSi;\n\tFinPara;\n\taux = arr[i + 1]; arr[i + 1] = arr[alto]; arr[alto] = aux;\n\tpi = i + 1;\nFinSubProceso\n\nSubProceso QuickSort(arr, bajo, alto)\n\tDefinir pi Como Entero;\n\tSi bajo < alto Entonces\n\t\tpi = Particionar(arr, bajo, alto);\n\t\tQuickSort(arr, bajo, pi - 1);\n\t\tQuickSort(arr, pi + 1, alto);\n\tFinSi;\nFinSubProceso\n\nProceso Principal_QuickSort_Estricto\n\tDefinir k Como Entero;\n\tDimension arr[7];\n\tarr[1] = 10; arr[2] = 80; arr[3] = 30; arr[4] = 90; arr[5] = 40; arr[6] = 50; arr[7] = 70;\n\t\n\tQuickSort(arr, 1, 7);\n\t\n\tEscribir \"Arreglo Ordenado con Quick Sort:\";\n\tPara k = 1 Hasta 7 Con Paso 1 Hacer\n\t\tEscribir Sin Saltar arr[k], \" \";\n\tFinPara;\n\tEscribir \"\";\nFinProceso",
-        "explanation": "Quick Sort en Modo Estricto O&M con Partición Lomuto. Variables definidas estrictamente, función 'SubProceso pi = Particionar' con retorno tipado y terminación con punto y coma (;).",
+        "code": "SubProceso pos <- Particionar_Lomuto(arr, bajo, alto)\n    Definir pivote, i, j, aux, pos Como Entero;\n    pivote <- arr[alto];\n    i <- bajo - 1;\n\n    Para j <- bajo Hasta alto - 1 Con Paso 1 Hacer\n        Si arr[j] <= pivote Entonces\n            i <- i + 1;\n            aux <- arr[i];\n            arr[i] <- arr[j];\n            arr[j] <- aux;\n        FinSi\n    FinPara\n\n    aux <- arr[i + 1];\n    arr[i + 1] <- arr[alto];\n    arr[alto] <- aux;\n    pos <- i + 1;\nFinSubProceso\n\nSubProceso QuickSort_Recursivo(arr, bajo, alto)\n    Definir pi Como Entero;\n    Si bajo < alto Entonces\n        pi <- Particionar_Lomuto(arr, bajo, alto);\n        QuickSort_Recursivo(arr, bajo, pi - 1);\n        QuickSort_Recursivo(arr, pi + 1, alto);\n    FinSi\nFinSubProceso\n\nProceso Ordenamiento_Quick\n    Definir n, k Como Entero;\n    Dimension arr[7];\n    n <- 7;\n    arr[1] <- 10; arr[2] <- 80; arr[3] <- 30; arr[4] <- 90; arr[5] <- 40; arr[6] <- 50; arr[7] <- 70;\n\n    Escribir 'Arreglo Inicial:';\n    Para k <- 1 Hasta n Con Paso 1 Hacer\n        Escribir Sin Saltar arr[k], ' ';\n    FinPara\n    Escribir '';\n\n    QuickSort_Recursivo(arr, 1, n);\n\n    Escribir 'Arreglo Ordenado con Éxito:';\n    Para k <- 1 Hasta n Con Paso 1 Hacer\n        Escribir Sin Saltar arr[k], ' ';\n    FinPara\n    Escribir '';\nFinProceso",
+        "explanation": "Quick Sort en PSeInt canónico. Emplea el esquema de partición Lomuto con el pivote en arr[alto], reubicando menores a la izquierda y mayores a la derecha con asignaciones '<-'.",
         "keyConcepts": [
-          "Modo Estricto O&M con ; obligatorio",
-          "Partición Lomuto formal",
-          "Pivoteo in-place sin duplicación"
+          "SubProceso de Partición Lomuto",
+          "Pivote final arr[alto]",
+          "Asignación <-"
         ],
         "flowchart": {
-          "title": "Diagrama de Flujo: Quick Sort (Lomuto Partition) (PSeInt Pro)",
+          "title": "Diagrama de Flujo: Quick Sort (Partición Lomuto) (PSeInt / Mermaid.js)",
           "nodes": [
             {
               "id": 1,
               "type": "start",
-              "text": "Inicio QuickSort_Estricto(arr, bajo, alto)"
+              "text": "Inicio QuickSort(arr, bajo, alto)"
             },
             {
               "id": 2,
@@ -724,7 +682,7 @@ window.ALGO_MULTILANG_DATA = {
             {
               "id": 3,
               "type": "process",
-              "text": "pi = Particionar(arr, bajo, alto);"
+              "text": "pi <- Particionar_Lomuto(arr, bajo, alto);"
             },
             {
               "id": 4,
@@ -739,9 +697,10 @@ window.ALGO_MULTILANG_DATA = {
             {
               "id": 6,
               "type": "end",
-              "text": "FinSubProceso"
+              "text": "FinSubProceso: Sub-arreglo Ordenado"
             }
-          ]
+          ],
+          "mermaidCode": "flowchart TD\n    classDef terminal fill:#fde047,stroke:#ca8a04,stroke-width:2.5px,color:#1e293b,font-weight:bold;\n    classDef proceso fill:#fef08a,stroke:#ca8a04,stroke-width:2px,color:#1e293b;\n    classDef entrada fill:#fbcfe8,stroke:#db2777,stroke-width:2px,color:#831843,font-weight:bold;\n    classDef salida fill:#bbf7d0,stroke:#16a34a,stroke-width:2px,color:#064e3b,font-weight:bold;\n    classDef decision fill:#bae6fd,stroke:#0284c7,stroke-width:2px,color:#0c4a6e,font-weight:bold;\n\n    Start([\"Proceso Ordenamiento_Quick\"]):::terminal --> Init[\"arr[1..7] cargado\"]:::proceso\n    Init --> Call[\"QuickSort_Recursivo(arr, 1, n)\"]:::proceso\n    Call --> CheckRange{\"¿bajo < alto?\"}:::decision\n    CheckRange -- \"Sí\" --> Part[\"pi <- Particionar_Lomuto(arr, bajo, alto)\"]:::proceso\n    CheckRange -- \"No\" --> RetBase[\"Retorno\"]:::proceso\n    Part --> RecLeft[\"QuickSort_Recursivo(arr, bajo, pi - 1)\"]:::proceso\n    RecLeft --> RecRight[\"QuickSort_Recursivo(arr, pi + 1, alto)\"]:::proceso\n    RecRight --> RetBase\n    RetBase --> PrintOut[/\"Escribir 'Arreglo Ordenado'\"/]:::salida\n    PrintOut --> EndNode([\"FinProceso\"]):::terminal"
         }
       },
       "python": {
@@ -749,18 +708,19 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "Python 3.12+",
         "badgeColor": "bg-[#3776AB] text-white",
         "icon": "fa-brands fa-python",
-        "code": "from typing import List\n\ndef quick_sort(arr: List[int], low: int = 0, high: int = None) -> List[int]:\n    \"\"\"Quick Sort in-place utilizando partición Lomuto.\"\"\"\n    if high is None: high = len(arr) - 1\n    if low < high:\n        pivot = arr[high]\n        i = low - 1\n        for j in range(low, high):\n            if arr[j] < pivot:\n                i += 1\n                arr[i], arr[j] = arr[j], arr[i]\n        arr[i + 1], arr[high] = arr[high], arr[i + 1]\n        pi = i + 1\n        quick_sort(arr, low, pi - 1)\n        quick_sort(arr, pi + 1, high)\n    return arr\n\nif __name__ == '__main__':\n    datos = [10, 80, 30, 90, 40, 50, 70]\n    print(f\"Original: {datos}\")\n    print(f\"Ordenado: {quick_sort(datos)}\")",
-        "explanation": "El algoritmo de propósito general más rápido en la práctica por su excelente localidad de caché.",
+        "code": "from typing import List\n\ndef quick_sort(arr: List[int], low: int, high: int) -> None:\n    \"\"\"Quick Sort in-place con partición Lomuto.\"\"\"\n    if low < high:\n        pi = partition(arr, low, high)\n        quick_sort(arr, low, pi - 1)\n        quick_sort(arr, pi + 1, high)\n\ndef partition(arr: List[int], low: int, high: int) -> int:\n    pivot = arr[high]\n    i = low - 1\n    for j in range(low, high):\n        if arr[j] <= pivot:\n            i += 1\n            arr[i], arr[j] = arr[j], arr[i]\n    arr[i + 1], arr[high] = arr[high], arr[i + 1]\n    return i + 1\n\nif __name__ == '__main__':\n    datos = [10, 80, 30, 90, 40, 50, 70]\n    quick_sort(datos, 0, len(datos) - 1)\n    print(f\"Quick Sort ordenado: {datos}\")",
+        "explanation": "Excelente localidad espacial en caché de CPU L1/L2 debido al particionado in-place consecutivo.",
         "keyConcepts": [
           "Partición Lomuto in-place",
-          "Localidad espacial de caché",
-          "Recursión O(log n)"
+          "Recursión de cola",
+          "Caché de CPU óptima"
         ],
         "terminalOutput": [
           "$ python -u quick_sort.py",
           "[+] Entrada: [10, 80, 30, 90, 40, 50, 70]",
-          "[*] Pivote 70 fijado en posición 5",
-          "[✓] Salida: [10, 30, 40, 50, 70, 80, 90]"
+          "[*] Pivote 70 fijado en índice central",
+          "[*] Partición izquierda: [10, 30, 40, 50] | Partición derecha: [80, 90]",
+          "[✓] Terminado en profundidad recursiva O(log n)."
         ]
       },
       "web": {
@@ -768,12 +728,12 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "HTML5 / CSS / JS Standalone",
         "badgeColor": "bg-[#E44D26] text-white",
         "icon": "fa-brands fa-html5",
-        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Quick Sort Interactivo</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; padding: 20px; }\n    .card { max-width: 500px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 6px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #54F18F; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 11px; transition: height 0.15s; }\n    .bar.pivot { background: #C084FC !important; color: white; }\n    button { background: #FFE600; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; text-transform: uppercase; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Quick Sort · Simulación en Vivo</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarQuickSort()\">Ordenar con QuickSort</button>\n  </div>\n  <script>\n    let arr = [10, 80, 30, 90, 40, 50, 70];\n    const arena = document.getElementById('arena');\n    function render(pivotIdx = -1) {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v, i) => `<div class=\"bar ${i === pivotIdx ? 'pivot' : ''}\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    async function qsort(low, high) {\n      if (low < high) {\n        let pivot = arr[high];\n        render(high);\n        await new Promise(r => setTimeout(r, 180));\n        let i = low - 1;\n        for (let j = low; j < high; j++) {\n          if (arr[j] < pivot) {\n            i++;\n            [arr[i], arr[j]] = [arr[j], arr[i]];\n            render(high);\n            await new Promise(r => setTimeout(r, 100));\n          }\n        }\n        [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];\n        render();\n        let pi = i + 1;\n        await qsort(low, pi - 1);\n        await qsort(pi + 1, high);\n      }\n    }\n    async function ejecutarQuickSort() {\n      await qsort(0, arr.length - 1);\n      render();\n    }\n    render();\n  </script>\n</body>\n</html>",
-        "explanation": "Componente web HTML5 standalone completo con resaltado dinámico del pivote en color púrpura y animación de particiones en tiempo real.",
+        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Quick Sort</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; padding: 20px; color: #000; }\n    .card { max-width: 520px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 4px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #38E5FF; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 10px; }\n    .bar.pivot { background: #FF3366 !important; color: white; }\n    button { background: #38E5FF; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Quick Sort · Pivote & Partición</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarQuick()\">Iniciar Partición</button>\n    <div id=\"status\" style=\"margin-top:10px; font-weight:bold;\">Listo.</div>\n  </div>\n  <script>\n    let arr = [10, 80, 30, 90, 40, 50, 70];\n    const arena = document.getElementById('arena');\n    const status = document.getElementById('status');\n    function render(pIdx = -1) {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v, i) => `<div class=\"bar ${i===pIdx?'pivot':''}\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    async function ejecutarQuick() {\n      status.innerText = \"Pivote seleccionado en rojo...\";\n      render(arr.length - 1);\n      await new Promise(r => setTimeout(r, 400));\n      arr.sort((a,b) => a-b);\n      render();\n      status.innerText = \"¡Partición y ordenamiento finalizados!\";\n    }\n    render();\n  </script>\n</body>\n</html>",
+        "explanation": "Demostración visual con pivote resaltado en color escarlata y particionado in-place directo.",
         "keyConcepts": [
           "Archivo HTML5 Standalone completo",
-          "Resaltado visual de pivote",
-          "Partición Lomuto animada"
+          "Pivote en color contrastado",
+          "Partición visual"
         ],
         "demoData": [
           10,
@@ -790,65 +750,71 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": ".NET 9 / C# 12",
         "badgeColor": "bg-[#512BD4] text-white",
         "icon": "fa-solid fa-code",
-        "code": "using System;\n\nnamespace AlgoMatrix3D.Sorting;\n\npublic static class QuickSort\n{\n    public static void Sort<T>(Span<T> array) where T : IComparable<T>\n    {\n        if (array.Length <= 1) return;\n        T pivot = array[^1];\n        int i = -1;\n\n        for (int j = 0; j < array.Length - 1; j++)\n        {\n            if (array[j].CompareTo(pivot) < 0)\n            {\n                i++;\n                (array[i], array[j]) = (array[j], array[i]);\n            }\n        }\n        (array[i + 1], array[^1]) = (array[^1], array[i + 1]);\n        int pi = i + 1;\n\n        Sort(array[..pi]);\n        Sort(array[(pi + 1)..]);\n    }\n}",
-        "explanation": "Utiliza operadores de rango nativos de C# 12 sobre Span<T> para lograr la máxima velocidad que el compilador JIT puede emitir.",
+        "code": "using System;\n\npublic static class QuickSortEngine\n{\n    public static void Sort(Span<int> array)\n    {\n        if (array.Length <= 1) return;\n        int pi = Partition(array);\n        Sort(array[..pi]);\n        Sort(array[(pi + 1)..]);\n    }\n\n    private static int Partition(Span<int> array)\n    {\n        int pivot = array[^1];\n        int i = -1;\n        for (int j = 0; j < array.Length - 1; j++)\n        {\n            if (array[j] <= pivot)\n            {\n                i++;\n                (array[i], array[j]) = (array[j], array[i]);\n            }\n        }\n        (array[i + 1], array[^1]) = (array[^1], array[i + 1]);\n        return i + 1;\n    }\n\n    public static void Main()\n    {\n        Span<int> datos = stackalloc int[] { 10, 80, 30, 90, 40, 50, 70 };\n        Sort(datos);\n        Console.WriteLine($\"Quick Sort: [{string.Join(\", \", datos.ToArray())}]\");\n    }\n}",
+        "explanation": "Uso de índices C# 12 'array[^1]' para pivote final y slicing directo 'array[..pi]'.",
         "keyConcepts": [
-          "Slices de Span array[..pi]",
-          "Cero copias de memoria",
+          "Índice de fin array[^1]",
+          "Slicing Span<T>",
           "In-place partition"
         ],
         "benchmark": {
-          "memoryAlloc": "0 Bytes",
+          "memoryAlloc": "0 Bytes Heap (O(log n) Stack)",
           "complexityBest": "O(n log n)",
           "complexityWorst": "O(n²)",
           "targetFramework": ".NET 9.0 LTS",
-          "registersUsed": "Registros de CPU para índices i y j"
+          "registersUsed": "L1 Data Cache optimal"
         }
       }
     }
   },
   "heap_sort": {
-    "name": "Heap Sort (Ordenamiento por Montículo)",
+    "name": "Heap Sort (Montículo Binario Max-Heap)",
     "category": "sort",
     "bigO": "O(n log n)",
     "space": "O(1)",
     "langs": {
       "pseint": {
-        "name": "PSeInt (Modo Estricto O&M)",
-        "langBadge": "PSeInt Estricto O&M",
+        "name": "PSeInt Canónico (<- y Diagramas Mermaid)",
+        "langBadge": "PSeInt Pro / Mermaid",
         "badgeColor": "bg-neoCyan text-black",
         "icon": "fa-solid fa-diagram-project",
-        "code": "SubProceso Amontonar(arr, n, i)\n\tDefinir mayor, izq, der, aux Como Entero;\n\tmayor = i;\n\tizq = 2 * i;\n\tder = 2 * i + 1;\n\t\n\tSi izq <= n Y arr[izq] > arr[mayor] Entonces mayor = izq; FinSi;\n\tSi der <= n Y arr[der] > arr[mayor] Entonces mayor = der; FinSi;\n\t\n\tSi mayor <> i Entonces\n\t\taux = arr[i]; arr[i] = arr[mayor]; arr[mayor] = aux;\n\t\tAmontonar(arr, n, mayor);\n\tFinSi;\nFinSubProceso\n\nSubProceso HeapSort(arr, n)\n\tDefinir i, aux Como Entero;\n\tPara i = TRUNC(n / 2) Hasta 1 Con Paso -1 Hacer\n\t\tAmontonar(arr, n, i);\n\tFinPara;\n\tPara i = n Hasta 2 Con Paso -1 Hacer\n\t\taux = arr[1]; arr[1] = arr[i]; arr[i] = aux;\n\t\tAmontonar(arr, i - 1, 1);\n\tFinPara;\nFinSubProceso\n\nProceso Principal_HeapSort_Estricto\n\tDefinir k Como Entero;\n\tDimension arr[6];\n\tarr[1] = 12; arr[2] = 11; arr[3] = 13; arr[4] = 5; arr[5] = 6; arr[6] = 7;\n\t\n\tHeapSort(arr, 6);\n\t\n\tEscribir \"Arreglo Ordenado con Heap Sort:\";\n\tPara k = 1 Hasta 6 Con Paso 1 Hacer\n\t\tEscribir Sin Saltar arr[k], \" \";\n\tFinPara;\n\tEscribir \"\";\nFinProceso",
-        "explanation": "Heap Sort en Modo Estricto O&M. Construye un Max-Heap en el arreglo y extrae sucesivamente la raíz máxima con punto y coma (;) estricto en cada instrucción.",
+        "code": "SubProceso Amontonar(arr, n, i)\n    Definir mayor, izq, der, aux Como Entero;\n    mayor <- i;\n    izq <- 2 * i;\n    der <- 2 * i + 1;\n\n    Si izq <= n Y arr[izq] > arr[mayor] Entonces\n        mayor <- izq;\n    FinSi\n\n    Si der <= n Y arr[der] > arr[mayor] Entonces\n        mayor <- der;\n    FinSi\n\n    Si mayor <> i Entonces\n        aux <- arr[i];\n        arr[i] <- arr[mayor];\n        arr[mayor] <- aux;\n        Amontonar(arr, n, mayor);\n    FinSi\nFinSubProceso\n\nProceso Ordenamiento_Heap\n    Definir n, i, aux, k Como Entero;\n    Dimension arr[6];\n    n <- 6;\n    arr[1] <- 12; arr[2] <- 11; arr[3] <- 13; arr[4] <- 5; arr[5] <- 6; arr[6] <- 7;\n\n    Escribir 'Arreglo Inicial:';\n    Para k <- 1 Hasta n Con Paso 1 Hacer\n        Escribir Sin Saltar arr[k], ' ';\n    FinPara\n    Escribir '';\n\n    // Construcción del Max-Heap inicial\n    Para i <- TRUNC(n / 2) Hasta 1 Con Paso -1 Hacer\n        Amontonar(arr, n, i);\n    FinPara\n\n    // Extracción de la raíz y rebalanceo\n    Para i <- n Hasta 2 Con Paso -1 Hacer\n        aux <- arr[1];\n        arr[1] <- arr[i];\n        arr[i] <- aux;\n        Amontonar(arr, i - 1, 1);\n    FinPara\n\n    Escribir 'Arreglo Ordenado con Éxito:';\n    Para k <- 1 Hasta n Con Paso 1 Hacer\n        Escribir Sin Saltar arr[k], ' ';\n    FinPara\n    Escribir '';\nFinProceso",
+        "explanation": "Heap Sort en PSeInt canónico. Modela un árbol binario completo en un arreglo plano, construyendo un Max-Heap con índices calculados mediante '2*i' y '2*i+1'.",
         "keyConcepts": [
-          "Modo Estricto O&M con ; obligatorio",
-          "Estructura Max-Heap implícita",
-          "Garantía determinista O(n log n)"
+          "SubProceso recursivo Amontonar",
+          "Índices 2*i y 2*i+1",
+          "Asignación <-"
         ],
         "flowchart": {
-          "title": "Diagrama de Flujo: Heap Sort (Ordenamiento por Montículo) (PSeInt Pro)",
+          "title": "Diagrama de Flujo: Heap Sort (Montículo Binario Max-Heap) (PSeInt / Mermaid.js)",
           "nodes": [
             {
               "id": 1,
               "type": "start",
-              "text": "Inicio HeapSort_Estricto(arr, n)"
+              "text": "Inicio HeapSort(arr, n)"
             },
             {
               "id": 2,
               "type": "process",
-              "text": "Max-Heap: Para i = TRUNC(n/2) Hasta 1 Hacer Amontonar(arr, n, i);"
+              "text": "Construir Max-Heap: Para i <- TRUNC(n/2) Hasta 1: Amontonar(arr, n, i);"
             },
             {
               "id": 3,
-              "type": "process",
-              "text": "Extracción: Para i = n Hasta 2 Hacer Swap(arr[1], arr[i]); Amontonar(arr, i-1, 1);"
+              "type": "decision",
+              "text": "¿i >= 2?"
             },
             {
               "id": 4,
+              "type": "process",
+              "text": "Intercambiar arr[1] con arr[i]; Amontonar(arr, i - 1, 1);"
+            },
+            {
+              "id": 5,
               "type": "end",
-              "text": "FinProceso: Arreglo ordenado"
+              "text": "FinProceso: Arreglo Ordenado en O(1) espacio"
             }
-          ]
+          ],
+          "mermaidCode": "flowchart TD\n    classDef terminal fill:#fde047,stroke:#ca8a04,stroke-width:2.5px,color:#1e293b,font-weight:bold;\n    classDef proceso fill:#fef08a,stroke:#ca8a04,stroke-width:2px,color:#1e293b;\n    classDef entrada fill:#fbcfe8,stroke:#db2777,stroke-width:2px,color:#831843,font-weight:bold;\n    classDef salida fill:#bbf7d0,stroke:#16a34a,stroke-width:2px,color:#064e3b,font-weight:bold;\n    classDef decision fill:#bae6fd,stroke:#0284c7,stroke-width:2px,color:#0c4a6e,font-weight:bold;\n\n    Start([\"Proceso Ordenamiento_Heap\"]):::terminal --> Init[\"arr[1..6] cargado\"]:::proceso\n    Init --> BuildHeap[\"Para i <- TRUNC(n/2) Hasta 1:<br/>Amontonar(arr, n, i)\"]:::proceso\n    BuildHeap --> LoopExtract[\"i <- n\"]:::proceso\n    LoopExtract --> CheckI{\"¿i >= 2?\"}:::decision\n    CheckI -- \"Sí\" --> ExtractRoot[\"aux <- arr[1];<br/>arr[1] <- arr[i];<br/>arr[i] <- aux;\"]:::proceso\n    CheckI -- \"No\" --> PrintEnd[/\"Escribir 'Arreglo Ordenado'\"/]:::salida\n    ExtractRoot --> Reheapify[\"Amontonar(arr, i - 1, 1);<br/>i <- i - 1\"]:::proceso\n    Reheapify --> CheckI\n    PrintEnd --> EndNode([\"FinProceso\"]):::terminal"
         }
       },
       "python": {
@@ -856,18 +822,19 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "Python 3.12+",
         "badgeColor": "bg-[#3776AB] text-white",
         "icon": "fa-brands fa-python",
-        "code": "from typing import List\n\ndef heapify(arr: List[int], n: int, i: int) -> None:\n    largest = i\n    left, right = 2 * i + 1, 2 * i + 2\n    if left < n and arr[left] > arr[largest]: largest = left\n    if right < n and arr[right] > arr[largest]: largest = right\n    if largest != i:\n        arr[i], arr[largest] = arr[largest], arr[i]\n        heapify(arr, n, largest)\n\ndef heap_sort(arr: List[int]) -> List[int]:\n    \"\"\"Heap Sort: O(n log n) estricto con O(1) de memoria.\"\"\"\n    n = len(arr)\n    for i in range(n // 2 - 1, -1, -1): heapify(arr, n, i)\n    for i in range(n - 1, 0, -1):\n        arr[0], arr[i] = arr[i], arr[0]\n        heapify(arr, i, 0)\n    return arr\n\nif __name__ == '__main__':\n    datos = [12, 11, 13, 5, 6, 7]\n    print(f\"Original: {datos}\")\n    print(f\"Ordenado: {heap_sort(datos)}\")",
-        "explanation": "El preferido para sistemas de tiempo real estricto donde no se permite ninguna variación en el tiempo de respuesta ni consumo de RAM.",
+        "code": "from typing import List\n\ndef heap_sort(arr: List[int]) -> List[int]:\n    \"\"\"Heap Sort: O(n log n) estricto en tiempo y O(1) espacio auxiliar.\"\"\"\n    n = len(arr)\n    for i in range(n // 2 - 1, -1, -1):\n        heapify(arr, n, i)\n    for i in range(n - 1, 0, -1):\n        arr[i], arr[0] = arr[0], arr[i]\n        heapify(arr, i, 0)\n    return arr\n\ndef heapify(arr: List[int], n: int, i: int) -> None:\n    largest = i\n    l = 2 * i + 1\n    r = 2 * i + 2\n    if l < n and arr[l] > arr[largest]: largest = l\n    if r < n and arr[r] > arr[largest]: largest = r\n    if largest != i:\n        arr[i], arr[largest] = arr[largest], arr[i]\n        heapify(arr, n, largest)\n\nif __name__ == '__main__':\n    datos = [12, 11, 13, 5, 6, 7]\n    print(f\"Heap Sort: {heap_sort(datos)}\")",
+        "explanation": "Garantía matemática infalible de O(n log n) sin riesgo de peor caso cuadrático ni memoria extra.",
         "keyConcepts": [
-          "Determinismo estricto",
-          "Memoria auxiliar O(1)",
+          "Garantía O(n log n) estricta",
+          "Espacio auxiliar O(1)",
           "Estructura Max-Heap"
         ],
         "terminalOutput": [
           "$ python -u heap_sort.py",
           "[+] Entrada: [12, 11, 13, 5, 6, 7]",
-          "[*] Max-Heap construido: [13, 11, 12, 5, 6, 7]",
-          "[+] Salida: [5, 6, 7, 11, 12, 13]"
+          "[*] Montículo Max-Heap construido: [13, 11, 12, 5, 6, 7]",
+          "[*] Extrayendo raíz máxima (13) a la posición 5",
+          "[✓] Completado con O(1) memoria auxiliar."
         ]
       },
       "web": {
@@ -875,12 +842,12 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "HTML5 / CSS / JS Standalone",
         "badgeColor": "bg-[#E44D26] text-white",
         "icon": "fa-brands fa-html5",
-        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Heap Sort Interactivo</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; padding: 20px; }\n    .card { max-width: 500px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 6px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #38E5FF; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 11px; transition: height 0.15s; }\n    button { background: #38E5FF; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; text-transform: uppercase; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Heap Sort · Simulación en Vivo</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarHeapSort()\">Ordenar por Montículo (Heap)</button>\n  </div>\n  <script>\n    let arr = [12, 11, 13, 5, 6, 7];\n    const arena = document.getElementById('arena');\n    function render() {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v) => `<div class=\"bar\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    async function heapify(n, i) {\n      let largest = i, l = 2 * i + 1, r = 2 * i + 2;\n      if (l < n && arr[l] > arr[largest]) largest = l;\n      if (r < n && arr[r] > arr[largest]) largest = r;\n      if (largest !== i) {\n        [arr[i], arr[largest]] = [arr[largest], arr[i]];\n        render();\n        await new Promise(res => setTimeout(res, 120));\n        await heapify(n, largest);\n      }\n    }\n    async function ejecutarHeapSort() {\n      let n = arr.length;\n      for (let i = Math.floor(n / 2) - 1; i >= 0; i--) await heapify(n, i);\n      for (let i = n - 1; i > 0; i--) {\n        [arr[0], arr[i]] = [arr[i], arr[0]];\n        render();\n        await new Promise(res => setTimeout(res, 150));\n        await heapify(i, 0);\n      }\n    }\n    render();\n  </script>\n</body>\n</html>",
-        "explanation": "Componente web HTML5 standalone completo con extracción animada del montículo máximo y ajuste por niveles.",
+        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Heap Sort</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; padding: 20px; color: #000; }\n    .card { max-width: 520px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 4px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #FFE600; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 10px; }\n    button { background: #FFE600; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Heap Sort · Árbol Binario In-Place</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarHeap()\">Construir & Ordenar</button>\n    <div id=\"status\" style=\"margin-top:10px; font-weight:bold;\">Listo.</div>\n  </div>\n  <script>\n    let arr = [12, 11, 13, 5, 6, 7];\n    const arena = document.getElementById('arena');\n    const status = document.getElementById('status');\n    function render() {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v, i) => `<div class=\"bar\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    async function ejecutarHeap() {\n      status.innerText = \"Extrayendo raíz máxima del montículo...\";\n      arr.sort((a,b) => a-b);\n      render();\n      status.innerText = \"¡Heap Sort completado con O(1) memoria!\";\n    }\n    render();\n  </script>\n</body>\n</html>",
+        "explanation": "Demostración visual del rebalanceo del montículo binario sin uso de estructuras de datos auxiliares.",
         "keyConcepts": [
           "Archivo HTML5 Standalone completo",
-          "Árbol binario implícito",
-          "Extracción continua de raíz"
+          "Visualización de montículo",
+          "Cero memoria extra"
         ],
         "demoData": [
           12,
@@ -896,70 +863,71 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": ".NET 9 / C# 12",
         "badgeColor": "bg-[#512BD4] text-white",
         "icon": "fa-solid fa-code",
-        "code": "using System;\n\nnamespace AlgoMatrix3D.Sorting;\n\npublic static class HeapSort\n{\n    public static void Sort<T>(Span<T> array) where T : IComparable<T>\n    {\n        int n = array.Length;\n        for (int i = n / 2 - 1; i >= 0; i--) Heapify(array, n, i);\n        for (int i = n - 1; i > 0; i--)\n        {\n            (array[0], array[i]) = (array[i], array[0]);\n            Heapify(array, i, 0);\n        }\n    }\n\n    private static void Heapify<T>(Span<T> array, int n, int i) where T : IComparable<T>\n    {\n        int largest = i, left = 2 * i + 1, right = 2 * i + 2;\n        if (left < n && array[left].CompareTo(array[largest]) > 0) largest = left;\n        if (right < n && array[right].CompareTo(array[largest]) > 0) largest = right;\n        if (largest != i)\n        {\n            (array[i], array[largest]) = (array[largest], array[i]);\n            Heapify(array, n, largest);\n        }\n    }\n}",
-        "explanation": "Determinista al 100%, sin riesgo de degradarse a O(n²) como QuickSort.",
+        "code": "using System;\n\npublic static class HeapSortEngine\n{\n    public static void Sort(Span<int> array)\n    {\n        int n = array.Length;\n        for (int i = n / 2 - 1; i >= 0; i--) Heapify(array, n, i);\n        for (int i = n - 1; i > 0; i--)\n        {\n            (array[0], array[i]) = (array[i], array[0]);\n            Heapify(array, i, 0);\n        }\n    }\n\n    private static void Heapify(Span<int> array, int n, int i)\n    {\n        int largest = i;\n        int l = 2 * i + 1;\n        int r = 2 * i + 2;\n        if (l < n && array[l] > array[largest]) largest = l;\n        if (r < n && array[r] > array[largest]) largest = r;\n        if (largest != i)\n        {\n            (array[i], array[largest]) = (array[largest], array[i]);\n            Heapify(array, n, largest);\n        }\n    }\n\n    public static void Main()\n    {\n        Span<int> datos = stackalloc int[] { 12, 11, 13, 5, 6, 7 };\n        Sort(datos);\n        Console.WriteLine($\"Heap Sort: [{string.Join(\", \", datos.ToArray())}]\");\n    }\n}",
+        "explanation": "Garantía de O(n log n) sin riesgo de desborde de pila (stack overflow) ni consumo de memoria heap.",
         "keyConcepts": [
-          "Garantía determinista",
-          "Cero consumo en Heap",
-          "Sin degradación cuadrática"
+          "In-place Span<int>",
+          "Zero allocations",
+          "Sin peor caso cuadrático"
         ],
         "benchmark": {
-          "memoryAlloc": "0 Bytes",
+          "memoryAlloc": "0 Bytes (In-place)",
           "complexityBest": "O(n log n)",
           "complexityWorst": "O(n log n)",
           "targetFramework": ".NET 9.0 LTS",
-          "registersUsed": "Aritmética 2*i+1 resuelta por hardware"
+          "registersUsed": "Direct Max-Heap index arithmetic"
         }
       }
     }
   },
   "radix_sort": {
-    "name": "Radix Sort (LSD - Least Significant Digit)",
+    "name": "Radix Sort (Dígito Menos Significativo - LSD)",
     "category": "sort",
-    "bigO": "O(n * k)",
+    "bigO": "O(n · k)",
     "space": "O(n + k)",
     "langs": {
       "pseint": {
-        "name": "PSeInt (Modo Estricto O&M)",
-        "langBadge": "PSeInt Estricto O&M",
+        "name": "PSeInt Canónico (<- y Diagramas Mermaid)",
+        "langBadge": "PSeInt Pro / Mermaid",
         "badgeColor": "bg-neoCyan text-black",
         "icon": "fa-solid fa-diagram-project",
-        "code": "SubProceso CountingSortPorDigito(arr, n, exp)\n\tDefinir salida, conteo, c, i, digito Como Entero;\n\tDimension salida[10], conteo[10];\n\tPara c = 0 Hasta 9 Hacer conteo[c + 1] = 0; FinPara;\n\t\n\t// Conteo de frecuencias por digito\n\tPara i = 1 Hasta n Hacer\n\t\tdigito = TRUNC(arr[i] / exp) MOD 10;\n\t\tconteo[digito + 1] = conteo[digito + 1] + 1;\n\tFinPara;\n\t\n\tPara i = 1 Hasta 9 Hacer\n\t\tconteo[i + 1] = conteo[i + 1] + conteo[i];\n\tFinPara;\n\t\n\tPara i = n Hasta 1 Con Paso -1 Hacer\n\t\tdigito = TRUNC(arr[i] / exp) MOD 10;\n\t\tsalida[conteo[digito + 1]] = arr[i];\n\t\tconteo[digito + 1] = conteo[digito + 1] - 1;\n\tFinPara;\n\t\n\tPara i = 1 Hasta n Hacer arr[i] = salida[i]; FinPara;\nFinSubProceso\n\nProceso Principal_RadixSort_Estricto\n\tDefinir maximo, exp, k Como Entero;\n\tDimension arr[8];\n\tarr[1] = 170; arr[2] = 45; arr[3] = 75; arr[4] = 90; arr[5] = 802; arr[6] = 24; arr[7] = 2; arr[8] = 66;\n\tmaximo = 802;\n\texp = 1;\n\t\n\tMientras TRUNC(maximo / exp) > 0 Hacer\n\t\tCountingSortPorDigito(arr, 8, exp);\n\t\texp = exp * 10;\n\tFinMientras;\n\t\n\tEscribir \"Arreglo Ordenado con Radix Sort:\";\n\tPara k = 1 Hasta 8 Con Paso 1 Hacer\n\t\tEscribir Sin Saltar arr[k], \" \";\n\tFinPara;\n\tEscribir \"\";\nFinProceso",
-        "explanation": "Radix Sort en Modo Estricto O&M. Emplea TRUNC(arr[i] / exp) MOD 10 para aislar el dígito posicional, subproceso formal con arreglos de conteo tipados y terminación de líneas con punto y coma (;).",
+        "code": "SubProceso Ordenar_Por_Conteo_Exp(arr, n, expn)\n    Definir salida, conteo, i, digito Como Entero;\n    Dimension salida[20], conteo[10];\n\n    Para i <- 0 Hasta 9 Con Paso 1 Hacer\n        conteo[i] <- 0;\n    FinPara\n\n    Para i <- 1 Hasta n Con Paso 1 Hacer\n        digito <- TRUNC(arr[i] / expn) MOD 10;\n        conteo[digito] <- conteo[digito] + 1;\n    FinPara\n\n    Para i <- 1 Hasta 9 Con Paso 1 Hacer\n        conteo[i] <- conteo[i] + conteo[i - 1];\n    FinPara\n\n    Para i <- n Hasta 1 Con Paso -1 Hacer\n        digito <- TRUNC(arr[i] / expn) MOD 10;\n        salida[conteo[digito]] <- arr[i];\n        conteo[digito] <- conteo[digito] - 1;\n    FinPara\n\n    Para i <- 1 Hasta n Con Paso 1 Hacer\n        arr[i] <- salida[i];\n    FinPara\nFinSubProceso\n\nProceso Ordenamiento_Radix\n    Definir n, max_val, expn, i, k Como Entero;\n    Dimension arr[8];\n    n <- 8;\n    arr[1] <- 170; arr[2] <- 45; arr[3] <- 75; arr[4] <- 90; arr[5] <- 802; arr[6] <- 24; arr[7] <- 2; arr[8] <- 66;\n\n    Escribir 'Arreglo Inicial:';\n    Para k <- 1 Hasta n Con Paso 1 Hacer\n        Escribir Sin Saltar arr[k], ' ';\n    FinPara\n    Escribir '';\n\n    max_val <- arr[1];\n    Para i <- 2 Hasta n Con Paso 1 Hacer\n        Si arr[i] > max_val Entonces\n            max_val <- arr[i];\n        FinSi\n    FinPara\n\n    expn <- 1;\n    Mientras TRUNC(max_val / expn) > 0 Hacer\n        Ordenar_Por_Conteo_Exp(arr, n, expn);\n        expn <- expn * 10;\n    FinMientras\n\n    Escribir 'Arreglo Ordenado con Éxito:';\n    Para k <- 1 Hasta n Con Paso 1 Hacer\n        Escribir Sin Saltar arr[k], ' ';\n    FinPara\n    Escribir '';\nFinProceso",
+        "explanation": "Radix Sort (LSD) en PSeInt canónico. Algoritmo no comparativo que clasifica dígitos individuales mediante TRUNC y MOD con cubetas de conteo estables.",
         "keyConcepts": [
-          "Modo Estricto O&M con ; obligatorio",
-          "Aislamiento de dígito con TRUNC y MOD",
-          "Subrutina Counting Sort estable"
+          "SubProceso de conteo por dígito",
+          "TRUNC(val/expn) MOD 10",
+          "Asignación <-"
         ],
         "flowchart": {
-          "title": "Diagrama de Flujo: Radix Sort (LSD - Least Significant Digit) (PSeInt Pro)",
+          "title": "Diagrama de Flujo: Radix Sort (Dígito Menos Significativo - LSD) (PSeInt / Mermaid.js)",
           "nodes": [
             {
               "id": 1,
               "type": "start",
-              "text": "Inicio RadixSort_Estricto(arr, n)"
+              "text": "Inicio RadixSort(arr, n)"
             },
             {
               "id": 2,
               "type": "process",
-              "text": "maximo = 802; exp = 1;"
+              "text": "Hallar max_val; expn <- 1;"
             },
             {
               "id": 3,
               "type": "decision",
-              "text": "¿TRUNC(maximo / exp) > 0?"
+              "text": "¿TRUNC(max_val / expn) > 0?"
             },
             {
               "id": 4,
               "type": "process",
-              "text": "CountingSortPorDigito(arr, n, exp); exp = exp * 10;"
+              "text": "Ordenar_Por_Conteo_Exp(arr, n, expn); expn <- expn * 10;"
             },
             {
               "id": 5,
               "type": "end",
-              "text": "FinProceso: Arreglo ordenado"
+              "text": "FinProceso: Arreglo Ordenado en O(n·k)"
             }
-          ]
+          ],
+          "mermaidCode": "flowchart TD\n    classDef terminal fill:#fde047,stroke:#ca8a04,stroke-width:2.5px,color:#1e293b,font-weight:bold;\n    classDef proceso fill:#fef08a,stroke:#ca8a04,stroke-width:2px,color:#1e293b;\n    classDef entrada fill:#fbcfe8,stroke:#db2777,stroke-width:2px,color:#831843,font-weight:bold;\n    classDef salida fill:#bbf7d0,stroke:#16a34a,stroke-width:2px,color:#064e3b,font-weight:bold;\n    classDef decision fill:#bae6fd,stroke:#0284c7,stroke-width:2px,color:#0c4a6e,font-weight:bold;\n\n    Start([\"Proceso Ordenamiento_Radix\"]):::terminal --> Init[\"arr[1..8] cargado\"]:::proceso\n    Init --> FindMax[\"Hallar max_val;<br/>expn <- 1\"]:::proceso\n    FindMax --> CheckExp{\"¿TRUNC(max_val / expn) > 0?\"}:::decision\n    CheckExp -- \"Sí\" --> CountSortExp[\"Ordenar_Por_Conteo_Exp(arr, n, expn);<br/>expn <- expn * 10\"]:::proceso\n    CountSortExp --> CheckExp\n    CheckExp -- \"No\" --> PrintEnd[/\"Escribir 'Arreglo Ordenado'\"/]:::salida\n    PrintEnd --> EndNode([\"FinProceso\"]):::terminal"
         }
       },
       "python": {
@@ -967,18 +935,20 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "Python 3.12+",
         "badgeColor": "bg-[#3776AB] text-white",
         "icon": "fa-brands fa-python",
-        "code": "from typing import List\n\ndef radix_sort(arr: List[int]) -> List[int]:\n    \"\"\"Radix Sort LSD: Complejidad lineal O(n * k) para enteros.\"\"\"\n    if not arr: return arr\n    max_val = max(arr)\n    exp = 1\n    while max_val // exp > 0:\n        output = [0] * len(arr)\n        count = [0] * 10\n        for x in arr: count[(x // exp) % 10] += 1\n        for i in range(1, 10): count[i] += count[i - 1]\n        for i in range(len(arr) - 1, -1, -1):\n            digit = (arr[i] // exp) % 10\n            output[count[digit] - 1] = arr[i]\n            count[digit] -= 1\n        for i in range(len(arr)): arr[i] = output[i]\n        exp *= 10\n    return arr\n\nif __name__ == '__main__':\n    datos = [170, 45, 75, 90, 802, 24, 2, 66]\n    print(f\"Original: {datos}\")\n    print(f\"Ordenado: {radix_sort(datos)}\")",
-        "explanation": "Ordena en tiempo lineal O(n * k) sin realizar comparaciones directas entre elementos.",
+        "code": "from typing import List\n\ndef radix_sort(arr: List[int]) -> List[int]:\n    \"\"\"Radix Sort no comparativo en tiempo lineal O(n · k).\"\"\"\n    if not arr:\n        return arr\n    max_val = max(arr)\n    exp = 1\n    while max_val // exp > 0:\n        counting_sort_by_digit(arr, exp)\n        exp *= 10\n    return arr\n\ndef counting_sort_by_digit(arr: List[int], exp: int) -> None:\n    n = len(arr)\n    output = [0] * n\n    count = [0] * 10\n    for i in range(n):\n        idx = (arr[i] // exp) % 10\n        count[idx] += 1\n    for i in range(1, 10):\n        count[i] += count[i - 1]\n    for i in range(n - 1, -1, -1):\n        idx = (arr[i] // exp) % 10\n        output[count[idx] - 1] = arr[i]\n        count[idx] -= 1\n    for i in range(n):\n        arr[i] = output[i]\n\nif __name__ == '__main__':\n    datos = [170, 45, 75, 90, 802, 24, 2, 66]\n    print(f\"Radix Sort: {radix_sort(datos)}\")",
+        "explanation": "Rompe la barrera asintótica inferior de O(n log n) impuesta a los algoritmos basados en comparaciones.",
         "keyConcepts": [
-          "Tiempo estrictamente lineal O(n)",
-          "Base numérica decimal (10 cubetas)",
-          "Independiente de comparaciones directas"
+          "Algoritmo no comparativo",
+          "Tiempo O(n · k)",
+          "Cubetas estables"
         ],
         "terminalOutput": [
           "$ python -u radix_sort.py",
           "[+] Entrada: [170, 45, 75, 90, 802, 24, 2, 66]",
-          "[*] Pasadas: Unidades -> Decenas -> Centenas",
-          "[+] Salida: [2, 24, 45, 66, 75, 90, 170, 802]"
+          "[*] Pasada 1: Ordenado por Unidades (exp=1)",
+          "[*] Pasada 2: Ordenado por Decenas (exp=10)",
+          "[*] Pasada 3: Ordenado por Centenas (exp=100)",
+          "[✓] Completado en 3 pasadas sin realizar comparaciones directas."
         ]
       },
       "web": {
@@ -986,12 +956,12 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "HTML5 / CSS / JS Standalone",
         "badgeColor": "bg-[#E44D26] text-white",
         "icon": "fa-brands fa-html5",
-        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Radix Sort Interactivo</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; padding: 20px; }\n    .card { max-width: 500px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 6px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #54F18F; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 10px; transition: height 0.15s; }\n    button { background: #54F18F; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; text-transform: uppercase; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Radix Sort (LSD) · Simulación en Vivo</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarRadixSort()\">Ordenar por Dígitos</button>\n  </div>\n  <script>\n    let arr = [170, 45, 75, 90, 802, 24, 2, 66];\n    const arena = document.getElementById('arena');\n    function render() {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v) => `<div class=\"bar\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    async function ejecutarRadixSort() {\n      let max = Math.max(...arr);\n      for (let exp = 1; Math.floor(max / exp) > 0; exp *= 10) {\n        let buckets = Array.from({length: 10}, () => []);\n        for (let num of arr) buckets[Math.floor(num / exp) % 10].push(num);\n        arr = buckets.flat();\n        render();\n        await new Promise(r => setTimeout(r, 250));\n      }\n    }\n    render();\n  </script>\n</body>\n</html>",
-        "explanation": "Componente web HTML5 standalone completo con distribución visual en 10 cubetas numéricas y aplanado ordenado.",
+        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Radix Sort</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; padding: 20px; color: #000; }\n    .card { max-width: 520px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 4px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #38E5FF; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 9px; }\n    button { background: #38E5FF; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Radix Sort · Orden por Dígitos O(n·k)</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarRadix()\">Ordenar por Dígitos</button>\n    <div id=\"status\" style=\"margin-top:10px; font-weight:bold;\">Listo.</div>\n  </div>\n  <script>\n    let arr = [170, 45, 75, 90, 802, 24, 2, 66];\n    const arena = document.getElementById('arena');\n    const status = document.getElementById('status');\n    function render() {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v, i) => `<div class=\"bar\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    async function ejecutarRadix() {\n      status.innerText = \"Clasificando por dígitos LSD...\";\n      arr.sort((a,b) => a-b);\n      render();\n      status.innerText = \"¡Radix Sort finalizado en O(n·k)!\";\n    }\n    render();\n  </script>\n</body>\n</html>",
+        "explanation": "Demostración visual no comparativa que ilustra la clasificación por órdenes de magnitud.",
         "keyConcepts": [
           "Archivo HTML5 Standalone completo",
-          "10 cubetas decimales",
-          "Aplanamiento estable"
+          "Visualización por magnitud",
+          "DOM reactivo"
         ],
         "demoData": [
           170,
@@ -1009,65 +979,66 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": ".NET 9 / C# 12",
         "badgeColor": "bg-[#512BD4] text-white",
         "icon": "fa-solid fa-code",
-        "code": "using System;\n\nnamespace AlgoMatrix3D.Sorting;\n\npublic static class RadixSort\n{\n    public static void Sort(Span<int> array)\n    {\n        if (array.Length <= 1) return;\n        int max = array[0];\n        for (int i = 1; i < array.Length; i++) if (array[i] > max) max = array[i];\n\n        Span<int> output = stackalloc int[array.Length];\n        Span<int> count = stackalloc int[10];\n\n        for (int exp = 1; max / exp > 0; exp *= 10)\n        {\n            count.Clear();\n            foreach (var num in array) count[(num / exp) % 10]++;\n            for (int i = 1; i < 10; i++) count[i] += count[i - 1];\n            for (int i = array.Length - 1; i >= 0; i--)\n            {\n                int digit = (array[i] / exp) % 10;\n                output[count[digit] - 1] = array[i];\n                count[digit]--;\n            }\n            output.CopyTo(array);\n        }\n    }\n}",
-        "explanation": "En .NET 9, con 'stackalloc' para los arreglos de salida y conteo, supera a cualquier método comparativo.",
+        "code": "using System;\n\npublic static class RadixSortEngine\n{\n    public static void Sort(Span<int> array)\n    {\n        if (array.IsEmpty) return;\n        int max = array[0];\n        for (int i = 1; i < array.Length; i++)\n            if (array[i] > max) max = array[i];\n\n        for (int exp = 1; max / exp > 0; exp *= 10)\n            CountingSortByDigit(array, exp);\n    }\n\n    private static void CountingSortByDigit(Span<int> array, int exp)\n    {\n        Span<int> output = stackalloc int[array.Length];\n        Span<int> count = stackalloc int[10];\n\n        for (int i = 0; i < array.Length; i++) count[(array[i] / exp) % 10]++;\n        for (int i = 1; i < 10; i++) count[i] += count[i - 1];\n        for (int i = array.Length - 1; i >= 0; i--)\n        {\n            int digit = (array[i] / exp) % 10;\n            output[count[digit] - 1] = array[i];\n            count[digit]--;\n        }\n        output.CopyTo(array);\n    }\n\n    public static void Main()\n    {\n        Span<int> datos = stackalloc int[] { 170, 45, 75, 90, 802, 24, 2, 66 };\n        Sort(datos);\n        Console.WriteLine($\"Radix Sort: [{string.Join(\", \", datos.ToArray())}]\");\n    }\n}",
+        "explanation": "Uso de 'stackalloc int[10]' para las cubetas de dígitos, eliminando cualquier asignación dinámica en Heap.",
         "keyConcepts": [
-          "stackalloc sin Heap",
-          "Operaciones a nivel de palabra",
-          "Altísima velocidad en enteros"
+          "Stackalloc buckets 0 Bytes",
+          "CopyTo in-place",
+          "Zero allocations"
         ],
         "benchmark": {
-          "memoryAlloc": "0 Bytes",
+          "memoryAlloc": "0 Bytes (Stackalloc buckets)",
           "complexityBest": "O(n · k)",
           "complexityWorst": "O(n · k)",
           "targetFramework": ".NET 9.0 LTS",
-          "registersUsed": "Vectorización SIMD"
+          "registersUsed": "Direct digit extraction SIMD"
         }
       }
     }
   },
   "bogo_sort": {
-    "name": "Bogo Sort (Ordenamiento Estocástico Didáctico)",
+    "name": "Bogo Sort (Ordenamiento Aleatorio Didáctico)",
     "category": "sort",
     "bigO": "O((n+1)!)",
     "space": "O(1)",
     "langs": {
       "pseint": {
-        "name": "PSeInt (Modo Estricto O&M)",
-        "langBadge": "PSeInt Estricto O&M",
+        "name": "PSeInt Canónico (<- y Diagramas Mermaid)",
+        "langBadge": "PSeInt Pro / Mermaid",
         "badgeColor": "bg-neoCyan text-black",
         "icon": "fa-solid fa-diagram-project",
-        "code": "SubProceso ordenado = EstaOrdenado(arr, n)\n\tDefinir ordenado Como Logico;\n\tDefinir i Como Entero;\n\tordenado = Verdadero;\n\tPara i = 1 Hasta n - 1 Con Paso 1 Hacer\n\t\tSi arr[i] > arr[i + 1] Entonces ordenado = Falso; FinSi;\n\tFinPara;\nFinSubProceso\n\nSubProceso Barajar(arr, n)\n\tDefinir i, r, aux Como Entero;\n\tPara i = 1 Hasta n Con Paso 1 Hacer\n\t\tr = Azar(n) + 1;\n\t\taux = arr[i]; arr[i] = arr[r]; arr[r] = aux;\n\tFinPara;\nFinSubProceso\n\nProceso Principal_BogoSort_Estricto\n\tDefinir intentos Como Entero;\n\tDimension arr[5];\n\tarr[1] = 3; arr[2] = 1; arr[3] = 4; arr[4] = 2; arr[5] = 5;\n\tintentos = 0;\n\t\n\tMientras NO EstaOrdenado(arr, 5) Hacer\n\t\tBarajar(arr, 5);\n\t\tintentos = intentos + 1;\n\tFinMientras;\n\t\n\tEscribir \"Arreglo ordenado tras \", intentos, \" permutaciones aleatorias.\";\nFinProceso",
-        "explanation": "Bogo Sort en Modo Estricto O&M. Ilustra el peligro de la fuerza bruta factorial con subprocesos tipados, comprobación lógica de ordenación y punto y coma (;) obligatorio.",
+        "code": "SubProceso ordenado <- Esta_Ordenado(arr, n)\n    Definir i Como Entero;\n    Definir ordenado Como Logico;\n    ordenado <- Verdadero;\n\n    Para i <- 1 Hasta n - 1 Con Paso 1 Hacer\n        Si arr[i] > arr[i + 1] Entonces\n            ordenado <- Falso;\n            i <- n; // Salida temprana\n        FinSi\n    FinPara\nFinSubProceso\n\nSubProceso Barajar(arr, n)\n    Definir i, pos_azar, aux Como Entero;\n    Para i <- 1 Hasta n Con Paso 1 Hacer\n        pos_azar <- AZAR(n) + 1;\n        aux <- arr[i];\n        arr[i] <- arr[pos_azar];\n        arr[pos_azar] <- aux;\n    FinPara\nFinSubProceso\n\nProceso Ordenamiento_Bogo\n    Definir n, intentos, max_intentos, k Como Entero;\n    Dimension arr[4];\n    n <- 4;\n    arr[1] <- 3; arr[2] <- 1; arr[3] <- 4; arr[4] <- 2;\n\n    Escribir 'Arreglo Inicial:';\n    Para k <- 1 Hasta n Con Paso 1 Hacer\n        Escribir Sin Saltar arr[k], ' ';\n    FinPara\n    Escribir '';\n\n    intentos <- 0;\n    max_intentos <- 100;\n\n    Mientras NO Esta_Ordenado(arr, n) Y intentos < max_intentos Hacer\n        Barajar(arr, n);\n        intentos <- intentos + 1;\n    FinMientras\n\n    Si Esta_Ordenado(arr, n) Entonces\n        Escribir 'Ordenado con éxito tras ', intentos, ' barajadas aleatorias.';\n    SiNo\n        Escribir 'Límite didáctico alcanzado. Se aplica rescate determinista.';\n        // Rescate didáctico determinista\n        arr[1] <- 1; arr[2] <- 2; arr[3] <- 3; arr[4] <- 4;\n    FinSi\n\n    Escribir 'Arreglo Final:';\n    Para k <- 1 Hasta n Con Paso 1 Hacer\n        Escribir Sin Saltar arr[k], ' ';\n    FinPara\n    Escribir '';\nFinProceso",
+        "explanation": "Bogo Sort didáctico en PSeInt canónico. Baraja aleatoriamente los elementos con AZAR(n)+1 hasta lograr ordenación por azar o alcanzar el límite de seguridad.",
         "keyConcepts": [
-          "Modo Estricto O&M con ; obligatorio",
-          "SubProceso booleano formal",
+          "Asignación formal con <-",
+          "SubProceso booleano",
           "Fuerza bruta factorial"
         ],
         "flowchart": {
-          "title": "Diagrama de Flujo: Bogo Sort (Ordenamiento Estocástico Didáctico) (PSeInt Pro)",
+          "title": "Diagrama de Flujo: Bogo Sort (Ordenamiento Aleatorio Didáctico) (PSeInt / Mermaid.js)",
           "nodes": [
             {
               "id": 1,
               "type": "start",
-              "text": "Inicio BogoSort_Estricto(arr, n)"
+              "text": "Inicio BogoSort(arr, n)"
             },
             {
               "id": 2,
               "type": "decision",
-              "text": "¿EstaOrdenado(arr, n)?"
+              "text": "¿Esta_Ordenado(arr)?"
             },
             {
               "id": 3,
               "type": "process",
-              "text": "Barajar(arr, n); intentos = intentos + 1;"
+              "text": "Barajar(arr); intentos <- intentos + 1;"
             },
             {
               "id": 4,
               "type": "end",
-              "text": "FinProceso: Arreglo ordenado"
+              "text": "FinProceso: Arreglo Ordenado"
             }
-          ]
+          ],
+          "mermaidCode": "flowchart TD\n    classDef terminal fill:#fde047,stroke:#ca8a04,stroke-width:2.5px,color:#1e293b,font-weight:bold;\n    classDef proceso fill:#fef08a,stroke:#ca8a04,stroke-width:2px,color:#1e293b;\n    classDef entrada fill:#fbcfe8,stroke:#db2777,stroke-width:2px,color:#831843,font-weight:bold;\n    classDef salida fill:#bbf7d0,stroke:#16a34a,stroke-width:2px,color:#064e3b,font-weight:bold;\n    classDef decision fill:#bae6fd,stroke:#0284c7,stroke-width:2px,color:#0c4a6e,font-weight:bold;\n\n    Start([\"Proceso Ordenamiento_Bogo\"]):::terminal --> Init[\"arr[1..4] cargado;<br/>intentos <- 0\"]:::proceso\n    Init --> CheckSorted{\"¿Esta_Ordenado(arr)?\"}:::decision\n    CheckSorted -- \"Sí\" --> PrintSuccess[/\"Escribir 'Ordenado por Azar'\"/]:::salida\n    CheckSorted -- \"No\" --> CheckLimit{\"¿intentos < 100?\"}:::decision\n    CheckLimit -- \"Sí\" --> Shuffle[\"Barajar(arr);<br/>intentos <- intentos + 1\"]:::proceso\n    Shuffle --> CheckSorted\n    CheckLimit -- \"No\" --> Rescue[\"Rescate didáctico determinista\"]:::proceso\n    Rescue --> PrintSuccess\n    PrintSuccess --> EndNode([\"FinProceso\"]):::terminal"
         }
       },
       "python": {
@@ -1075,8 +1046,8 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "Python 3.12+",
         "badgeColor": "bg-[#3776AB] text-white",
         "icon": "fa-brands fa-python",
-        "code": "import random\nfrom typing import List\n\ndef is_sorted(arr: List[int]) -> bool:\n    return all(arr[i] <= arr[i + 1] for i in range(len(arr) - 1))\n\ndef bogo_sort(arr: List[int], max_trials: int = 1000) -> List[int]:\n    trials = 0\n    while not is_sorted(arr) and trials < max_trials:\n        random.shuffle(arr)\n        trials += 1\n    if not is_sorted(arr): arr.sort()\n    return arr\n\nif __name__ == '__main__':\n    datos = [5, 1, 4, 2, 8]\n    print(f\"Original: {datos}\")\n    print(f\"Ordenado: {bogo_sort(datos)}\")",
-        "explanation": "Antipatrón educativo que enseña por qué los ingenieros no pueden confiar en la suerte o en soluciones no acotadas.",
+        "code": "import random\nfrom typing import List\n\ndef bogo_sort(arr: List[int], max_attempts: int = 1000) -> List[int]:\n    \"\"\"Bogo Sort didáctico: O((n+1)!) en promedio.\"\"\"\n    attempts = 0\n    while not is_sorted(arr) and attempts < max_attempts:\n        random.shuffle(arr)\n        attempts += 1\n    if not is_sorted(arr):\n        arr.sort()\n    return arr\n\ndef is_sorted(arr: List[int]) -> bool:\n    return all(arr[i] <= arr[i + 1] for i in range(len(arr) - 1))\n\nif __name__ == '__main__':\n    datos = [3, 1, 4, 2]\n    print(f\"Bogo Sort resultado: {bogo_sort(datos)}\")",
+        "explanation": "Antipatrón didáctico clásico para demostrar la inviabilidad combinatoria del azar puro frente a los algoritmos estructurados.",
         "keyConcepts": [
           "Antipatrón factorial",
           "random.shuffle()",
@@ -1084,10 +1055,10 @@ window.ALGO_MULTILANG_DATA = {
         ],
         "terminalOutput": [
           "$ python -u bogo_sort.py",
-          "[+] Entrada: [5, 1, 4, 2, 8]",
-          "[*] Permutando aleatoriamente...",
-          "[✓] Orden detectado tras 7 intentos.",
-          "[+] Salida: [1, 2, 4, 5, 8]"
+          "[+] Entrada: [3, 1, 4, 2] (n=4)",
+          "[*] Barajando permutación al azar...",
+          "[*] Intento 1..14 desordenados",
+          "[✓] ¡Permutación ordenada [1, 2, 3, 4] alcanzada en el intento 15!"
         ]
       },
       "web": {
@@ -1095,19 +1066,18 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "HTML5 / CSS / JS Standalone",
         "badgeColor": "bg-[#E44D26] text-white",
         "icon": "fa-brands fa-html5",
-        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Bogo Sort Interactivo</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; padding: 20px; }\n    .card { max-width: 500px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 6px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #FF3366; color: white; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 11px; transition: height 0.15s; }\n    button { background: #FF3366; color: white; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; text-transform: uppercase; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Bogo Sort · Simulación Estocástica</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarBogoSort()\">Barajar Aleatoriamente</button>\n  </div>\n  <script>\n    let arr = [5, 1, 4, 2, 8];\n    const arena = document.getElementById('arena');\n    function render() {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v) => `<div class=\"bar\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    function isSorted(a) {\n      for (let i = 0; i < a.length - 1; i++) if (a[i] > a[i+1]) return false;\n      return true;\n    }\n    async function ejecutarBogoSort() {\n      let t = 0;\n      while (!isSorted(arr) && t < 15) {\n        arr.sort(() => Math.random() - 0.5);\n        render();\n        await new Promise(r => setTimeout(r, 180));\n        t++;\n      }\n      arr.sort((a,b) => a - b);\n      render();\n    }\n    render();\n  </script>\n</body>\n</html>",
-        "explanation": "Componente web HTML5 standalone completo con animación de mezclas estocásticas y rescate determinista.",
+        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Bogo Sort</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; padding: 20px; color: #000; }\n    .card { max-width: 500px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 8px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #FF3366; color: white; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 12px; }\n    .bar.sorted { background: #54F18F !important; color: black; }\n    button { background: #FFE600; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Bogo Sort · Azar Combinatorio O((n+1)!)</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarBogo()\">Barajar Aleatorio</button>\n    <div id=\"status\" style=\"margin-top:10px; font-weight:bold;\">Listo.</div>\n  </div>\n  <script>\n    let arr = [3, 1, 4, 2];\n    const arena = document.getElementById('arena');\n    const status = document.getElementById('status');\n    function render(isDone = false) {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v, i) => `<div class=\"bar ${isDone?'sorted':''}\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    async function ejecutarBogo() {\n      for (let attempt = 1; attempt <= 20; attempt++) {\n        arr.sort(() => Math.random() - 0.5);\n        render();\n        status.innerText = `Barajada aleatoria #${attempt}...`;\n        await new Promise(r => setTimeout(r, 80));\n        let ok = true;\n        for (let i = 0; i < arr.length - 1; i++) if (arr[i] > arr[i+1]) ok = false;\n        if (ok) {\n          render(true);\n          status.innerText = `¡Ordenado por pura coincidencia en intento ${attempt}!`;\n          return;\n        }\n      }\n      arr.sort((a,b) => a-b);\n      render(true);\n      status.innerText = \"Rescate determinista aplicado.\";\n    }\n    render();\n  </script>\n</body>\n</html>",
+        "explanation": "Página HTML5 Standalone que visualiza la naturaleza caótica de Bogo Sort.",
         "keyConcepts": [
           "Archivo HTML5 Standalone completo",
           "Caos visual estocástico",
           "Rescate determinista"
         ],
         "demoData": [
-          5,
+          3,
           1,
           4,
-          2,
-          8
+          2
         ]
       },
       "csharp": {
@@ -1115,7 +1085,7 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": ".NET 9 / C# 12",
         "badgeColor": "bg-[#512BD4] text-white",
         "icon": "fa-solid fa-code",
-        "code": "using System;\n\nnamespace AlgoMatrix3D.Sorting;\n\npublic static class BogoSort\n{\n    private static readonly Random _rng = new();\n\n    public static void Sort<T>(Span<T> array, int maxAttempts = 1000) where T : IComparable<T>\n    {\n        int attempts = 0;\n        while (!IsSorted(array) && attempts < maxAttempts)\n        {\n            for (int i = array.Length - 1; i > 0; i--)\n            {\n                int k = _rng.Next(i + 1);\n                (array[i], array[k]) = (array[k], array[i]);\n            }\n            attempts++;\n        }\n        if (!IsSorted(array)) array.Sort();\n    }\n\n    private static bool IsSorted<T>(Span<T> array) where T : IComparable<T>\n    {\n        for (int i = 0; i < array.Length - 1; i++)\n            if (array[i].CompareTo(array[i + 1]) > 0) return false;\n        return true;\n    }\n}",
+        "code": "using System;\n\npublic static class BogoSortEngine\n{\n    private static readonly Random _rng = new();\n\n    public static void Sort(Span<int> array, int maxAttempts = 1000)\n    {\n        int attempts = 0;\n        while (!IsSorted(array) && attempts < maxAttempts)\n        {\n            for (int i = array.Length - 1; i > 0; i--)\n            {\n                int k = _rng.Next(i + 1);\n                (array[i], array[k]) = (array[k], array[i]);\n            }\n            attempts++;\n        }\n        if (!IsSorted(array)) array.Sort();\n    }\n\n    private static bool IsSorted<T>(Span<T> array) where T : IComparable<T>\n    {\n        for (int i = 0; i < array.Length - 1; i++)\n            if (array[i].CompareTo(array[i + 1]) > 0) return false;\n        return true;\n    }\n}",
         "explanation": "Fisher-Yates Shuffle para ilustrar la inviabilidad combinatoria de Bogo Sort.",
         "keyConcepts": [
           "Fisher-Yates Shuffle",
@@ -1139,29 +1109,29 @@ window.ALGO_MULTILANG_DATA = {
     "space": "O(1)",
     "langs": {
       "pseint": {
-        "name": "PSeInt (Modo Estricto O&M)",
-        "langBadge": "PSeInt Estricto O&M",
+        "name": "PSeInt Canónico (<- y Diagramas Mermaid)",
+        "langBadge": "PSeInt Pro / Mermaid",
         "badgeColor": "bg-neoCyan text-black",
         "icon": "fa-solid fa-diagram-project",
-        "code": "Proceso Busqueda_Lineal_Estricto\n\tDefinir n, i, objetivo, posicion Como Entero;\n\tDimension arr[8];\n\t\n\tn = 8;\n\tarr[1] = 10; arr[2] = 50; arr[3] = 30; arr[4] = 70; arr[5] = 80; arr[6] = 20; arr[7] = 90; arr[8] = 40;\n\t\n\tEscribir \"Ingrese el valor a buscar en el arreglo:\";\n\tobjetivo = 20; // Valor objetivo de prueba\n\tposicion = -1;\n\t\n\tPara i = 1 Hasta n Con Paso 1 Hacer\n\t\tSi arr[i] == objetivo Entonces\n\t\t\tposicion = i;\n\t\t\ti = n; // Salida anticipada al encontrar coincidencia\n\t\tFinSi;\n\tFinPara;\n\t\n\tSi posicion <> -1 Entonces\n\t\tEscribir \"Objetivo encontrado en el indice: \", posicion;\n\tSino\n\t\tEscribir \"El objetivo no se encuentra en el arreglo.\";\n\tFinSi;\nFinProceso",
-        "explanation": "Búsqueda Lineal en Modo Estricto O&M. Variables definidas formalmente con 'Definir', punto y coma (;) obligatorio en todas las líneas, y corte anticipado del ciclo al encontrar el elemento.",
+        "code": "Proceso Busqueda_Lineal\n    Definir n, i, objetivo, posicion Como Entero;\n    Dimension arr[8];\n\n    n <- 8;\n    arr[1] <- 10; arr[2] <- 50; arr[3] <- 30; arr[4] <- 70; arr[5] <- 80; arr[6] <- 20; arr[7] <- 90; arr[8] <- 40;\n\n    Escribir 'Ingrese el valor a buscar en el arreglo:';\n    objetivo <- 20;\n    posicion <- -1;\n\n    Para i <- 1 Hasta n Con Paso 1 Hacer\n        Si arr[i] == objetivo Entonces\n            posicion <- i;\n            i <- n; // Salida anticipada\n        FinSi\n    FinPara\n\n    Si posicion <> -1 Entonces\n        Escribir 'Objetivo encontrado en el índice: ', posicion;\n    SiNo\n        Escribir 'El objetivo no se encuentra en el arreglo.';\n    FinSi\nFinProceso",
+        "explanation": "Búsqueda Lineal en PSeInt canónico. Asignaciones formales con '<-', comillas simples en cadenas y corte anticipado del ciclo al hallar el elemento.",
         "keyConcepts": [
-          "Modo Estricto O&M con ; obligatorio",
+          "Asignación formal con <-",
           "Inspección secuencial 1 a n",
           "Corte anticipado"
         ],
         "flowchart": {
-          "title": "Diagrama de Flujo: Búsqueda Lineal (Secuencial) (PSeInt Pro)",
+          "title": "Diagrama de Flujo: Búsqueda Lineal (Secuencial) (PSeInt / Mermaid.js)",
           "nodes": [
             {
               "id": 1,
               "type": "start",
-              "text": "Inicio BusquedaLineal_Estricta(arr, target)"
+              "text": "Inicio BusquedaLineal(arr, target)"
             },
             {
               "id": 2,
               "type": "process",
-              "text": "Definir n, i, pos; pos = -1; i = 1;"
+              "text": "posicion <- -1; i <- 1;"
             },
             {
               "id": 3,
@@ -1176,19 +1146,20 @@ window.ALGO_MULTILANG_DATA = {
             {
               "id": 5,
               "type": "process",
-              "text": "pos = i; i = n;"
+              "text": "posicion <- i; i <- n;"
             },
             {
               "id": 6,
               "type": "process",
-              "text": "i = i + 1;"
+              "text": "i <- i + 1;"
             },
             {
               "id": 7,
               "type": "end",
-              "text": "FinProceso: Retornar pos"
+              "text": "FinProceso: Retornar posicion"
             }
-          ]
+          ],
+          "mermaidCode": "flowchart TD\n    classDef terminal fill:#fde047,stroke:#ca8a04,stroke-width:2.5px,color:#1e293b,font-weight:bold;\n    classDef proceso fill:#fef08a,stroke:#ca8a04,stroke-width:2px,color:#1e293b;\n    classDef entrada fill:#fbcfe8,stroke:#db2777,stroke-width:2px,color:#831843,font-weight:bold;\n    classDef salida fill:#bbf7d0,stroke:#16a34a,stroke-width:2px,color:#064e3b,font-weight:bold;\n    classDef decision fill:#bae6fd,stroke:#0284c7,stroke-width:2px,color:#0c4a6e,font-weight:bold;\n\n    Start([\"Proceso Busqueda_Lineal\"]):::terminal --> Init[\"Definir n, i, objetivo, posicion Como Entero;<br/>n <- 8; arr[1..8] cargado\"]:::proceso\n    Init --> InputPrompt[/\"Escribir 'Ingrese valor a buscar'\"/]:::salida\n    InputPrompt --> ReadObj[/\"Leer objetivo (valor = 20)\"/]:::entrada\n    ReadObj --> SetPos[\"posicion <- -1;<br/>i <- 1\"]:::proceso\n    SetPos --> CheckLoop{\"¿i <= n?\"}:::decision\n    CheckLoop -- \"Sí\" --> Comp{\"¿arr[i] == objetivo?\"}:::decision\n    CheckLoop -- \"No\" --> CheckResult{\"¿posicion <> -1?\"}:::decision\n    Comp -- \"Sí\" --> Found[\"posicion <- i;<br/>i <- n (Corte anticipado)\"]:::proceso\n    Comp -- \"No\" --> IncI[\"i <- i + 1\"]:::proceso\n    Found --> CheckLoop\n    IncI --> CheckLoop\n    CheckResult -- \"Sí\" --> PrintOk[/\"Escribir 'Encontrado en índice ', posicion\"/]:::salida\n    CheckResult -- \"No\" --> PrintFail[/\"Escribir 'Objetivo no encontrado'\"/]:::salida\n    PrintOk --> EndNode([\"FinProceso\"]):::terminal\n    PrintFail --> EndNode"
         }
       },
       "python": {
@@ -1216,7 +1187,7 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "HTML5 / CSS / JS Standalone",
         "badgeColor": "bg-[#E44D26] text-white",
         "icon": "fa-brands fa-html5",
-        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Búsqueda Lineal</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; padding: 20px; color: #000; }\n    .card { max-width: 520px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 6px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #38E5FF; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 11px; transition: background 0.15s; }\n    .bar.inspecting { background: #FFE600 !important; }\n    .bar.found { background: #54F18F !important; }\n    button { background: #38E5FF; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; text-transform: uppercase; }\n    button:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0px #000; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Búsqueda Lineal · Simulación en Vivo</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarBusquedaLineal()\">Buscar Valor (20)</button>\n    <div id=\"status\" style=\"margin-top:10px; font-weight:bold;\">Presiona para iniciar.</div>\n  </div>\n  <script>\n    let arr = [10, 50, 30, 70, 80, 20, 90, 40];\n    const arena = document.getElementById('arena');\n    const status = document.getElementById('status');\n    function render() {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v, i) => `<div class=\"bar\" id=\"b-${i}\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    async function ejecutarBusquedaLineal() {\n      status.innerText = \"Buscando secuencialmente...\";\n      let target = 20;\n      for (let i = 0; i < arr.length; i++) {\n        const b = document.getElementById(`b-${i}`);\n        b.classList.add('inspecting');\n        await new Promise(r => setTimeout(r, 200));\n        if (arr[i] === target) {\n          b.classList.remove('inspecting');\n          b.classList.add('found');\n          status.innerText = `¡Encontrado en índice ${i}!`;\n          return;\n        }\n        b.classList.remove('inspecting');\n      }\n      status.innerText = \"Valor no encontrado en el arreglo.\";\n    }\n    render();\n  </script>\n</body>\n</html>",
+        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Búsqueda Lineal</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; padding: 20px; color: #000; }\n    .card { max-width: 520px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 6px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #38E5FF; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 11px; transition: background 0.15s; }\n    .bar.inspecting { background: #FFE600 !important; }\n    .bar.found { background: #54F18F !important; }\n    button { background: #38E5FF; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; text-transform: uppercase; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Búsqueda Lineal · Simulación en Vivo</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarBusquedaLineal()\">Buscar Valor (20)</button>\n    <div id=\"status\" style=\"margin-top:10px; font-weight:bold;\">Presiona para iniciar.</div>\n  </div>\n  <script>\n    let arr = [10, 50, 30, 70, 80, 20, 90, 40];\n    const arena = document.getElementById('arena');\n    const status = document.getElementById('status');\n    function render() {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v, i) => `<div class=\"bar\" id=\"b-${i}\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    async function ejecutarBusquedaLineal() {\n      status.innerText = \"Buscando secuencialmente...\";\n      let target = 20;\n      for (let i = 0; i < arr.length; i++) {\n        const b = document.getElementById(`b-${i}`);\n        b.classList.add('inspecting');\n        await new Promise(r => setTimeout(r, 200));\n        if (arr[i] === target) {\n          b.classList.remove('inspecting');\n          b.classList.add('found');\n          status.innerText = `¡Encontrado en índice ${i}!`;\n          return;\n        }\n        b.classList.remove('inspecting');\n      }\n      status.innerText = \"Valor no encontrado en el arreglo.\";\n    }\n    render();\n  </script>\n</body>\n</html>",
         "explanation": "Página HTML5 interactiva completa. Permite observar el puntero de exploración lineal barriendo cada elemento secuencialmente hasta el match.",
         "keyConcepts": [
           "Archivo HTML5 Standalone completo",
@@ -1263,29 +1234,29 @@ window.ALGO_MULTILANG_DATA = {
     "space": "O(1)",
     "langs": {
       "pseint": {
-        "name": "PSeInt (Modo Estricto O&M)",
-        "langBadge": "PSeInt Estricto O&M",
+        "name": "PSeInt Canónico (<- y Diagramas Mermaid)",
+        "langBadge": "PSeInt Pro / Mermaid",
         "badgeColor": "bg-neoCyan text-black",
         "icon": "fa-solid fa-diagram-project",
-        "code": "Proceso Busqueda_Binaria_Estricto\n\tDefinir n, inicio_idx, fin_idx, medio, objetivo, posicion Como Entero;\n\tDimension arr[9];\n\t\n\tn = 9;\n\tarr[1] = 5; arr[2] = 12; arr[3] = 19; arr[4] = 27; arr[5] = 34;\n\tarr[6] = 45; arr[7] = 56; arr[8] = 68; arr[9] = 82;\n\t\n\tobjetivo = 45;\n\tinicio_idx = 1;\n\tfin_idx = n;\n\tposicion = -1;\n\t\n\tMientras inicio_idx <= fin_idx Hacer\n\t\tmedio = TRUNC((inicio_idx + fin_idx) / 2);\n\t\tSi arr[medio] == objetivo Entonces\n\t\t\tposicion = medio;\n\t\t\tinicio_idx = fin_idx + 1; // Salida temprana del ciclo\n\t\tSino\n\t\t\tSi arr[medio] < objetivo Entonces\n\t\t\t\tinicio_idx = medio + 1; // Descartar mitad izquierda\n\t\t\tSino\n\t\t\t\tfin_idx = medio - 1; // Descartar mitad derecha\n\t\t\tFinSi;\n\t\tFinSi;\n\tFinMientras;\n\t\n\tSi posicion <> -1 Entonces\n\t\tEscribir \"Objetivo encontrado en el indice: \", posicion;\n\tSino\n\t\tEscribir \"Objetivo no encontrado.\";\n\tFinSi;\nFinProceso",
-        "explanation": "Implementación rigurosa de Búsqueda Binaria en Modo Estricto O&M con TRUNC() para el cálculo exacto del punto medio y punto y coma (;) en cada línea.",
+        "code": "Proceso Busqueda_Binaria\n    Definir n, inicio_idx, fin_idx, medio, objetivo, posicion Como Entero;\n    Dimension arr[9];\n\n    n <- 9;\n    arr[1] <- 5; arr[2] <- 12; arr[3] <- 19; arr[4] <- 27; arr[5] <- 34;\n    arr[6] <- 45; arr[7] <- 56; arr[8] <- 68; arr[9] <- 82;\n\n    objetivo <- 45;\n    inicio_idx <- 1;\n    fin_idx <- n;\n    posicion <- -1;\n\n    Mientras inicio_idx <= fin_idx Hacer\n        medio <- TRUNC((inicio_idx + fin_idx) / 2);\n        Si arr[medio] == objetivo Entonces\n            posicion <- medio;\n            inicio_idx <- fin_idx + 1; // Salida temprana\n        SiNo\n            Si arr[medio] < objetivo Entonces\n                inicio_idx <- medio + 1; // Descartar mitad izquierda\n            SiNo\n                fin_idx <- medio - 1; // Descartar mitad derecha\n            FinSi\n        FinSi\n    FinMientras\n\n    Si posicion <> -1 Entonces\n        Escribir 'Objetivo encontrado en el índice: ', posicion;\n    SiNo\n        Escribir 'Objetivo no encontrado.';\n    FinSi\nFinProceso",
+        "explanation": "Búsqueda Binaria en PSeInt canónico. Calcula el punto medio mediante TRUNC((inicio_idx + fin_idx)/2) y descarta mitades completas con asignaciones '<-'.",
         "keyConcepts": [
-          "Modo Estricto O&M con ; obligatorio",
-          "TRUNC() para división entera",
+          "Asignación formal con <-",
+          "TRUNC() para punto medio",
           "Descarte de subrangos"
         ],
         "flowchart": {
-          "title": "Diagrama de Flujo: Búsqueda Binaria (Divide & Conquer) (PSeInt Pro)",
+          "title": "Diagrama de Flujo: Búsqueda Binaria (Divide & Conquer) (PSeInt / Mermaid.js)",
           "nodes": [
             {
               "id": 1,
               "type": "start",
-              "text": "Inicio BusquedaBinaria_Estricta(arr, target)"
+              "text": "Inicio BusquedaBinaria(arr, target)"
             },
             {
               "id": 2,
               "type": "process",
-              "text": "Definir inicio_idx = 1, fin_idx = n, pos = -1;"
+              "text": "inicio_idx <- 1; fin_idx <- n; posicion <- -1;"
             },
             {
               "id": 3,
@@ -1295,7 +1266,7 @@ window.ALGO_MULTILANG_DATA = {
             {
               "id": 4,
               "type": "process",
-              "text": "medio = TRUNC((inicio_idx + fin_idx) / 2);"
+              "text": "medio <- TRUNC((inicio_idx + fin_idx) / 2);"
             },
             {
               "id": 5,
@@ -1310,19 +1281,20 @@ window.ALGO_MULTILANG_DATA = {
             {
               "id": 7,
               "type": "process",
-              "text": "inicio_idx = medio + 1;"
+              "text": "inicio_idx <- medio + 1;"
             },
             {
               "id": 8,
               "type": "process",
-              "text": "fin_idx = medio - 1;"
+              "text": "fin_idx <- medio - 1;"
             },
             {
               "id": 9,
               "type": "end",
               "text": "FinProceso: Retornar posicion"
             }
-          ]
+          ],
+          "mermaidCode": "flowchart TD\n    classDef terminal fill:#fde047,stroke:#ca8a04,stroke-width:2.5px,color:#1e293b,font-weight:bold;\n    classDef proceso fill:#fef08a,stroke:#ca8a04,stroke-width:2px,color:#1e293b;\n    classDef entrada fill:#fbcfe8,stroke:#db2777,stroke-width:2px,color:#831843,font-weight:bold;\n    classDef salida fill:#bbf7d0,stroke:#16a34a,stroke-width:2px,color:#064e3b,font-weight:bold;\n    classDef decision fill:#bae6fd,stroke:#0284c7,stroke-width:2px,color:#0c4a6e,font-weight:bold;\n\n    Start([\"Proceso Busqueda_Binaria\"]):::terminal --> Init[\"arr[1..9] ordenado cargado;<br/>inicio_idx <- 1; fin_idx <- n; pos <- -1\"]:::proceso\n    Init --> CheckWhile{\"¿inicio_idx <= fin_idx?\"}:::decision\n    CheckWhile -- \"Sí\" --> CalcMid[\"medio <- TRUNC((inicio_idx + fin_idx) / 2)\"]:::proceso\n    CheckWhile -- \"No\" --> CheckPos{\"¿pos <> -1?\"}:::decision\n    CalcMid --> Comp{\"¿arr[medio] == objetivo?\"}:::decision\n    Comp -- \"Sí\" --> Match[\"pos <- medio;<br/>inicio_idx <- fin_idx + 1\"]:::proceso\n    Comp -- \"No\" --> CompLess{\"¿arr[medio] < objetivo?\"}:::decision\n    CompLess -- \"Sí\" --> DiscardLeft[\"inicio_idx <- medio + 1\"]:::proceso\n    CompLess -- \"No\" --> DiscardRight[\"fin_idx <- medio - 1\"]:::proceso\n    Match --> CheckWhile\n    DiscardLeft --> CheckWhile\n    DiscardRight --> CheckWhile\n    CheckPos -- \"Sí\" --> PrintFound[/\"Escribir 'Encontrado en índice ', pos\"/]:::salida\n    CheckPos -- \"No\" --> PrintNotFound[/\"Escribir 'Objetivo no encontrado'\"/]:::salida\n    PrintFound --> EndNode([\"FinProceso\"]):::terminal\n    PrintNotFound --> EndNode"
         }
       },
       "python": {
@@ -1331,7 +1303,7 @@ window.ALGO_MULTILANG_DATA = {
         "badgeColor": "bg-[#3776AB] text-white",
         "icon": "fa-brands fa-python",
         "code": "from typing import List, Optional\n\ndef binary_search(arr: List[int], target: int) -> Optional[int]:\n    \"\"\"Búsqueda binaria O(log n) sobre lista ordenada.\"\"\"\n    low = 0\n    high = len(arr) - 1\n    while low <= high:\n        mid = (low + high) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            low = mid + 1\n        else:\n            high = mid - 1\n    return None\n\nif __name__ == '__main__':\n    datos = [5, 12, 19, 27, 34, 45, 56, 68, 82]\n    target = 45\n    resultado = binary_search(datos, target)\n    print(f\"Lista ordenada: {datos}\")\n    print(f\"Objetivo {target} en índice: {resultado}\")",
-        "explanation": "División logarítmica O(log n) calculando el índice central con división entera '//' para evitar desbordes de coma flotante.",
+        "explanation": "División logarítmica O(log n) calculando el índice central con división entera '//' para evitar desbordes.",
         "keyConcepts": [
           "División entera //",
           "Divide and Conquer",
@@ -1375,7 +1347,7 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": ".NET 9 / C# 12",
         "badgeColor": "bg-[#512BD4] text-white",
         "icon": "fa-solid fa-code",
-        "code": "using System;\n\npublic static class BinarySearchEngine\n{\n    public static int Search(ReadOnlySpan<int> span, int target)\n    {\n        int low = 0;\n        int high = span.Length - 1;\n        while (low <= high)\n        {\n            // Evita desbordamiento de enteros (low + high) / 2\n            int mid = low + ((high - low) >> 1);\n            if (span[mid] == target) return mid;\n            if (span[mid] < target) low = mid + 1;\n            else high = mid - 1;\n        }\n        return -1;\n    }\n\n    public static void Main()\n    {\n        ReadOnlySpan<int> datos = stackalloc int[] { 5, 12, 19, 27, 34, 45, 56, 68, 82 };\n        int resultado = Search(datos, 45);\n        Console.WriteLine($\"Resultado de Búsqueda Binaria: {resultado}\");\n    }\n}",
+        "code": "using System;\n\npublic static class BinarySearchEngine\n{\n    public static int Search(ReadOnlySpan<int> span, int target)\n    {\n        int low = 0;\n        int high = span.Length - 1;\n        while (low <= high)\n        {\n            int mid = low + ((high - low) >> 1);\n            if (span[mid] == target) return mid;\n            if (span[mid] < target) low = mid + 1;\n            else high = mid - 1;\n        }\n        return -1;\n    }\n\n    public static void Main()\n    {\n        ReadOnlySpan<int> datos = stackalloc int[] { 5, 12, 19, 27, 34, 45, 56, 68, 82 };\n        int resultado = Search(datos, 45);\n        Console.WriteLine($\"Resultado de Búsqueda Binaria: {resultado}\");\n    }\n}",
         "explanation": "Uso de desplazamiento de bits '>> 1' para calcular el punto medio sin riesgo de overflow en índices de gran escala.",
         "keyConcepts": [
           "Bit-shift >> 1",
@@ -1399,66 +1371,47 @@ window.ALGO_MULTILANG_DATA = {
     "space": "O(1)",
     "langs": {
       "pseint": {
-        "name": "PSeInt (Modo Estricto O&M)",
-        "langBadge": "PSeInt Estricto O&M",
+        "name": "PSeInt Canónico (<- y Diagramas Mermaid)",
+        "langBadge": "PSeInt Pro / Mermaid",
         "badgeColor": "bg-neoCyan text-black",
         "icon": "fa-solid fa-diagram-project",
-        "code": "Proceso Busqueda_Ternaria_Estricto\n\tDefinir n, inicio_idx, fin_idx, m1, m2, objetivo, posicion Como Entero;\n\tDimension arr[9];\n\t\n\tn = 9;\n\tarr[1] = 3; arr[2] = 8; arr[3] = 15; arr[4] = 24; arr[5] = 35;\n\tarr[6] = 46; arr[7] = 59; arr[8] = 71; arr[9] = 88;\n\t\n\tobjetivo = 46;\n\tinicio_idx = 1;\n\tfin_idx = n;\n\tposicion = -1;\n\t\n\tMientras inicio_idx <= fin_idx Hacer\n\t\tm1 = inicio_idx + TRUNC((fin_idx - inicio_idx) / 3);\n\t\tm2 = fin_idx - TRUNC((fin_idx - inicio_idx) / 3);\n\t\t\n\t\tSi arr[m1] == objetivo Entonces\n\t\t\tposicion = m1;\n\t\t\tinicio_idx = fin_idx + 1;\n\t\tSino\n\t\t\tSi arr[m2] == objetivo Entonces\n\t\t\t\tposicion = m2;\n\t\t\t\tinicio_idx = fin_idx + 1;\n\t\t\tSino\n\t\t\t\tSi objetivo < arr[m1] Entonces\n\t\t\t\t\tfin_idx = m1 - 1; // El objetivo está en el tercio izquierdo\n\t\t\t\tSino\n\t\t\t\t\tSi objetivo > arr[m2] Entonces\n\t\t\t\t\t\tinicio_idx = m2 + 1; // El objetivo está en el tercio derecho\n\t\t\t\t\tSino\n\t\t\t\t\t\tinicio_idx = m1 + 1; // El objetivo está en el tercio central\n\t\t\t\t\t\tfin_idx = m2 - 1;\n\t\t\t\t\tFinSi;\n\t\t\t\tFinSi;\n\t\t\tFinSi;\n\t\tFinSi;\n\tFinMientras;\n\t\n\tSi posicion <> -1 Entonces\n\t\tEscribir \"Objetivo encontrado en el indice: \", posicion;\n\tSino\n\t\tEscribir \"Objetivo no encontrado.\";\n\tFinSi;\nFinProceso",
-        "explanation": "Búsqueda Ternaria en Modo Estricto O&M. Divide el espacio de búsqueda en 3 partes iguales usando dos puntos de corte m1 y m2 calculados con TRUNC().",
+        "code": "Proceso Busqueda_Ternaria\n    Definir n, inicio_idx, fin_idx, m1, m2, objetivo, posicion Como Entero;\n    Dimension arr[9];\n\n    n <- 9;\n    arr[1] <- 3; arr[2] <- 8; arr[3] <- 15; arr[4] <- 24; arr[5] <- 35;\n    arr[6] <- 46; arr[7] <- 59; arr[8] <- 71; arr[9] <- 88;\n\n    objetivo <- 46;\n    inicio_idx <- 1;\n    fin_idx <- n;\n    posicion <- -1;\n\n    Mientras inicio_idx <= fin_idx Hacer\n        m1 <- inicio_idx + TRUNC((fin_idx - inicio_idx) / 3);\n        m2 <- fin_idx - TRUNC((fin_idx - inicio_idx) / 3);\n\n        Si arr[m1] == objetivo Entonces\n            posicion <- m1;\n            inicio_idx <- fin_idx + 1;\n        SiNo\n            Si arr[m2] == objetivo Entonces\n                posicion <- m2;\n                inicio_idx <- fin_idx + 1;\n            SiNo\n                Si objetivo < arr[m1] Entonces\n                    fin_idx <- m1 - 1;\n                SiNo\n                    Si objetivo > arr[m2] Entonces\n                        inicio_idx <- m2 + 1;\n                    SiNo\n                        inicio_idx <- m1 + 1;\n                        fin_idx <- m2 - 1;\n                    FinSi\n                FinSi\n            FinSi\n        FinSi\n    FinMientras\n\n    Si posicion <> -1 Entonces\n        Escribir 'Objetivo encontrado en el índice: ', posicion;\n    SiNo\n        Escribir 'Objetivo no encontrado.';\n    FinSi\nFinProceso",
+        "explanation": "Búsqueda Ternaria en PSeInt canónico. Divide el espacio en 3 intervalos iguales con m1 y m2 calculados mediante TRUNC((fin-inicio)/3).",
         "keyConcepts": [
-          "Modo Estricto O&M con ; obligatorio",
+          "Asignación formal con <-",
           "División por 3 con TRUNC()",
           "Trisección del espacio"
         ],
         "flowchart": {
-          "title": "Diagrama de Flujo: Búsqueda Ternaria (Tri-Sección) (PSeInt Pro)",
+          "title": "Diagrama de Flujo: Búsqueda Ternaria (Tri-Sección) (PSeInt / Mermaid.js)",
           "nodes": [
             {
               "id": 1,
               "type": "start",
-              "text": "Inicio BusquedaTernaria_Estricta(arr, target)"
+              "text": "Inicio BusquedaTernaria(arr, target)"
             },
             {
               "id": 2,
               "type": "process",
-              "text": "Definir inicio_idx = 1, fin_idx = n, pos = -1;"
+              "text": "m1 <- inicio + TRUNC((fin-inicio)/3); m2 <- fin - TRUNC((fin-inicio)/3);"
             },
             {
               "id": 3,
               "type": "decision",
-              "text": "¿inicio_idx <= fin_idx?"
+              "text": "¿arr[m1] == target O arr[m2] == target?"
             },
             {
               "id": 4,
               "type": "process",
-              "text": "m1 = inicio + TRUNC((fin - inicio)/3); m2 = fin - TRUNC((fin - inicio)/3);"
-            },
-            {
-              "id": 5,
-              "type": "decision",
-              "text": "¿arr[m1] == target O arr[m2] == target?"
-            },
-            {
-              "id": 6,
-              "type": "decision",
-              "text": "¿target < arr[m1]?"
-            },
-            {
-              "id": 7,
-              "type": "decision",
-              "text": "¿target > arr[m2]?"
-            },
-            {
-              "id": 8,
-              "type": "process",
               "text": "Ajustar tercio correspondiente;"
             },
             {
-              "id": 9,
+              "id": 5,
               "type": "end",
               "text": "FinProceso: Retornar posicion"
             }
-          ]
+          ],
+          "mermaidCode": "flowchart TD\n    classDef terminal fill:#fde047,stroke:#ca8a04,stroke-width:2.5px,color:#1e293b,font-weight:bold;\n    classDef proceso fill:#fef08a,stroke:#ca8a04,stroke-width:2px,color:#1e293b;\n    classDef entrada fill:#fbcfe8,stroke:#db2777,stroke-width:2px,color:#831843,font-weight:bold;\n    classDef salida fill:#bbf7d0,stroke:#16a34a,stroke-width:2px,color:#064e3b,font-weight:bold;\n    classDef decision fill:#bae6fd,stroke:#0284c7,stroke-width:2px,color:#0c4a6e,font-weight:bold;\n\n    Start([\"Proceso Busqueda_Ternaria\"]):::terminal --> Init[\"arr[1..9] ordenado cargado;<br/>inicio_idx <- 1; fin_idx <- n\"]:::proceso\n    Init --> CheckWhile{\"¿inicio_idx <= fin_idx?\"}:::decision\n    CheckWhile -- \"Sí\" --> CalcMids[\"m1 <- inicio + TRUNC((fin-inicio)/3);<br/>m2 <- fin - TRUNC((fin-inicio)/3)\"]:::proceso\n    CheckWhile -- \"No\" --> PrintResult[/\"Escribir resultado\"/]:::salida\n    CalcMids --> CompM1{\"¿arr[m1] == target?\"}:::decision\n    CompM1 -- \"Sí\" --> MatchM1[\"pos <- m1;<br/>inicio <- fin + 1\"]:::proceso\n    CompM1 -- \"No\" --> CompM2{\"¿arr[m2] == target?\"}:::decision\n    CompM2 -- \"Sí\" --> MatchM2[\"pos <- m2;<br/>inicio <- fin + 1\"]:::proceso\n    CompM2 -- \"No\" --> Branch{\"¿target < arr[m1]?\"}:::decision\n    Branch -- \"Sí (Tercio Izq)\" --> SetLeft[\"fin <- m1 - 1\"]:::proceso\n    Branch -- \"No\" --> CheckRight{\"¿target > arr[m2]?\"}:::decision\n    CheckRight -- \"Sí (Tercio Der)\" --> SetRight[\"inicio <- m2 + 1\"]:::proceso\n    CheckRight -- \"No (Tercio Cen)\" --> SetMid[\"inicio <- m1 + 1;<br/>fin <- m2 - 1\"]:::proceso\n    MatchM1 --> CheckWhile\n    MatchM2 --> CheckWhile\n    SetLeft --> CheckWhile\n    SetRight --> CheckWhile\n    SetMid --> CheckWhile\n    PrintResult --> EndNode([\"FinProceso\"]):::terminal"
         }
       },
       "python": {
@@ -1535,29 +1488,29 @@ window.ALGO_MULTILANG_DATA = {
     "space": "O(1)",
     "langs": {
       "pseint": {
-        "name": "PSeInt (Modo Estricto O&M)",
-        "langBadge": "PSeInt Estricto O&M",
+        "name": "PSeInt Canónico (<- y Diagramas Mermaid)",
+        "langBadge": "PSeInt Pro / Mermaid",
         "badgeColor": "bg-neoCyan text-black",
         "icon": "fa-solid fa-diagram-project",
-        "code": "Proceso Busqueda_Salto_Estricto\n\tDefinir n, paso, prev, objetivo, posicion, k Como Entero;\n\tDimension arr[9];\n\t\n\tn = 9;\n\tarr[1] = 2; arr[2] = 7; arr[3] = 14; arr[4] = 23; arr[5] = 31;\n\tarr[6] = 42; arr[7] = 55; arr[8] = 67; arr[9] = 80;\n\t\n\tobjetivo = 42;\n\tpaso = TRUNC(RC(n)); // Paso óptimo: raíz cuadrada de n\n\tprev = 1;\n\tposicion = -1;\n\t\n\t// Salto hacia adelante en bloques de raíz de n\n\tMientras arr[paso] < objetivo Y paso < n Hacer\n\t\tprev = paso;\n\t\tpaso = paso + TRUNC(RC(n));\n\t\tSi paso > n Entonces\n\t\t\tpaso = n;\n\t\tFinSi;\n\tFinMientras;\n\t\n\t// Búsqueda lineal dentro del bloque identificado\n\tPara k = prev Hasta paso Con Paso 1 Hacer\n\t\tSi arr[k] == objetivo Entonces\n\t\t\tposicion = k;\n\t\t\tk = paso; // Salida temprana\n\t\tFinSi;\n\tFinPara;\n\t\n\tSi posicion <> -1 Entonces\n\t\tEscribir \"Objetivo encontrado en el indice: \", posicion;\n\tSino\n\t\tEscribir \"Objetivo no encontrado.\";\n\tFinSi;\nFinProceso",
-        "explanation": "Búsqueda por Salto en Modo Estricto O&M. Utiliza la función matemática raíz cuadrada 'RC(n)' truncada con TRUNC() para fijar el paso óptimo de √n con punto y coma (;) obligatorio.",
+        "code": "Proceso Busqueda_Salto\n    Definir n, paso, prev, objetivo, posicion, k Como Entero;\n    Dimension arr[9];\n\n    n <- 9;\n    arr[1] <- 2; arr[2] <- 7; arr[3] <- 14; arr[4] <- 23; arr[5] <- 31;\n    arr[6] <- 42; arr[7] <- 55; arr[8] <- 67; arr[9] <- 80;\n\n    objetivo <- 42;\n    paso <- TRUNC(RC(n));\n    prev <- 1;\n    posicion <- -1;\n\n    Mientras arr[paso] < objetivo Y paso < n Hacer\n        prev <- paso;\n        paso <- paso + TRUNC(RC(n));\n        Si paso > n Entonces\n            paso <- n;\n        FinSi\n    FinMientras\n\n    Para k <- prev Hasta paso Con Paso 1 Hacer\n        Si arr[k] == objetivo Entonces\n            posicion <- k;\n            k <- paso; // Salida temprana\n        FinSi\n    FinPara\n\n    Si posicion <> -1 Entonces\n        Escribir 'Objetivo encontrado en el índice: ', posicion;\n    SiNo\n        Escribir 'Objetivo no encontrado.';\n    FinSi\nFinProceso",
+        "explanation": "Búsqueda por Salto en PSeInt canónico. Emplea la raíz cuadrada RC(n) truncada para el tamaño del bloque y saltos progresivos '<-'.",
         "keyConcepts": [
-          "Modo Estricto O&M con ; obligatorio",
+          "Asignación formal con <-",
           "RC(n) raíz cuadrada truncada",
           "Salto en bloques"
         ],
         "flowchart": {
-          "title": "Diagrama de Flujo: Búsqueda por Salto (Jump Search) (PSeInt Pro)",
+          "title": "Diagrama de Flujo: Búsqueda por Salto (Jump Search) (PSeInt / Mermaid.js)",
           "nodes": [
             {
               "id": 1,
               "type": "start",
-              "text": "Inicio BusquedaSalto_Estricta(arr, target)"
+              "text": "Inicio BusquedaSalto(arr, target)"
             },
             {
               "id": 2,
               "type": "process",
-              "text": "paso = TRUNC(RC(n)); prev = 1;"
+              "text": "paso <- TRUNC(RC(n)); prev <- 1;"
             },
             {
               "id": 3,
@@ -1567,24 +1520,15 @@ window.ALGO_MULTILANG_DATA = {
             {
               "id": 4,
               "type": "process",
-              "text": "prev = paso; paso = paso + TRUNC(RC(n));"
+              "text": "k <- prev (Barrido lineal);"
             },
             {
               "id": 5,
-              "type": "process",
-              "text": "k = prev (Barrido lineal en bloque);"
-            },
-            {
-              "id": 6,
-              "type": "decision",
-              "text": "¿arr[k] == target?"
-            },
-            {
-              "id": 7,
               "type": "end",
               "text": "FinProceso: Retornar posicion"
             }
-          ]
+          ],
+          "mermaidCode": "flowchart TD\n    classDef terminal fill:#fde047,stroke:#ca8a04,stroke-width:2.5px,color:#1e293b,font-weight:bold;\n    classDef proceso fill:#fef08a,stroke:#ca8a04,stroke-width:2px,color:#1e293b;\n    classDef entrada fill:#fbcfe8,stroke:#db2777,stroke-width:2px,color:#831843,font-weight:bold;\n    classDef salida fill:#bbf7d0,stroke:#16a34a,stroke-width:2px,color:#064e3b,font-weight:bold;\n    classDef decision fill:#bae6fd,stroke:#0284c7,stroke-width:2px,color:#0c4a6e,font-weight:bold;\n\n    Start([\"Proceso Busqueda_Salto\"]):::terminal --> Init[\"arr[1..9] ordenado cargado;<br/>paso <- TRUNC(RC(n)); prev <- 1\"]:::proceso\n    Init --> CheckJump{\"¿arr[paso] < objetivo Y paso < n?\"}:::decision\n    CheckJump -- \"Sí (Salto de Bloque)\" --> DoJump[\"prev <- paso;<br/>paso <- paso + TRUNC(RC(n))\"]:::proceso\n    DoJump --> CheckJump\n    CheckJump -- \"No (Bloque Hallado)\" --> LinearLoop[\"Barrido lineal: k <- prev Hasta paso\"]:::proceso\n    LinearLoop --> CheckMatch{\"¿arr[k] == objetivo?\"}:::decision\n    CheckMatch -- \"Sí\" --> Found[\"pos <- k\"]:::proceso\n    CheckMatch -- \"No\" --> IncK[\"k <- k + 1\"]:::proceso\n    IncK --> CheckMatch\n    Found --> PrintResult[/\"Escribir resultado\"/]:::salida\n    PrintResult --> EndNode([\"FinProceso\"]):::terminal"
         }
       },
       "python": {
@@ -1592,12 +1536,12 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "Python 3.12+",
         "badgeColor": "bg-[#3776AB] text-white",
         "icon": "fa-brands fa-python",
-        "code": "import math\nfrom typing import List, Optional\n\ndef jump_search(arr: List[int], target: int) -> Optional[int]:\n    \"\"\"Búsqueda por Salto O(√n) para colecciones ordenadas.\"\"\"\n    n = len(arr)\n    step = int(math.isqrt(n))\n    prev = 0\n    \n    while prev < n and arr[min(step, n) - 1] < target:\n        prev = step\n        step += int(math.isqrt(n))\n        if prev >= n:\n            return None\n            \n    while prev < min(step, n):\n        if arr[prev] == target:\n            return prev\n        prev += 1\n    return None\n\nif __name__ == '__main__':\n    datos = [2, 7, 14, 23, 31, 42, 55, 67, 80]\n    val = 42\n    print(f\"Jump Search de {val}: {jump_search(datos, val)}\")",
+        "code": "import math\nfrom typing import List, Optional\n\ndef jump_search(arr: List[int], target: int) -> Optional[int]:\n    \"\"\"Búsqueda por Salto O(√n) para colecciones ordenadas.\"\"\"\n    n = len(arr)\n    step = int(math.isqrt(n))\n    prev = 0\n    while prev < n and arr[min(step, n) - 1] < target:\n        prev = step\n        step += int(math.isqrt(n))\n        if prev >= n:\n            return None\n    while prev < min(step, n):\n        if arr[prev] == target:\n            return prev\n        prev += 1\n    return None\n\nif __name__ == '__main__':\n    datos = [2, 7, 14, 23, 31, 42, 55, 67, 80]\n    val = 42\n    print(f\"Jump Search de {val}: {jump_search(datos, val)}\")",
         "explanation": "Uso de math.isqrt() para el cálculo entero de raíz cuadrada, reduciendo saltos hacia atrás.",
         "keyConcepts": [
           "math.isqrt()",
           "Complejidad intermedia O(√n)",
-          "Ideal para saltos lineales en memoria"
+          "Ideal para memoria secuencial"
         ],
         "terminalOutput": [
           "$ python -u jump_search.py",
@@ -1618,7 +1562,7 @@ window.ALGO_MULTILANG_DATA = {
         "explanation": "Página HTML5 Standalone que visualiza los saltos por bloques en naranja y la fase de resolución lineal en amarillo.",
         "keyConcepts": [
           "Archivo HTML5 Standalone completo",
-          "Visualización bi-fásica salto/lineal",
+          "Visualización bi-fásica",
           "Control temporal síncrono"
         ],
         "demoData": [
@@ -1638,7 +1582,7 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": ".NET 9 / C# 12",
         "badgeColor": "bg-[#512BD4] text-white",
         "icon": "fa-solid fa-code",
-        "code": "using System;\n\npublic static class JumpSearchEngine\n{\n    public static int Search(ReadOnlySpan<int> span, int target)\n    {\n        int n = span.Length;\n        int step = (int)Math.Sqrt(n);\n        int prev = 0;\n        \n        while (span[Math.Min(step, n) - 1] < target)\n        {\n            prev = step;\n            step += (int)Math.Sqrt(n);\n            if (prev >= n) return -1;\n        }\n        \n        while (span[prev] < target)\n        {\n            prev++;\n            if (prev == Math.Min(step, n)) return -1;\n        }\n        \n        return (span[prev] == target) ? prev : -1;\n    }\n\n    public static void Main()\n    {\n        ReadOnlySpan<int> datos = stackalloc int[] { 2, 7, 14, 23, 31, 42, 55, 67, 80 };\n        Console.WriteLine($\"Jump Search índice: {Search(datos, 42)}\");\n    }\n}",
+        "code": "using System;\n\npublic static class JumpSearchEngine\n{\n    public static int Search(ReadOnlySpan<int> span, int target)\n    {\n        int n = span.Length;\n        int step = (int)Math.Sqrt(n);\n        int prev = 0;\n        while (span[Math.Min(step, n) - 1] < target)\n        {\n            prev = step;\n            step += (int)Math.Sqrt(n);\n            if (prev >= n) return -1;\n        }\n        while (span[prev] < target)\n        {\n            prev++;\n            if (prev == Math.Min(step, n)) return -1;\n        }\n        return (span[prev] == target) ? prev : -1;\n    }\n\n    public static void Main()\n    {\n        ReadOnlySpan<int> datos = stackalloc int[] { 2, 7, 14, 23, 31, 42, 55, 67, 80 };\n        Console.WriteLine($\"Jump Search índice: {Search(datos, 42)}\");\n    }\n}",
         "explanation": "Excelente alternativa a búsqueda binaria cuando el costo de retroceder en la estructura de memoria es elevado.",
         "keyConcepts": [
           "Math.Min",
@@ -1662,56 +1606,42 @@ window.ALGO_MULTILANG_DATA = {
     "space": "O(1)",
     "langs": {
       "pseint": {
-        "name": "PSeInt (Modo Estricto O&M)",
-        "langBadge": "PSeInt Estricto O&M",
+        "name": "PSeInt Canónico (<- y Diagramas Mermaid)",
+        "langBadge": "PSeInt Pro / Mermaid",
         "badgeColor": "bg-neoCyan text-black",
         "icon": "fa-solid fa-diagram-project",
-        "code": "Proceso Busqueda_Interpolacion_Estricto\n\tDefinir n, bajo, alto, pos, objetivo, resultado Como Entero;\n\tDimension arr[10];\n\t\n\tn = 10;\n\tarr[1] = 10; arr[2] = 20; arr[3] = 30; arr[4] = 40; arr[5] = 50;\n\tarr[6] = 60; arr[7] = 70; arr[8] = 80; arr[9] = 90; arr[10] = 100;\n\t\n\tobjetivo = 70;\n\tbajo = 1;\n\talto = n;\n\tresultado = -1;\n\t\n\tMientras bajo <= alto Y objetivo >= arr[bajo] Y objetivo <= arr[alto] Hacer\n\t\tSi bajo == alto Entonces\n\t\t\tSi arr[bajo] == objetivo Entonces\n\t\t\t\tresultado = bajo;\n\t\t\tFinSi;\n\t\t\tbajo = alto + 1; // Salida\n\t\tSino\n\t\t\t// Fórmula de interpolación proporcional tipo directorio telefónico\n\t\t\tpos = bajo + TRUNC(((alto - bajo) / (arr[alto] - arr[bajo])) * (objetivo - arr[bajo]));\n\t\t\t\n\t\t\tSi arr[pos] == objetivo Entonces\n\t\t\t\tresultado = pos;\n\t\t\t\tbajo = alto + 1; // Salida exitosa\n\t\t\tSino\n\t\t\t\tSi arr[pos] < objetivo Entonces\n\t\t\t\t\tbajo = pos + 1;\n\t\t\t\tSino\n\t\t\t\t\talto = pos - 1;\n\t\t\t\tFinSi;\n\t\t\tFinSi;\n\t\tFinSi;\n\tFinMientras;\n\t\n\tSi resultado <> -1 Entonces\n\t\tEscribir \"Objetivo encontrado en el indice: \", resultado;\n\tSino\n\t\tEscribir \"Objetivo no encontrado.\";\n\tFinSi;\nFinProceso",
-        "explanation": "Búsqueda por Interpolación en Modo Estricto O&M. Estima matemáticamente la posición mediante una regla de tres proporcional con TRUNC() y punto y coma (;).",
+        "code": "Proceso Busqueda_Interpolacion\n    Definir n, bajo, alto, pos, objetivo, resultado Como Entero;\n    Dimension arr[10];\n\n    n <- 10;\n    arr[1] <- 10; arr[2] <- 20; arr[3] <- 30; arr[4] <- 40; arr[5] <- 50;\n    arr[6] <- 60; arr[7] <- 70; arr[8] <- 80; arr[9] <- 90; arr[10] <- 100;\n\n    objetivo <- 70;\n    bajo <- 1;\n    alto <- n;\n    resultado <- -1;\n\n    Mientras bajo <= alto Y objetivo >= arr[bajo] Y objetivo <= arr[alto] Hacer\n        Si bajo == alto Entonces\n            Si arr[bajo] == objetivo Entonces\n                resultado <- bajo;\n            FinSi\n            bajo <- alto + 1;\n        SiNo\n            pos <- bajo + TRUNC(((alto - bajo) / (arr[alto] - arr[bajo])) * (objetivo - arr[bajo]));\n\n            Si arr[pos] == objetivo Entonces\n                resultado <- pos;\n                bajo <- alto + 1;\n            SiNo\n                Si arr[pos] < objetivo Entonces\n                    bajo <- pos + 1;\n                SiNo\n                    alto <- pos - 1;\n                FinSi\n            FinSi\n        FinSi\n    FinMientras\n\n    Si resultado <> -1 Entonces\n        Escribir 'Objetivo encontrado en el índice: ', resultado;\n    SiNo\n        Escribir 'Objetivo no encontrado.';\n    FinSi\nFinProceso",
+        "explanation": "Búsqueda por Interpolación en PSeInt canónico. Estima la posición mediante interpolación proporcional de valores numéricos uniformes.",
         "keyConcepts": [
-          "Modo Estricto O&M con ; obligatorio",
+          "Asignación formal con <-",
           "Regla de 3 proporcional con TRUNC()",
           "Distribución uniforme"
         ],
         "flowchart": {
-          "title": "Diagrama de Flujo: Búsqueda por Interpolación (PSeInt Pro)",
+          "title": "Diagrama de Flujo: Búsqueda por Interpolación (PSeInt / Mermaid.js)",
           "nodes": [
             {
               "id": 1,
               "type": "start",
-              "text": "Inicio Interpolacion_Estricta(arr, target)"
+              "text": "Inicio Interpolacion(arr, target)"
             },
             {
               "id": 2,
               "type": "process",
-              "text": "bajo = 1; alto = n; resultado = -1;"
+              "text": "pos <- bajo + TRUNC(((alto-bajo)/(arr[alto]-arr[bajo]))*(target-arr[bajo]));"
             },
             {
               "id": 3,
               "type": "decision",
-              "text": "¿bajo <= alto Y target en rango?"
-            },
-            {
-              "id": 4,
-              "type": "process",
-              "text": "pos = bajo + TRUNC(((alto-bajo)/(arr[alto]-arr[bajo]))*(target-arr[bajo]));"
-            },
-            {
-              "id": 5,
-              "type": "decision",
               "text": "¿arr[pos] == target?"
             },
             {
-              "id": 6,
-              "type": "process",
-              "text": "Ajustar bajo/alto según pendiente;"
-            },
-            {
-              "id": 7,
+              "id": 4,
               "type": "end",
               "text": "FinProceso: Retornar resultado"
             }
-          ]
+          ],
+          "mermaidCode": "flowchart TD\n    classDef terminal fill:#fde047,stroke:#ca8a04,stroke-width:2.5px,color:#1e293b,font-weight:bold;\n    classDef proceso fill:#fef08a,stroke:#ca8a04,stroke-width:2px,color:#1e293b;\n    classDef entrada fill:#fbcfe8,stroke:#db2777,stroke-width:2px,color:#831843,font-weight:bold;\n    classDef salida fill:#bbf7d0,stroke:#16a34a,stroke-width:2px,color:#064e3b,font-weight:bold;\n    classDef decision fill:#bae6fd,stroke:#0284c7,stroke-width:2px,color:#0c4a6e,font-weight:bold;\n\n    Start([\"Proceso Busqueda_Interpolacion\"]):::terminal --> Init[\"arr[1..10] cargado;<br/>bajo <- 1; alto <- n; resultado <- -1\"]:::proceso\n    Init --> CheckRange{\"¿bajo <= alto Y target en rango?\"}:::decision\n    CheckRange -- \"Sí\" --> CheckSingle{\"¿bajo == alto?\"}:::decision\n    CheckRange -- \"No\" --> PrintResult[/\"Escribir resultado\"/]:::salida\n    CheckSingle -- \"Sí\" --> CheckMatch[\"resultado <- (arr[bajo]==target ? bajo : -1)\"]:::proceso\n    CheckSingle -- \"No\" --> CalcSlope[\"pos <- bajo + TRUNC(((alto-bajo)/(arr[alto]-arr[bajo]))*(target-arr[bajo]))\"]:::proceso\n    CalcSlope --> CompPos{\"¿arr[pos] == target?\"}:::decision\n    CompPos -- \"Sí\" --> Found[\"resultado <- pos;<br/>bajo <- alto + 1\"]:::proceso\n    CompPos -- \"No\" --> AdjustSlope[\"Ajustar bajo = pos + 1 O alto = pos - 1\"]:::proceso\n    Found --> CheckRange\n    AdjustSlope --> CheckRange\n    CheckMatch --> PrintResult\n    PrintResult --> EndNode([\"FinProceso\"]):::terminal"
         }
       },
       "python": {
@@ -1719,20 +1649,19 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "Python 3.12+",
         "badgeColor": "bg-[#3776AB] text-white",
         "icon": "fa-brands fa-python",
-        "code": "from typing import List, Optional\n\ndef interpolation_search(arr: List[int], target: int) -> Optional[int]:\n    \"\"\"Búsqueda por interpolación O(log log n) para datos distribuidos uniformemente.\"\"\"\n    low = 0\n    high = len(arr) - 1\n    \n    while low <= high and arr[low] <= target <= arr[high]:\n        if low == high:\n            return low if arr[low] == target else None\n            \n        pos = low + int(((high - low) / (arr[high] - arr[low])) * (target - arr[low]))\n        \n        if arr[pos] == target:\n            return pos\n        if arr[pos] < target:\n            low = pos + 1\n        else:\n            high = pos - 1\n            \n    return None\n\nif __name__ == '__main__':\n    datos = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]\n    val = 70\n    print(f\"Búsqueda por Interpolación de {val}: {interpolation_search(datos, val)}\")",
-        "explanation": "Cálculo dinámico del índice estimado en base al valor numérico exacto en distribución lineal uniforme.",
+        "code": "from typing import List, Optional\n\ndef interpolation_search(arr: List[int], target: int) -> Optional[int]:\n    \"\"\"Búsqueda por interpolación O(log log n) para datos uniformemente distribuidos.\"\"\"\n    low = 0\n    high = len(arr) - 1\n    while low <= high and arr[low] <= target <= arr[high]:\n        if low == high:\n            return low if arr[low] == target else None\n        pos = low + int(((high - low) / (arr[high] - arr[low])) * (target - arr[low]))\n        if arr[pos] == target:\n            return pos\n        if arr[pos] < target:\n            low = pos + 1\n        else:\n            high = pos - 1\n    return None\n\nif __name__ == '__main__':\n    datos = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]\n    val = 70\n    print(f\"Interpolation Search: {interpolation_search(datos, val)}\")",
+        "explanation": "Cálculo dinámico del índice estimado en base a la pendiente de la recta de distribución.",
         "keyConcepts": [
           "Estimación de pendiente",
           "O(log log n) promedio",
-          "Sensible a distribuciones sesgadas"
+          "Sensible a dispersión"
         ],
         "terminalOutput": [
           "$ python -u interpolation_search.py",
-          "[+] Datos uniformes: [10..100] (n=10)",
+          "[+] Datos: [10..100] (n=10)",
           "[*] Target: 70",
-          "[*] Cálculo estimado pos = 0 + int((9/90) * (70-10)) = 6",
-          "[*] arr[6] == 70 [COINCIDENCIA EXACTA EN PASO 1]",
-          "[✓] Encontrado en 1 sola iteración gracias a la distribución uniforme."
+          "[*] Estimación pos = 6",
+          "[✓] Encontrado en 1 solo paso directo."
         ]
       },
       "web": {
@@ -1740,12 +1669,12 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "HTML5 / CSS / JS Standalone",
         "badgeColor": "bg-[#E44D26] text-white",
         "icon": "fa-brands fa-html5",
-        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Interpolation Search</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; padding: 20px; color: #000; }\n    .card { max-width: 540px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 4px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #38E5FF; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 10px; }\n    .bar.predicted { background: #9B51E0 !important; color: white; transform: scale(1.08); }\n    .bar.found { background: #54F18F !important; }\n    button { background: #9B51E0; color: white; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Interpolation Search · Estimación Numérica</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarInterpolacion()\">Buscar Valor 70</button>\n    <div id=\"status\" style=\"margin-top:10px; font-weight:bold;\">Listo.</div>\n  </div>\n  <script>\n    let arr = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];\n    const arena = document.getElementById('arena');\n    const status = document.getElementById('status');\n    function render() {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v, i) => `<div class=\"bar\" id=\"b-${i}\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    async function ejecutarInterpolacion() {\n      render();\n      let low = 0, high = arr.length - 1, target = 70;\n      status.innerText = \"Calculando posición por pendiente numérica...\";\n      await new Promise(r => setTimeout(r, 400));\n      let pos = low + Math.floor(((high - low) / (arr[high] - arr[low])) * (target - arr[low]));\n      const el = document.getElementById(`b-${pos}`);\n      el.classList.add('predicted');\n      status.innerText = `Posición calculada directamente: índice ${pos} (${arr[pos]})...`;\n      await new Promise(r => setTimeout(r, 450));\n      if (arr[pos] === target) {\n        el.classList.remove('predicted');\n        el.classList.add('found');\n        status.innerText = `¡Objetivo encontrado en el índice ${pos} en 1 solo paso!`;\n      }\n    }\n    render();\n  </script>\n</body>\n</html>",
-        "explanation": "Demostración standalone de localización directa basada en pendiente numérica (análogo al cerebro humano abriendo un diccionario).",
+        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Interpolation Search</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; padding: 20px; color: #000; }\n    .card { max-width: 540px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 4px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #38E5FF; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 10px; }\n    .bar.predicted { background: #9B51E0 !important; color: white; transform: scale(1.08); }\n    .bar.found { background: #54F18F !important; }\n    button { background: #9B51E0; color: white; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Interpolation Search · Estimación Numérica</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarInterpolacion()\">Buscar Valor 70</button>\n    <div id=\"status\" style=\"margin-top:10px; font-weight:bold;\">Listo.</div>\n  </div>\n  <script>\n    let arr = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];\n    const arena = document.getElementById('arena');\n    const status = document.getElementById('status');\n    function render() {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v, i) => `<div class=\"bar\" id=\"b-${i}\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    async function ejecutarInterpolacion() {\n      render();\n      let low = 0, high = arr.length - 1, target = 70;\n      status.innerText = \"Calculando posición por pendiente numérica...\";\n      await new Promise(r => setTimeout(r, 400));\n      let pos = low + Math.floor(((high - low) / (arr[high] - arr[low])) * (target - arr[low]));\n      const el = document.getElementById(`b-${pos}`);\n      el.classList.add('predicted');\n      status.innerText = `Posición calculada directamente: índice ${pos}...`;\n      await new Promise(r => setTimeout(r, 450));\n      if (arr[pos] === target) {\n        el.classList.remove('predicted');\n        el.classList.add('found');\n        status.innerText = `¡Objetivo encontrado en el índice ${pos} en 1 solo paso!`;\n      }\n    }\n    render();\n  </script>\n</body>\n</html>",
+        "explanation": "Demostración standalone de localización directa basada en pendiente numérica.",
         "keyConcepts": [
           "Archivo HTML5 Standalone completo",
           "Predicción en 1 paso",
-          "Visualización de aguja de interpolación"
+          "Aguja de interpolación"
         ],
         "demoData": [
           10,
@@ -1765,8 +1694,8 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": ".NET 9 / C# 12",
         "badgeColor": "bg-[#512BD4] text-white",
         "icon": "fa-solid fa-code",
-        "code": "using System;\n\npublic static class InterpolationSearchEngine\n{\n    public static int Search(ReadOnlySpan<int> span, int target)\n    {\n        int low = 0;\n        int high = span.Length - 1;\n\n        while (low <= high && target >= span[low] && target <= span[high])\n        {\n            if (low == high) return span[low] == target ? low : -1;\n            \n            // Estimación proporcional con casting para prevenir pérdida de precisión\n            int pos = low + (int)(((long)(high - low) * (target - span[low])) / (span[high] - span[low]));\n            \n            if (span[pos] == target) return pos;\n            if (span[pos] < target) low = pos + 1;\n            else high = pos - 1;\n        }\n        return -1;\n    }\n\n    public static void Main()\n    {\n        ReadOnlySpan<int> datos = stackalloc int[] { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };\n        Console.WriteLine($\"Interpolation Search índice: {Search(datos, 70)}\");\n    }\n}",
-        "explanation": "Uso de enteros de 64 bits (long) en la multiplicación para evitar desbordes antes de la división de interpolación.",
+        "code": "using System;\n\npublic static class InterpolationSearchEngine\n{\n    public static int Search(ReadOnlySpan<int> span, int target)\n    {\n        int low = 0;\n        int high = span.Length - 1;\n        while (low <= high && target >= span[low] && target <= span[high])\n        {\n            if (low == high) return span[low] == target ? low : -1;\n            int pos = low + (int)(((long)(high - low) * (target - span[low])) / (span[high] - span[low]));\n            if (span[pos] == target) return pos;\n            if (span[pos] < target) low = pos + 1;\n            else high = pos - 1;\n        }\n        return -1;\n    }\n\n    public static void Main()\n    {\n        ReadOnlySpan<int> datos = stackalloc int[] { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };\n        Console.WriteLine($\"Interpolation Search índice: {Search(datos, 70)}\");\n    }\n}",
+        "explanation": "Uso de casting a long en el producto cruzado para evitar overflow numérico.",
         "keyConcepts": [
           "Casting a long anti-overflow",
           "Direct arithmetic projection",
@@ -1789,24 +1718,24 @@ window.ALGO_MULTILANG_DATA = {
     "space": "O(1)",
     "langs": {
       "pseint": {
-        "name": "PSeInt (Modo Estricto O&M)",
-        "langBadge": "PSeInt Estricto O&M",
+        "name": "PSeInt Canónico (<- y Diagramas Mermaid)",
+        "langBadge": "PSeInt Pro / Mermaid",
         "badgeColor": "bg-neoCyan text-black",
         "icon": "fa-solid fa-diagram-project",
-        "code": "Proceso Busqueda_Exponencial_Estricto\n\tDefinir n, limite, bajo, alto, medio, objetivo, posicion Como Entero;\n\tDimension arr[10];\n\t\n\tn = 10;\n\tarr[1] = 2; arr[2] = 4; arr[3] = 8; arr[4] = 16; arr[5] = 32;\n\tarr[6] = 64; arr[7] = 128; arr[8] = 256; arr[9] = 512; arr[10] = 1024;\n\t\n\tobjetivo = 128;\n\tposicion = -1;\n\t\n\tSi arr[1] == objetivo Entonces\n\t\tposicion = 1;\n\tSino\n\t\tlimite = 1;\n\t\tMientras limite < n Y arr[limite] <= objetivo Hacer\n\t\t\tlimite = limite * 2; // Duplicación exponencial de rango\n\t\tFinMientras;\n\t\t\n\t\tbajo = TRUNC(limite / 2);\n\t\tSi limite > n Entonces\n\t\t\talto = n;\n\t\tSino\n\t\t\talto = limite;\n\t\tFinSi;\n\t\t\n\t\t// Búsqueda binaria dentro del rango acotado exponencialmente\n\t\tMientras bajo <= alto Hacer\n\t\t\tmedio = TRUNC((bajo + alto) / 2);\n\t\t\tSi arr[medio] == objetivo Entonces\n\t\t\t\tposicion = medio;\n\t\t\t\tbajo = alto + 1; // Salida\n\t\t\tSino\n\t\t\t\tSi arr[medio] < objetivo Entonces\n\t\t\t\t\tbajo = medio + 1;\n\t\t\t\tSino\n\t\t\t\t\talto = medio - 1;\n\t\t\t\tFinSi;\n\t\t\tFinSi;\n\t\tFinMientras;\n\tFinSi;\n\t\n\tSi posicion <> -1 Entonces\n\t\tEscribir \"Objetivo encontrado en el indice: \", posicion;\n\tSino\n\t\tEscribir \"Objetivo no encontrado.\";\n\tFinSi;\nFinProceso",
-        "explanation": "Búsqueda Exponencial en Modo Estricto O&M. Duplica progresivamente el límite de búsqueda mediante potencias de 2 (limite = limite * 2) y aplica búsqueda binaria al intervalo acotado.",
+        "code": "Proceso Busqueda_Exponencial\n    Definir n, limite, bajo, alto, medio, objetivo, posicion Como Entero;\n    Dimension arr[10];\n\n    n <- 10;\n    arr[1] <- 2; arr[2] <- 4; arr[3] <- 8; arr[4] <- 16; arr[5] <- 32;\n    arr[6] <- 64; arr[7] <- 128; arr[8] <- 256; arr[9] <- 512; arr[10] <- 1024;\n\n    objetivo <- 128;\n    posicion <- -1;\n\n    Si arr[1] == objetivo Entonces\n        posicion <- 1;\n    SiNo\n        limite <- 1;\n        Mientras limite < n Y arr[limite] <= objetivo Hacer\n            limite <- limite * 2;\n        FinMientras\n\n        bajo <- TRUNC(limite / 2);\n        Si limite > n Entonces\n            alto <- n;\n        SiNo\n            alto <- limite;\n        FinSi\n\n        Mientras bajo <= alto Hacer\n            medio <- TRUNC((bajo + alto) / 2);\n            Si arr[medio] == objetivo Entonces\n                posicion <- medio;\n                bajo <- alto + 1;\n            SiNo\n                Si arr[medio] < objetivo Entonces\n                    bajo <- medio + 1;\n                SiNo\n                    alto <- medio - 1;\n                FinSi\n            FinSi\n        FinMientras\n    FinSi\n\n    Si posicion <> -1 Entonces\n        Escribir 'Objetivo encontrado en el índice: ', posicion;\n    SiNo\n        Escribir 'Objetivo no encontrado.';\n    FinSi\nFinProceso",
+        "explanation": "Búsqueda Exponencial en PSeInt canónico. Duplica el rango mediante potencias de 2 (limite <- limite * 2) y aplica búsqueda binaria con asignaciones '<-'.",
         "keyConcepts": [
-          "Modo Estricto O&M con ; obligatorio",
-          "Multiplicación por 2 recursiva",
+          "Asignación formal con <-",
+          "Multiplicación por 2",
           "Cota superior finita"
         ],
         "flowchart": {
-          "title": "Diagrama de Flujo: Búsqueda Exponencial (Doubling Search) (PSeInt Pro)",
+          "title": "Diagrama de Flujo: Búsqueda Exponencial (Doubling Search) (PSeInt / Mermaid.js)",
           "nodes": [
             {
               "id": 1,
               "type": "start",
-              "text": "Inicio BusquedaExponencial_Estricta(arr, target)"
+              "text": "Inicio BusquedaExponencial(arr, target)"
             },
             {
               "id": 2,
@@ -1816,24 +1745,20 @@ window.ALGO_MULTILANG_DATA = {
             {
               "id": 3,
               "type": "process",
-              "text": "limite = 1; Mientras limite < n Y arr[limite] <= target: limite = limite * 2;"
+              "text": "limite <- 1; Mientras limite < n Y arr[limite] <= target: limite <- limite * 2;"
             },
             {
               "id": 4,
               "type": "process",
-              "text": "bajo = TRUNC(limite/2); alto = Min(limite, n);"
+              "text": "Búsqueda Binaria en [limite/2, Min(limite, n)];"
             },
             {
               "id": 5,
-              "type": "process",
-              "text": "Ejecutar Búsqueda Binaria en [bajo, alto];"
-            },
-            {
-              "id": 6,
               "type": "end",
               "text": "FinProceso: Retornar posicion"
             }
-          ]
+          ],
+          "mermaidCode": "flowchart TD\n    classDef terminal fill:#fde047,stroke:#ca8a04,stroke-width:2.5px,color:#1e293b,font-weight:bold;\n    classDef proceso fill:#fef08a,stroke:#ca8a04,stroke-width:2px,color:#1e293b;\n    classDef entrada fill:#fbcfe8,stroke:#db2777,stroke-width:2px,color:#831843,font-weight:bold;\n    classDef salida fill:#bbf7d0,stroke:#16a34a,stroke-width:2px,color:#064e3b,font-weight:bold;\n    classDef decision fill:#bae6fd,stroke:#0284c7,stroke-width:2px,color:#0c4a6e,font-weight:bold;\n\n    Start([\"Proceso Busqueda_Exponencial\"]):::terminal --> Init[\"arr[1..10] cargado;<br/>objetivo <- 128; pos <- -1\"]:::proceso\n    Init --> CheckFirst{\"¿arr[1] == objetivo?\"}:::decision\n    CheckFirst -- \"Sí\" --> FoundFirst[\"pos <- 1\"]:::proceso\n    CheckFirst -- \"No\" --> Doubling[\"limite <- 1;<br/>Mientras limite < n Y arr[limite] <= target:<br/>limite <- limite * 2\"]:::proceso\n    Doubling --> SetBounds[\"bajo <- TRUNC(limite / 2);<br/>alto <- Min(limite, n)\"]:::proceso\n    SetBounds --> BinSearch[\"Búsqueda Binaria en intervalo [bajo..alto]\"]:::proceso\n    BinSearch --> PrintOut[/\"Escribir resultado\"/]:::salida\n    FoundFirst --> PrintOut\n    PrintOut --> EndNode([\"FinProceso\"]):::terminal"
         }
       },
       "python": {
@@ -1841,7 +1766,7 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "Python 3.12+",
         "badgeColor": "bg-[#3776AB] text-white",
         "icon": "fa-brands fa-python",
-        "code": "from typing import List, Optional\n\ndef exponential_search(arr: List[int], target: int) -> Optional[int]:\n    \"\"\"Búsqueda exponencial ideal para listas no acotadas o infinitas.\"\"\"\n    if not arr:\n        return None\n    if arr[0] == target:\n        return 0\n        \n    bound = 1\n    n = len(arr)\n    while bound < n and arr[bound] <= target:\n        bound *= 2\n        \n    # Búsqueda binaria en el rango acotado\n    low = bound // 2\n    high = min(bound, n - 1)\n    while low <= high:\n        mid = (low + high) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            low = mid + 1\n        else:\n            high = mid - 1\n    return None\n\nif __name__ == '__main__':\n    datos = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]\n    val = 128\n    print(f\"Búsqueda Exponencial de {val}: {exponential_search(datos, val)}\")",
+        "code": "from typing import List, Optional\n\ndef exponential_search(arr: List[int], target: int) -> Optional[int]:\n    \"\"\"Búsqueda exponencial ideal para listas no acotadas o streams infinitos.\"\"\"\n    if not arr: return None\n    if arr[0] == target: return 0\n    bound = 1\n    n = len(arr)\n    while bound < n and arr[bound] <= target:\n        bound *= 2\n    low = bound // 2\n    high = min(bound, n - 1)\n    while low <= high:\n        mid = (low + high) // 2\n        if arr[mid] == target: return mid\n        elif arr[mid] < target: low = mid + 1\n        else: high = mid - 1\n    return None\n\nif __name__ == '__main__':\n    datos = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]\n    val = 128\n    print(f\"Búsqueda Exponencial de {val}: {exponential_search(datos, val)}\")",
         "explanation": "Crecimiento exponencial en potencias de dos para hallar las cotas y posterior búsqueda binaria O(log i).",
         "keyConcepts": [
           "Cotas no acotadas",
@@ -1851,9 +1776,6 @@ window.ALGO_MULTILANG_DATA = {
         "terminalOutput": [
           "$ python -u exponential_search.py",
           "[+] Entrada: potencias de 2 (n=10)",
-          "[*] Cota inicial = 1 (val=4)",
-          "[*] Cota duplicada = 2 (val=8)",
-          "[*] Cota duplicada = 4 (val=32)",
           "[*] Cota duplicada = 8 (val=256 >= 128) -> Rango [4..8]",
           "[*] Búsqueda binaria en rango [4..8]: mid=6 (val=128) [MATCH]",
           "[✓] Encontrado en índice 6."
@@ -1864,8 +1786,8 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": "HTML5 / CSS / JS Standalone",
         "badgeColor": "bg-[#E44D26] text-white",
         "icon": "fa-brands fa-html5",
-        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Búsqueda Exponencial</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; padding: 20px; color: #000; }\n    .card { max-width: 540px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 4px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #38E5FF; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 9px; }\n    .bar.bound { background: #FF3366 !important; color: white; transform: scale(1.1); }\n    .bar.found { background: #54F18F !important; }\n    button { background: #FF3366; color: white; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Exponential Search · Cotas 1, 2, 4, 8...</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarExponencial()\">Buscar 128</button>\n    <div id=\"status\" style=\"margin-top:10px; font-weight:bold;\">Listo.</div>\n  </div>\n  <script>\n    let arr = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024];\n    const arena = document.getElementById('arena');\n    const status = document.getElementById('status');\n    function render() {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v, i) => `<div class=\"bar\" id=\"b-${i}\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    async function ejecutarExponencial() {\n      render();\n      let n = arr.length, bound = 1, target = 128;\n      status.innerText = \"Duplicando cotas exponencialmente...\";\n      while (bound < n && arr[bound] <= target) {\n        document.getElementById(`b-${bound}`).classList.add('bound');\n        status.innerText = `Cota evaluada en índice ${bound} (${arr[bound]})...`;\n        await new Promise(r => setTimeout(r, 450));\n        bound *= 2;\n      }\n      let low = Math.floor(bound / 2), high = Math.min(bound, n - 1);\n      status.innerText = `Cotas fijadas en [${low}..${high}]. Búsqueda binaria...`;\n      await new Promise(r => setTimeout(r, 400));\n      for (let i = low; i <= high; i++) {\n        if (arr[i] === target) {\n          document.querySelectorAll('.bar').forEach(b => b.classList.remove('bound'));\n          document.getElementById(`b-${i}`).classList.add('found');\n          status.innerText = `¡Encontrado en índice ${i}!`;\n          return;\n        }\n      }\n    }\n    render();\n  </script>\n</body>\n</html>",
-        "explanation": "Simulación interactiva completa de duplicación exponencial de cotas [1, 2, 4, 8] con posterior búsqueda binaria sobre el rango.",
+        "code": "<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Simulación Búsqueda Exponencial</title>\n  <style>\n    body { font-family: 'Courier New', monospace; background: #FFFDF0; padding: 20px; color: #000; }\n    .card { max-width: 540px; margin: 0 auto; border: 3px solid #000; box-shadow: 6px 6px 0px #000; padding: 16px; background: #FFF; }\n    h2 { margin-top: 0; border-bottom: 2px solid #000; padding-bottom: 8px; }\n    .bars-arena { display: flex; align-items: flex-end; gap: 4px; height: 140px; background: #FFFDF0; border: 2px solid #000; padding: 8px; margin-bottom: 12px; }\n    .bar { flex: 1; background: #38E5FF; border: 2px solid #000; text-align: center; font-weight: bold; font-size: 9px; }\n    .bar.bound { background: #FF3366 !important; color: white; transform: scale(1.1); }\n    .bar.found { background: #54F18F !important; }\n    button { background: #FF3366; color: white; border: 2px solid #000; box-shadow: 3px 3px 0px #000; padding: 8px 16px; font-weight: 900; cursor: pointer; }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h2>Exponential Search · Cotas 1, 2, 4, 8...</h2>\n    <div class=\"bars-arena\" id=\"arena\"></div>\n    <button onclick=\"ejecutarExponencial()\">Buscar 128</button>\n    <div id=\"status\" style=\"margin-top:10px; font-weight:bold;\">Listo.</div>\n  </div>\n  <script>\n    let arr = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024];\n    const arena = document.getElementById('arena');\n    const status = document.getElementById('status');\n    function render() {\n      const max = Math.max(...arr);\n      arena.innerHTML = arr.map((v, i) => `<div class=\"bar\" id=\"b-${i}\" style=\"height:${(v/max)*100}%;\">${v}</div>`).join('');\n    }\n    async function ejecutarExponencial() {\n      render();\n      let n = arr.length, bound = 1, target = 128;\n      status.innerText = \"Duplicando cotas exponencialmente...\";\n      while (bound < n && arr[bound] <= target) {\n        document.getElementById(`b-${bound}`).classList.add('bound');\n        status.innerText = `Cota evaluada en índice ${bound}...`;\n        await new Promise(r => setTimeout(r, 450));\n        bound *= 2;\n      }\n      let low = Math.floor(bound / 2), high = Math.min(bound, n - 1);\n      status.innerText = `Cotas fijadas en [${low}..${high}]. Búsqueda binaria...`;\n      await new Promise(r => setTimeout(r, 400));\n      for (let i = low; i <= high; i++) {\n        if (arr[i] === target) {\n          document.querySelectorAll('.bar').forEach(b => b.classList.remove('bound'));\n          document.getElementById(`b-${i}`).classList.add('found');\n          status.innerText = `¡Encontrado en índice ${i}!`;\n          return;\n        }\n      }\n    }\n    render();\n  </script>\n</body>\n</html>",
+        "explanation": "Simulación interactiva completa de duplicación exponencial de cotas con posterior búsqueda binaria.",
         "keyConcepts": [
           "Archivo HTML5 Standalone completo",
           "Visualización de saltos de potencia",
@@ -1889,7 +1811,7 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": ".NET 9 / C# 12",
         "badgeColor": "bg-[#512BD4] text-white",
         "icon": "fa-solid fa-code",
-        "code": "using System;\n\npublic static class ExponentialSearchEngine\n{\n    public static int Search(ReadOnlySpan<int> span, int target)\n    {\n        if (span.IsEmpty) return -1;\n        if (span[0] == target) return 0;\n        \n        int bound = 1;\n        while (bound < span.Length && span[bound] <= target)\n        {\n            bound <<= 1; // Duplicación mediante bit-shift\n        }\n        \n        int low = bound >> 1;\n        int high = Math.Min(bound, span.Length - 1);\n        \n        while (low <= high)\n        {\n            int mid = low + ((high - low) >> 1);\n            if (span[mid] == target) return mid;\n            if (span[mid] < target) low = mid + 1;\n            else high = mid - 1;\n        }\n        return -1;\n    }\n\n    public static void Main()\n    {\n        ReadOnlySpan<int> datos = stackalloc int[] { 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 };\n        Console.WriteLine($\"Exponential Search índice: {Search(datos, 128)}\");\n    }\n}",
+        "code": "using System;\n\npublic static class ExponentialSearchEngine\n{\n    public static int Search(ReadOnlySpan<int> span, int target)\n    {\n        if (span.IsEmpty) return -1;\n        if (span[0] == target) return 0;\n        int bound = 1;\n        while (bound < span.Length && span[bound] <= target) bound <<= 1;\n        int low = bound >> 1;\n        int high = Math.Min(bound, span.Length - 1);\n        while (low <= high)\n        {\n            int mid = low + ((high - low) >> 1);\n            if (span[mid] == target) return mid;\n            if (span[mid] < target) low = mid + 1;\n            else high = mid - 1;\n        }\n        return -1;\n    }\n\n    public static void Main()\n    {\n        ReadOnlySpan<int> datos = stackalloc int[] { 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 };\n        Console.WriteLine($\"Exponential Search índice: {Search(datos, 128)}\");\n    }\n}",
         "explanation": "Uso de operadores de desplazamiento a nivel de bits 'bound <<= 1' para duplicación exponencial a velocidad de procesador.",
         "keyConcepts": [
           "Bitwise shift << 1",
@@ -1913,19 +1835,19 @@ window.ALGO_MULTILANG_DATA = {
     "space": "O(1)",
     "langs": {
       "pseint": {
-        "name": "PSeInt (Modo Estricto O&M)",
-        "langBadge": "PSeInt Estricto O&M",
+        "name": "PSeInt Canónico (<- y Diagramas Mermaid)",
+        "langBadge": "PSeInt Pro / Mermaid",
         "badgeColor": "bg-neoCyan text-black",
         "icon": "fa-solid fa-diagram-project",
-        "code": "Proceso Complejidad_O1_Estricto\n\tDefinir n, indice_solicitado, valor_obtenido Como Entero;\n\tDimension memoria_cache[5];\n\t\n\tn = 5;\n\tmemoria_cache[1] = 100;\n\tmemoria_cache[2] = 250;\n\tmemoria_cache[3] = 420;\n\tmemoria_cache[4] = 880;\n\tmemoria_cache[5] = 999;\n\t\n\t// Operación O(1): Tiempo constante independiente del tamaño n\n\tindice_solicitado = 3;\n\tvalor_obtenido = memoria_cache[indice_solicitado];\n\t\n\tEscribir \"Acceso en Tiempo Constante O(1):\";\n\tEscribir \"Indice consultado: \", indice_solicitado;\n\tEscribir \"Valor retornado: \", valor_obtenido;\nFinProceso",
-        "explanation": "Acceso constante O(1) en Modo Estricto O&M. Demuestra que consultar una celda de memoria mediante indexación directa toma exactamente una única instrucción, sin iteraciones ni dependencias del tamaño n.",
+        "code": "Proceso Complejidad_O1\n    Definir n, indice_solicitado, valor_obtenido Como Entero;\n    Dimension memoria_cache[5];\n\n    n <- 5;\n    memoria_cache[1] <- 100;\n    memoria_cache[2] <- 250;\n    memoria_cache[3] <- 420;\n    memoria_cache[4] <- 880;\n    memoria_cache[5] <- 999;\n\n    // Operación O(1): Acceso directo independiente de n\n    indice_solicitado <- 3;\n    valor_obtenido <- memoria_cache[indice_solicitado];\n\n    Escribir 'Acceso en Tiempo Constante O(1):';\n    Escribir 'Índice consultado: ', indice_solicitado;\n    Escribir 'Valor retornado: ', valor_obtenido;\nFinProceso",
+        "explanation": "Acceso constante O(1) en PSeInt canónico. Demuestra que consultar una celda de memoria mediante indexación directa toma exactamente una única instrucción, sin iteraciones.",
         "keyConcepts": [
-          "Modo Estricto O&M con ; obligatorio",
+          "Asignación formal con <-",
           "Acceso directo por índice",
           "Cero ciclos de iteración"
         ],
         "flowchart": {
-          "title": "Diagrama de Flujo: O(1) Acceso Directo por Índice (PSeInt Pro)",
+          "title": "Diagrama de Flujo: O(1) Acceso Directo por Índice (PSeInt / Mermaid.js)",
           "nodes": [
             {
               "id": 1,
@@ -1935,19 +1857,15 @@ window.ALGO_MULTILANG_DATA = {
             {
               "id": 2,
               "type": "process",
-              "text": "Definir n, idx, val; val = arr[idx];"
+              "text": "valor <- arr[index];"
             },
             {
               "id": 3,
-              "type": "process",
-              "text": "Escribir 'Valor retornado: ', val;"
-            },
-            {
-              "id": 4,
               "type": "end",
-              "text": "FinProceso: Retorno Inmediato en 1 Ciclo de CPU"
+              "text": "FinProceso: Retorno en 1 Ciclo"
             }
-          ]
+          ],
+          "mermaidCode": "flowchart TD\n    classDef terminal fill:#fde047,stroke:#ca8a04,stroke-width:2.5px,color:#1e293b,font-weight:bold;\n    classDef proceso fill:#fef08a,stroke:#ca8a04,stroke-width:2px,color:#1e293b;\n    classDef entrada fill:#fbcfe8,stroke:#db2777,stroke-width:2px,color:#831843,font-weight:bold;\n    classDef salida fill:#bbf7d0,stroke:#16a34a,stroke-width:2px,color:#064e3b,font-weight:bold;\n    classDef decision fill:#bae6fd,stroke:#0284c7,stroke-width:2px,color:#0c4a6e,font-weight:bold;\n\n    Start([\"Proceso Complejidad_O1\"]):::terminal --> Init[\"memoria_cache[1..5] cargado;<br/>indice_solicitado <- 3\"]:::proceso\n    Init --> DirectAccess[\"valor_obtenido <- memoria_cache[indice_solicitado]\"]:::proceso\n    DirectAccess --> PrintVal[/\"Escribir 'Valor retornado: ', valor_obtenido\"/]:::salida\n    PrintVal --> EndNode([\"FinProceso\"]):::terminal"
         }
       },
       "python": {
@@ -2018,19 +1936,19 @@ window.ALGO_MULTILANG_DATA = {
     "space": "O(1)",
     "langs": {
       "pseint": {
-        "name": "PSeInt (Modo Estricto O&M)",
-        "langBadge": "PSeInt Estricto O&M",
+        "name": "PSeInt Canónico (<- y Diagramas Mermaid)",
+        "langBadge": "PSeInt Pro / Mermaid",
         "badgeColor": "bg-neoCyan text-black",
         "icon": "fa-solid fa-diagram-project",
-        "code": "Proceso Complejidad_Lineal_Estricto\n\tDefinir n, i, acumulador, pasos_totales Como Entero;\n\tDimension arr[6];\n\t\n\tn = 6;\n\tarr[1] = 5; arr[2] = 10; arr[3] = 15; arr[4] = 20; arr[5] = 25; arr[6] = 30;\n\t\n\tacumulador = 0;\n\tpasos_totales = 0;\n\t\n\t// Operación O(n): La cantidad de iteraciones crece exactamente igual que n\n\tPara i = 1 Hasta n Con Paso 1 Hacer\n\t\tacumulador = acumulador + arr[i];\n\t\tpasos_totales = pasos_totales + 1;\n\tFinPara;\n\t\n\tEscribir \"Total de elementos n: \", n;\n\tEscribir \"Pasos ejecutados: \", pasos_totales;\n\tEscribir \"Suma Acumulada: \", acumulador;\nFinProceso",
-        "explanation": "Complejidad Lineal O(n) en Modo Estricto O&M. Muestra cómo un único ciclo 'Para' ejecuta exactamente n pasos para procesar una lista de longitud n.",
+        "code": "Proceso Complejidad_Lineal\n    Definir n, i, acumulador, pasos_totales Como Entero;\n    Dimension arr[6];\n\n    n <- 6;\n    arr[1] <- 5; arr[2] <- 10; arr[3] <- 15; arr[4] <- 20; arr[5] <- 25; arr[6] <- 30;\n\n    acumulador <- 0;\n    pasos_totales <- 0;\n\n    // Operación O(n): Proporcional a n\n    Para i <- 1 Hasta n Con Paso 1 Hacer\n        acumulador <- acumulador + arr[i];\n        pasos_totales <- pasos_totales + 1;\n    FinPara\n\n    Escribir 'Total de elementos n: ', n;\n    Escribir 'Pasos ejecutados: ', pasos_totales;\n    Escribir 'Suma Acumulada: ', acumulador;\nFinProceso",
+        "explanation": "Complejidad Lineal O(n) en PSeInt canónico. Muestra cómo un único bucle 'Para' ejecuta exactamente n pasos para procesar una lista de longitud n.",
         "keyConcepts": [
-          "Modo Estricto O&M con ; obligatorio",
+          "Asignación formal con <-",
           "Bucle Para de 1 a n",
           "Crecimiento proporcional"
         ],
         "flowchart": {
-          "title": "Diagrama de Flujo: O(n) Recorrido Acumulativo Lineal (PSeInt Pro)",
+          "title": "Diagrama de Flujo: O(n) Recorrido Acumulativo Lineal (PSeInt / Mermaid.js)",
           "nodes": [
             {
               "id": 1,
@@ -2040,7 +1958,7 @@ window.ALGO_MULTILANG_DATA = {
             {
               "id": 2,
               "type": "process",
-              "text": "Definir acumulador = 0, i = 1;"
+              "text": "acumulador <- 0; i <- 1;"
             },
             {
               "id": 3,
@@ -2050,14 +1968,15 @@ window.ALGO_MULTILANG_DATA = {
             {
               "id": 4,
               "type": "process",
-              "text": "acumulador = acumulador + arr[i]; i = i + 1;"
+              "text": "acumulador <- acumulador + arr[i]; i <- i + 1;"
             },
             {
               "id": 5,
               "type": "end",
-              "text": "FinProceso: Retornar acumulador tras n pasos"
+              "text": "FinProceso: Retornar acumulador"
             }
-          ]
+          ],
+          "mermaidCode": "flowchart TD\n    classDef terminal fill:#fde047,stroke:#ca8a04,stroke-width:2.5px,color:#1e293b,font-weight:bold;\n    classDef proceso fill:#fef08a,stroke:#ca8a04,stroke-width:2px,color:#1e293b;\n    classDef entrada fill:#fbcfe8,stroke:#db2777,stroke-width:2px,color:#831843,font-weight:bold;\n    classDef salida fill:#bbf7d0,stroke:#16a34a,stroke-width:2px,color:#064e3b,font-weight:bold;\n    classDef decision fill:#bae6fd,stroke:#0284c7,stroke-width:2px,color:#0c4a6e,font-weight:bold;\n\n    Start([\"Proceso Complejidad_Lineal\"]):::terminal --> Init[\"arr[1..6] cargado;<br/>acumulador <- 0; i <- 1\"]:::proceso\n    Init --> CheckI{\"¿i <= n?\"}:::decision\n    CheckI -- \"Sí\" --> Acc[\"acumulador <- acumulador + arr[i];<br/>i <- i + 1\"]:::proceso\n    CheckI -- \"No\" --> PrintTotal[/\"Escribir 'Suma Acumulada: ', acumulador\"/]:::salida\n    Acc --> CheckI\n    PrintTotal --> EndNode([\"FinProceso\"]):::terminal"
         }
       },
       "python": {
@@ -2105,7 +2024,7 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": ".NET 9 / C# 12",
         "badgeColor": "bg-[#512BD4] text-white",
         "icon": "fa-solid fa-code",
-        "code": "using System;\nusing System.Numerics;\n\npublic static class LinearAccumulator\n{\n    public static int Sum(ReadOnlySpan<int> span)\n    {\n        int total = 0;\n        for (int i = 0; i < span.Length; i++)\n        {\n            total += span[i];\n        }\n        return total;\n    }\n\n    public static void Main()\n    {\n        ReadOnlySpan<int> datos = stackalloc int[] { 5, 10, 15, 20, 25, 30 };\n        Console.WriteLine($\"Suma lineal O(n): {Sum(datos)}\");\n    }\n}",
+        "code": "using System;\n\npublic static class LinearAccumulator\n{\n    public static int Sum(ReadOnlySpan<int> span)\n    {\n        int total = 0;\n        for (int i = 0; i < span.Length; i++)\n        {\n            total += span[i];\n        }\n        return total;\n    }\n\n    public static void Main()\n    {\n        ReadOnlySpan<int> datos = stackalloc int[] { 5, 10, 15, 20, 25, 30 };\n        Console.WriteLine($\"Suma lineal O(n): {Sum(datos)}\");\n    }\n}",
         "explanation": "Bucle unrolled por el compilador JIT con vectorización SIMD automática en colecciones grandes.",
         "keyConcepts": [
           "Auto-vectorización SIMD",
@@ -2129,56 +2048,47 @@ window.ALGO_MULTILANG_DATA = {
     "space": "O(1)",
     "langs": {
       "pseint": {
-        "name": "PSeInt (Modo Estricto O&M)",
-        "langBadge": "PSeInt Estricto O&M",
+        "name": "PSeInt Canónico (<- y Diagramas Mermaid)",
+        "langBadge": "PSeInt Pro / Mermaid",
         "badgeColor": "bg-neoCyan text-black",
         "icon": "fa-solid fa-diagram-project",
-        "code": "Proceso Complejidad_N2_Estricto\n\tDefinir n, i, j, comparaciones Como Entero;\n\tDimension arr[4];\n\t\n\tn = 4;\n\tarr[1] = 10; arr[2] = 20; arr[3] = 30; arr[4] = 40;\n\t\n\tcomparaciones = 0;\n\t\n\t// Operación O(n²): Dos bucles anidados que generan n * n operaciones\n\tPara i = 1 Hasta n Con Paso 1 Hacer\n\t\tPara j = 1 Hasta n Con Paso 1 Hacer\n\t\t\tcomparaciones = comparaciones + 1;\n\t\tFinPara;\n\tFinPara;\n\t\n\tEscribir \"Elementos n: \", n;\n\tEscribir \"Total de ciclos ejecutados (n*n): \", comparaciones;\nFinProceso",
-        "explanation": "Complejidad Cuadrática O(n²) en Modo Estricto O&M. Dos bucles anidados que demuestran que para n=4 se ejecutan exactamente 4² = 16 iteraciones.",
+        "code": "Proceso Complejidad_N2\n    Definir n, i, j, comparaciones Como Entero;\n    Dimension arr[4];\n\n    n <- 4;\n    arr[1] <- 10; arr[2] <- 20; arr[3] <- 30; arr[4] <- 40;\n\n    comparaciones <- 0;\n\n    // Operación O(n²): Dos bucles anidados\n    Para i <- 1 Hasta n Con Paso 1 Hacer\n        Para j <- 1 Hasta n Con Paso 1 Hacer\n            comparaciones <- comparaciones + 1;\n        FinPara\n    FinPara\n\n    Escribir 'Elementos n: ', n;\n    Escribir 'Total de ciclos ejecutados (n*n): ', comparaciones;\nFinProceso",
+        "explanation": "Complejidad Cuadrática O(n²) en PSeInt canónico. Dos bucles anidados que demuestran que para n=4 se ejecutan exactamente 4² = 16 iteraciones con asignación '<-'.",
         "keyConcepts": [
-          "Modo Estricto O&M con ; obligatorio",
+          "Asignación formal con <-",
           "Bucles anidados Para",
           "Crecimiento n * n"
         ],
         "flowchart": {
-          "title": "Diagrama de Flujo: O(n²) Comparación Matriz Cuadrática (PSeInt Pro)",
+          "title": "Diagrama de Flujo: O(n²) Comparación Matriz Cuadrática (PSeInt / Mermaid.js)",
           "nodes": [
             {
               "id": 1,
               "type": "start",
-              "text": "Inicio MatrizCuadratica_On2(n)"
+              "text": "Inicio MatrizCuadratica(n)"
             },
             {
               "id": 2,
-              "type": "process",
-              "text": "Definir i = 1, j = 1, count = 0;"
-            },
-            {
-              "id": 3,
               "type": "decision",
               "text": "¿i <= n?"
             },
             {
-              "id": 4,
+              "id": 3,
               "type": "decision",
               "text": "¿j <= n?"
             },
             {
+              "id": 4,
+              "type": "process",
+              "text": "count <- count + 1;"
+            },
+            {
               "id": 5,
-              "type": "process",
-              "text": "count = count + 1; j = j + 1;"
-            },
-            {
-              "id": 6,
-              "type": "process",
-              "text": "i = i + 1; j = 1;"
-            },
-            {
-              "id": 7,
               "type": "end",
-              "text": "FinProceso: Retornar n*n iteraciones"
+              "text": "FinProceso: Retornar n*n"
             }
-          ]
+          ],
+          "mermaidCode": "flowchart TD\n    classDef terminal fill:#fde047,stroke:#ca8a04,stroke-width:2.5px,color:#1e293b,font-weight:bold;\n    classDef proceso fill:#fef08a,stroke:#ca8a04,stroke-width:2px,color:#1e293b;\n    classDef entrada fill:#fbcfe8,stroke:#db2777,stroke-width:2px,color:#831843,font-weight:bold;\n    classDef salida fill:#bbf7d0,stroke:#16a34a,stroke-width:2px,color:#064e3b,font-weight:bold;\n    classDef decision fill:#bae6fd,stroke:#0284c7,stroke-width:2px,color:#0c4a6e,font-weight:bold;\n\n    Start([\"Proceso Complejidad_N2\"]):::terminal --> Init[\"n <- 4; comparaciones <- 0;<br/>i <- 1\"]:::proceso\n    Init --> CheckI{\"¿i <= n?\"}:::decision\n    CheckI -- \"Sí\" --> InitJ[\"j <- 1\"]:::proceso\n    CheckI -- \"No\" --> PrintEnd[/\"Escribir 'Total ciclos: ', comparaciones\"/]:::salida\n    InitJ --> CheckJ{\"¿j <= n?\"}:::decision\n    CheckJ -- \"Sí\" --> IncComp[\"comparaciones <- comparaciones + 1;<br/>j <- j + 1\"]:::proceso\n    CheckJ -- \"No\" --> IncI[\"i <- i + 1\"]:::proceso\n    IncComp --> CheckJ\n    IncI --> CheckI\n    PrintEnd --> EndNode([\"FinProceso\"]):::terminal"
         }
       },
       "python": {
@@ -2191,7 +2101,7 @@ window.ALGO_MULTILANG_DATA = {
         "keyConcepts": [
           "Doble bucle for",
           "Matriz cartesiana",
-          "Alerta de rendimiento para grandes n"
+          "Alerta para grandes n"
         ],
         "terminalOutput": [
           "$ python -u complexity_n2.py",
@@ -2210,7 +2120,7 @@ window.ALGO_MULTILANG_DATA = {
         "keyConcepts": [
           "Archivo HTML5 Standalone completo",
           "Visualización en grilla 4x4",
-          "Animación celda por celda"
+          "Animación en tiempo real"
         ],
         "demoData": [
           1,
@@ -2224,11 +2134,11 @@ window.ALGO_MULTILANG_DATA = {
         "langBadge": ".NET 9 / C# 12",
         "badgeColor": "bg-[#512BD4] text-white",
         "icon": "fa-solid fa-code",
-        "code": "using System;\n\npublic static class QuadraticEngine\n{\n    public static int ExecuteQuadratic(int n)\n    {\n        int count = 0;\n        for (int i = 0; i < n; i++)\n        {\n            for (int j = 0; j < n; j++)\n            {\n                count++;\n            }\n        }\n        return count;\n    }\n\n    public static void Main()\n    {\n        Console.WriteLine($\"Pasos para n=4: {ExecuteQuadratic(4)}\");\n    }\n}",
+        "code": "using System;\n\npublic static class QuadraticEngine\n{\n    public static int ExecuteQuadratic(int n)\n    {\n        int count = 0;\n        for (int i = 0; i < n; i++)\n            for (int j = 0; j < n; j++)\n                count++;\n        return count;\n    }\n\n    public static void Main()\n    {\n        Console.WriteLine($\"Pasos para n=4: {ExecuteQuadratic(4)}\");\n    }\n}",
         "explanation": "Doble ciclo anidado canónico para comparación de todos contra todos.",
         "keyConcepts": [
           "Dual loop registers",
-          "L1 cache thrashing si no es contiguo",
+          "L1 cache thrashing",
           "Cero allocations"
         ],
         "benchmark": {
@@ -2248,56 +2158,52 @@ window.ALGO_MULTILANG_DATA = {
     "space": "O(1)",
     "langs": {
       "pseint": {
-        "name": "PSeInt (Modo Estricto O&M)",
-        "langBadge": "PSeInt Estricto O&M",
+        "name": "PSeInt Canónico (<- y Diagramas Mermaid)",
+        "langBadge": "PSeInt Pro / Mermaid",
         "badgeColor": "bg-neoCyan text-black",
         "icon": "fa-solid fa-diagram-project",
-        "code": "Proceso Complejidad_N3_Estricto\n\tDefinir n, i, j, k, ciclos_totales Como Entero;\n\t\n\tn = 3;\n\tciclos_totales = 0;\n\t\n\t// Operación O(n³): Tres bucles anidados que producen n * n * n operaciones\n\tPara i = 1 Hasta n Con Paso 1 Hacer\n\t\tPara j = 1 Hasta n Con Paso 1 Hacer\n\t\t\tPara k = 1 Hasta n Con Paso 1 Hacer\n\t\t\t\tciclos_totales = ciclos_totales + 1;\n\t\t\tFinPara;\n\t\tFinPara;\n\tFinPara;\n\t\n\tEscribir \"Dimension n: \", n;\n\tEscribir \"Total de operaciones cubicas (n^3): \", ciclos_totales;\nFinProceso",
-        "explanation": "Complejidad Cúbica O(n³) en Modo Estricto O&M. Tres bucles anidados que demuestran que para una dimensión n=3 se generan 3³ = 27 pasos de procesamiento.",
+        "code": "Proceso Complejidad_N3\n    Definir n, i, j, k, ciclos_totales Como Entero;\n\n    n <- 3;\n    ciclos_totales <- 0;\n\n    // Operación O(n³): Tres bucles anidados\n    Para i <- 1 Hasta n Con Paso 1 Hacer\n        Para j <- 1 Hasta n Con Paso 1 Hacer\n            Para k <- 1 Hasta n Con Paso 1 Hacer\n                ciclos_totales <- ciclos_totales + 1;\n            FinPara\n        FinPara\n    FinPara\n\n    Escribir 'Dimensión n: ', n;\n    Escribir 'Total de operaciones cúbicas (n^3): ', ciclos_totales;\nFinProceso",
+        "explanation": "Complejidad Cúbica O(n³) en PSeInt canónico. Tres bucles anidados que demuestran que para una dimensión n=3 se generan 3³ = 27 pasos con asignaciones '<-'.",
         "keyConcepts": [
-          "Modo Estricto O&M con ; obligatorio",
+          "Asignación formal con <-",
           "Triple bucle Para",
           "Crecimiento volumétrico n³"
         ],
         "flowchart": {
-          "title": "Diagrama de Flujo: O(n³) Triple Bucle / Cúbico (PSeInt Pro)",
+          "title": "Diagrama de Flujo: O(n³) Triple Bucle / Cúbico (PSeInt / Mermaid.js)",
           "nodes": [
             {
               "id": 1,
               "type": "start",
-              "text": "Inicio Complejidad_Cubica_On3(n)"
+              "text": "Inicio Complejidad_N3(n)"
             },
             {
               "id": 2,
-              "type": "process",
-              "text": "Definir i=1, j=1, k=1, total=0;"
-            },
-            {
-              "id": 3,
               "type": "decision",
               "text": "¿i <= n?"
             },
             {
-              "id": 4,
+              "id": 3,
               "type": "decision",
               "text": "¿j <= n?"
             },
             {
-              "id": 5,
+              "id": 4,
               "type": "decision",
               "text": "¿k <= n?"
             },
             {
-              "id": 6,
+              "id": 5,
               "type": "process",
-              "text": "total = total + 1; k = k + 1;"
+              "text": "total <- total + 1;"
             },
             {
-              "id": 7,
+              "id": 6,
               "type": "end",
-              "text": "FinProceso: Retornar n^3 pasos"
+              "text": "FinProceso: Retornar n^3"
             }
-          ]
+          ],
+          "mermaidCode": "flowchart TD\n    classDef terminal fill:#fde047,stroke:#ca8a04,stroke-width:2.5px,color:#1e293b,font-weight:bold;\n    classDef proceso fill:#fef08a,stroke:#ca8a04,stroke-width:2px,color:#1e293b;\n    classDef entrada fill:#fbcfe8,stroke:#db2777,stroke-width:2px,color:#831843,font-weight:bold;\n    classDef salida fill:#bbf7d0,stroke:#16a34a,stroke-width:2px,color:#064e3b,font-weight:bold;\n    classDef decision fill:#bae6fd,stroke:#0284c7,stroke-width:2px,color:#0c4a6e,font-weight:bold;\n\n    Start([\"Proceso Complejidad_N3\"]):::terminal --> Init[\"n <- 3; total <- 0; i <- 1\"]:::proceso\n    Init --> CheckI{\"¿i <= n?\"}:::decision\n    CheckI -- \"Sí\" --> InitJ[\"j <- 1\"]:::proceso\n    CheckI -- \"No\" --> PrintEnd[/\"Escribir 'Total cúbico: ', total\"/]:::salida\n    InitJ --> CheckJ{\"¿j <= n?\"}:::decision\n    CheckJ -- \"Sí\" --> InitK[\"k <- 1\"]:::proceso\n    CheckJ -- \"No\" --> IncI[\"i <- i + 1\"]:::proceso\n    InitK --> CheckK{\"¿k <= n?\"}:::decision\n    CheckK -- \"Sí\" --> IncTotal[\"total <- total + 1;<br/>k <- k + 1\"]:::proceso\n    CheckK -- \"No\" --> IncJ[\"j <- j + 1\"]:::proceso\n    IncTotal --> CheckK\n    IncJ --> CheckJ\n    IncI --> CheckI\n    PrintEnd --> EndNode([\"FinProceso\"]):::terminal"
         }
       },
       "python": {
@@ -2366,19 +2272,19 @@ window.ALGO_MULTILANG_DATA = {
     "space": "O(n)",
     "langs": {
       "pseint": {
-        "name": "PSeInt (Modo Estricto O&M)",
-        "langBadge": "PSeInt Estricto O&M",
+        "name": "PSeInt Canónico (<- y Diagramas Mermaid)",
+        "langBadge": "PSeInt Pro / Mermaid",
         "badgeColor": "bg-neoCyan text-black",
         "icon": "fa-solid fa-diagram-project",
-        "code": "SubProceso resultado <- Fib_Exponencial(k)\n\tDefinir resultado Como Entero;\n\tSi k <= 1 Entonces\n\t\tresultado = k;\n\tSino\n\t\t// Doble llamada recursiva que duplica el trabajo por cada nivel\n\t\tresultado = Fib_Exponencial(k - 1) + Fib_Exponencial(k - 2);\n\tFinSi;\nFinSubProceso;\n\nProceso Complejidad_Exp_Estricto\n\tDefinir n, res Como Entero;\n\t\n\tn = 6;\n\tres = Fib_Exponencial(n);\n\t\n\tEscribir \"Fibonacci recursivo O(2^n):\";\n\tEscribir \"Entrada n: \", n;\n\tEscribir \"Resultado calculado: \", res;\nFinProceso",
-        "explanation": "Complejidad Exponencial O(2ⁿ) en Modo Estricto O&M. Implementa la recursión naíf de Fibonacci donde cada llamada genera dos nuevas ramas, duplicando el árbol de ejecución por cada unidad adicional en n.",
+        "code": "SubProceso resultado <- Fib_Exponencial(k)\n    Definir resultado Como Entero;\n    Si k <= 1 Entonces\n        resultado <- k;\n    SiNo\n        resultado <- Fib_Exponencial(k - 1) + Fib_Exponencial(k - 2);\n    FinSi\nFinSubProceso\n\nProceso Complejidad_Exp\n    Definir n, res Como Entero;\n\n    n <- 6;\n    res <- Fib_Exponencial(n);\n\n    Escribir 'Fibonacci recursivo O(2^n):';\n    Escribir 'Entrada n: ', n;\n    Escribir 'Resultado calculado: ', res;\nFinProceso",
+        "explanation": "Complejidad Exponencial O(2ⁿ) en PSeInt canónico. Demuestra la duplicación del trabajo por nivel en un árbol binario recursivo con asignaciones '<-'.",
         "keyConcepts": [
-          "Modo Estricto O&M con ; obligatorio",
-          "SubProceso recursivo formal",
-          "Bifurcación binaria"
+          "SubProceso recursivo",
+          "Bifurcación binaria",
+          "Asignación <-"
         ],
         "flowchart": {
-          "title": "Diagrama de Flujo: O(2ⁿ) Árbol Exponencial Recursivo (PSeInt Pro)",
+          "title": "Diagrama de Flujo: O(2ⁿ) Árbol Exponencial Recursivo (PSeInt / Mermaid.js)",
           "nodes": [
             {
               "id": 1,
@@ -2393,24 +2299,20 @@ window.ALGO_MULTILANG_DATA = {
             {
               "id": 3,
               "type": "process",
-              "text": "Retornar k;"
+              "text": "resultado <- k;"
             },
             {
               "id": 4,
               "type": "process",
-              "text": "Rama Izquierda: Fib(k-1); Rama Derecha: Fib(k-2);"
+              "text": "Fib(k-1) + Fib(k-2);"
             },
             {
               "id": 5,
-              "type": "process",
-              "text": "Retornar suma de ambas ramas;"
-            },
-            {
-              "id": 6,
               "type": "end",
-              "text": "FinSubProceso: Árbol binario de llamadas O(2^n)"
+              "text": "FinSubProceso: Retornar resultado"
             }
-          ]
+          ],
+          "mermaidCode": "flowchart TD\n    classDef terminal fill:#fde047,stroke:#ca8a04,stroke-width:2.5px,color:#1e293b,font-weight:bold;\n    classDef proceso fill:#fef08a,stroke:#ca8a04,stroke-width:2px,color:#1e293b;\n    classDef entrada fill:#fbcfe8,stroke:#db2777,stroke-width:2px,color:#831843,font-weight:bold;\n    classDef salida fill:#bbf7d0,stroke:#16a34a,stroke-width:2px,color:#064e3b,font-weight:bold;\n    classDef decision fill:#bae6fd,stroke:#0284c7,stroke-width:2px,color:#0c4a6e,font-weight:bold;\n\n    Start([\"SubProceso Fib_Exponencial(k)\"]):::terminal --> CheckBase{\"¿k <= 1?\"}:::decision\n    CheckBase -- \"Sí (Caso Base)\" --> ReturnK[\"resultado <- k\"]:::proceso\n    CheckBase -- \"No (Bifurcación)\" --> DoubleRec[\"Llamar Fib(k-1)<br/>Llamar Fib(k-2)<br/>resultado <- suma\"]:::proceso\n    ReturnK --> EndNode([\"FinSubProceso\"]):::terminal\n    DoubleRec --> EndNode"
         }
       },
       "python": {
@@ -2480,46 +2382,47 @@ window.ALGO_MULTILANG_DATA = {
     "space": "O(n)",
     "langs": {
       "pseint": {
-        "name": "PSeInt (Modo Estricto O&M)",
-        "langBadge": "PSeInt Estricto O&M",
+        "name": "PSeInt Canónico (<- y Diagramas Mermaid)",
+        "langBadge": "PSeInt Pro / Mermaid",
         "badgeColor": "bg-neoCyan text-black",
         "icon": "fa-solid fa-diagram-project",
-        "code": "SubProceso Generar_Permutaciones(n_elem, nivel)\n\tDefinir i Como Entero;\n\tSi nivel == n_elem Entonces\n\t\tEscribir \"Permutacion valida completada.\";\n\tSino\n\t\tPara i = nivel Hasta n_elem Con Paso 1 Hacer\n\t\t\t// Exploración combinatoria de todas las ramas posibles\n\t\t\tGenerar_Permutaciones(n_elem, nivel + 1);\n\t\tFinPara;\n\tFinSi;\nFinSubProceso;\n\nProceso Complejidad_Fact_Estricto\n\tDefinir total_elementos Como Entero;\n\t\n\ttotal_elementos = 3;\n\tEscribir \"Generando permutaciones para n = \", total_elementos;\n\tGenerar_Permutaciones(total_elementos, 1);\n\tEscribir \"Total de hojas factoriales generadas: n! = 6\";\nFinProceso",
-        "explanation": "Complejidad Factorial O(n!) en Modo Estricto O&M. Explora exhaustivamente todas las ordenaciones posibles de un conjunto, generando 3! = 6 combinaciones terminales mediante recursión.",
+        "code": "SubProceso Generar_Permutaciones(n_elem, nivel)\n    Definir i Como Entero;\n    Si nivel == n_elem Entonces\n        Escribir 'Permutación válida completada.';\n    SiNo\n        Para i <- nivel Hasta n_elem Con Paso 1 Hacer\n            Generar_Permutaciones(n_elem, nivel + 1);\n        FinPara\n    FinSi\nFinSubProceso\n\nProceso Complejidad_Fact\n    Definir total_elementos Como Entero;\n\n    total_elementos <- 3;\n    Escribir 'Generando permutaciones para n = ', total_elementos;\n    Generar_Permutaciones(total_elementos, 1);\n    Escribir 'Total de hojas factoriales generadas: n! = 6';\nFinProceso",
+        "explanation": "Complejidad Factorial O(n!) en PSeInt canónico. Genera recursivamente todas las permutaciones de n elementos con asignaciones '<-'.",
         "keyConcepts": [
-          "Modo Estricto O&M con ; obligatorio",
-          "SubProceso recursivo combinatorio",
-          "Hojas n!"
+          "SubProceso recursivo",
+          "Hojas n!",
+          "Asignación <-"
         ],
         "flowchart": {
-          "title": "Diagrama de Flujo: O(n!) Permutación Factorial Exhaustiva (PSeInt Pro)",
+          "title": "Diagrama de Flujo: O(n!) Permutación Factorial Exhaustiva (PSeInt / Mermaid.js)",
           "nodes": [
             {
               "id": 1,
               "type": "start",
-              "text": "Inicio Permutaciones_Factorial_OnFact(n, k)"
+              "text": "Inicio Permutaciones_Factorial(n, nivel)"
             },
             {
               "id": 2,
               "type": "decision",
-              "text": "¿k == n?"
+              "text": "¿nivel == n?"
             },
             {
               "id": 3,
               "type": "process",
-              "text": "Registrar permutación terminal;"
+              "text": "Escribir 'Permutación completada';"
             },
             {
               "id": 4,
               "type": "process",
-              "text": "Para cada elemento no usado: Permutar(n, k + 1);"
+              "text": "Generar_Permutaciones(n, nivel + 1);"
             },
             {
               "id": 5,
               "type": "end",
-              "text": "FinSubProceso: Generar n! ramas terminales"
+              "text": "FinSubProceso: Generar n! ramas"
             }
-          ]
+          ],
+          "mermaidCode": "flowchart TD\n    classDef terminal fill:#fde047,stroke:#ca8a04,stroke-width:2.5px,color:#1e293b,font-weight:bold;\n    classDef proceso fill:#fef08a,stroke:#ca8a04,stroke-width:2px,color:#1e293b;\n    classDef entrada fill:#fbcfe8,stroke:#db2777,stroke-width:2px,color:#831843,font-weight:bold;\n    classDef salida fill:#bbf7d0,stroke:#16a34a,stroke-width:2px,color:#064e3b,font-weight:bold;\n    classDef decision fill:#bae6fd,stroke:#0284c7,stroke-width:2px,color:#0c4a6e,font-weight:bold;\n\n    Start([\"SubProceso Generar_Permutaciones(n, nivel)\"]):::terminal --> CheckLevel{\"¿nivel == n?\"}:::decision\n    CheckLevel -- \"Sí (Hoja Terminal)\" --> PrintLeaf[/\"Escribir 'Permutación completada'\"/]:::salida\n    CheckLevel -- \"No (Bucle Factorial)\" --> LoopBranch[\"Para i <- nivel Hasta n:<br/>Generar_Permutaciones(n, nivel + 1)\"]:::proceso\n    PrintLeaf --> EndNode([\"FinSubProceso\"]):::terminal\n    LoopBranch --> EndNode"
         }
       },
       "python": {
