@@ -25,6 +25,10 @@ let threeBlocks = [];
 const ALGORITHMS_CATALOG = {
   // --- SORTING ALGORITHMS ---
   'bubble_sort': {
+    howItWorks: `Compara pares de elementos adyacentes de izquierda a derecha. Si el elemento de la izquierda es mayor que el de la derecha, los intercambia. En cada pasada completa, el elemento más grande flota como una burbuja hasta su posición final definitiva al extremo derecho.`,
+    proTip: `Algoritmo estrictamente didáctico; evítalo en producción. Solo es útil cuando el arreglo ya está ordenado y usas una bandera de corte temprano en O(n).`,
+    gif: 'assets/bubble_sort.gif',
+    speechText: `Bienvenido a la simulación interactiva de Bubble Sort, el ordenamiento burbuja. Su funcionamiento recorre el arreglo comparando pares adyacentes e intercambiándolos si están desordenados, haciendo que el elemento mayor flote a la derecha en cada iteración. Su complejidad es cuadrática, O de n cuadrado, con memoria constante O de 1. Tip de Arquitectura del Ingeniero Juancito Peña: Nunca uses Bubble Sort en bases de datos o sistemas distribuidos; su lentitud cuadrática puede colapsar tu servidor. Es ideal exclusivamente para aprender la mecánica fundamental de los intercambios en memoria.`,
     name: 'Bubble Sort',
     category: 'sort',
     bigO: 'O(n²)',
@@ -50,6 +54,10 @@ return arr;
 }`
   },
   'selection_sort': {
+    howItWorks: `Divide el arreglo en una porción ordenada y otra desordenada. En cada ciclo, busca el valor mínimo absoluto en la zona desordenada y lo intercambia directamente con el primer elemento de dicha zona.`,
+    proTip: `Realiza un máximo estricto de n intercambios de memoria en total. Es ideal para memorias Flash EEPROM donde las escrituras físicas son costosas o degradan el chip.`,
+    gif: 'assets/selection_sort.gif',
+    speechText: `Bienvenido a la simulación interactiva de Selection Sort. Este algoritmo busca en cada pasada el elemento de menor valor en toda la sección desordenada y lo coloca en su posición definitiva mediante un solo intercambio. Su complejidad temporal es inmutablemente cuadrática, O de n cuadrado, tanto en el mejor como en el peor caso. Tip de Arquitectura del Ingeniero Juancito Peña: Selection Sort destaca porque realiza un máximo estricto de n intercambios de memoria. Si programas dispositivos embebidos o microcontroladores con memorias flash donde escribir desgasta el chip físico, Selection Sort minimiza las escrituras frente a otros métodos.`,
     name: 'Selection Sort',
     category: 'sort',
     bigO: 'O(n²)',
@@ -75,6 +83,10 @@ return arr;
 }`
   },
   'insertion_sort': {
+    howItWorks: `Construye la lista ordenada de forma incremental, tal como una persona ordena cartas en su mano. Toma cada elemento entrante y lo desplaza hacia la izquierda hasta encontrar su posición exacta entre los ya ordenados.`,
+    proTip: `Es el más veloz en colecciones pequeñas (n < 32) y en datos casi ordenados con O(n). Motores como V8 (JavaScript) y Python lo usan como base interna en TimSort.`,
+    gif: 'assets/insertion_sort.gif',
+    speechText: `Bienvenido a la simulación interactiva de Insertion Sort. Funciona como un humano ordenando naipes: toma el siguiente elemento y lo inserta en su lugar correspondiente desplazando los mayores hacia la derecha. En arreglos casi ordenados logra tiempo lineal O de n. Tip de Arquitectura del Ingeniero Juancito Peña: Insertion Sort es sumamente veloz en colecciones pequeñas debido a su bajo factor constante y localidad de caché. De hecho, los motores de Python y JavaScript lo utilizan internamente en híbridos como TimSort cuando las particiones tienen menos de treinta y dos elementos.`,
     name: 'Insertion Sort',
     category: 'sort',
     bigO: 'O(n²)',
@@ -100,6 +112,10 @@ return arr;
 }`
   },
   'shell_sort': {
+    howItWorks: `Generaliza Insertion Sort permitiendo comparar e intercambiar elementos distantes mediante saltos decrecientes (gaps). Al reducir el salto hasta 1, elimina inversiones lejanas y termina a velocidad lineal.`,
+    proTip: `Opera in-place con O(1) de memoria auxiliar y no utiliza recursión ni memoria de pila, siendo idóneo para microcontroladores y sistemas de tiempo real restringidos.`,
+    gif: 'assets/shell_sort.gif',
+    speechText: `Bienvenido a la simulación interactiva de Shell Sort. Inventado por Donald Shell, este algoritmo rompe la barrera cuadrática tradicional comparando elementos separados por intervalos o saltos decrecientes. Al reducir el salto progresivamente hasta uno, elimina rápidamente las inversiones distantes y deja el arreglo casi ordenado. Su complejidad promedio ronda O de n elevado a la uno punto tres con memoria auxiliar O de uno. Tip de Arquitectura del Ingeniero Juancito Peña: Shell Sort es perfecto para sistemas embebidos sin sistema operativo o con poca memoria RAM, ya que ofrece un rendimiento cercano a logarítmico sin consumir memoria de pila por llamadas recursivas.`,
     name: 'Shell Sort',
     category: 'sort',
     bigO: 'O(n log² n)',
@@ -128,6 +144,10 @@ return arr;
 }`
   },
   'merge_sort': {
+    howItWorks: `Aplica Divide y Vencerás. Divide recursivamente el arreglo a la mitad hasta tener elementos unitarios y luego los fusiona en orden comparando las cabezas de las sub-listas.`,
+    proTip: `Garantiza O(n log n) determinista en el 100% de los casos y es completamente estable. Es el estándar de oro para ordenamiento externo de datos masivos en disco.`,
+    gif: 'assets/merge_sort.gif',
+    speechText: `Bienvenido a la simulación interactiva de Merge Sort, el ordenamiento por mezcla concebido por John von Neumann. Este algoritmo aplica el principio de divide y vencerás: parte la colección por la mitad de forma recursiva hasta llegar a elementos individuales y luego los mezcla en secuencia ordenada. Garantiza una complejidad asintótica imbatible de O de n log n en todos los escenarios posibles, tanto en el mejor como en el peor caso. Tip de Arquitectura del Ingeniero Juancito Peña: Merge Sort es el estándar indiscutible para ordenar datos masivos que no caben en memoria RAM física, como archivos en disco o flujos distribuidos en bases de datos, gracias a su acceso secuencial predecible y su estabilidad garantizada.`,
     name: 'Merge Sort',
     category: 'sort',
     bigO: 'O(n log n)',
@@ -149,6 +169,10 @@ return merge(L, R);
 }`
   },
   'quick_sort': {
+    howItWorks: `Elige un pivote y particiona el arreglo: menores a la izquierda, mayores a la derecha. Luego aplica la misma partición recursivamente sobre ambos lados.`,
+    proTip: `En la práctica es el más veloz de propósito general gracias a su aprovechamiento de la memoria caché L1/L2. Usa siempre mediana de 3 o pivote aleatorio para evitar O(n²).`,
+    gif: 'assets/quick_sort.gif',
+    speechText: `Bienvenido a la simulación interactiva de Quick Sort con partición de Lomuto. Creado por Tony Hoare, Quick Sort elige un pivote y reubica los elementos: menores a la izquierda y mayores a la derecha. Luego ordena recursivamente ambas mitades. En promedio alcanza una impresionante velocidad de O de n log n con memoria auxiliar logarítmica. Tip de Arquitectura del Ingeniero Juancito Peña: Quick Sort es el algoritmo predilecto en librerías estándar de lenguajes como C y C++. Para blindarlo contra su peor caso cuadrático O de n cuadrado, utiliza siempre una técnica de pivote por mediana de tres o pivote aleatorio.`,
     name: 'Quick Sort (Lomuto)',
     category: 'sort',
     bigO: 'O(n log n)',
@@ -171,6 +195,10 @@ return arr;
 }`
   },
   'heap_sort': {
+    howItWorks: `Modela los datos como un árbol binario Max-Heap donde la raíz es siempre el máximo. Extrae repetidamente la raíz intercambiándola con el final y reajusta el montículo.`,
+    proTip: `Combina la cota O(n log n) en el peor caso de Merge Sort con el uso de memoria O(1) in-place de Quick Sort, sin riesgo de degradación.`,
+    gif: 'assets/heap_sort.gif',
+    speechText: `Bienvenido a la simulación interactiva de Heap Sort, el ordenamiento por montículo. Este algoritmo estructura el arreglo en memoria como un árbol binario completo donde la raíz contiene siempre el valor máximo. Al extraer la raíz y reconstruir el montículo, ordena la colección garantizando O de n log n en cualquier circunstancia, utilizando únicamente O de uno de memoria auxiliar. Tip de Arquitectura del Ingeniero Juancito Peña: Heap Sort es la opción ideal para sistemas de misión crítica y tiempo real estricto, como aviónica automotriz o satélites, donde no se permite ninguna variación impredecible en el tiempo de ejecución ni consumo dinámico de memoria RAM.`,
     name: 'Heap Sort',
     category: 'sort',
     bigO: 'O(n log n)',
@@ -194,6 +222,10 @@ return arr;
 }`
   },
   'radix_sort': {
+    howItWorks: `Algoritmo no comparativo que procesa los números dígito a dígito desde el menos significativo (unidades) usando cubos de conteo estable (Counting Sort).`,
+    proTip: `Opera en tiempo lineal O(n · k). Con enteros de 32/64 bits k es una constante fija pequeña, procesando millones de datos a velocidad lineal superando a Quick Sort.`,
+    gif: 'assets/radix_sort.gif',
+    speechText: `Bienvenido a la simulación interactiva de Radix Sort no comparativo. Este algoritmo rompe el límite teórico de orden n log n ordenando números a través de sus dígitos, desde el dígito menos significativo hasta el más representativo. Al apoyarse en cubos o conteo estable, su complejidad temporal es puramente lineal, O de n por k. Tip de Arquitectura del Ingeniero Juancito Peña: Radix Sort es la mejor opción cuando necesitas ordenar cientos de millones de enteros de longitud fija, como códigos postales, números de tarjetas de crédito o direcciones IP, superando ampliamente a cualquier método comparativo convencional.`,
     name: 'Radix Sort (LSD)',
     category: 'sort',
     bigO: 'O(n · k)',
@@ -215,6 +247,10 @@ return arr;
 }`
   },
   'bogo_sort': {
+    howItWorks: `Comprueba si el arreglo está ordenado. Si no lo está, baraja aleatoriamente todos los elementos y repite hasta que por suerte quede ordenado.`,
+    proTip: `Antipatrón de complejidad factorial O((n+1)!). Con 15 elementos tardaría más de 1.3 millones de años. Muestra el peligro de la fuerza bruta descontrolada.`,
+    gif: 'assets/bogo_sort.gif',
+    speechText: `Bienvenido a la simulación interactiva de Bogo Sort, también conocido como ordenamiento de mono. Su estrategia consiste en verificar si la lista está ordenada y, de no estarlo, barajar todos los elementos al azar como una baraja de naipes y volver a probar. Su complejidad en el peor caso es infinita y en promedio es de orden factorial, O de n factorial. Tip de Arquitectura del Ingeniero Juancito Peña: Bogo Sort es el contraejemplo perfecto de ingeniería. Ilustra vívidamente el peligro de confiar en la fuerza bruta estocástica: mientras que con diez elementos puede tardar minutos, con quince elementos excedería el tiempo de vida de la civilización humana.`,
     name: 'Bogo Sort (Didáctico)',
     category: 'sort',
     bigO: 'O((n+1)!)',
@@ -237,6 +273,10 @@ return arr;
 
   // --- SEARCH ALGORITHMS ---
   'linear_search': {
+    howItWorks: `Inspecciona secuencialmente cada celda del arreglo desde el índice 0 hasta dar con el objetivo o agotar los datos.`,
+    proTip: `El único método universal para datos desordenados y sin indexar. Para más de 1000 consultas frecuentes, invierte en ordenar o indexar para buscar en O(log n).`,
+    gif: 'assets/linear_search.gif',
+    speechText: `Bienvenido a la simulación interactiva de Búsqueda Lineal. Es el método más intuitivo y directo: recorre el arreglo de inicio a fin inspeccionando cada celda hasta dar con el objetivo o agotar los elementos. Su complejidad es lineal O de n en el peor caso y O de 1 en el mejor. Tip de Arquitectura del Ingeniero Juancito Peña: La búsqueda lineal es perfecta para arreglos pequeños donde ordenar previamente representaría un desperdicio de ciclos de CPU. Sin embargo, para colecciones con más de mil consultas frecuentes, debes indexar o mantener los datos ordenados para usar búsqueda binaria.`,
     name: 'Búsqueda Lineal',
     category: 'search',
     bigO: 'O(n)',
@@ -257,6 +297,10 @@ return -1;
 }`
   },
   'binary_search': {
+    howItWorks: `En arreglo ordenado, compara el target con el punto medio. Si no coincide, descarta el 50% del espacio de búsqueda en cada paso.`,
+    proTip: `Complejidad logarítmica O(log n). Con 30 comparaciones busca entre mil millones de registros. Es el pilar de los índices B-Tree en bases de datos.`,
+    gif: 'assets/binary_search.gif',
+    speechText: `Bienvenido a la simulación interactiva de Búsqueda Binaria. Requiere obligatoriamente que la colección esté ordenada. Compara el objetivo con el elemento central; si no coincide, descarta la mitad completa del espacio donde el elemento jamás podría estar y repite la bisección en el intervalo restante. Su complejidad es logarítmica O de log n. Tip de Arquitectura del Ingeniero Juancito Peña: La búsqueda binaria es uno de los algoritmos más poderosos de la informática. Con solo treinta comparaciones es capaz de encontrar un registro específico entre más de mil millones de datos en memoria. Es la base de los índices en todas las bases de datos modernas.`,
     name: 'Búsqueda Binaria',
     category: 'search',
     bigO: 'O(log n)',
@@ -281,6 +325,10 @@ return -1;
 }`
   },
   'ternary_search': {
+    howItWorks: `Divide el rango ordenado en 3 partes mediante 2 puntos medios y descarta dos tercios (el 66%) del espacio en cada paso.`,
+    proTip: `Complejidad O(log₃ n). Su aplicación estelar es la optimización numérica para hallar máximos o mínimos en funciones unimodales continuas.`,
+    gif: 'assets/binary_search.gif',
+    speechText: `Bienvenido a la simulación interactiva de Búsqueda Ternaria. Este método divide el espacio de búsqueda ordenado en tres partes iguales utilizando dos puntos de división. Al evaluar ambos extremos, descarta dos tercios del conjunto de datos en cada iteración, alcanzando una complejidad logarítmica en base tres. Tip de Arquitectura del Ingeniero Juancito Peña: Aunque la búsqueda ternaria reduce el intervalo más rápido que la binaria, realiza dos comparaciones por paso. Su aplicación estelar no son los arreglos planos, sino la optimización numérica para encontrar máximos o mínimos en funciones unimodales continuas.`,
     name: 'Búsqueda Ternaria',
     category: 'search',
     bigO: 'O(log₃ n)',
@@ -307,6 +355,10 @@ return -1;
 }`
   },
   'jump_search': {
+    howItWorks: `Avanza a saltos fijos de tamaño raíz cuadrada de n. Al sobrepasar el target, retrocede y aplica búsqueda lineal reducida dentro del bloque.`,
+    proTip: `Complejidad O(√n). Muy útil cuando avanzar secuencialmente es barato pero retroceder o saltar arbitrariamente tiene penalización de hardware.`,
+    gif: 'assets/nearest_neighbor_search.gif',
+    speechText: `Bienvenido a la simulación interactiva de Búsqueda por Salto. Opera sobre arreglos ordenados dando pasos agigantados de longitud fija equivalente a la raíz cuadrada de n. Cuando sobrepasa el objetivo, retrocede y aplica una búsqueda lineal reducida dentro de ese único bloque. Su complejidad es de orden raíz de n. Tip de Arquitectura del Ingeniero Juancito Peña: La búsqueda por salto es especialmente útil en sistemas donde el acceso indexado aleatorio tiene penalización de hardware y donde solo es eficiente avanzar secuencialmente, como en estructuras de salto distribuido o cintas de almacenamiento.`,
     name: 'Búsqueda por Salto (Jump)',
     category: 'search',
     bigO: 'O(√n)',
@@ -333,6 +385,10 @@ return arr[prev] === target ? prev : -1;
 }`
   },
   'interpolation_search': {
+    howItWorks: `Calcula la posición estimada matemáticamente según el valor numérico relativo de la clave dentro del rango mínimo y máximo.`,
+    proTip: `En datos ordenados con distribución uniforme logra una velocidad casi constante de O(log log n). Para 1 millón de datos requiere solo 2 a 4 pasos.`,
+    gif: 'assets/busqueda_binaria.gif',
+    speechText: `Bienvenido a la simulación interactiva de Búsqueda por Interpolación. A diferencia de la búsqueda binaria que siempre divide por la mitad, este algoritmo calcula la posición probable del elemento interpolando matemáticamente su valor entre los límites conocidos. Si los datos están uniformemente distribuidos, alcanza una sorprendente velocidad de O de logaritmo del logaritmo de n. Tip de Arquitectura del Ingeniero Juancito Peña: Si tus datos ordenados tienen una distribución numérica uniforme, como marcas de tiempo continuas o IDs secuenciales, la interpolación es entre tres y cuatro veces más rápida que la búsqueda binaria tradicional.`,
     name: 'Búsqueda por Interpolación',
     category: 'search',
     bigO: 'O(log log n)',
@@ -356,6 +412,10 @@ return -1;
 }`
   },
   'exponential_search': {
+    howItWorks: `Duplica el rango exponencialmente en potencias de 2 (1, 2, 4, 8...) y luego aplica búsqueda binaria en el subrango delimitado.`,
+    proTip: `El estándar para buscar en flujos de datos en streaming o arreglos ilimitados donde no se conoce el tamaño total n por anticipado.`,
+    gif: 'assets/binary_search.gif',
+    speechText: `Bienvenido a la simulación interactiva de Búsqueda Exponencial. Encuentra el rango donde se ubica el elemento multiplicando por dos la posición en cada salto: uno, dos, cuatro, ocho, dieciséis, y así sucesivamente. Una vez detectado el límite superior, aplica búsqueda binaria clásica dentro de ese intervalo. Su complejidad es O de log n. Tip de Arquitectura del Ingeniero Juancito Peña: La búsqueda exponencial es el estándar de oro para consultar flujos continuos de datos en streaming o arreglos ilimitados donde no se conoce el tamaño total n de la colección y el elemento objetivo suele encontrarse cerca del inicio.`,
     name: 'Búsqueda Exponencial',
     category: 'search',
     bigO: 'O(log n)',
@@ -378,6 +438,10 @@ return binarySearchRange(arr, target, Math.floor(i / 2), Math.min(i, arr.length 
 
   // --- PURE BIG-O THEORETICAL CLASSES ---
   'complexity_o1': {
+    howItWorks: `Acceso directo a dirección de memoria física mediante dirección base + desplazamiento en un único ciclo de CPU.`,
+    proTip: `El Santo Grial del rendimiento. Diseña tus flujos usando Maps, Hashes o índices directos para soportar millones de peticiones concurrentes.`,
+    gif: 'assets/nearest_neighbor_search.gif',
+    speechText: `Bienvenido a la demostración cinemática de complejidad O de 1, Tiempo Constante. En esta simulación observas cómo la CPU calcula la posición física exacta de un elemento en memoria mediante su dirección base y su desplazamiento numérico, en un solo ciclo atómico de procesamiento sin importar cuántos millones de elementos existan. Tip del Ingeniero Juancito Peña: El tiempo constante es el estándar supremo de arquitectura: estructura siempre tus datos en tablas hash o cachés en memoria para garantizar respuestas en microsegundos bajo cualquier volumen de carga.`,
     name: 'O(1) Acceso Directo',
     category: 'complexity',
     bigO: 'O(1)',
@@ -396,6 +460,10 @@ return arr[index];
 }`
   },
   'complexity_linear': {
+    howItWorks: `Procesa secuencialmente cada uno de los n elementos del arreglo acumulando operaciones en proporción directa a n.`,
+    proTip: `Totalmente aceptable en producción masiva siempre que evites ejecutar operaciones bloqueantes de red o disco dentro de cada iteración.`,
+    gif: 'assets/linear_search.gif',
+    speechText: `Bienvenido a la demostración cinemática de complejidad O de n, Tiempo Lineal. Aquí puedes observar cómo el tiempo de ejecución y el consumo de ciclos de procesador crecen en proporción directa y exacta al número total de elementos. Si duplicas el tamaño de la entrada, se duplicará el tiempo de ejecución. Tip del Ingeniero Juancito Peña: La complejidad lineal es completamente aceptable en el procesamiento masivo de datos; el secreto de la buena ingeniería radica en asegurar que tus bucles lineales no oculten operaciones costosas de red o accesos a disco dentro de cada iteración.`,
     name: 'O(n) Recorrido Acumulativo',
     category: 'complexity',
     bigO: 'O(n)',
@@ -415,6 +483,10 @@ return total;
 }`
   },
   'complexity_n2': {
+    howItWorks: `Dos bucles anidados donde cada elemento interactúa con todos los demás de la colección, produciendo n² pasos.`,
+    proTip: `Con mil elementos requiere 1 millón de pasos; con 100 mil requiere 10 mil millones. Refactoriza hacia O(n log n) usando partición o mapas.`,
+    gif: 'assets/bubble_sort.gif',
+    speechText: `Bienvenido a la demostración cinemática de complejidad O de n cuadrado, Tiempo Cuadrático. Esta simulación refleja el comportamiento de los bucles anidados donde cada elemento debe interactuar con todos los demás de la colección. El crecimiento de operaciones es parabólico y sumamente pronunciado. Tip del Ingeniero Juancito Peña: Un algoritmo de orden n cuadrado que responde en milisegundos durante las pruebas locales puede colapsar un servidor entero en producción cuando la base de datos supere los cien mil registros. Siempre que detectes bucles anidados en código crítico, refactoriza hacia orden n log n.`,
     name: 'O(n²) Comparación Matriz',
     category: 'complexity',
     bigO: 'O(n²)',
@@ -436,6 +508,10 @@ for (let j = 0; j < arr.length; j++) {
 }`
   },
   'complexity_n3': {
+    howItWorks: `Tres bucles anidados que evalúan tripletas completas de elementos (fuerza bruta en multiplicación de matrices o 3-SUM).`,
+    proTip: `Zona de peligro roja en ingeniería. Con solo 1,000 elementos demanda 1,000,000,000 de operaciones. Usa programación dinámica o hashes.`,
+    gif: 'assets/selection_sort.gif',
+    speechText: `Bienvenido a la demostración cinemática de complejidad O de n al cubo, Tiempo Cúbico. Este escenario representa tres bucles completamente anidados, característico de algoritmos ingenuos de multiplicación de matrices o problemas combinatorios como 3-SUM por fuerza bruta. Tip del Ingeniero Juancito Peña: La complejidad cúbica es una zona de peligro roja en la ingeniería de software. Con apenas mil elementos la computadora debe realizar mil millones de cálculos. Evita siempre este enfoque recurriendo a técnicas de programación dinámica o estructuras de datos hash auxiliares.`,
     name: 'O(n³) Triple Bucle / Cúbico',
     category: 'complexity',
     bigO: 'O(n³)',
@@ -459,6 +535,10 @@ return false;
 }`
   },
   'complexity_exp': {
+    howItWorks: `Árbol de recursión donde cada llamada genera 2 ramas secundarias, duplicando las operaciones con cada elemento añadido.`,
+    proTip: `Inviable en producción. Aplica Programación Dinámica y Memoización para reducir el tiempo de O(2ⁿ) a tiempo lineal O(n).`,
+    gif: 'assets/backtracking_search.gif',
+    speechText: `Bienvenido a la demostración cinemática de complejidad O de dos a la n, Tiempo Exponencial. Observa cómo cada nuevo elemento añadido duplica instantáneamente la cantidad de ramas y de operaciones requeridas, como en la implementación ingenua de la sucesión de Fibonacci. Tip del Ingeniero Juancito Peña: La complejidad exponencial es inviable en entornos reales. Sin embargo, en la mayoría de los casos de negocio este cuello de botella se puede erradicar aplicando Programación Dinámica y memoización en caché, reduciendo el costo de dos a la n a un orden lineal O de n.`,
     name: 'O(2ⁿ) Árbol Exponencial',
     category: 'complexity',
     bigO: 'O(2ⁿ)',
@@ -477,6 +557,10 @@ return fibonacci(n - 1) + fibonacci(n - 2);
 }`
   },
   'complexity_fact': {
+    howItWorks: `Generación exhaustiva de todas las permutaciones posibles en problemas NP-Hard como el Problema del Agente Viajero (TSP).`,
+    proTip: `La explosión combinatoria más rápida. En producción utiliza heurísticas, algoritmos genéticos o colonias de hormigas para hallar soluciones casi óptimas.`,
+    gif: 'assets/bogo_sort.gif',
+    speechText: `Bienvenido a la demostración cinemática de complejidad O de n factorial, Tiempo Factorial. Es el crecimiento más explosivo de toda la ciencia de la computación, típico de problemas donde se deben calcular todas las permutaciones de rutas o combinaciones posibles. Tip del Ingeniero Juancito Peña: Frente a problemas NP-Hard con crecimiento factorial, como el problema del agente viajero, jamás recurras a la fuerza bruta exhaustiva en producción. Emplea algoritmos heurísticos, algoritmos genéticos o aproximaciones de colonia de hormigas para encontrar soluciones casi óptimas en microsegundos.`,
     name: 'O(n!) Permutación Factorial',
     category: 'complexity',
     bigO: 'O(n!)',
@@ -511,6 +595,7 @@ window.onload = function() {
   selectAlgorithm('bubble_sort');
   renderMatrixTable();
   setupDomEvents();
+  populateModalAlgoDropdown();
 };
 
 function setupDomEvents() {
@@ -536,12 +621,18 @@ function setDataType(type) {
   currentDataType = type;
   ['numbers', 'letters', 'objects', 'colors'].forEach(t => {
     const btn = document.getElementById(`btn-type-${t}`);
-    if (btn) btn.className = (t === type) 
+    const modalBtn = document.getElementById(`btn-modal-type-${t}`);
+    const isAct = (t === type);
+    if (btn) btn.className = isAct 
       ? 'neo-button bg-neoCyan px-3 py-1 text-xs uppercase' 
       : 'neo-button bg-white px-3 py-1 text-xs uppercase';
+    if (modalBtn) modalBtn.className = isAct 
+      ? 'neo-button bg-neoCyan px-2 py-0.5 text-xs uppercase font-mono font-bold' 
+      : 'neo-button bg-white px-2 py-0.5 text-xs uppercase font-mono font-bold';
   });
 
   generateDatasetPreset('random');
+  syncModalDatasetInputs();
 }
 
 function generateDatasetPreset(preset) {
@@ -661,7 +752,10 @@ function pickRandomTarget() {
   if (rawItems.length > 0) {
     const randItem = rawItems[Math.floor(Math.random() * rawItems.length)];
     currentTarget = randItem.value;
-    document.getElementById('targetValueInput').value = randItem.display || randItem.value;
+    const disp = randItem.display || randItem.value;
+    document.getElementById('targetValueInput').value = disp;
+    const modalTgt = document.getElementById('modalTargetValueInput');
+    if (modalTgt) modalTgt.value = disp;
     resetSimulationView();
   }
 }
@@ -669,6 +763,8 @@ function pickRandomTarget() {
 function updateHeaderAndCounts() {
   const n = rawItems.length;
   document.getElementById('arrayLengthLabel').innerText = n;
+  const modalN = document.getElementById('modalArrayLengthLabel');
+  if (modalN) modalN.innerText = n;
   document.querySelectorAll('.activeNVal').forEach(el => el.innerText = n);
   renderMatrixTable();
 }
@@ -700,18 +796,24 @@ function renderAlgorithmCards() {
 
     const isSelected = (key === selectedAlgoId);
     html += `
-      <button onclick="selectAlgorithm('${key}')" id="card-${key}"
-        class="neo-box p-2 text-left flex flex-col justify-between ${isSelected ? 'active-card' : 'bg-white'}">
+      <button onclick="openAlgoModal('${key}')" id="card-${key}"
+        class="neo-box p-2 text-left flex flex-col justify-between cursor-pointer hover:translate-y-[-2px] transition-transform ${isSelected ? 'active-card' : 'bg-white'}"
+        title="Clic para abrir laboratorio y simulación interactiva de ${item.name}">
         <div>
-          <div class="flex items-center justify-between mb-1">
-            <span class="neo-badge ${item.badge} text-black text-[9px] px-1 py-0.2 font-mono">
+          <div class="flex items-center justify-between mb-1 gap-1">
+            <span class="neo-badge ${item.badge} text-black text-xs px-1.5 py-0.5 font-mono font-black">
               ${item.bigO}
             </span>
-            <span class="text-[8px] font-mono font-bold uppercase text-gray-600">${item.category}</span>
+            <span class="text-xs font-mono font-bold uppercase text-gray-700">${item.category}</span>
           </div>
-          <div class="font-black text-xs text-black leading-tight truncate">${item.name}</div>
+          <div class="font-black text-sm text-black leading-snug truncate mt-1">${item.name}</div>
         </div>
-        <div class="mt-2 text-[9px] font-mono text-gray-700 truncate">Esp: ${item.space}</div>
+        <div class="mt-2 pt-1 border-t border-black/30 flex items-center justify-between text-xs font-mono font-bold text-gray-800">
+          <span>Esp: ${item.space}</span>
+          <span class="text-neoDark flex items-center gap-1 font-sans font-black text-xs">
+            <i class="fa-solid fa-play text-neoOrange"></i> Simular
+          </span>
+        </div>
       </button>
     `;
   }
@@ -747,17 +849,17 @@ function renderMatrixTable() {
     const ops = item.calcOps(n);
     html += `
       <tr class="hover:bg-neoYellow transition border-2 border-black cursor-pointer" onclick="selectAlgorithm('${key}')">
-        <td class="p-2 border-2 border-black font-black flex items-center gap-1.5">
+        <td class="p-2.5 sm:p-3 border-2 border-black font-black text-xs sm:text-sm flex items-center gap-2">
           <span class="w-2.5 h-2.5 border border-black ${item.badge}"></span>
           ${item.name}
         </td>
-        <td class="p-2 border-2 border-black text-gray-800 text-[11px] uppercase">${item.category}</td>
-        <td class="p-2 border-2 border-black font-mono text-emerald-700">${item.best}</td>
-        <td class="p-2 border-2 border-black font-mono text-cyan-800">${item.avg}</td>
-        <td class="p-2 border-2 border-black font-mono text-rose-800">${item.worst}</td>
-        <td class="p-2 border-2 border-black font-mono font-black">${ops.toLocaleString()}</td>
-        <td class="p-2 border-2 border-black font-mono">${item.space}</td>
-        <td class="p-2 border-2 border-black font-sans">${item.stable}</td>
+        <td class="p-2.5 sm:p-3 border-2 border-black text-gray-900 font-bold text-xs sm:text-sm uppercase">${item.category}</td>
+        <td class="p-2.5 sm:p-3 border-2 border-black font-mono text-xs sm:text-sm text-emerald-700">${item.best}</td>
+        <td class="p-2.5 sm:p-3 border-2 border-black font-mono text-xs sm:text-sm text-cyan-800">${item.avg}</td>
+        <td class="p-2.5 sm:p-3 border-2 border-black font-mono text-xs sm:text-sm text-rose-800">${item.worst}</td>
+        <td class="p-2.5 sm:p-3 border-2 border-black font-mono text-xs sm:text-sm font-black">${ops.toLocaleString()}</td>
+        <td class="p-2.5 sm:p-3 border-2 border-black font-mono text-xs sm:text-sm">${item.space}</td>
+        <td class="p-2.5 sm:p-3 border-2 border-black font-sans font-bold text-xs sm:text-sm">${item.stable}</td>
       </tr>
     `;
   }
@@ -1053,15 +1155,38 @@ function togglePlayPause() {
   }
 }
 
+function updatePlayPauseButtons(playing) {
+  const btn = document.getElementById('btnRunSim');
+  const modalBtn = document.getElementById('btnModalRunSim');
+  const icon = playing ? 'fa-pause' : 'fa-play';
+  const text = playing ? 'Pausar' : 'Ejecutar';
+  const bg = playing ? 'bg-neoOrange' : 'bg-neoYellow';
+
+  if (btn) {
+    btn.className = `neo-button ${bg} px-3.5 py-2 text-xs uppercase flex items-center gap-1.5`;
+    const i = document.getElementById('btnRunIcon');
+    const t = document.getElementById('btnRunText');
+    if (i) i.className = `fa-solid ${icon}`;
+    if (t) t.innerText = text;
+  }
+  if (modalBtn) {
+    modalBtn.className = `neo-button ${bg} px-3.5 py-1.5 text-xs uppercase flex items-center gap-1.5 font-black text-black`;
+    const mi = document.getElementById('btnModalRunIcon');
+    const mt = document.getElementById('btnModalRunText');
+    if (mi) mi.className = `fa-solid ${icon}`;
+    if (mt) mt.innerText = text;
+  }
+}
+
 function playSimulation() {
   if (currentStepIndex >= actionQueue.length) {
     resetSimulationView();
   }
   isPlaying = true;
   startTime = performance.now();
-  document.getElementById('btnRunText').innerText = 'Pausar';
-  document.getElementById('btnRunIcon').className = 'fa-solid fa-pause';
-  document.getElementById('simStatusBadge').innerHTML = `<span class="w-3 h-3 rounded-full bg-neoPink border-2 border-black inline-block animate-ping"></span> En Ejecución`;
+  updatePlayPauseButtons(true);
+  const badge = document.getElementById('simStatusBadge');
+  if (badge) badge.innerHTML = `<span class="w-3 h-3 rounded-full bg-neoPink border-2 border-black inline-block animate-ping"></span> En Ejecución`;
   
   timerId = setInterval(executeNextAction, animationSpeed);
 }
@@ -1069,9 +1194,9 @@ function playSimulation() {
 function pauseSimulation() {
   isPlaying = false;
   if (timerId) clearInterval(timerId);
-  document.getElementById('btnRunText').innerText = 'Ejecutar';
-  document.getElementById('btnRunIcon').className = 'fa-solid fa-play';
-  document.getElementById('simStatusBadge').innerHTML = `<span class="w-3 h-3 rounded-full bg-neoGreen border-2 border-black inline-block"></span> Listo`;
+  updatePlayPauseButtons(false);
+  const badge = document.getElementById('simStatusBadge');
+  if (badge) badge.innerHTML = `<span class="w-3 h-3 rounded-full bg-neoGreen border-2 border-black inline-block"></span> Listo`;
 }
 
 function stepForwardSimulation() {
@@ -1216,11 +1341,29 @@ function applyActionToView(action) {
 }
 
 function updateMonitorCard(badgeText, mainText, subText, iconClass, badgeClass) {
-  document.getElementById('spotlightActionBadge').className = `neo-badge px-2 py-0.5 text-xs font-mono uppercase font-black ${badgeClass}`;
-  document.getElementById('spotlightActionBadge').innerText = badgeText;
-  document.getElementById('spotlightMainText').innerText = mainText;
-  document.getElementById('spotlightSubText').innerText = subText || '';
-  document.getElementById('spotlightIcon').innerHTML = `<i class="fa-solid ${iconClass}"></i>`;
+  const badge = document.getElementById('spotlightActionBadge');
+  const mainT = document.getElementById('spotlightMainText');
+  const subT = document.getElementById('spotlightSubText');
+  const icon = document.getElementById('spotlightIcon');
+  if (badge) {
+    badge.className = `neo-badge px-2 py-0.5 text-xs font-mono uppercase font-black ${badgeClass}`;
+    badge.innerText = badgeText;
+  }
+  if (mainT) mainT.innerText = mainText;
+  if (subT) subT.innerText = subText || '';
+  if (icon) icon.innerHTML = `<i class="fa-solid ${iconClass}"></i>`;
+
+  const mBadge = document.getElementById('modalSpotlightActionBadge');
+  const mMainT = document.getElementById('modalSpotlightMainText');
+  const mSubT = document.getElementById('modalSpotlightSubText');
+  const mIcon = document.getElementById('modalSpotlightIcon');
+  if (mBadge) {
+    mBadge.className = `neo-badge px-2 py-0.5 text-xs font-mono uppercase font-black ${badgeClass}`;
+    mBadge.innerText = badgeText;
+  }
+  if (mMainT) mMainT.innerText = mainText;
+  if (mSubT) mSubT.innerText = subText || '';
+  if (mIcon) mIcon.innerHTML = `<i class="fa-solid ${iconClass}"></i>`;
 }
 
 function pushRecentHistory(msg, type) {
@@ -1235,7 +1378,7 @@ function renderRecentHistory() {
     container.innerHTML = `
       <div class="p-1.5 bg-white border border-black flex items-center justify-between text-gray-500">
         <span>&bull; Esperando activación de algoritmo...</span>
-        <span class="text-[10px] font-mono">0 ms</span>
+        <span class="text-xs font-mono font-bold text-gray-700">0 ms</span>
       </div>`;
     return;
   }
@@ -1246,7 +1389,7 @@ function renderRecentHistory() {
     html += `
       <div class="p-1.5 border border-black flex items-center justify-between text-black ${opacity}">
         <span class="truncate pr-2">&bull; ${ev.msg}</span>
-        <span class="text-[9px] uppercase neo-badge bg-black text-white px-1 py-0.2">${ev.type}</span>
+        <span class="text-xs uppercase neo-badge bg-black text-white px-2 py-0.5 font-bold">${ev.type}</span>
       </div>`;
   });
   container.innerHTML = html;
@@ -1254,27 +1397,45 @@ function renderRecentHistory() {
 
 function render2DStage() {
   const container = document.getElementById('canvasViewport');
+  const modalContainer = document.getElementById('modalCanvasViewport');
   const maxVal = Math.max(...rawItems.map(d => d.value), 1);
   
   let html = `<div class="flex items-end justify-between gap-1 w-full h-full pb-2 select-none" id="cardsTrack2D">`;
+  let modalHtml = `<div class="flex items-end justify-between gap-1 w-full h-full pb-2 select-none" id="modalCardsTrack2D">`;
 
   rawItems.forEach((item, idx) => {
     const heightPct = Math.max(38, Math.round((item.value / maxVal) * 240));
+    const modalHeightPct = Math.max(34, Math.round((item.value / maxVal) * 190));
+
     html += `
       <div id="card-col-${idx}" class="flex-1 flex flex-col items-center min-w-0">
-        <span id="label-top-${idx}" class="text-[10px] font-mono font-bold mb-1 truncate w-full text-center">${item.display}</span>
+        <span id="label-top-${idx}" class="text-xs sm:text-sm font-mono font-black mb-1 truncate w-full text-center">${item.display}</span>
         <div id="card-2d-${idx}" style="height: ${heightPct}px; background-color: ${item.color};"
           class="element-card-2d w-full flex flex-col justify-between items-center p-0.5 font-mono font-bold">
-          <span id="tag-2d-${idx}" class="text-[7px] bg-black text-white px-0.5 py-0.1 font-mono leading-none">-</span>
-          <span class="text-xs leading-none mb-1">${item.icon || '▪'}</span>
+          <span id="tag-2d-${idx}" class="text-xs bg-black text-white px-1.5 py-0.5 font-mono font-black leading-none">-</span>
+          <span class="text-sm sm:text-base leading-none mb-1">${item.icon || '▪'}</span>
         </div>
-        <span class="text-[9px] font-mono text-gray-700 mt-1">[${idx}]</span>
+        <span class="text-xs font-mono font-bold text-gray-800 mt-1">[${idx}]</span>
+      </div>
+    `;
+
+    modalHtml += `
+      <div id="modal-card-col-${idx}" class="flex-1 flex flex-col items-center min-w-0">
+        <span id="modal-label-top-${idx}" class="text-xs font-mono font-black mb-1 truncate w-full text-center">${item.display}</span>
+        <div id="modal-card-2d-${idx}" style="height: ${modalHeightPct}px; background-color: ${item.color};"
+          class="element-card-2d w-full flex flex-col justify-between items-center p-0.5 font-mono font-bold">
+          <span id="modal-tag-2d-${idx}" class="text-xs bg-black text-white px-1.5 py-0.5 font-mono font-black leading-none">-</span>
+          <span class="text-sm sm:text-base leading-none mb-1">${item.icon || '▪'}</span>
+        </div>
+        <span class="text-xs font-mono font-bold text-gray-800 mt-1">[${idx}]</span>
       </div>
     `;
   });
 
   html += `</div>`;
-  container.innerHTML = html;
+  modalHtml += `</div>`;
+  if (container) container.innerHTML = html;
+  if (modalContainer) modalContainer.innerHTML = modalHtml;
 }
 
 function highlight2DCard(index, classNames, tagText = '') {
@@ -1282,6 +1443,11 @@ function highlight2DCard(index, classNames, tagText = '') {
   const tag = document.getElementById(`tag-2d-${index}`);
   if (card) card.className = `element-card-2d w-full ${classNames}`;
   if (tag && tagText) tag.innerText = tagText;
+
+  const modalCard = document.getElementById(`modal-card-2d-${index}`);
+  const modalTag = document.getElementById(`modal-tag-2d-${index}`);
+  if (modalCard) modalCard.className = `element-card-2d w-full ${classNames}`;
+  if (modalTag && tagText) modalTag.innerText = tagText;
 }
 
 function swap2DCardElements(i, j) {
@@ -1297,25 +1463,62 @@ function swap2DCardElements(i, j) {
     colI.querySelector('[id^="tag-2d-"]').id = `tag-2d-${i}`;
     colJ.querySelector('[id^="tag-2d-"]').id = `tag-2d-${j}`;
   }
+
+  const mColI = document.getElementById(`modal-card-col-${i}`);
+  const mColJ = document.getElementById(`modal-card-col-${j}`);
+  if (mColI && mColJ) {
+    const mTemp = mColI.innerHTML;
+    mColI.innerHTML = mColJ.innerHTML;
+    mColJ.innerHTML = mTemp;
+
+    mColI.querySelector('[id^="modal-card-2d-"]').id = `modal-card-2d-${i}`;
+    mColJ.querySelector('[id^="modal-card-2d-"]').id = `modal-card-2d-${j}`;
+    mColI.querySelector('[id^="modal-tag-2d-"]').id = `modal-tag-2d-${i}`;
+    mColJ.querySelector('[id^="modal-tag-2d-"]').id = `modal-tag-2d-${j}`;
+  }
 }
 
 function updateStepCounter() {
-  document.getElementById('currentStepCounter').innerText = `Paso: ${currentStepIndex} / ${actionQueue.length}`;
+  const text = `Paso: ${currentStepIndex} / ${actionQueue.length}`;
+  const mainCounter = document.getElementById('currentStepCounter');
+  const modalCounter = document.getElementById('modalCurrentStepCounter');
+  if (mainCounter) mainCounter.innerText = text;
+  if (modalCounter) modalCounter.innerText = text;
 }
 
 function updateMetricsHUD(elapsedMs = 0) {
   const meta = ALGORITHMS_CATALOG[selectedAlgoId];
+  if (!meta) return;
   const n = rawItems.length;
 
-  document.getElementById('metricExecutionTime').innerText = `${elapsedMs.toFixed(2)} ms`;
-  document.getElementById('metricComparisons').innerText = liveComparisons;
-  document.getElementById('metricTheoreticalOps').innerText = `Teórico: ~${meta.calcOps(n)}`;
-  document.getElementById('metricSwaps').innerText = liveSwaps;
-  document.getElementById('metricMemAccess').innerText = liveMemAccess;
-  document.getElementById('metricAuxSpace').innerText = meta.space;
-  document.getElementById('metricAuxDetail').innerText = meta.worst;
-  document.getElementById('metricScalability').innerText = meta.bigO;
-  document.getElementById('metricFormulaLabel').innerText = meta.name;
+  const mTime = document.getElementById('metricExecutionTime');
+  const mComp = document.getElementById('metricComparisons');
+  const mOps = document.getElementById('metricTheoreticalOps');
+  const mSwap = document.getElementById('metricSwaps');
+  const mMem = document.getElementById('metricMemAccess');
+  const mSpace = document.getElementById('metricAuxSpace');
+  const mWorst = document.getElementById('metricAuxDetail');
+  const mScale = document.getElementById('metricScalability');
+  const mFormula = document.getElementById('metricFormulaLabel');
+
+  if (mTime) mTime.innerText = `${elapsedMs.toFixed(2)} ms`;
+  if (mComp) mComp.innerText = liveComparisons;
+  if (mOps) mOps.innerText = `Teórico: ~${meta.calcOps(n)}`;
+  if (mSwap) mSwap.innerText = liveSwaps;
+  if (mMem) mMem.innerText = liveMemAccess;
+  if (mSpace) mSpace.innerText = meta.space;
+  if (mWorst) mWorst.innerText = meta.worst;
+  if (mScale) mScale.innerText = meta.bigO;
+  if (mFormula) mFormula.innerText = meta.name;
+
+  const modalComp = document.getElementById('modalMetricComparisons');
+  const modalSwap = document.getElementById('modalMetricSwaps');
+  const modalMem = document.getElementById('modalMetricMemAccess');
+  const modalTime = document.getElementById('modalMetricExecutionTime');
+  if (modalComp) modalComp.innerText = liveComparisons;
+  if (modalSwap) modalSwap.innerText = liveSwaps;
+  if (modalMem) modalMem.innerText = liveMemAccess;
+  if (modalTime) modalTime.innerText = `${elapsedMs.toFixed(2)} ms`;
 }
 
 /* =========================================================================
@@ -1839,6 +2042,7 @@ window.openBigOModal = function(key) {
 
   currentBigOModalKey = data.key || key;
   detenerNarracionBigO();
+  if (typeof detenerTodasLasNarraciones === 'function') detenerTodasLasNarraciones();
 
   // Actualizar Header (compacto y panorámico)
   const header = document.getElementById('modalBigOHeader');
@@ -1882,7 +2086,7 @@ window.openBigOModal = function(key) {
   algList.innerHTML = '';
   data.algorithms.forEach(alg => {
     const span = document.createElement('span');
-    span.className = 'badge bg-white text-black border border-black text-[11px] shadow-sm font-bold';
+    span.className = 'badge bg-white text-black border-2 border-black text-xs sm:text-sm shadow-sm font-bold px-2.5 py-1';
     span.textContent = alg;
     algList.appendChild(span);
   });
@@ -1930,8 +2134,13 @@ window.handleModalBackdropClick = function(event) {
 // Atajo de teclado: Escape cierra el modal y apaga el audio
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
-    const modal = document.getElementById('bigOModal');
-    if (modal && !modal.classList.contains('hidden')) {
+    const modalAlgo = document.getElementById('algoSimulationModal');
+    if (modalAlgo && !modalAlgo.classList.contains('hidden')) {
+      closeAlgoModal();
+      return;
+    }
+    const modalBigO = document.getElementById('bigOModal');
+    if (modalBigO && !modalBigO.classList.contains('hidden')) {
       closeBigOModal();
     }
   }
@@ -1940,6 +2149,9 @@ document.addEventListener('keydown', function(e) {
 /* =========================================================================
    MOTOR DE NARRACIÓN POR VOZ TTS (WEB SPEECH API - JPV PRO)
    ========================================================================= */
+
+let bigOChunkQueue = [];
+let bigOChunkIndex = 0;
 
 window.narrarBigOActual = function() {
   if (!synthBigO) {
@@ -1954,38 +2166,72 @@ window.narrarBigOActual = function() {
   }
 
   detenerNarracionBigO();
+  if (typeof detenerTodasLasNarraciones === 'function') detenerTodasLasNarraciones();
 
   if (!currentBigOModalKey) return;
   const data = BIG_O_CATALOG[currentBigOModalKey];
   if (!data || !data.speechText) return;
 
-  const utterance = new SpeechSynthesisUtterance(data.speechText);
+  bigOChunkQueue = splitIntoAudioChunks(data.speechText, 170);
+  bigOChunkIndex = 0;
+
+  setAudioButtonsState('speaking');
+  document.getElementById('bigOStatusText').textContent = `Narrando ${data.name}...`;
+
+  if (synthBigO.paused) synthBigO.resume();
+  setTimeout(() => {
+    playNextBigOChunk();
+  }, 60);
+};
+
+function playNextBigOChunk() {
+  if (!synthBigO) return;
+
+  if (bigOChunkIndex >= bigOChunkQueue.length) {
+    detenerNarracionBigO();
+    return;
+  }
+
+  const chunkText = bigOChunkQueue[bigOChunkIndex];
+  const utterance = new SpeechSynthesisUtterance(chunkText);
   utterance.lang = 'es-ES';
   utterance.rate = 0.98;
   utterance.pitch = 1.0;
   utterance.volume = currentBigOVolume;
 
-  // Búsqueda de voz en español natural
-  const voices = synthBigO.getVoices();
-  const esVoice = voices.find(v => v.lang.startsWith('es') && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Helena') || v.name.includes('Pablo') || v.name.includes('Sabina')));
-  if (esVoice) utterance.voice = esVoice;
+  const voice = (typeof getSystemSpanishVoice === 'function') ? getSystemSpanishVoice() : null;
+  if (voice) utterance.voice = voice;
 
   utterance.onstart = () => {
-    setAudioButtonsState('speaking');
-    document.getElementById('bigOStatusText').textContent = `Narrando ${data.name}...`;
+    if (typeof startKeepAlivePulse === 'function') startKeepAlivePulse();
+    const data = BIG_O_CATALOG[currentBigOModalKey];
+    const name = data ? data.name : 'Concepto';
+    const progressLabel = bigOChunkQueue.length > 1 
+      ? `Narrando ${name} (${bigOChunkIndex + 1}/${bigOChunkQueue.length})` 
+      : `Narrando ${name}...`;
+    const statusEl = document.getElementById('bigOStatusText');
+    if (statusEl) statusEl.textContent = progressLabel;
   };
 
   utterance.onend = () => {
-    setAudioButtonsState('idle');
+    bigOChunkIndex++;
+    playNextBigOChunk();
   };
 
-  utterance.onerror = () => {
-    setAudioButtonsState('idle');
+  utterance.onerror = (e) => {
+    console.warn("BigO speech error:", e);
+    bigOChunkIndex++;
+    if (bigOChunkIndex < bigOChunkQueue.length) {
+      playNextBigOChunk();
+    } else {
+      detenerNarracionBigO();
+    }
   };
 
   currentBigOUtterance = utterance;
+  window._activeBigOUtterance = utterance;
   synthBigO.speak(utterance);
-};
+}
 
 window.pausarNarracionBigO = function() {
   if (synthBigO && synthBigO.speaking) {
@@ -2000,12 +2246,18 @@ window.reanudarNarracionBigO = function() {
     synthBigO.resume();
     setAudioButtonsState('speaking');
     if (currentBigOModalKey && BIG_O_CATALOG[currentBigOModalKey]) {
-      document.getElementById('bigOStatusText').textContent = `Narrando ${BIG_O_CATALOG[currentBigOModalKey].name}...`;
+      const data = BIG_O_CATALOG[currentBigOModalKey];
+      const progressLabel = bigOChunkQueue.length > 1 
+        ? `Narrando ${data.name} (${bigOChunkIndex + 1}/${bigOChunkQueue.length})` 
+        : `Narrando ${data.name}...`;
+      document.getElementById('bigOStatusText').textContent = progressLabel;
     }
   }
 };
 
 window.detenerNarracionBigO = function() {
+  bigOChunkQueue = [];
+  bigOChunkIndex = 0;
   if (synthBigO) {
     synthBigO.cancel();
   }
@@ -2078,3 +2330,1040 @@ function actualizarUIVolumenBigO() {
     else icon.className = 'fa-solid fa-volume-high text-sm text-black';
   }
 }
+
+
+// =========================================================================
+// CONTROLADORES DE NAVEGACIÓN MÓVIL Y TABLET RESPONSIVE 100% ANCHO
+// =========================================================================
+window.toggleMobileNavMenu = function() {
+  const drawer = document.getElementById('mobileNavDrawer');
+  const icon = document.getElementById('mobileMenuIcon');
+  if (!drawer) return;
+  const isHidden = drawer.classList.contains('hidden');
+  if (isHidden) {
+    drawer.classList.remove('hidden');
+    if (icon) {
+      icon.classList.remove('fa-bars');
+      icon.classList.add('fa-xmark');
+    }
+  } else {
+    drawer.classList.add('hidden');
+    if (icon) {
+      icon.classList.remove('fa-xmark');
+      icon.classList.add('fa-bars');
+    }
+  }
+};
+
+window.closeMobileNavMenu = function() {
+  const drawer = document.getElementById('mobileNavDrawer');
+  const icon = document.getElementById('mobileMenuIcon');
+  if (drawer && !drawer.classList.contains('hidden')) {
+    drawer.classList.add('hidden');
+    if (icon) {
+      icon.classList.remove('fa-xmark');
+      icon.classList.add('fa-bars');
+    }
+  }
+};
+
+/* =========================================================================
+   MOTOR UNIVERSAL DE SÍNTESIS DE VOZ ROBUSTO (WEB SPEECH API JPV PRO)
+   - Resuelve el congelamiento de 15s de Chromium mediante Chunking secuencial
+   - Elimina la carrera de cancelación síncrona mediante delay defensivo
+   - Soporta Narración Completa por Sección o Narración Individual por Card
+   - Anticolisión universal con control de volumen en vivo
+   ========================================================================= */
+
+const CARDS_SPEECH_CATALOG = {
+  // MANIFIESTO: CRÓNICA DE 24 HORAS
+  'manifiesto_minuto1': {
+    title: 'Minuto 1: Colapso Financiero Global',
+    context: 'manifiesto',
+    text: 'Minuto uno tras el apagón algorítmico: Colapso Financiero Global. Las redes bancarias SWIFT, Visa, Mastercard y los sistemas de alta frecuencia de Wall Street se congelan al instante. El noventa y siete por ciento del dinero del mundo existe únicamente en forma digital y desaparece del plano operacional. Los cajeros automáticos mueren. Cero liquidez global en sesenta segundos.'
+  },
+  'manifiesto_minuto10': {
+    title: 'Minuto 10: Cielo Ciego y Apagón Continental',
+    context: 'manifiesto',
+    text: 'Minuto diez: Cielo Ciego y Apagón Continental. Más de doce mil aviones comerciales en vuelo pierden la asistencia de radar y el sistema algorítmico anticolisión TCAS. Al mismo tiempo, las redes eléctricas inteligentes, o Smart Grids, pierden su sincronización de fase en microsegundos, provocando apagones en cascada que dejan continentes enteros a oscuras.'
+  },
+  'manifiesto_hora1': {
+    title: 'Hora 1: Parálisis Logística y Hambruna',
+    context: 'manifiesto',
+    text: 'Hora uno: Parálisis Logística y Desabastecimiento Alimentario. Los algoritmos de optimización de rutas como Dijkstra y A-Star dejan de coordinar barcos cargueros, trenes y camiones de distribución. Los almacenes robotizados de comida, agua y combustible quedan sellados herméticamente. Las ciudades quedan sin suministros.'
+  },
+  'manifiesto_hora6': {
+    title: 'Hora 6: Crisis Hospitalaria y Telecomunicaciones',
+    context: 'manifiesto',
+    text: 'Hora seis: Crisis Hospitalaria y Telecomunicaciones en Silencio. Los respiradores artificiales, máquinas de diálisis y monitores de cuidados intensivos pierden su calibración algorítmica. La fibra óptica transoceánica y la constelación GPS caen mudas, incomunicando al planeta entero.'
+  },
+  'manifiesto_dia1': {
+    title: 'Día 1: Retorno a la Edad de Piedra',
+    context: 'manifiesto',
+    text: 'Día uno: Retorno a la Edad de Piedra. Las bombas de agua potable automatizadas dejan de operar. Sin agua corriente, sin electricidad, sin comida distribuida, sin telecomunicaciones y sin medicina, la civilización humana retrocede mil años de evolución en tan solo veinticuatro horas.'
+  },
+
+  // MANIFIESTO: HISTORIA DEL FUEGO DIGITAL
+  'manifiesto_historia1': {
+    title: 'De Bagdad a Bletchley Park',
+    context: 'manifiesto',
+    text: 'De Bagdad a Bletchley Park: La palabra Algoritmo rinde honor al sabio persa Muhammad ibn Musa al-Juarismi en el siglo noveno. En 1843, Ada Lovelace concibió el primer algoritmo computacional del mundo para la máquina analítica de Babbage. Un siglo después, Alan Turing usó algoritmos para descifrar la máquina nazi Enigma, salvando más de catorce millones de vidas. Los algoritmos siempre han sido herramientas de supervivencia humana.'
+  },
+  'manifiesto_historia2': {
+    title: 'El Arte de Hablarle a la Materia',
+    context: 'manifiesto',
+    text: 'El Arte de Hablarle a la Materia: Programar no es teclear palabras con llaves en un editor. Programar es el arte supremo de enseñarle a una roca de silicio con impulsos eléctricos a razonar con lógica matemática pura. Un algoritmo es una receta perfecta e infalible: Entrada de datos, Proceso lógico finito, y Solución predecible.'
+  },
+  'manifiesto_historia3': {
+    title: 'Big-O: La Física del Silicio',
+    context: 'manifiesto',
+    text: 'Big-O: La Física del Silicio. Un mal algoritmo puede tardar diez mil años en resolver lo que un buen algoritmo resuelve en tres milisegundos. La Notación Big-O es la ley de gravedad del software: dicta si tu arquitectura escalará a millones de usuarios o si implosionará quemando servidores.'
+  },
+
+  // MANIFIESTO: LOS 4 TITANES
+  'manifiesto_titan1': {
+    title: 'Titán 1: Búsqueda y Orden Masivo',
+    context: 'manifiesto',
+    text: 'Primer Titán: Búsqueda y Orden Masivo. Cada búsqueda en Google, cada filtro de productos en Amazon o consulta en tu móvil utiliza algoritmos como QuickSort, MergeSort y árboles B-Plus para ordenar y recuperar miles de millones de registros en microsegundos, operando en tiempo logarítmico y linealítmico.'
+  },
+  'manifiesto_titan2': {
+    title: 'Titán 2: Tráfico, GPS & Enrutamiento Global',
+    context: 'manifiesto',
+    text: 'Segundo Titán: Tráfico, GPS y Enrutamiento Global. Cuando pides un transporte, recibes un paquete o vuelas entre continentes, algoritmos de grafos como Dijkstra y A-Star evalúan millones de combinaciones para darte la ruta más rápida y barata en tiempo real.'
+  },
+  'manifiesto_titan3': {
+    title: 'Titán 3: Criptografía & Seguridad Cuántica',
+    context: 'manifiesto',
+    text: 'Tercer Titán: Criptografía y Seguridad Cuántica. Tus compras bancarias, chats privados y la soberanía de las naciones están protegidos por algoritmos como RSA, AES-256 y curvas elípticas, fundamentados en la imposibilidad matemática de factorizar números primos gigantescos.'
+  },
+  'manifiesto_titan4': {
+    title: 'Titán 4: Genética, Salud & Inteligencia Artificial',
+    context: 'manifiesto',
+    text: 'Cuarto Titán: Genética, Salud e Inteligencia Artificial. Desde secuenciar el genoma humano y predecir el plegamiento de proteínas con AlphaFold, hasta el reconocimiento precoz de tumores en radiografías: los algoritmos salvan millones de vidas diagnosticando enfermedades antes de que ocurran.'
+  },
+  'manifiesto_cita': {
+    title: 'Declaración de Principios de Ingeniería',
+    context: 'manifiesto',
+    text: 'Declaración de Principios de Ingeniería del Lead Architect Ingeniero Juancito Peña Vizcaíno: Aprender algoritmos y análisis de complejidad Big-O no es memorizar sintaxis para una entrevista técnica de trabajo: es aprender a dominar las leyes fundamentales de la física computacional que gobiernan nuestro planeta. Quien comprende los algoritmos, domina los engranajes secretos del mundo moderno.'
+  },
+
+  // FUNDAMENTOS: 4 PILARES
+  'fundamentos_bloque1': {
+    title: 'Pilar 1: ¿Qué es un Algoritmo?',
+    context: 'fundamentos',
+    text: 'Primer Pilar: ¿Qué es un Algoritmo? Es un conjunto finito, ordenado y determinista de instrucciones no ambiguas que recibe una entrada de datos, ejecuta transformaciones lógicas precisas y genera una solución predecible. Posee tres propiedades inviolables: Finitud, porque siempre debe terminar en pasos definidos; Precisión, porque cada paso carece de ambigüedades; y Eficacia, porque cada instrucción es computacionalmente realizable con recursos finitos.'
+  },
+  'fundamentos_bloque2': {
+    title: 'Pilar 2: Complejidad Algorítmica y Big-O',
+    context: 'fundamentos',
+    text: 'Segundo Pilar: Complejidad Algorítmica y Notación Big-O. Mide el costo asintótico de ejecución a medida que el tamaño de los datos de entrada, n, tiende hacia el infinito. No mide segundos de reloj, sino la tasa de crecimiento de operaciones. Evalúa la complejidad temporal T de n en ciclos de CPU, la complejidad espacial S de n en memoria RAM auxiliar requerida, y la cota superior garantizada u O grande.'
+  },
+  'fundamentos_bloque3': {
+    title: 'Pilar 3: Algoritmos de Ordenamiento',
+    context: 'fundamentos',
+    text: 'Tercer Pilar: Algoritmos de Ordenamiento. Reorganizan una colección en secuencia ascendente o descendente bajo una relación de orden estricta. Los comparativos como Bubble, Quick y Merge Sort tienen un límite inferior infranqueable de orden n log n en el peor de los casos. Los no comparativos como Counting y Radix Sort alcanzan orden lineal n por frecuencias de conteo. La estabilidad conserva el orden relativo original entre claves idénticas.'
+  },
+  'fundamentos_bloque4': {
+    title: 'Pilar 4: Algoritmos de Búsqueda',
+    context: 'fundamentos',
+    text: 'Cuarto Pilar: Algoritmos de Búsqueda. Localizan una clave objetivo o confirman su ausencia en memoria. La búsqueda secuencial revisa uno a uno con costo de orden n. La búsqueda binaria requiere orden estricto y utiliza divide y vencerás para descartar el cincuenta por ciento del espacio en cada paso, alcanzando orden logarítmico log n. Con sólo veinte comparaciones puede buscar entre un millón de elementos.'
+  }
+};
+
+// TEXTO COMPLETO PARA MANIFIESTO
+const NARRACION_MANIFIESTO_TEXTO = 
+`Bienvenidos al Manifiesto Computacional de la Humanidad en ALGO-MATRIX 3D, bajo la dirección del Ingeniero Juancito Peña Vizcaíno.
+
+Hagámonos una pregunta radical: ¿Qué pasaría si los algoritmos se detuvieran mañana?
+
+El mundo moderno no se sostiene sobre el hormigón, el acero ni el petróleo: se sostiene sobre algoritmos. Cada latido de nuestra civilización está gobernado por fórmulas matemáticas transformadas en código de máquina. Si todo el software del planeta dejara de ejecutarse por solo veinticuatro horas continuas, la sociedad colapsaría de forma irreversible y regresaríamos instantáneamente a la Edad de Piedra.
+
+Analicemos la caída de la civilización, minuto a minuto:
+En el minuto uno tras el apagón algorítmico, ocurre el colapso financiero global. Las redes bancarias internacionales como SWIFT, Visa, Mastercard y los sistemas de alta frecuencia de Wall Street se congelan por completo. El noventa y siete por ciento del dinero del mundo existe únicamente en forma digital, en balances de bases de datos relacionales; por lo tanto, el dinero desaparecería en el vacío, los cajeros automáticos morirían y el comercio mundial quedaría en cero.
+
+En el minuto diez, el caos aéreo y el apagón continental se desatan. Más de doce mil aviones comerciales en pleno vuelo pierden la asistencia de radar y el sistema algorítmico anticolisión TCAS. Al mismo tiempo, las redes eléctricas inteligentes, o Smart Grids, pierden su sincronización de fase en microsegundos, provocando apagones en cascada que dejan continentes enteros sumidos en la oscuridad.
+
+En la primera hora, sobreviene la parálisis logística y la escasez de alimentos. Los algoritmos de optimización de rutas como Dijkstra y A-Star dejan de coordinar barcos portacontenedores, trenes de carga y flotas de distribución. Los almacenes robotizados de comida, agua y medicamentos quedan sellados herméticamente.
+
+A las seis horas, los hospitales colapsan y las telecomunicaciones mueren. Los respiradores artificiales, máquinas de diálisis y monitores cardíacos en cuidados intensivos pierden su calibración en tiempo real. La fibra óptica transoceánica y la constelación de satélites GPS caen mudas, incomunicando al planeta.
+
+Al cumplirse veinticuatro horas, la bienvenida a la Edad de Piedra es total. Las bombas de agua potable automatizadas dejan de operar. Sin agua corriente, sin energía eléctrica, sin alimentos distribuidos, sin comunicaciones y sin atención médica, la especie humana retrocede mil años de evolución en un solo día solar.
+
+Pero, ¿de dónde proviene este fuego digital?
+La palabra algoritmo rinde homenaje al sabio persa Muhammad ibn Musa al-Juarismi en el siglo noveno. En 1843, Ada Lovelace concibió el primer algoritmo informático de la historia para la máquina analítica de Babbage. Y un siglo después, Alan Turing sentó las bases de la máquina universal y utilizó algoritmos para descifrar la máquina nazi Enigma, acortando la Segunda Guerra Mundial y salvando más de catorce millones de vidas.
+
+¿Qué es programar realmente? No es teclear sintaxis con llaves y corchetes en un editor. Programar es el arte supremo de enseñarle a una roca de silicio con impulsos eléctricos a razonar con lógica matemática pura.
+
+En nuestro día a día, cuatro titanes algorítmicos sostienen tu existencia: primero, los algoritmos de búsqueda y ordenamiento masivo como QuickSort, MergeSort y árboles B-Plus, que permiten a Google y Amazon procesar millones de registros en microsegundos. Segundo, los algoritmos de grafos como Dijkstra y A-Star, que calculan cada trayecto en tu GPS y dirigen los paquetes de Internet. Tercero, la criptografía con RSA, AES-256 y curvas elípticas, que protegen tus finanzas y contraseñas. Y cuarto, la bioinformática y la inteligencia artificial, como AlphaFold, que descifran el genoma humano y predicen el plegamiento de proteínas para salvar millones de vidas.
+
+Y ahora, escuchen este tip de oro de ingeniería computacional del Ingeniero Juancito Peña:
+Tip de Oro de Arquitectura: Cuando diseñes un sistema de software, nunca optimices a ciegas. Recuerda que la complejidad algorítmica no mide los segundos del reloj de tu computadora actual, sino cómo escalará tu sistema cuando pase de diez usuarios a diez millones. Quien domina la notación Big-O, domina la física del silicio y construye software inmortal.
+
+Como afirma el Ingeniero Juancito Peña: Estudiar algoritmos no es memorizar código para una entrevista técnica, es aprender a dominar las leyes fundamentales que mueven nuestro planeta. Bienvenidos a ALGO-MATRIX 3D.`;
+
+// TEXTO COMPLETO PARA FUNDAMENTOS (EXCLUSIVO PARA LAS 4 TARJETAS TEÓRICAS Y CONSEJOS DE ARQUITECTURA)
+const NARRACION_FUNDAMENTOS_TEXTO =
+`Bienvenidos a la sección de Fundamentos Magistrales de la Computación en ALGO-MATRIX 3D.
+
+Antes de interactuar con el laboratorio cinemático tridimensional, es indispensable comprender los cuatro pilares fundamentales de las ciencias de la computación presentados en estas cuatro tarjetas:
+
+Primer pilar: ¿Qué es un Algoritmo?
+Un algoritmo es un conjunto finito, ordenado y determinista de instrucciones no ambiguas que recibe una entrada de datos, realiza una serie de transformaciones lógicas precisas y produce una salida o solución predecible. Sus tres propiedades inviolables son: Finitud, lo que significa que el algoritmo siempre debe terminar tras un número determinado de pasos; Precisión, donde cada paso está definido con exactitud matemática sin ambigüedades; y Eficacia, donde cada instrucción es computacionalmente realizable con recursos finitos.
+
+Segundo pilar: Complejidad Algorítmica y Notación Big-O.
+La notación Big-O es la herramienta formal de las matemáticas discretas para medir la eficiencia asintótica de un algoritmo. No mide el tiempo en segundos de reloj, porque eso depende de la velocidad del procesador, de la memoria RAM y del sistema operativo. La notación Big-O mide la tasa de crecimiento del número de operaciones a medida que el tamaño de los datos de entrada, denotado por la letra n, tiende hacia el infinito.
+Distingue tres aspectos críticos: la complejidad temporal T de n, que mide la cantidad de ciclos de CPU; la complejidad espacial S de n, que mide la memoria auxiliar requerida en RAM; y el peor caso o cota superior asintótica O grande, que garantiza que el algoritmo jamás rendirá peor que esa función.
+
+Tercer pilar: Algoritmos de Ordenamiento.
+Ordenar consiste en reorganizar una colección de elementos en una secuencia homogénea, ya sea ascendente o descendente. Se dividen en dos grandes familias:
+Los algoritmos comparativos, como Bubble Sort, Insertion Sort, Merge Sort y Quick Sort. La teoría computacional demuestra matemáticamente que ningún algoritmo comparativo puede romper el límite inferior de orden n log n en el peor de los casos.
+Y los algoritmos no comparativos, como Counting Sort y Radix Sort, que aprovechan propiedades numéricas o frecuencias de dígitos para lograr un rendimiento lineal de orden n.
+Además, evaluamos la estabilidad: un algoritmo es estable si conserva el orden relativo original entre elementos con claves idénticas.
+
+Cuarto pilar: Algoritmos de Búsqueda.
+Tienen por objetivo localizar un valor clave o confirmar su ausencia en memoria.
+La búsqueda secuencial o lineal revisa uno a uno los elementos con un costo de orden n, útil cuando los datos no están ordenados.
+La búsqueda binaria requiere que el arreglo esté estrictamente ordenado. Utiliza la técnica de divide y vencerás para descartar el cincuenta por ciento del espacio de búsqueda en cada paso, alcanzando una velocidad logarítmica de orden log n. Para buscar entre un millón de elementos, solo necesita realizar un máximo de veinte comparaciones.
+
+Y aquí tienes dos tips de oro de ingeniería computacional del Ingeniero Juancito Peña:
+Tip de Oro Número Uno: Si tu aplicación realiza más lecturas que escrituras, mantén siempre los datos ordenados en una estructura indexada. Invertir tiempo en un ordenamiento previo de orden n log n te permitirá realizar millones de búsquedas posteriores en tiempo logarítmico O de log n.
+Tip de Oro Número Dos: Desconfía de los bucles anidados en colecciones dinámicas. Un algoritmo de orden n cuadrado que tarda medio segundo con mil usuarios, tardará varias semanas y colapsará tus servidores cuando alcances un millón de registros.
+
+Para analizar en detalle cada una de las complejidades de la escala universal, haz clic en cualquiera de las seis tarjetas del semáforo inferior para abrir su ficha técnica panorámica interactiva y escuchar su análisis cinemático individual. ¡Bienvenidos a ALGO-MATRIX 3D!`;
+
+/* =========================================================================
+   ESTADO Y CONTROL DEL REPRODUCTOR ATÓMICO
+   ========================================================================= */
+let activeChunkQueue = [];
+let activeChunkIndex = 0;
+let activeTTSContext = null; // 'manifiesto' | 'fundamentos'
+let activeTTSLabel = '';
+let activeCardIdPlaying = null;
+let currentVolumeManifiesto = 1.0;
+let currentVolumeFundamentos = 1.0;
+let ttsKeepAliveTimer = null;
+
+// Chunker de oraciones: fragmenta textos largos en bloques de 150 a 180 caracteres
+function splitIntoAudioChunks(rawText, maxLen = 170) {
+  const lines = rawText.split('\n');
+  const chunks = [];
+  for (let line of lines) {
+    line = line.trim();
+    if (!line) continue;
+    // Dividir por signos de puntuación (. ! ? :)
+    const sentences = line.split(/(?<=[.?!;:])\s+/);
+    let buf = '';
+    for (let s of sentences) {
+      s = s.trim();
+      if (!s) continue;
+      if ((buf + ' ' + s).trim().length <= maxLen) {
+        buf = (buf + ' ' + s).trim();
+      } else {
+        if (buf) chunks.push(buf);
+        buf = s;
+      }
+    }
+    if (buf) chunks.push(buf);
+  }
+  return chunks;
+}
+
+// Detener todo de forma atómica y restablecer estados visuales
+window.detenerTodasLasNarraciones = function() {
+  activeChunkQueue = [];
+  activeChunkIndex = 0;
+  activeCardIdPlaying = null;
+  activeTTSLabel = '';
+
+  if (ttsKeepAliveTimer) {
+    clearInterval(ttsKeepAliveTimer);
+    ttsKeepAliveTimer = null;
+  }
+
+  if (window.speechSynthesis) {
+    window.speechSynthesis.cancel();
+  }
+
+  setSectionAudioUI('manifiesto', 'idle');
+  setSectionAudioUI('fundamentos', 'idle');
+  resetAllCardPlayButtons();
+};
+
+function startKeepAlivePulse() {
+  if (ttsKeepAliveTimer) clearInterval(ttsKeepAliveTimer);
+  ttsKeepAliveTimer = setInterval(() => {
+    if (window.speechSynthesis && window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+      window.speechSynthesis.pause();
+      window.speechSynthesis.resume();
+    }
+  }, 9000);
+}
+
+function getSystemSpanishVoice() {
+  if (!window.speechSynthesis) return null;
+  const voices = window.speechSynthesis.getVoices();
+  return voices.find(v => v.lang.startsWith('es') && (
+    v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Helena') || 
+    v.name.includes('Pablo') || v.name.includes('Sabina') || v.name.includes('Laura') || v.name.includes('Jorge')
+  )) || voices.find(v => v.lang.startsWith('es')) || null;
+}
+
+// Iniciar cola de reproducción a prueba de fallos con setTimeout defensivo
+function startSpeechQueue(chunks, context, label, cardId = null) {
+  // 1. Cancelar cualquier reproducción previa
+  if (window.speechSynthesis) {
+    window.speechSynthesis.cancel();
+  }
+  if (ttsKeepAliveTimer) {
+    clearInterval(ttsKeepAliveTimer);
+    ttsKeepAliveTimer = null;
+  }
+
+  activeChunkQueue = chunks;
+  activeChunkIndex = 0;
+  activeTTSContext = context;
+  activeTTSLabel = label;
+  activeCardIdPlaying = cardId;
+
+  // Actualizar UI
+  setSectionAudioUI(context, 'speaking', label);
+  if (cardId) updateCardButtonUI(cardId, true);
+
+  // WAKE UP Chromium audio engine si estuviera en pausa
+  if (window.speechSynthesis && window.speechSynthesis.paused) {
+    window.speechSynthesis.resume();
+  }
+
+  // Retardo defensivo de 60ms para evitar que Chromium descarte el nuevo speak() tras cancel()
+  setTimeout(() => {
+    playNextQueueChunk();
+  }, 60);
+}
+
+function playNextQueueChunk() {
+  if (!window.speechSynthesis) return;
+
+  if (activeChunkIndex >= activeChunkQueue.length) {
+    // Finalizó la cola completa
+    window.detenerTodasLasNarraciones();
+    return;
+  }
+
+  const chunkText = activeChunkQueue[activeChunkIndex];
+  const utterance = new SpeechSynthesisUtterance(chunkText);
+  utterance.lang = 'es-ES';
+  utterance.rate = 0.98;
+  utterance.pitch = 1.0;
+
+  // Volumen según el contexto
+  const vol = (activeTTSContext === 'manifiesto') ? currentVolumeManifiesto : currentVolumeFundamentos;
+  utterance.volume = vol;
+
+  const voice = getSystemSpanishVoice();
+  if (voice) utterance.voice = voice;
+
+  utterance.onstart = () => {
+    startKeepAlivePulse();
+    const progressLabel = activeChunkQueue.length > 1 
+      ? `${activeTTSLabel} (${activeChunkIndex + 1}/${activeChunkQueue.length})` 
+      : activeTTSLabel;
+    setSectionAudioUI(activeTTSContext, 'speaking', progressLabel);
+  };
+
+  utterance.onend = () => {
+    activeChunkIndex++;
+    playNextQueueChunk();
+  };
+
+  utterance.onerror = (e) => {
+    console.warn("Speech chunk end/error:", e);
+    activeChunkIndex++;
+    if (activeChunkIndex < activeChunkQueue.length) {
+      playNextQueueChunk();
+    } else {
+      window.detenerTodasLasNarraciones();
+    }
+  };
+
+  // Evitar garbage collection en V8
+  window._activeJPVUtterance = utterance;
+  window.speechSynthesis.speak(utterance);
+}
+
+// -------------------------------------------------------------
+// NARRACIÓN DE SECCIONES COMPLETAS
+// -------------------------------------------------------------
+window.narrarManifiesto = function() {
+  if (!window.speechSynthesis) {
+    alert("Tu navegador no soporta síntesis de voz nativa.");
+    return;
+  }
+
+  if (activeTTSContext === 'manifiesto' && window.speechSynthesis.paused) {
+    window.speechSynthesis.resume();
+    setSectionAudioUI('manifiesto', 'speaking', activeTTSLabel || 'Manifiesto Completo');
+    return;
+  }
+
+  const chunks = splitIntoAudioChunks(NARRACION_MANIFIESTO_TEXTO);
+  startSpeechQueue(chunks, 'manifiesto', 'Manifiesto Completo');
+};
+
+window.pausarNarracionManifiesto = function() {
+  if (window.speechSynthesis && window.speechSynthesis.speaking) {
+    window.speechSynthesis.pause();
+    setSectionAudioUI('manifiesto', 'paused');
+  }
+};
+
+window.reanudarNarracionManifiesto = function() {
+  if (window.speechSynthesis && window.speechSynthesis.paused) {
+    window.speechSynthesis.resume();
+    setSectionAudioUI('manifiesto', 'speaking', activeTTSLabel || 'Manifiesto Completo');
+  }
+};
+
+window.detenerNarracionManifiesto = function() {
+  window.detenerTodasLasNarraciones();
+};
+
+window.narrarFundamentos = function() {
+  if (!window.speechSynthesis) {
+    alert("Tu navegador no soporta síntesis de voz nativa.");
+    return;
+  }
+
+  if (activeTTSContext === 'fundamentos' && window.speechSynthesis.paused) {
+    window.speechSynthesis.resume();
+    setSectionAudioUI('fundamentos', 'speaking', activeTTSLabel || '4 Pilares Teóricos');
+    return;
+  }
+
+  const chunks = splitIntoAudioChunks(NARRACION_FUNDAMENTOS_TEXTO);
+  startSpeechQueue(chunks, 'fundamentos', '4 Pilares Teóricos');
+};
+
+window.pausarNarracionFundamentos = function() {
+  if (window.speechSynthesis && window.speechSynthesis.speaking) {
+    window.speechSynthesis.pause();
+    setSectionAudioUI('fundamentos', 'paused');
+  }
+};
+
+window.reanudarNarracionFundamentos = function() {
+  if (window.speechSynthesis && window.speechSynthesis.paused) {
+    window.speechSynthesis.resume();
+    setSectionAudioUI('fundamentos', 'speaking', activeTTSLabel || 'Fundamentos Completos');
+  }
+};
+
+window.detenerNarracionFundamentos = function() {
+  window.detenerTodasLasNarraciones();
+};
+
+// -------------------------------------------------------------
+// NARRACIÓN DE CARDS / BLOQUES INDIVIDUALES
+// -------------------------------------------------------------
+window.narrarCardIndividual = function(cardId) {
+  if (!window.speechSynthesis) {
+    alert("Tu navegador no soporta síntesis de voz nativa.");
+    return;
+  }
+
+  // Si ya se estaba reproduciendo esta misma card y está hablando, detenerla (toggle)
+  if (activeCardIdPlaying === cardId && window.speechSynthesis.speaking) {
+    window.detenerTodasLasNarraciones();
+    return;
+  }
+
+  const item = CARDS_SPEECH_CATALOG[cardId];
+  if (!item) return;
+
+  const chunks = splitIntoAudioChunks(item.text);
+  startSpeechQueue(chunks, item.context, item.title, cardId);
+};
+
+// -------------------------------------------------------------
+// VOLUMEN SINCRONIZADO
+// -------------------------------------------------------------
+window.setVolumenManifiesto = function(val) {
+  currentVolumeManifiesto = parseFloat(val);
+  const pct = Math.round(currentVolumeManifiesto * 100);
+  const badge = document.getElementById('manifiestoVolumeBadge');
+  const icon = document.getElementById('manifiestoVolumeIcon');
+  if (badge) badge.textContent = `${pct}%`;
+  if (icon) {
+    icon.className = currentVolumeManifiesto === 0 
+      ? 'fa-solid fa-volume-xmark text-sm text-red-600'
+      : (currentVolumeManifiesto < 0.5 ? 'fa-solid fa-volume-low text-sm text-black' : 'fa-solid fa-volume-high text-sm text-black');
+  }
+};
+
+window.cambiarVolumenManifiesto = function(delta) {
+  const slider = document.getElementById('manifiestoVolumeSlider');
+  if (!slider) return;
+  let nuevo = Math.min(1, Math.max(0, parseFloat(slider.value) + delta));
+  nuevo = Math.round(nuevo * 20) / 20;
+  slider.value = nuevo;
+  window.setVolumenManifiesto(nuevo);
+};
+
+window.setVolumenFundamentos = function(val) {
+  currentVolumeFundamentos = parseFloat(val);
+  const pct = Math.round(currentVolumeFundamentos * 100);
+  const badge = document.getElementById('fundamentosVolumeBadge');
+  const icon = document.getElementById('fundamentosVolumeIcon');
+  if (badge) badge.textContent = `${pct}%`;
+  if (icon) {
+    icon.className = currentVolumeFundamentos === 0 
+      ? 'fa-solid fa-volume-xmark text-sm text-red-600'
+      : (currentVolumeFundamentos < 0.5 ? 'fa-solid fa-volume-low text-sm text-black' : 'fa-solid fa-volume-high text-sm text-black');
+  }
+};
+
+window.cambiarVolumenFundamentos = function(delta) {
+  const slider = document.getElementById('fundamentosVolumeSlider');
+  if (!slider) return;
+  let nuevo = Math.min(1, Math.max(0, parseFloat(slider.value) + delta));
+  nuevo = Math.round(nuevo * 20) / 20;
+  slider.value = nuevo;
+  window.setVolumenFundamentos(nuevo);
+};
+
+// -------------------------------------------------------------
+// ACTUALIZACIÓN DE INTERFAZ DE USUARIO
+// -------------------------------------------------------------
+function setSectionAudioUI(section, state, labelText = '') {
+  const prefix = section === 'manifiesto' ? 'Manifiesto' : 'Fundamentos';
+  const btnPlay = document.getElementById(`btn${prefix}Play`);
+  const btnPause = document.getElementById(`btn${prefix}Pause`);
+  const btnResume = document.getElementById(`btn${prefix}Resume`);
+  const btnStop = document.getElementById(`btn${prefix}Stop`);
+  const badge = document.getElementById(`${section}StatusBadge`);
+  const statusText = document.getElementById(`${section}StatusText`);
+
+  if (!btnPlay) return;
+
+  if (state === 'speaking') {
+    btnPlay.classList.add('hidden');
+    btnPause.classList.remove('hidden');
+    btnPause.classList.add('flex');
+    btnResume.classList.add('hidden');
+    btnStop.classList.remove('hidden');
+    btnStop.classList.add('flex');
+
+    if (badge) {
+      badge.classList.remove('hidden');
+      badge.classList.add('flex');
+    }
+    if (statusText) {
+      statusText.textContent = labelText ? `Narrando: ${labelText}` : `Narrando ${prefix}...`;
+    }
+  } else if (state === 'paused') {
+    btnPlay.classList.add('hidden');
+    btnPause.classList.add('hidden');
+    btnResume.classList.remove('hidden');
+    btnResume.classList.add('flex');
+    btnStop.classList.remove('hidden');
+    btnStop.classList.add('flex');
+
+    if (badge) {
+      badge.classList.remove('hidden');
+      badge.classList.add('flex');
+    }
+    if (statusText) {
+      statusText.textContent = `Pausado: ${labelText || prefix}`;
+    }
+  } else {
+    // idle
+    btnPlay.classList.remove('hidden');
+    btnPlay.classList.add('flex');
+    btnPause.classList.add('hidden');
+    btnResume.classList.add('hidden');
+    btnStop.classList.add('hidden');
+
+    if (badge) {
+      badge.classList.add('hidden');
+      badge.classList.remove('flex');
+    }
+    if (statusText) {
+      statusText.textContent = 'Listo para narrar';
+    }
+  }
+}
+
+function updateCardButtonUI(cardId, isPlaying) {
+  resetAllCardPlayButtons();
+  const btn = document.getElementById(`btnCard_${cardId}`);
+  const icon = document.getElementById(`iconCard_${cardId}`);
+  if (!btn) return;
+
+  if (isPlaying) {
+    btn.classList.remove('bg-white');
+    btn.classList.add('bg-neoYellow', 'animate-pulse');
+    if (icon) {
+      icon.className = 'fa-solid fa-volume-high text-black';
+    }
+  }
+}
+
+function resetAllCardPlayButtons() {
+  for (let cardId in CARDS_SPEECH_CATALOG) {
+    const btn = document.getElementById(`btnCard_${cardId}`);
+    const icon = document.getElementById(`iconCard_${cardId}`);
+    if (btn) {
+      btn.classList.remove('bg-neoYellow', 'animate-pulse');
+      btn.classList.add('bg-white');
+    }
+    if (icon) {
+      icon.className = 'fa-solid fa-volume-high text-neoOrange';
+    }
+  }
+}
+
+
+/* =========================================================================
+   CONTROLADOR DEL MODAL DE SIMULACIÓN DE ALGORITMOS & LABORATORIO 2D (JPV PRO)
+   ========================================================================= */
+
+window.openAlgoModal = function(key) {
+  if (typeof detenerTodasLasNarraciones === 'function') detenerTodasLasNarraciones();
+  if (typeof detenerNarracionBigO === 'function') detenerNarracionBigO();
+  detenerNarracionAlgoModal();
+
+  selectAlgorithm(key);
+  populateAlgoModalData(key);
+
+  const modal = document.getElementById('algoSimulationModal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
+  }
+
+  syncModalDatasetInputs();
+  render2DStage();
+};
+
+window.closeAlgoModal = function() {
+  pauseSimulation();
+  detenerNarracionAlgoModal();
+  const modal = document.getElementById('algoSimulationModal');
+  if (modal) {
+    modal.classList.add('hidden');
+  }
+  document.body.classList.remove('overflow-hidden');
+};
+
+window.handleAlgoModalBackdropClick = function(event) {
+  if (event.target.id === 'algoSimulationModal') {
+    closeAlgoModal();
+  }
+};
+
+function populateModalAlgoDropdown() {
+  const dropdown = document.getElementById('modalAlgoSelectDropdown');
+  if (!dropdown) return;
+  dropdown.innerHTML = '';
+
+  const groups = {
+    sort: '⚡ Ordenamientos (9)',
+    search: '🔍 Búsquedas (6)',
+    complexity: '📐 Clases Big-O Puras (6)'
+  };
+
+  for (let cat in groups) {
+    const optgroup = document.createElement('optgroup');
+    optgroup.label = groups[cat];
+    for (let k in ALGORITHMS_CATALOG) {
+      if (ALGORITHMS_CATALOG[k].category === cat) {
+        const opt = document.createElement('option');
+        opt.value = k;
+        opt.textContent = `${ALGORITHMS_CATALOG[k].name} [${ALGORITHMS_CATALOG[k].bigO}]`;
+        optgroup.appendChild(opt);
+      }
+    }
+    dropdown.appendChild(optgroup);
+  }
+}
+
+function syncModalDatasetInputs() {
+  ['numbers', 'letters', 'objects', 'colors'].forEach(t => {
+    const modalBtn = document.getElementById(`btn-modal-type-${t}`);
+    if (modalBtn) {
+      modalBtn.className = (t === currentDataType)
+        ? 'neo-button bg-neoCyan px-2 py-0.5 text-xs uppercase font-mono font-bold'
+        : 'neo-button bg-white px-2 py-0.5 text-xs uppercase font-mono font-bold';
+    }
+  });
+
+  const mainBox = document.getElementById('dataInputBox');
+  const modalBox = document.getElementById('modalDataInputBox');
+  if (mainBox && modalBox) modalBox.value = mainBox.value;
+
+  const modalN = document.getElementById('modalArrayLengthLabel');
+  if (modalN) modalN.innerText = rawItems.length;
+
+  const modalTgt = document.getElementById('modalTargetValueInput');
+  const mainTgt = document.getElementById('targetValueInput');
+  if (modalTgt && mainTgt) modalTgt.value = mainTgt.value;
+
+  const modalSlider = document.getElementById('modalAnimSpeedSlider');
+  if (modalSlider) modalSlider.value = animationSpeed;
+  const modalSpeedLbl = document.getElementById('modalSpeedValueLabel');
+  if (modalSpeedLbl) modalSpeedLbl.innerText = `${animationSpeed} ms`;
+}
+
+window.applyModalCustomInput = function() {
+  const modalBox = document.getElementById('modalDataInputBox');
+  const mainBox = document.getElementById('dataInputBox');
+  if (modalBox && mainBox) {
+    mainBox.value = modalBox.value;
+    applyCustomInput();
+    const modalN = document.getElementById('modalArrayLengthLabel');
+    if (modalN) modalN.innerText = rawItems.length;
+  }
+};
+
+window.setSimulationSpeed = function(val) {
+  animationSpeed = parseInt(val);
+  const mainSlider = document.getElementById('animSpeedSlider');
+  const modalSlider = document.getElementById('modalAnimSpeedSlider');
+  const mainLabel = document.getElementById('speedValueLabel');
+  const modalLabel = document.getElementById('modalSpeedValueLabel');
+
+  if (mainSlider) mainSlider.value = val;
+  if (modalSlider) modalSlider.value = val;
+  if (mainLabel) mainLabel.innerText = `${animationSpeed} ms`;
+  if (modalLabel) modalLabel.innerText = `${animationSpeed} ms`;
+
+  if (isPlaying) {
+    clearInterval(timerId);
+    timerId = setInterval(executeNextAction, animationSpeed);
+  }
+};
+
+function populateAlgoModalData(key) {
+  const meta = ALGORITHMS_CATALOG[key];
+  if (!meta) return;
+
+  const header = document.getElementById('modalAlgoHeader');
+  if (header) {
+    header.className = `py-2.5 px-4 sm:px-5 border-b-3 border-black flex items-center justify-between flex-wrap gap-2 ${meta.badge} transition-colors duration-200`;
+  }
+
+  const iconEl = document.getElementById('modalAlgoIcon');
+  if (iconEl) {
+    iconEl.textContent = (meta.category === 'sort') ? '⚡' : (meta.category === 'search' ? '🔍' : '📐');
+  }
+
+  const titleEl = document.getElementById('modalAlgoTitle');
+  if (titleEl) titleEl.textContent = meta.name;
+
+  const bigOEl = document.getElementById('modalAlgoBigOBadge');
+  if (bigOEl) bigOEl.textContent = meta.bigO;
+
+  const catEl = document.getElementById('modalAlgoCategoryBadge');
+  if (catEl) catEl.textContent = meta.category === 'sort' ? 'Ordenamiento' : (meta.category === 'search' ? 'Búsqueda' : 'Clase Big-O');
+
+  const spaceEl = document.getElementById('modalAlgoSpaceBadge');
+  if (spaceEl) spaceEl.textContent = `Esp: ${meta.space}`;
+
+  const howEl = document.getElementById('modalAlgoHowItWorks');
+  if (howEl) howEl.textContent = meta.howItWorks || meta.desc;
+
+  const stableEl = document.getElementById('modalAlgoStableBadge');
+  if (stableEl) stableEl.textContent = `Estabilidad: ${meta.stable}`;
+
+  const bestEl = document.getElementById('modalAlgoBest');
+  if (bestEl) bestEl.textContent = meta.best;
+
+  const avgEl = document.getElementById('modalAlgoAvg');
+  if (avgEl) avgEl.textContent = meta.avg;
+
+  const worstEl = document.getElementById('modalAlgoWorst');
+  if (worstEl) worstEl.textContent = meta.worst;
+
+  const spaceMetricEl = document.getElementById('modalAlgoSpace');
+  if (spaceMetricEl) spaceMetricEl.textContent = meta.space;
+
+  const proTipEl = document.getElementById('modalAlgoProTip');
+  if (proTipEl) proTipEl.textContent = meta.proTip || 'Optimiza siempre considerando el caso promedio y la localidad espacial de caché.';
+
+  const codeEl = document.getElementById('modalAlgoCode');
+  if (codeEl) codeEl.textContent = (meta.code || '').trim();
+
+  const gifEl = document.getElementById('modalAlgoGifImg');
+  if (gifEl) {
+    gifEl.src = meta.gif || 'assets/nearest_neighbor_search.gif';
+    gifEl.alt = meta.name;
+  }
+  const gifCap = document.getElementById('modalAlgoGifCaption');
+  if (gifCap) gifCap.textContent = `${meta.name} · Asset Cinemático Oficial`;
+
+  const dropdown = document.getElementById('modalAlgoSelectDropdown');
+  if (dropdown) dropdown.value = key;
+
+  setAlgoModalAudioButtonsState('idle');
+  switchAlgoModalMediaTab('code');
+}
+
+/* =========================================================================
+   SISTEMA DE PESTAÑAS (TABS) PARA CÓDIGO Y GIF EN EL MODAL DE ALGORITMOS (JPV PRO)
+   ========================================================================= */
+window.switchAlgoModalMediaTab = function(tab) {
+  const btnCode = document.getElementById('tabBtnAlgoCode');
+  const btnGif = document.getElementById('tabBtnAlgoGif');
+  const contentCode = document.getElementById('tabContentAlgoCode');
+  const contentGif = document.getElementById('tabContentAlgoGif');
+  const btnCopy = document.getElementById('btnCopyAlgoCode');
+
+  if (!btnCode || !btnGif || !contentCode || !contentGif) return;
+
+  if (tab === 'code') {
+    contentCode.classList.remove('hidden');
+    contentGif.classList.add('hidden');
+    btnCode.className = 'neo-button bg-neoYellow text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-neoSm transition-all';
+    btnGif.className = 'neo-button bg-white text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 hover:bg-gray-100 transition-all';
+    if (btnCopy) btnCopy.style.display = 'inline-flex';
+  } else if (tab === 'gif') {
+    contentCode.classList.add('hidden');
+    contentGif.classList.remove('hidden');
+    btnCode.className = 'neo-button bg-white text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 hover:bg-gray-100 transition-all';
+    btnGif.className = 'neo-button bg-neoPurple text-white px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-neoSm transition-all';
+    if (btnCopy) btnCopy.style.display = 'none';
+  }
+};
+
+/* =========================================================================
+   COPIADO RÁPIDO DE CÓDIGO AL PORTAPAPELES CON FEEDBACK VISUAL (JPV PRO)
+   ========================================================================= */
+window.copyModalAlgoCode = function() {
+  const codeEl = document.getElementById('modalAlgoCode');
+  const text = codeEl ? codeEl.textContent : '';
+  if (!text) return;
+
+  const btnIcon = document.getElementById('copyAlgoCodeIcon');
+  const btnText = document.getElementById('copyAlgoCodeText');
+
+  const showFeedback = () => {
+    if (btnIcon) btnIcon.className = 'fa-solid fa-check text-black';
+    if (btnText) btnText.textContent = '¡Copiado!';
+    setTimeout(() => {
+      if (btnIcon) btnIcon.className = 'fa-solid fa-copy';
+      if (btnText) btnText.textContent = 'Copiar';
+    }, 2000);
+  };
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(showFeedback).catch(() => {
+      fallbackCopyText(text);
+      showFeedback();
+    });
+  } else {
+    fallbackCopyText(text);
+    showFeedback();
+  }
+};
+
+function fallbackCopyText(text) {
+  const textArea = document.createElement('textarea');
+  textArea.value = text;
+  textArea.style.position = 'fixed';
+  textArea.style.left = '-9999px';
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  try {
+    document.execCommand('copy');
+  } catch (e) {
+    console.error('Error al copiar texto', e);
+  }
+  document.body.removeChild(textArea);
+}
+
+/* =========================================================================
+   MOTOR DE NARRACIÓN POR VOZ TTS DEL MODAL DE ALGORITMOS (JPV PRO)
+   ========================================================================= */
+
+let algoModalChunkQueue = [];
+let algoModalChunkIndex = 0;
+let currentAlgoModalVolume = 1.0;
+
+window.narrarAlgoModalActual = function() {
+  if (!window.speechSynthesis) {
+    alert("Tu navegador no soporta síntesis de voz nativa (Web Speech API).");
+    return;
+  }
+
+  if (window.speechSynthesis.paused) {
+    window.speechSynthesis.resume();
+    setAlgoModalAudioButtonsState('speaking');
+    return;
+  }
+
+  detenerNarracionAlgoModal();
+  if (typeof detenerTodasLasNarraciones === 'function') detenerTodasLasNarraciones();
+  if (typeof detenerNarracionBigO === 'function') detenerNarracionBigO();
+
+  const meta = ALGORITHMS_CATALOG[selectedAlgoId];
+  if (!meta || !meta.speechText) return;
+
+  algoModalChunkQueue = splitIntoAudioChunks(meta.speechText, 170);
+  algoModalChunkIndex = 0;
+
+  setAlgoModalAudioButtonsState('speaking');
+  const statusEl = document.getElementById('modalSpeechStatusText');
+  if (statusEl) statusEl.textContent = `Narrando ${meta.name}...`;
+
+  if (window.speechSynthesis.paused) window.speechSynthesis.resume();
+  setTimeout(() => {
+    playNextAlgoModalChunk();
+  }, 60);
+};
+
+function playNextAlgoModalChunk() {
+  if (!window.speechSynthesis) return;
+
+  if (algoModalChunkIndex >= algoModalChunkQueue.length) {
+    detenerNarracionAlgoModal();
+    return;
+  }
+
+  const chunkText = algoModalChunkQueue[algoModalChunkIndex];
+  const utterance = new SpeechSynthesisUtterance(chunkText);
+  utterance.lang = 'es-ES';
+  utterance.rate = 0.98;
+  utterance.pitch = 1.0;
+  utterance.volume = currentAlgoModalVolume;
+
+  const voice = (typeof getSystemSpanishVoice === 'function') ? getSystemSpanishVoice() : null;
+  if (voice) utterance.voice = voice;
+
+  utterance.onstart = () => {
+    if (typeof startKeepAlivePulse === 'function') startKeepAlivePulse();
+    const meta = ALGORITHMS_CATALOG[selectedAlgoId];
+    const name = meta ? meta.name : 'Algoritmo';
+    const progressLabel = algoModalChunkQueue.length > 1 
+      ? `Narrando ${name} (${algoModalChunkIndex + 1}/${algoModalChunkQueue.length})` 
+      : `Narrando ${name}...`;
+    const statusEl = document.getElementById('modalSpeechStatusText');
+    if (statusEl) statusEl.textContent = progressLabel;
+  };
+
+  utterance.onend = () => {
+    algoModalChunkIndex++;
+    playNextAlgoModalChunk();
+  };
+
+  utterance.onerror = (e) => {
+    console.warn("Algo modal speech error:", e);
+    algoModalChunkIndex++;
+    if (algoModalChunkIndex < algoModalChunkQueue.length) {
+      playNextAlgoModalChunk();
+    } else {
+      detenerNarracionAlgoModal();
+    }
+  };
+
+  window._activeAlgoModalUtterance = utterance;
+  window.speechSynthesis.speak(utterance);
+}
+
+window.pausarNarracionAlgoModal = function() {
+  if (window.speechSynthesis && window.speechSynthesis.speaking) {
+    window.speechSynthesis.pause();
+    setAlgoModalAudioButtonsState('paused');
+    const statusEl = document.getElementById('modalSpeechStatusText');
+    if (statusEl) statusEl.textContent = 'Pausado';
+  }
+};
+
+window.reanudarNarracionAlgoModal = function() {
+  if (window.speechSynthesis && window.speechSynthesis.paused) {
+    window.speechSynthesis.resume();
+    setAlgoModalAudioButtonsState('speaking');
+    const meta = ALGORITHMS_CATALOG[selectedAlgoId];
+    if (meta) {
+      const progressLabel = algoModalChunkQueue.length > 1 
+        ? `Narrando ${meta.name} (${algoModalChunkIndex + 1}/${algoModalChunkQueue.length})` 
+        : `Narrando ${meta.name}...`;
+      const statusEl = document.getElementById('modalSpeechStatusText');
+      if (statusEl) statusEl.textContent = progressLabel;
+    }
+  }
+};
+
+window.detenerNarracionAlgoModal = function() {
+  algoModalChunkQueue = [];
+  algoModalChunkIndex = 0;
+  if (window.speechSynthesis) {
+    window.speechSynthesis.cancel();
+  }
+  setAlgoModalAudioButtonsState('idle');
+};
+
+function setAlgoModalAudioButtonsState(state) {
+  const btnPlay = document.getElementById('btnModalSpeechPlay');
+  const btnPause = document.getElementById('btnModalSpeechPause');
+  const btnResume = document.getElementById('btnModalSpeechResume');
+  const btnStop = document.getElementById('btnModalSpeechStop');
+  const badge = document.getElementById('modalSpeechStatusBadge');
+
+  if (!btnPlay) return;
+
+  if (state === 'speaking') {
+    btnPlay.classList.add('hidden');
+    btnPause.classList.remove('hidden');
+    btnPause.classList.add('flex');
+    btnResume.classList.add('hidden');
+    btnStop.classList.remove('hidden');
+    btnStop.classList.add('flex');
+    if (badge) {
+      badge.classList.remove('hidden');
+      badge.classList.add('flex');
+    }
+  } else if (state === 'paused') {
+    btnPlay.classList.add('hidden');
+    btnPause.classList.add('hidden');
+    btnResume.classList.remove('hidden');
+    btnResume.classList.add('flex');
+    btnStop.classList.remove('hidden');
+    btnStop.classList.add('flex');
+    if (badge) {
+      badge.classList.remove('hidden');
+      badge.classList.add('flex');
+    }
+  } else {
+    btnPlay.classList.remove('hidden');
+    btnPlay.classList.add('flex');
+    btnPause.classList.add('hidden');
+    btnResume.classList.add('hidden');
+    btnStop.classList.add('hidden');
+    if (badge) {
+      badge.classList.add('hidden');
+      badge.classList.remove('flex');
+    }
+  }
+}
+
+window.setVolumenAlgoModal = function(val) {
+  currentAlgoModalVolume = Math.max(0, Math.min(1, parseFloat(val)));
+  const pct = Math.round(currentAlgoModalVolume * 100);
+  const badge = document.getElementById('modalSpeechVolumeBadge');
+  const icon = document.getElementById('modalSpeechVolumeIcon');
+  if (badge) badge.textContent = `${pct}%`;
+  if (icon) {
+    icon.className = currentAlgoModalVolume === 0 
+      ? 'fa-solid fa-volume-xmark text-sm text-red-600' 
+      : (currentAlgoModalVolume < 0.5 ? 'fa-solid fa-volume-low text-sm text-black' : 'fa-solid fa-volume-high text-sm text-black');
+  }
+};
+
+window.cambiarVolumenAlgoModal = function(delta) {
+  const slider = document.getElementById('modalSpeechVolumeSlider');
+  if (!slider) return;
+  let nuevo = Math.min(1, Math.max(0, parseFloat(slider.value) + delta));
+  nuevo = Math.round(nuevo * 20) / 20;
+  slider.value = nuevo;
+  window.setVolumenAlgoModal(nuevo);
+};

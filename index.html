@@ -56,54 +56,92 @@
   <!-- =========================================================================
        BARRA DE NAVEGACIÓN PRINCIPAL CON LOGO OFICIAL DATAIADEV & ANCLAS
   ========================================================================== -->
-  <nav class="sticky top-0 z-50 bg-white border-b-3 border-black shadow-[0_4px_0_#000000] px-3 sm:px-6 py-2.5 mb-6">
-    <div class="max-w-7xl mx-auto flex items-center justify-between flex-wrap gap-2">
+    <nav class="sticky top-0 z-50 bg-white border-b-3 border-black shadow-[0_4px_0_#000000] px-3 sm:px-6 lg:px-8 xl:px-10 py-2.5 mb-6 w-full">
+    <div class="w-full flex items-center justify-between gap-3">
       
       <!-- Brand & Logo DataIADev Oficial -->
-      <a href="#inicio" class="flex items-center gap-2.5 text-black no-underline group hover:opacity-95">
-        <img src="assets/LOGO_DATAIADEV.png" alt="DataIADev Logo Oficial" class="h-9 w-auto max-h-9 object-contain transition-transform group-hover:scale-105">
-        <span class="neo-badge bg-black text-[#FFDE59] px-2.5 py-1 text-xs font-mono font-black uppercase tracking-wider">
+      <a href="#inicio" class="flex items-center gap-2.5 text-black no-underline group hover:opacity-95 flex-shrink-0">
+        <img src="assets/LOGO_DATAIADEV.png" alt="DataIADev Logo Oficial" class="h-9 sm:h-10 w-auto max-h-10 object-contain transition-transform group-hover:scale-105">
+        <span class="neo-badge bg-black text-[#FFDE59] px-2.5 py-1 text-xs sm:text-sm font-mono font-black uppercase tracking-wider">
           ALGO-MATRIX 3D
         </span>
-        <span class="hidden lg:inline font-black text-xs uppercase tracking-tight text-black">
+        <span class="hidden 2xl:inline font-black text-xs sm:text-sm uppercase tracking-tight text-black">
           Enciclopedia &amp; Laboratorio
         </span>
       </a>
 
-      <!-- Botón Toggle Móvil -->
-      <button onclick="document.getElementById('navbarLinks').classList.toggle('hidden');" class="md:hidden neo-button bg-neoYellow px-3 py-1.5 text-xs text-black font-black flex items-center gap-1.5" aria-label="Menú">
-        <i class="fa-solid fa-bars"></i> Menú
-      </button>
-
-      <!-- Anclas de Navegación de Escritorio -->
-      <div id="navbarLinks" class="hidden md:flex items-center gap-1 sm:gap-2 flex-wrap w-full md:w-auto mt-2 md:mt-0 pt-2 md:pt-0 border-t-2 md:border-t-0 border-black">
-        <a href="#inicio" class="px-2.5 py-1.5 text-xs font-mono font-black text-black hover:bg-neoYellow rounded border-2 border-transparent hover:border-black hover:shadow-neoSm transition-all">
-          <i class="fa-solid fa-house me-1 text-neoOrange"></i> Inicio
+      <!-- Anclas de Navegación de Escritorio (100% Ancho, Sin Encimarse en Pantallas Grandes) -->
+      <div id="desktopNavLinks" class="hidden xl:flex items-center gap-1.5 2xl:gap-2.5 flex-nowrap">
+        <a href="#inicio" class="px-2.5 py-1.5 text-xs xl:text-sm font-mono font-black text-black hover:bg-neoYellow rounded border-2 border-transparent hover:border-black hover:shadow-neoSm transition-all whitespace-nowrap flex items-center gap-1.5">
+          <i class="fa-solid fa-house text-neoOrange"></i> <span>Inicio</span>
         </a>
-        <a href="#fundamentos-teoria" class="px-2.5 py-1.5 text-xs font-mono font-black text-black hover:bg-neoYellow rounded border-2 border-transparent hover:border-black hover:shadow-neoSm transition-all">
-          <i class="fa-solid fa-brain me-1 text-neoPink"></i> Fundamentos
+        <a href="#manifiesto-algoritmos" class="px-2.5 py-1.5 text-xs xl:text-sm font-mono font-black text-black hover:bg-neoYellow rounded border-2 border-transparent hover:border-black hover:shadow-neoSm transition-all whitespace-nowrap flex items-center gap-1.5">
+          <i class="fa-solid fa-earth-americas text-neoCyan"></i> <span>El Motor del Mundo</span>
         </a>
-        <a href="#panel-dataset" class="px-2.5 py-1.5 text-xs font-mono font-black text-black hover:bg-neoYellow rounded border-2 border-transparent hover:border-black hover:shadow-neoSm transition-all">
-          <i class="fa-solid fa-sliders me-1 text-neoGreen"></i> Dataset (n)
+        <a href="#fundamentos-teoria" class="px-2.5 py-1.5 text-xs xl:text-sm font-mono font-black text-black hover:bg-neoYellow rounded border-2 border-transparent hover:border-black hover:shadow-neoSm transition-all whitespace-nowrap flex items-center gap-1.5">
+          <i class="fa-solid fa-brain text-neoPink"></i> <span>Fundamentos</span>
         </a>
-        <a href="#laboratorio-algoritmos" class="px-2.5 py-1.5 text-xs font-mono font-black text-black hover:bg-neoYellow rounded border-2 border-transparent hover:border-black hover:shadow-neoSm transition-all">
-          <i class="fa-solid fa-cube me-1 text-neoCyan"></i> Lab 2D/3D
+        <a href="#panel-dataset" class="px-2.5 py-1.5 text-xs xl:text-sm font-mono font-black text-black hover:bg-neoYellow rounded border-2 border-transparent hover:border-black hover:shadow-neoSm transition-all whitespace-nowrap flex items-center gap-1.5">
+          <i class="fa-solid fa-sliders text-neoGreen"></i> <span>Dataset (n)</span>
         </a>
-        <a href="#matriz-comparativa" class="px-2.5 py-1.5 text-xs font-mono font-black text-black hover:bg-neoYellow rounded border-2 border-transparent hover:border-black hover:shadow-neoSm transition-all">
-          <i class="fa-solid fa-table-cells me-1 text-neoOrange"></i> Matriz
+        <a href="#laboratorio-algoritmos" class="px-2.5 py-1.5 text-xs xl:text-sm font-mono font-black text-black hover:bg-neoYellow rounded border-2 border-transparent hover:border-black hover:shadow-neoSm transition-all whitespace-nowrap flex items-center gap-1.5">
+          <i class="fa-solid fa-cube text-neoCyan"></i> <span>Lab 2D/3D</span>
         </a>
-        <a href="#perfil-profesional" class="px-2.5 py-1.5 text-xs font-mono font-black text-black hover:bg-neoYellow rounded border-2 border-transparent hover:border-black hover:shadow-neoSm transition-all">
-          <i class="fa-solid fa-user-graduate me-1 text-neoPurple"></i> Perfil Pro
+        <a href="#matriz-comparativa" class="px-2.5 py-1.5 text-xs xl:text-sm font-mono font-black text-black hover:bg-neoYellow rounded border-2 border-transparent hover:border-black hover:shadow-neoSm transition-all whitespace-nowrap flex items-center gap-1.5">
+          <i class="fa-solid fa-table-cells text-neoOrange"></i> <span>Matriz</span>
         </a>
-        <a href="#laboratorio-algoritmos" onclick="if(!isPlaying) togglePlayPause();" class="neo-button bg-neoGreen text-black px-3 py-1.5 text-xs font-mono font-black uppercase flex items-center gap-1.5 ms-1 shadow-neoSm">
-          <i class="fa-solid fa-play text-[10px]"></i> Simular
+        <a href="#perfil-profesional" class="px-2.5 py-1.5 text-xs xl:text-sm font-mono font-black text-black hover:bg-neoYellow rounded border-2 border-transparent hover:border-black hover:shadow-neoSm transition-all whitespace-nowrap flex items-center gap-1.5">
+          <i class="fa-solid fa-user-graduate text-neoPurple"></i> <span>Perfil Pro</span>
+        </a>
+        <a href="#laboratorio-algoritmos" onclick="if(!isPlaying) togglePlayPause();" class="neo-button bg-neoGreen text-black px-3.5 py-1.5 text-xs xl:text-sm font-mono font-black uppercase flex items-center gap-1.5 shadow-neoSm whitespace-nowrap ms-1">
+          <i class="fa-solid fa-play text-xs"></i> <span>Simular</span>
         </a>
       </div>
 
+      <!-- Controles de Navegación Móvil y Tablet (< 1280px) -->
+      <div class="xl:hidden flex items-center gap-2">
+        <a href="#laboratorio-algoritmos" onclick="if(!isPlaying) togglePlayPause();" class="neo-button bg-neoGreen text-black px-3 py-1.5 text-xs sm:text-sm font-mono font-black uppercase flex items-center gap-1.5 shadow-neoSm">
+          <i class="fa-solid fa-play text-xs"></i> <span>Simular</span>
+        </a>
+        <button onclick="toggleMobileNavMenu()" id="mobileMenuBtn" class="neo-button bg-neoYellow px-3 py-1.5 text-xs sm:text-sm text-black font-black flex items-center gap-1.5" aria-label="Menú de Navegación">
+          <i class="fa-solid fa-bars text-sm" id="mobileMenuIcon"></i> <span>Menú</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Menú Desplegable Táctil para Móviles y Tablets (Cero Amontonamiento) -->
+    <div id="mobileNavDrawer" class="hidden xl:hidden w-full mt-3 pt-3 border-t-3 border-black bg-[#FFFDF0] p-3 sm:p-4 rounded-sm shadow-neoSm transition-all duration-200">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
+        <a href="#inicio" onclick="closeMobileNavMenu()" class="neo-button bg-white hover:bg-neoYellow text-black px-3 py-2 text-sm font-mono font-black flex items-center gap-2">
+          <i class="fa-solid fa-house text-neoOrange"></i> Inicio
+        </a>
+        <a href="#manifiesto-algoritmos" onclick="closeMobileNavMenu()" class="neo-button bg-white hover:bg-neoYellow text-black px-3 py-2 text-sm font-mono font-black flex items-center gap-2">
+          <i class="fa-solid fa-earth-americas text-neoCyan"></i> El Motor del Mundo
+        </a>
+        <a href="#fundamentos-teoria" onclick="closeMobileNavMenu()" class="neo-button bg-white hover:bg-neoYellow text-black px-3 py-2 text-sm font-mono font-black flex items-center gap-2">
+          <i class="fa-solid fa-brain text-neoPink"></i> Fundamentos
+        </a>
+        <a href="#panel-dataset" onclick="closeMobileNavMenu()" class="neo-button bg-white hover:bg-neoYellow text-black px-3 py-2 text-sm font-mono font-black flex items-center gap-2">
+          <i class="fa-solid fa-sliders text-neoGreen"></i> Dataset (n)
+        </a>
+        <a href="#laboratorio-algoritmos" onclick="closeMobileNavMenu()" class="neo-button bg-white hover:bg-neoYellow text-black px-3 py-2 text-sm font-mono font-black flex items-center gap-2">
+          <i class="fa-solid fa-cube text-neoCyan"></i> Lab 2D/3D
+        </a>
+        <a href="#matriz-comparativa" onclick="closeMobileNavMenu()" class="neo-button bg-white hover:bg-neoYellow text-black px-3 py-2 text-sm font-mono font-black flex items-center gap-2">
+          <i class="fa-solid fa-table-cells text-neoOrange"></i> Matriz
+        </a>
+        <a href="#perfil-profesional" onclick="closeMobileNavMenu()" class="neo-button bg-white hover:bg-neoYellow text-black px-3 py-2 text-sm font-mono font-black flex items-center gap-2">
+          <i class="fa-solid fa-user-graduate text-neoPurple"></i> Perfil Pro
+        </a>
+        <a href="#laboratorio-algoritmos" onclick="closeMobileNavMenu(); if(!isPlaying) togglePlayPause();" class="neo-button bg-neoGreen text-black px-3 py-2 text-sm font-mono font-black flex items-center justify-center gap-2">
+          <i class="fa-solid fa-play"></i> Simular Ahora
+        </a>
+      </div>
     </div>
   </nav>
 
-  <div class="max-w-7xl mx-auto px-3 md:px-6 space-y-6 pb-8">
+  <div class="container-responsive mx-auto px-3 sm:px-6 lg:px-8 space-y-8 pb-16 w-full">
 
     <!-- NUEVO TÍTULO PRINCIPAL & HERO HEADER -->
     <header id="inicio" class="neo-box-static p-6 bg-neoYellow flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -119,21 +157,382 @@
             Edición Neo-Brutalista
           </span>
         </div>
-        <h1 class="text-3xl md:text-5xl font-black tracking-tight text-black uppercase">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-black uppercase leading-tight">
           ALGO-MATRIX 3D: La Enciclopedia Interactiva de Algoritmos &amp; Big-O
         </h1>
-        <p class="text-xs md:text-sm font-bold text-black mt-2 max-w-3xl">
+        <p class="text-sm sm:text-base md:text-lg font-bold text-black mt-3 max-w-4xl leading-relaxed">
           Fundamentos teóricos, matemáticas del orden computacional y simulación cinemática tridimensional de estructuras de datos en tiempo real.
         </p>
       </div>
 
       <div class="neo-box-static bg-white p-3 text-right">
-        <span class="text-[10px] font-mono font-black uppercase text-gray-600 block">ESTADO DEL MOTOR:</span>
+        <span class="text-xs sm:text-sm font-bold font-mono font-black uppercase text-gray-600 block">ESTADO DEL MOTOR:</span>
         <div id="simStatusBadge" class="text-xs md:text-sm font-mono font-black text-black flex items-center justify-end gap-1.5">
           <span class="w-3 h-3 rounded-full bg-neoGreen border-2 border-black inline-block"></span> Listo para Simular
         </div>
       </div>
     </header>
+
+
+    <!-- =========================================================================
+         MEGA INTRODUCCIÓN NARRATIVA: EL MOTOR INVISIBLE QUE MUEVE EL MUNDO
+         ========================================================================= -->
+    <section id="manifiesto-algoritmos" class="neo-box-static p-6 sm:p-8 md:p-10 bg-white space-y-8 border-3 border-black shadow-neoLg">
+      
+      <!-- Encabezado Principal del Manifiesto -->
+      <div class="space-y-4 pb-6 border-b-3 border-black">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="neo-badge bg-black text-[#FFDE59] px-3.5 py-1 text-xs sm:text-sm font-mono font-black uppercase tracking-wider">
+            🌍 Manifiesto Computacional de la Humanidad
+          </span>
+          <span class="neo-badge bg-neoCyan text-black px-3 py-1 text-xs sm:text-sm font-mono font-black uppercase">
+            ⚡ La Física del Siglo XXI
+          </span>
+          <span class="neo-badge bg-neoRed text-white px-3 py-1 text-xs sm:text-sm font-mono font-black uppercase">
+            🚨 Escenario Apocalipsis Algorítmico
+          </span>
+        </div>
+
+        <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-black leading-tight">
+          ¿Qué Pasaría si los <span class="neo-highlight">Algoritmos</span> se Detuvieran Mañana?
+        </h2>
+        
+        <p class="text-base sm:text-lg md:text-xl font-bold text-gray-900 leading-relaxed max-w-6xl">
+          El mundo moderno no se sostiene sobre el hormigón, el acero ni el petróleo: <strong class="text-black">se sostiene sobre algoritmos</strong>. 
+          Cada latido de la civilización contemporánea está gobernado por fórmulas matemáticas convertidas en código fuente. 
+          Si todos los algoritmos del planeta dejaran de ejecutarse por solo <span class="neo-highlight-pink">24 horas continuas</span>, 
+          la sociedad colapsaría de forma irreversible y <span class="neo-highlight-red">entraríamos de golpe a la Edad de Piedra</span>.
+        </p>
+      </div>
+
+      <!-- Toolbar de Narración por Voz del Manifiesto (Web Speech API - Estándar JPV Pro) -->
+      <div class="bg-white border-2 border-black p-3 flex items-center justify-between flex-wrap gap-3 shadow-neoSm rounded-sm">
+        <div class="flex items-center gap-2 flex-wrap">
+          <!-- Botones de Reproducción TTS -->
+          <button id="btnManifiestoPlay" onclick="narrarManifiesto()" type="button" class="neo-button bg-neoYellow px-3.5 py-1.5 text-xs sm:text-sm uppercase font-black flex items-center gap-1.5 text-black">
+            <i class="fa-solid fa-play text-neoDark"></i> <span>Escuchar Manifiesto Completo</span>
+          </button>
+          <button id="btnManifiestoPause" onclick="pausarNarracionManifiesto()" type="button" class="neo-button bg-white px-3.5 py-1.5 text-xs sm:text-sm uppercase font-black hidden items-center gap-1.5 text-black">
+            <i class="fa-solid fa-pause text-neoOrange"></i> <span>Pausar</span>
+          </button>
+          <button id="btnManifiestoResume" onclick="reanudarNarracionManifiesto()" type="button" class="neo-button bg-neoCyan px-3.5 py-1.5 text-xs sm:text-sm uppercase font-black hidden items-center gap-1.5 text-black">
+            <i class="fa-solid fa-play text-neoDark"></i> <span>Reanudar</span>
+          </button>
+          <button id="btnManifiestoStop" onclick="detenerNarracionManifiesto()" type="button" class="neo-button bg-neoRed text-white px-3.5 py-1.5 text-xs sm:text-sm uppercase font-black hidden items-center gap-1.5">
+            <i class="fa-solid fa-stop"></i> <span>Detener</span>
+          </button>
+
+          <!-- Indicador de Estado del Audio con Onda Verde Pulsante -->
+          <div id="manifiestoStatusBadge" class="hidden items-center gap-2 px-3 py-1 bg-black text-white text-xs sm:text-sm font-mono font-bold rounded-sm border border-black shadow-sm">
+            <span class="audio-wave-dot"></span>
+            <span id="manifiestoStatusText">Narrando Manifiesto...</span>
+          </div>
+        </div>
+
+        <!-- Widget de Control de Volumen Táctil y Slider Sincronizado -->
+        <div class="flex items-center gap-1.5 p-1 bg-[#FFFDF0] border-2 border-black rounded shadow-neoSm">
+          <button type="button" onclick="cambiarVolumenManifiesto(-0.1)" class="neo-button bg-white px-2.5 py-0.5 text-xs sm:text-sm font-black" title="Bajar volumen (-10%)">-</button>
+          <div class="flex items-center gap-1.5 px-1.5">
+            <i id="manifiestoVolumeIcon" class="fa-solid fa-volume-high text-sm text-black"></i>
+            <input id="manifiestoVolumeSlider" type="range" min="0" max="1" step="0.05" value="1" oninput="setVolumenManifiesto(this.value)" class="tts-volume-slider w-20 sm:w-28 h-2" style="accent-color: #DA291C;">
+          </div>
+          <button type="button" onclick="cambiarVolumenManifiesto(0.1)" class="neo-button bg-white px-2.5 py-0.5 text-xs sm:text-sm font-black" title="Subir volumen (+10%)">+</button>
+          <span id="manifiestoVolumeBadge" class="bg-black text-white px-2 py-0.5 text-xs font-mono font-bold rounded-sm border border-black min-w-[44px] text-center">100%</span>
+        </div>
+      </div>
+
+
+      <!-- CRÓNICA DEL GRAN APAGÓN: 24 HORAS SIN ALGORITMOS -->
+      <div class="space-y-4">
+        <div class="flex items-center gap-2">
+          <span class="text-2xl sm:text-3xl">⏱️</span>
+          <h3 class="text-2xl sm:text-3xl font-black uppercase tracking-tight text-black">
+            La Caída de la Civilización en 24 Horas: Minuto a Minuto
+          </h3>
+        </div>
+        <p class="text-sm sm:text-base font-bold text-gray-700">
+          Un experimento mental fundamentado en la dependencia tecnológica crítica de la infraestructura mundial:
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3.5">
+          
+          <!-- Minuto 1 -->
+          <div class="neo-box p-4 bg-neoYellow flex flex-col justify-between space-y-3">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-2xl">💳</span>
+                <span class="neo-badge bg-black text-white text-xs sm:text-sm font-bold font-mono px-2 py-0.5">T + 1 min</span>
+              </div>
+              <h4 class="text-lg font-black uppercase text-black mt-2">Colapso Financiero</h4>
+              <p class="text-sm font-bold text-black mt-1 leading-snug">
+                Las redes <strong class="bg-white px-1 border border-black">SWIFT</strong>, <strong class="bg-white px-1 border border-black">Visa</strong> y <strong class="bg-white px-1 border border-black">Wall Street</strong> se congelan. El <strong>97% del dinero del mundo es digital</strong> y desaparece al instante. Los cajeros mueren.
+              </p>
+            </div>
+            <div class="bg-white p-2 border-2 border-black flex items-center justify-between gap-1 flex-wrap">
+              <span class="text-xs font-mono font-bold text-red-600">🔴 Cero liquidez global.</span>
+              <button id="btnCard_manifiesto_minuto1" onclick="narrarCardIndividual('manifiesto_minuto1')" type="button" class="neo-button bg-white hover:bg-neoYellow text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-sm transition-all " title="Escuchar solo este bloque">
+  <i id="iconCard_manifiesto_minuto1" class="fa-solid fa-volume-high text-neoOrange"></i> <span>Oír</span>
+</button>
+            </div>
+          </div>
+
+          <!-- Minuto 10 -->
+          <div class="neo-box p-4 bg-neoCyan flex flex-col justify-between space-y-3">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-2xl">✈️</span>
+                <span class="neo-badge bg-black text-white text-xs sm:text-sm font-bold font-mono px-2 py-0.5">T + 10 min</span>
+              </div>
+              <h4 class="text-lg font-black uppercase text-black mt-2">Cielo Ciego &amp; Apagón</h4>
+              <p class="text-sm font-bold text-black mt-1 leading-snug">
+                Más de <strong class="bg-white px-1 border border-black">12,000 aviones</strong> pierden los radares y el sistema anticolisión <strong class="bg-white px-1 border border-black">TCAS</strong>. Las <strong>redes eléctricas pierden fase</strong> y continentes enteros quedan a oscuras.
+              </p>
+            </div>
+            <div class="bg-white p-2 border-2 border-black flex items-center justify-between gap-1 flex-wrap">
+              <span class="text-xs font-mono font-bold text-amber-700">⚠️ Caos aéreo &amp; blackout.</span>
+              <button id="btnCard_manifiesto_minuto10" onclick="narrarCardIndividual('manifiesto_minuto10')" type="button" class="neo-button bg-white hover:bg-neoYellow text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-sm transition-all " title="Escuchar solo este bloque">
+  <i id="iconCard_manifiesto_minuto10" class="fa-solid fa-volume-high text-neoOrange"></i> <span>Oír</span>
+</button>
+            </div>
+          </div>
+
+          <!-- Hora 1 -->
+          <div class="neo-box p-4 bg-neoOrange flex flex-col justify-between space-y-3">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-2xl">🚢</span>
+                <span class="neo-badge bg-black text-white text-xs sm:text-sm font-bold font-mono px-2 py-0.5">T + 1 hora</span>
+              </div>
+              <h4 class="text-lg font-black uppercase text-black mt-2">Parálisis Logística</h4>
+              <p class="text-sm font-bold text-black mt-1 leading-snug">
+                Los algoritmos de ruta (<strong class="bg-white px-1 border border-black">Dijkstra</strong> y <strong class="bg-white px-1 border border-black">A*</strong>) dejan de guiar barcos y camiones. Los almacenes robotizados de comida y combustible quedan sellados herméticamente.
+              </p>
+            </div>
+            <div class="bg-white p-2 border-2 border-black flex items-center justify-between gap-1 flex-wrap">
+              <span class="text-xs font-mono font-bold text-orange-700">⛔ Desabastecimiento masivo.</span>
+              <button id="btnCard_manifiesto_hora1" onclick="narrarCardIndividual('manifiesto_hora1')" type="button" class="neo-button bg-white hover:bg-neoYellow text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-sm transition-all " title="Escuchar solo este bloque">
+  <i id="iconCard_manifiesto_hora1" class="fa-solid fa-volume-high text-neoOrange"></i> <span>Oír</span>
+</button>
+            </div>
+          </div>
+
+          <!-- Hora 6 -->
+          <div class="neo-box p-4 bg-neoPink flex flex-col justify-between space-y-3">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-2xl">🏥</span>
+                <span class="neo-badge bg-black text-white text-xs sm:text-sm font-bold font-mono px-2 py-0.5">T + 6 horas</span>
+              </div>
+              <h4 class="text-lg font-black uppercase text-black mt-2">Crisis Hospitalaria</h4>
+              <p class="text-sm font-bold text-black mt-1 leading-snug">
+                Respiradores autónomos, tomógrafos y máquinas de diálisis fallan sin microcontroladores algorítmicos. La fibra transoceánica se apaga y el <strong class="bg-white px-1 border border-black">GPS mundial</strong> queda desincronizado.
+              </p>
+            </div>
+            <div class="bg-white p-2 border-2 border-black flex items-center justify-between gap-1 flex-wrap">
+              <span class="text-xs font-mono font-bold text-purple-700">🚨 Cero telecomunicaciones.</span>
+              <button id="btnCard_manifiesto_hora6" onclick="narrarCardIndividual('manifiesto_hora6')" type="button" class="neo-button bg-white hover:bg-neoYellow text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-sm transition-all " title="Escuchar solo este bloque">
+  <i id="iconCard_manifiesto_hora6" class="fa-solid fa-volume-high text-neoOrange"></i> <span>Oír</span>
+</button>
+            </div>
+          </div>
+
+          <!-- Día 1 -->
+          <div class="neo-box p-4 bg-neoRed text-white flex flex-col justify-between space-y-3">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-2xl">🪨</span>
+                <span class="neo-badge bg-white text-black text-xs sm:text-sm font-bold font-mono px-2 py-0.5">T + 24 horas</span>
+              </div>
+              <h4 class="text-lg font-black uppercase text-white mt-2">Edad de Piedra</h4>
+              <p class="text-sm font-bold text-white mt-1 leading-snug">
+                Las bombas de agua potable automatizadas dejan de bombear. Sin agua, sin luz, sin comida, sin comunicación ni medicina, <strong>la civilización retrocede 1,000 años de evolución</strong> en un solo día.
+              </p>
+            </div>
+            <div class="bg-black text-neoYellow p-2 border-2 border-white flex items-center justify-between gap-1 flex-wrap">
+              <span class="text-xs font-mono font-black text-neoYellow">☠️ Colapso civilizatorio.</span>
+              <button id="btnCard_manifiesto_dia1" onclick="narrarCardIndividual('manifiesto_dia1')" type="button" class="neo-button bg-white hover:bg-neoYellow text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-sm transition-all " title="Escuchar solo este bloque">
+  <i id="iconCard_manifiesto_dia1" class="fa-solid fa-volume-high text-neoOrange"></i> <span>Oír</span>
+</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DE AL-JUARISMI A LA INTELIGENCIA ARTIFICIAL: LA HISTORIA DEL FUEGO DIGITAL -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-2">
+        
+        <!-- Tarjeta 1: La invención de la lógica -->
+        <div class="neo-box p-6 bg-[#FFFDF0] flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="text-3xl">📜</span>
+            <h4 class="text-xl font-black uppercase text-black">
+              1. De Bagdad a Bletchley Park
+            </h4>
+            <p class="text-sm sm:text-base font-bold text-gray-800 leading-relaxed">
+              La palabra <strong class="neo-highlight">Algoritmo</strong> rinde honor a <strong>Muhammad ibn Musa al-Juarismi</strong> (siglo IX). 
+              En 1843, <strong class="neo-highlight-pink">Ada Lovelace</strong> escribió el primer algoritmo computacional del mundo para calcular los números de Bernoulli. 
+              Un siglo después, <strong class="neo-highlight-cyan">Alan Turing</strong> usó algoritmos para descifrar la máquina nazi <em>Enigma</em>, salvando más de 14 millones de vidas.
+            </p>
+          </div>
+          <div class="p-3 bg-white border-2 border-black flex items-center justify-between gap-2 flex-wrap">
+            <div class="text-xs sm:text-sm font-mono font-bold">💡 <strong>Lección histórica:</strong> Herramientas de supervivencia humana.</div>
+            <button id="btnCard_manifiesto_historia1" onclick="narrarCardIndividual('manifiesto_historia1')" type="button" class="neo-button bg-white hover:bg-neoYellow text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-sm transition-all " title="Escuchar solo este bloque">
+  <i id="iconCard_manifiesto_historia1" class="fa-solid fa-volume-high text-neoOrange"></i> <span>Escuchar</span>
+</button>
+          </div>
+        </div>
+
+        <!-- Tarjeta 2: ¿Qué es realmente programar? -->
+        <div class="neo-box p-6 bg-[#FFFDF0] flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="text-3xl">🧩</span>
+            <h4 class="text-xl font-black uppercase text-black">
+              2. El Arte de Hablarle a la Materia
+            </h4>
+            <p class="text-sm sm:text-base font-bold text-gray-800 leading-relaxed">
+              Programar no es teclear palabras en inglés con llaves y corchetes: es <strong>enseñarle a una roca de silicio y electricidad a razonar matemáticamente</strong>. 
+              Un algoritmo es la receta perfecta: si los pasos son correctos, el resultado es infalible, repetible y trasciende el tiempo y el espacio.
+            </p>
+          </div>
+          <div class="p-3 bg-white border-2 border-black flex items-center justify-between gap-2 flex-wrap">
+            <div class="text-xs sm:text-sm font-mono font-bold">⚙️ <strong>Ecuación:</strong> Entrada ➔ Lógica Finita ➔ Solución.</div>
+            <button id="btnCard_manifiesto_historia2" onclick="narrarCardIndividual('manifiesto_historia2')" type="button" class="neo-button bg-white hover:bg-neoYellow text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-sm transition-all " title="Escuchar solo este bloque">
+  <i id="iconCard_manifiesto_historia2" class="fa-solid fa-volume-high text-neoOrange"></i> <span>Escuchar</span>
+</button>
+          </div>
+        </div>
+
+        <!-- Tarjeta 3: Por qué Big-O es la Ley de Gravedad del Código -->
+        <div class="neo-box p-6 bg-[#FFFDF0] flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <span class="text-3xl">📐</span>
+            <h4 class="text-xl font-black uppercase text-black">
+              3. Big-O: La Física del Silicio
+            </h4>
+            <p class="text-sm sm:text-base font-bold text-gray-800 leading-relaxed">
+              Un mal algoritmo puede tardar <strong class="neo-highlight-red">10,000 años</strong> en resolver lo que un buen algoritmo resuelve en <strong class="neo-highlight-green">3 milisegundos</strong>. 
+              La <strong class="neo-highlight">Notación Big-O</strong> es la ley de gravedad del software: dicta si tu arquitectura escalará a millones de usuarios o si implosionará quemando servidores.
+            </p>
+          </div>
+          <div class="p-3 bg-white border-2 border-black flex items-center justify-between gap-2 flex-wrap">
+            <div class="text-xs sm:text-sm font-mono font-bold">🚀 <strong>El Secreto:</strong> Eficiencia asintótica no negociable.</div>
+            <button id="btnCard_manifiesto_historia3" onclick="narrarCardIndividual('manifiesto_historia3')" type="button" class="neo-button bg-white hover:bg-neoYellow text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-sm transition-all " title="Escuchar solo este bloque">
+  <i id="iconCard_manifiesto_historia3" class="fa-solid fa-volume-high text-neoOrange"></i> <span>Escuchar</span>
+</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- LOS 4 TITANES ALGORÍTMICOS QUE MANTIENEN TU DÍA EN MARCHA -->
+      <div class="space-y-4 pt-2">
+        <div class="flex items-center gap-2">
+          <span class="text-2xl sm:text-3xl">🏛️</span>
+          <h3 class="text-2xl sm:text-3xl font-black uppercase tracking-tight text-black">
+            Los 4 Pilares Algorítmicos que Sostienen tu Vida Diaria
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <div class="neo-box p-5 bg-white border-2 border-black flex flex-col justify-between space-y-3">
+            <div>
+              <span class="text-2xl">🔍</span>
+              <h4 class="text-lg font-black uppercase text-black mt-1">1. Búsqueda y Orden Masivo</h4>
+              <p class="text-sm font-bold text-gray-800 mt-2 leading-relaxed">
+                Cada consulta en Google, cada filtro de productos en Amazon o búsqueda de fotos en tu móvil utiliza algoritmos como <span class="neo-highlight-cyan">QuickSort</span>, <span class="neo-highlight-green">MergeSort</span> y árboles <span class="neo-highlight">B+</span> para ordenar miles de millones de filas en microsegundos.
+              </p>
+            </div>
+            <div class="border-t-2 border-black pt-2 flex items-center justify-between gap-1 flex-wrap">
+              <span class="text-xs font-mono font-black text-neoOrange">Complejidad: O(log n) y O(n log n)</span>
+              <button id="btnCard_manifiesto_titan1" onclick="narrarCardIndividual('manifiesto_titan1')" type="button" class="neo-button bg-white hover:bg-neoYellow text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-sm transition-all " title="Escuchar solo este bloque">
+  <i id="iconCard_manifiesto_titan1" class="fa-solid fa-volume-high text-neoOrange"></i> <span>Oír</span>
+</button>
+            </div>
+          </div>
+
+          <div class="neo-box p-5 bg-white border-2 border-black flex flex-col justify-between space-y-3">
+            <div>
+              <span class="text-2xl">🛰️</span>
+              <h4 class="text-lg font-black uppercase text-black mt-1">2. Tráfico, GPS &amp; Enrutamiento</h4>
+              <p class="text-sm font-bold text-gray-800 mt-2 leading-relaxed">
+                Cuando pides un Uber, recibes un paquete o vuelas entre continentes, algoritmos de caminos mínimos como <span class="neo-highlight-pink">Dijkstra</span> y <span class="neo-highlight-cyan">A*</span> evalúan millones de combinaciones para darte la ruta más rápida y barata en tiempo real.
+              </p>
+            </div>
+            <div class="border-t-2 border-black pt-2 flex items-center justify-between gap-1 flex-wrap">
+              <span class="text-xs font-mono font-black text-neoPurple">Grafos Dinámicos &amp; Heurísticas</span>
+              <button id="btnCard_manifiesto_titan2" onclick="narrarCardIndividual('manifiesto_titan2')" type="button" class="neo-button bg-white hover:bg-neoYellow text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-sm transition-all " title="Escuchar solo este bloque">
+  <i id="iconCard_manifiesto_titan2" class="fa-solid fa-volume-high text-neoOrange"></i> <span>Oír</span>
+</button>
+            </div>
+          </div>
+
+          <div class="neo-box p-5 bg-white border-2 border-black flex flex-col justify-between space-y-3">
+            <div>
+              <span class="text-2xl">🔐</span>
+              <h4 class="text-lg font-black uppercase text-black mt-1">3. Criptografía &amp; Seguridad</h4>
+              <p class="text-sm font-bold text-gray-800 mt-2 leading-relaxed">
+                Tus compras bancarias, chats de WhatsApp y la seguridad de las naciones están protegidos por algoritmos criptográficos (<span class="neo-highlight-green">RSA</span>, <span class="neo-highlight-orange">AES-256</span> y curvas elípticas <span class="neo-highlight">ECC</span>) basados en la imposibilidad práctica de factorizar primos gigantescos.
+              </p>
+            </div>
+            <div class="border-t-2 border-black pt-2 flex items-center justify-between gap-1 flex-wrap">
+              <span class="text-xs font-mono font-black text-green-700">Matemáticas Discretas Puras</span>
+              <button id="btnCard_manifiesto_titan3" onclick="narrarCardIndividual('manifiesto_titan3')" type="button" class="neo-button bg-white hover:bg-neoYellow text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-sm transition-all " title="Escuchar solo este bloque">
+  <i id="iconCard_manifiesto_titan3" class="fa-solid fa-volume-high text-neoOrange"></i> <span>Oír</span>
+</button>
+            </div>
+          </div>
+
+          <div class="neo-box p-5 bg-white border-2 border-black flex flex-col justify-between space-y-3">
+            <div>
+              <span class="text-2xl">🧬</span>
+              <h4 class="text-lg font-black uppercase text-black mt-1">4. Genética, Salud &amp; IA</h4>
+              <p class="text-sm font-bold text-gray-800 mt-2 leading-relaxed">
+                Desde secuenciar el genoma humano y predecir el plegamiento de proteínas con <span class="neo-highlight-pink">AlphaFold</span>, hasta el reconocimiento de tumores en radiografías: los algoritmos salvan millones de vidas diagnosticando enfermedades antes de que ocurran.
+              </p>
+            </div>
+            <div class="border-t-2 border-black pt-2 flex items-center justify-between gap-1 flex-wrap">
+              <span class="text-xs font-mono font-black text-red-700">Descenso de Gradiente &amp; Bioinformática</span>
+              <button id="btnCard_manifiesto_titan4" onclick="narrarCardIndividual('manifiesto_titan4')" type="button" class="neo-button bg-white hover:bg-neoYellow text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-sm transition-all " title="Escuchar solo este bloque">
+  <i id="iconCard_manifiesto_titan4" class="fa-solid fa-volume-high text-neoOrange"></i> <span>Oír</span>
+</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CITA MAGISTRAL DEL LEAD ARCHITECT -->
+      <div class="p-6 sm:p-8 bg-neoYellow border-3 border-black shadow-neo flex flex-col md:flex-row items-center gap-6">
+        <div class="text-5xl sm:text-6xl text-black">
+          💡
+        </div>
+        <div class="space-y-2 flex-1">
+          <div class="text-xs sm:text-sm font-mono font-black uppercase tracking-wider text-black">
+            Declaración de Principios de Ingeniería · Lead Architect
+          </div>
+          <blockquote class="text-base sm:text-lg md:text-xl font-black text-black leading-snug">
+            “Aprender algoritmos y análisis de complejidad Big-O no es memorizar sintaxis para una entrevista técnica de trabajo: es aprender a dominar las leyes fundamentales de la física computacional que gobiernan nuestro planeta. Quien comprende los algoritmos, comprende los engranajes secretos del mundo moderno.”
+          </blockquote>
+          <div class="text-sm sm:text-base font-bold text-gray-900 pt-1 flex items-center justify-between flex-wrap gap-2">
+            <div>— <strong>Ing. Juancito Peña Vizcaíno</strong> <span class="text-xs font-mono text-gray-700">· Máster en Ciencias de la Computación, Lead Architect &amp; Docente</span></div>
+            <button id="btnCard_manifiesto_cita" onclick="narrarCardIndividual('manifiesto_cita')" type="button" class="neo-button bg-white hover:bg-neoYellow text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-sm transition-all " title="Escuchar solo este bloque">
+  <i id="iconCard_manifiesto_cita" class="fa-solid fa-volume-high text-neoOrange"></i> <span>Escuchar Principios</span>
+</button>
+          </div>
+        </div>
+        <div class="flex flex-col gap-2 w-full md:w-auto">
+          <a href="#fundamentos-teoria" class="neo-button bg-black text-white hover:bg-gray-800 px-5 py-3 text-xs sm:text-sm font-mono font-black uppercase text-center flex items-center justify-center gap-2">
+            <span>🧠 Fundamentos</span> <i class="fa-solid fa-arrow-down"></i>
+          </a>
+          <a href="#laboratorio-algoritmos" class="neo-button bg-neoGreen text-black hover:bg-emerald-400 px-5 py-3 text-xs sm:text-sm font-mono font-black uppercase text-center flex items-center justify-center gap-2">
+            <span>⚡ Laboratorio 3D</span> <i class="fa-solid fa-play"></i>
+          </a>
+        </div>
+      </div>
+
+    </section>
 
     <!-- =========================================================================
          NUEVA SECCIÓN TEÓRICA ILUSTRADA: ALGORITMOS, BIG-O, ORDEN Y BÚSQUEDA
@@ -145,11 +544,11 @@
         <div>
           <div class="flex items-center gap-2">
             <span class="text-2xl">🧠</span>
-            <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tight text-black">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-black">
               Fundamentos Magistrales de la Computación
             </h2>
           </div>
-          <p class="text-xs md:text-sm font-bold text-gray-700 mt-1">
+          <p class="text-sm sm:text-base md:text-lg font-bold text-gray-700 mt-1">
             Todo lo que necesitas comprender antes de ejecutar los experimentos en el laboratorio 3D.
           </p>
         </div>
@@ -157,6 +556,48 @@
           📚 Guía de Estudio Esencial
         </span>
       </div>
+
+      <!-- Toolbar de Narración por Voz de Fundamentos (Web Speech API - Estándar JPV Pro) -->
+      <div class="bg-white border-2 border-black p-3 flex items-center justify-between flex-wrap gap-3 shadow-neoSm rounded-sm">
+        <div class="flex items-center gap-2 flex-wrap">
+          <!-- Botones de Reproducción TTS -->
+          <button id="btnFundamentosPlay" onclick="narrarFundamentos()" type="button" class="neo-button bg-neoYellow px-3.5 py-1.5 text-xs sm:text-sm uppercase font-black flex items-center gap-1.5 text-black" title="Escuchar los 4 pilares teóricos de esta sección">
+            <i class="fa-solid fa-play text-neoDark"></i> <span>Escuchar los 4 Pilares Teóricos</span>
+          </button>
+          <button id="btnFundamentosPause" onclick="pausarNarracionFundamentos()" type="button" class="neo-button bg-white px-3.5 py-1.5 text-xs sm:text-sm uppercase font-black hidden items-center gap-1.5 text-black">
+            <i class="fa-solid fa-pause text-neoOrange"></i> <span>Pausar</span>
+          </button>
+          <button id="btnFundamentosResume" onclick="reanudarNarracionFundamentos()" type="button" class="neo-button bg-neoCyan px-3.5 py-1.5 text-xs sm:text-sm uppercase font-black hidden items-center gap-1.5 text-black">
+            <i class="fa-solid fa-play text-neoDark"></i> <span>Reanudar</span>
+          </button>
+          <button id="btnFundamentosStop" onclick="detenerNarracionFundamentos()" type="button" class="neo-button bg-neoRed text-white px-3.5 py-1.5 text-xs sm:text-sm uppercase font-black hidden items-center gap-1.5">
+            <i class="fa-solid fa-stop"></i> <span>Detener</span>
+          </button>
+
+          <!-- Indicador de Estado del Audio con Onda Verde Pulsante -->
+          <div id="fundamentosStatusBadge" class="hidden items-center gap-2 px-3 py-1 bg-black text-white text-xs sm:text-sm font-mono font-bold rounded-sm border border-black shadow-sm">
+            <span class="audio-wave-dot"></span>
+            <span id="fundamentosStatusText">Narrando 4 Pilares...</span>
+          </div>
+
+          <!-- Píldora de Dualidad Narrativa (Completo vs Individual) -->
+          <span class="text-xs font-mono font-bold text-gray-800 bg-[#FFFDF0] px-2.5 py-1 border border-black rounded-sm hidden lg:inline-flex items-center gap-1 shadow-sm">
+            <i class="fa-solid fa-headphones text-neoDark"></i> Escucha los 4 juntos o individualmente en cada tarjeta
+          </span>
+        </div>
+
+        <!-- Widget de Control de Volumen Táctil y Slider Sincronizado -->
+        <div class="flex items-center gap-1.5 p-1 bg-[#FFFDF0] border-2 border-black rounded shadow-neoSm">
+          <button type="button" onclick="cambiarVolumenFundamentos(-0.1)" class="neo-button bg-white px-2.5 py-0.5 text-xs sm:text-sm font-black" title="Bajar volumen (-10%)">-</button>
+          <div class="flex items-center gap-1.5 px-1.5">
+            <i id="fundamentosVolumeIcon" class="fa-solid fa-volume-high text-sm text-black"></i>
+            <input id="fundamentosVolumeSlider" type="range" min="0" max="1" step="0.05" value="1" oninput="setVolumenFundamentos(this.value)" class="tts-volume-slider w-20 sm:w-28 h-2" style="accent-color: #DA291C;">
+          </div>
+          <button type="button" onclick="cambiarVolumenFundamentos(0.1)" class="neo-button bg-white px-2.5 py-0.5 text-xs sm:text-sm font-black" title="Subir volumen (+10%)">+</button>
+          <span id="fundamentosVolumeBadge" class="bg-black text-white px-2 py-0.5 text-xs font-mono font-bold rounded-sm border border-black min-w-[44px] text-center">100%</span>
+        </div>
+      </div>
+
 
       <!-- Grid de 4 Bloques Teóricos Clave -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -166,17 +607,22 @@
           <div>
             <div class="flex items-center justify-between mb-2">
               <span class="text-2xl">⚡</span>
-              <span class="neo-badge bg-black text-white text-[10px] font-mono px-1.5 py-0.5">Definición</span>
+              <span class="neo-badge bg-black text-white text-xs sm:text-sm font-bold font-mono px-1.5 py-0.5">Definición</span>
             </div>
-            <h3 class="text-base font-black uppercase text-black">¿Qué es un Algoritmo?</h3>
-            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+            <h3 class="text-lg sm:text-xl font-black uppercase text-black">¿Qué es un Algoritmo?</h3>
+            <p class="text-sm sm:text-base font-bold text-black mt-2 leading-relaxed">
               Es un <strong>conjunto finito, ordenado y determinista de instrucciones</strong> no ambiguas que recibe una entrada (<em>input</em>), ejecuta transformaciones lógicas y genera una solución predecible (<em>output</em>).
             </p>
           </div>
-          <div class="bg-white p-2.5 border-2 border-black space-y-1 text-[11px] font-bold">
+          <div class="bg-white p-3 border-2 border-black space-y-1.5 text-xs sm:text-sm font-bold">
             <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-black"></i> <span><strong>Finitud:</strong> Siempre termina.</span></div>
             <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-black"></i> <span><strong>Precisión:</strong> Sin ambigüedades.</span></div>
             <div class="flex items-center gap-1.5"><i class="fa-solid fa-check text-black"></i> <span><strong>Eficacia:</strong> Pasos realizables.</span></div>
+            <div class="pt-1.5 border-t border-black/30 flex justify-end">
+              <button id="btnCard_fundamentos_bloque1" onclick="narrarCardIndividual('fundamentos_bloque1')" type="button" class="neo-button bg-white hover:bg-neoYellow text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-sm transition-all" title="Escuchar solo el Pilar 1: ¿Qué es un Algoritmo?">
+                <i id="iconCard_fundamentos_bloque1" class="fa-solid fa-volume-high text-neoOrange"></i> <span>Oír Pilar 1</span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -185,17 +631,22 @@
           <div>
             <div class="flex items-center justify-between mb-2">
               <span class="text-2xl">📐</span>
-              <span class="neo-badge bg-black text-white text-[10px] font-mono px-1.5 py-0.5">Big-O Notation</span>
+              <span class="neo-badge bg-black text-white text-xs sm:text-sm font-bold font-mono px-1.5 py-0.5">Big-O Notation</span>
             </div>
-            <h3 class="text-base font-black uppercase text-black">Complejidad Algorítmica</h3>
-            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+            <h3 class="text-lg sm:text-xl font-black uppercase text-black">Complejidad Algorítmica</h3>
+            <p class="text-sm sm:text-base font-bold text-black mt-2 leading-relaxed">
               Mide el <strong>costo de ejecución</strong> a medida que el tamaño de los datos (<code class="bg-white px-1 border border-black font-mono">n</code>) tiende a infinito. No mide segundos de reloj, sino la <strong>tasa de crecimiento</strong> de operaciones.
             </p>
           </div>
-          <div class="bg-white p-2.5 border-2 border-black space-y-1 text-[11px] font-bold">
+          <div class="bg-white p-3 border-2 border-black space-y-1.5 text-xs sm:text-sm font-bold">
             <div><strong>Temporal ($T$):</strong> Cantidad de operaciones CPU.</div>
             <div><strong>Espacial ($S$):</strong> Memoria RAM auxiliar requerida.</div>
             <div><strong>Peor Caso ($\mathcal{O}$):</strong> Límite superior garantizado.</div>
+            <div class="pt-1.5 border-t border-black/30 flex justify-end">
+              <button id="btnCard_fundamentos_bloque2" onclick="narrarCardIndividual('fundamentos_bloque2')" type="button" class="neo-button bg-white hover:bg-neoYellow text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-sm transition-all" title="Escuchar solo el Pilar 2: Complejidad Big-O">
+                <i id="iconCard_fundamentos_bloque2" class="fa-solid fa-volume-high text-neoOrange"></i> <span>Oír Pilar 2</span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -204,17 +655,22 @@
           <div>
             <div class="flex items-center justify-between mb-2">
               <span class="text-2xl">🔄</span>
-              <span class="neo-badge bg-black text-white text-[10px] font-mono px-1.5 py-0.5">Sorting</span>
+              <span class="neo-badge bg-black text-white text-xs sm:text-sm font-bold font-mono px-1.5 py-0.5">Sorting</span>
             </div>
-            <h3 class="text-base font-black uppercase text-black">Algoritmos de Ordenamiento</h3>
-            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+            <h3 class="text-lg sm:text-xl font-black uppercase text-black">Algoritmos de Ordenamiento</h3>
+            <p class="text-sm sm:text-base font-bold text-black mt-2 leading-relaxed">
               Reorganizan los elementos de una colección en una secuencia homogénea (ascendente o descendente) bajo una relación de orden estricta.
             </p>
           </div>
-          <div class="bg-white p-2.5 border-2 border-black space-y-1 text-[11px] font-bold">
+          <div class="bg-white p-3 border-2 border-black space-y-1.5 text-xs sm:text-sm font-bold">
             <div><strong>Comparativos:</strong> Bubble, Quick, Merge ($O(n \log n)$ límite inferior).</div>
             <div><strong>No Comparativos:</strong> Counting, Radix ($O(n)$ por frecuencias/dígitos).</div>
             <div><strong>Estabilidad:</strong> Conserva el orden de claves idénticas.</div>
+            <div class="pt-1.5 border-t border-black/30 flex justify-end">
+              <button id="btnCard_fundamentos_bloque3" onclick="narrarCardIndividual('fundamentos_bloque3')" type="button" class="neo-button bg-white hover:bg-neoYellow text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-sm transition-all" title="Escuchar solo el Pilar 3: Ordenamiento">
+                <i id="iconCard_fundamentos_bloque3" class="fa-solid fa-volume-high text-neoOrange"></i> <span>Oír Pilar 3</span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -223,17 +679,22 @@
           <div>
             <div class="flex items-center justify-between mb-2">
               <span class="text-2xl">🔍</span>
-              <span class="neo-badge bg-black text-white text-[10px] font-mono px-1.5 py-0.5">Searching</span>
+              <span class="neo-badge bg-black text-white text-xs sm:text-sm font-bold font-mono px-1.5 py-0.5">Searching</span>
             </div>
-            <h3 class="text-base font-black uppercase text-black">Algoritmos de Búsqueda</h3>
-            <p class="text-xs font-bold text-black mt-2 leading-relaxed">
+            <h3 class="text-lg sm:text-xl font-black uppercase text-black">Algoritmos de Búsqueda</h3>
+            <p class="text-sm sm:text-base font-bold text-black mt-2 leading-relaxed">
               Localizan la posición de un valor clave objetivo (<em>target</em>) dentro de un espacio de memoria, o confirman su ausencia.
             </p>
           </div>
-          <div class="bg-white p-2.5 border-2 border-black space-y-1 text-[11px] font-bold">
+          <div class="bg-white p-3 border-2 border-black space-y-1.5 text-xs sm:text-sm font-bold">
             <div><strong>Secuencial $O(n)$:</strong> Funciona sin orden previo (fuerza bruta).</div>
             <div><strong>Bisección $O(\log n)$:</strong> Requiere orden; descarta el 50% por iteración.</div>
             <div><strong>Estimativa $O(\log \log n)$:</strong> Salto predictivo por interpolación.</div>
+            <div class="pt-1.5 border-t border-black/30 flex justify-end">
+              <button id="btnCard_fundamentos_bloque4" onclick="narrarCardIndividual('fundamentos_bloque4')" type="button" class="neo-button bg-white hover:bg-neoYellow text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-sm transition-all" title="Escuchar solo el Pilar 4: Búsqueda">
+                <i id="iconCard_fundamentos_bloque4" class="fa-solid fa-volume-high text-neoOrange"></i> <span>Oír Pilar 4</span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -242,60 +703,60 @@
       <!-- Resumen Visual de la Jerarquía de Eficiencia (Semáforo Neo-Brutalist) -->
       <div class="neo-box-static p-4 bg-[#FFFDF0] border-2 border-black">
         <div class="flex items-center justify-between mb-3 border-b-2 border-black pb-2 flex-wrap gap-2">
-          <span class="text-xs font-black uppercase tracking-wider flex items-center gap-1.5">
+          <span class="text-sm sm:text-base font-black uppercase tracking-wider flex items-center gap-1.5">
             <i class="fa-solid fa-chart-line text-neoOrange"></i> Escala Universal de Eficiencia Computacional:
           </span>
-          <span class="text-[11px] font-mono text-gray-900 font-bold bg-neoYellow px-2.5 py-1 border-2 border-black shadow-neoSm rounded-sm">
-            <i class="fa-solid fa-hand-pointer text-neoOrange me-1"></i> Clic en cualquier tarjeta para abrir Ficha Técnica &amp; Voz Narrada
+          <span class="text-xs sm:text-sm font-mono text-gray-900 font-bold bg-neoYellow px-3 py-1.5 border-2 border-black shadow-neoSm rounded-sm">
+            <i class="fa-solid fa-hand-pointer text-neoOrange me-1"></i> Clic en cada tarjeta para abrir su Ficha Técnica Panorámica &amp; Voz Individual
           </span>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 text-center text-xs font-mono font-bold">
-          <div onclick="openBigOModal('O(1)')" tabindex="0" role="button" class="p-2 border-2 border-black bg-neoGreen shadow-neoSm bigo-card-clickable" title="Clic para abrir detalles de O(1)">
+          <div onclick="openBigOModal('O(1)')" tabindex="0" role="button" class="p-2 border-2 border-black bg-neoGreen shadow-neoSm bigo-card-clickable cursor-pointer hover:translate-y-[-2px] transition-transform" title="Clic para abrir detalles y audio individual de O(1)">
             <span class="text-base block">🟢</span>
-            <div class="font-black text-sm text-black">O(1)</div>
-            <div class="text-[10px] text-gray-900 font-bold">Constante</div>
-            <div class="mt-1 pt-1 border-t border-black/30 text-[9px] font-sans flex items-center justify-center gap-1 font-black text-black">
-              <i class="fa-solid fa-volume-high text-neoDark"></i> Ficha &amp; Voz
+            <div class="font-black text-base sm:text-lg text-black">O(1)</div>
+            <div class="text-xs sm:text-sm font-bold text-gray-900 font-bold">Constante</div>
+            <div class="mt-1 pt-1 border-t border-black/30 text-xs font-bold font-sans flex items-center justify-center gap-1 font-black text-black">
+              <i class="fa-solid fa-headphones text-neoDark"></i> Ficha &amp; Voz
             </div>
           </div>
-          <div onclick="openBigOModal('O(log n)')" tabindex="0" role="button" class="p-2 border-2 border-black bg-neoCyan shadow-neoSm bigo-card-clickable" title="Clic para abrir detalles de O(log n)">
+          <div onclick="openBigOModal('O(log n)')" tabindex="0" role="button" class="p-2 border-2 border-black bg-neoCyan shadow-neoSm bigo-card-clickable cursor-pointer hover:translate-y-[-2px] transition-transform" title="Clic para abrir detalles y audio individual de O(log n)">
             <span class="text-base block">💎</span>
-            <div class="font-black text-sm text-black">O(log n)</div>
-            <div class="text-[10px] text-gray-900 font-bold">Logarítmica</div>
-            <div class="mt-1 pt-1 border-t border-black/30 text-[9px] font-sans flex items-center justify-center gap-1 font-black text-black">
-              <i class="fa-solid fa-volume-high text-neoDark"></i> Ficha &amp; Voz
+            <div class="font-black text-base sm:text-lg text-black">O(log n)</div>
+            <div class="text-xs sm:text-sm font-bold text-gray-900 font-bold">Logarítmica</div>
+            <div class="mt-1 pt-1 border-t border-black/30 text-xs font-bold font-sans flex items-center justify-center gap-1 font-black text-black">
+              <i class="fa-solid fa-headphones text-neoDark"></i> Ficha &amp; Voz
             </div>
           </div>
-          <div onclick="openBigOModal('O(n)')" tabindex="0" role="button" class="p-2 border-2 border-black bg-neoYellow shadow-neoSm bigo-card-clickable" title="Clic para abrir detalles de O(n)">
+          <div onclick="openBigOModal('O(n)')" tabindex="0" role="button" class="p-2 border-2 border-black bg-neoYellow shadow-neoSm bigo-card-clickable cursor-pointer hover:translate-y-[-2px] transition-transform" title="Clic para abrir detalles y audio individual de O(n)">
             <span class="text-base block">⚡</span>
-            <div class="font-black text-sm text-black">O(n)</div>
-            <div class="text-[10px] text-gray-900 font-bold">Lineal</div>
-            <div class="mt-1 pt-1 border-t border-black/30 text-[9px] font-sans flex items-center justify-center gap-1 font-black text-black">
-              <i class="fa-solid fa-volume-high text-neoDark"></i> Ficha &amp; Voz
+            <div class="font-black text-base sm:text-lg text-black">O(n)</div>
+            <div class="text-xs sm:text-sm font-bold text-gray-900 font-bold">Lineal</div>
+            <div class="mt-1 pt-1 border-t border-black/30 text-xs font-bold font-sans flex items-center justify-center gap-1 font-black text-black">
+              <i class="fa-solid fa-headphones text-neoDark"></i> Ficha &amp; Voz
             </div>
           </div>
-          <div onclick="openBigOModal('O(n log n)')" tabindex="0" role="button" class="p-2 border-2 border-black bg-[#C084FC] shadow-neoSm bigo-card-clickable" title="Clic para abrir detalles de O(n log n)">
+          <div onclick="openBigOModal('O(n log n)')" tabindex="0" role="button" class="p-2 border-2 border-black bg-[#C084FC] shadow-neoSm bigo-card-clickable cursor-pointer hover:translate-y-[-2px] transition-transform" title="Clic para abrir detalles y audio individual de O(n log n)">
             <span class="text-base block">⚖️</span>
-            <div class="font-black text-sm text-black">O(n log n)</div>
-            <div class="text-[10px] text-gray-900 font-bold">Linealítmica</div>
-            <div class="mt-1 pt-1 border-t border-black/30 text-[9px] font-sans flex items-center justify-center gap-1 font-black text-black">
-              <i class="fa-solid fa-volume-high text-neoDark"></i> Ficha &amp; Voz
+            <div class="font-black text-base sm:text-lg text-black">O(n log n)</div>
+            <div class="text-xs sm:text-sm font-bold text-gray-900 font-bold">Linealítmica</div>
+            <div class="mt-1 pt-1 border-t border-black/30 text-xs font-bold font-sans flex items-center justify-center gap-1 font-black text-black">
+              <i class="fa-solid fa-headphones text-neoDark"></i> Ficha &amp; Voz
             </div>
           </div>
-          <div onclick="openBigOModal('O(n²)')" tabindex="0" role="button" class="p-2 border-2 border-black bg-neoOrange shadow-neoSm bigo-card-clickable" title="Clic para abrir detalles de O(n²)">
+          <div onclick="openBigOModal('O(n²)')" tabindex="0" role="button" class="p-2 border-2 border-black bg-neoOrange shadow-neoSm bigo-card-clickable cursor-pointer hover:translate-y-[-2px] transition-transform" title="Clic para abrir detalles y audio individual de O(n²)">
             <span class="text-base block">⚠️</span>
-            <div class="font-black text-sm text-black">O(n²)</div>
-            <div class="text-[10px] text-gray-900 font-bold">Cuadrática</div>
-            <div class="mt-1 pt-1 border-t border-black/30 text-[9px] font-sans flex items-center justify-center gap-1 font-black text-black">
-              <i class="fa-solid fa-volume-high text-neoDark"></i> Ficha &amp; Voz
+            <div class="font-black text-base sm:text-lg text-black">O(n²)</div>
+            <div class="text-xs sm:text-sm font-bold text-gray-900 font-bold">Cuadrática</div>
+            <div class="mt-1 pt-1 border-t border-black/30 text-xs font-bold font-sans flex items-center justify-center gap-1 font-black text-black">
+              <i class="fa-solid fa-headphones text-neoDark"></i> Ficha &amp; Voz
             </div>
           </div>
-          <div onclick="openBigOModal('O(2ⁿ)')" tabindex="0" role="button" class="p-2 border-2 border-black bg-neoRed shadow-neoSm text-white bigo-card-clickable" title="Clic para abrir detalles de O(2ⁿ) / O(n!)">
+          <div onclick="openBigOModal('O(2ⁿ)')" tabindex="0" role="button" class="p-2 border-2 border-black bg-neoRed shadow-neoSm text-white bigo-card-clickable cursor-pointer hover:translate-y-[-2px] transition-transform" title="Clic para abrir detalles y audio individual de O(2ⁿ) / O(n!)">
             <span class="text-base block">💣</span>
-            <div class="font-black text-sm text-white">O(2ⁿ) / O(n!)</div>
-            <div class="text-[10px] text-white font-bold">Exponencial / Fact</div>
-            <div class="mt-1 pt-1 border-t border-white/40 text-[9px] font-sans flex items-center justify-center gap-1 font-black text-white">
-              <i class="fa-solid fa-volume-high text-neoYellow"></i> Ficha &amp; Voz
+            <div class="font-black text-base sm:text-lg text-white">O(2ⁿ) / O(n!)</div>
+            <div class="text-xs sm:text-sm font-bold text-white font-bold">Exponencial / Fact</div>
+            <div class="mt-1 pt-1 border-t border-white/40 text-xs font-bold font-sans flex items-center justify-center gap-1 font-black text-white">
+              <i class="fa-solid fa-headphones text-neoYellow"></i> Ficha &amp; Voz
             </div>
           </div>
         </div>
@@ -309,7 +770,7 @@
       <!-- Upper Controls: Data Type & Generation presets -->
       <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b-2 border-black">
         <div class="flex flex-wrap items-center gap-2">
-          <label class="text-xs font-black uppercase tracking-wider flex items-center gap-1.5">
+          <label class="text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-1.5">
             <i class="fa-solid fa-shapes text-neoOrange"></i> Tipo de Datos del Arreglo:
           </label>
           <div class="flex flex-wrap gap-1.5">
@@ -330,7 +791,7 @@
 
         <!-- Preset buttons -->
         <div class="flex flex-wrap items-center gap-1.5 text-xs">
-          <span class="font-bold text-gray-700">Presets:</span>
+          <span class="font-bold text-gray-800 text-xs sm:text-sm">Presets:</span>
           <button onclick="generateDatasetPreset('random')" class="neo-button bg-white px-2.5 py-1 text-xs"><i class="fa-solid fa-shuffle"></i> Aleatorio</button>
           <button onclick="generateDatasetPreset('sorted')" class="neo-button bg-neoGreen px-2.5 py-1 text-xs"><i class="fa-solid fa-arrow-up-1-9"></i> Ordenado</button>
           <button onclick="generateDatasetPreset('reverse')" class="neo-button bg-neoOrange px-2.5 py-1 text-xs"><i class="fa-solid fa-arrow-down-9-1"></i> Invertido</button>
@@ -343,10 +804,10 @@
         <!-- Input Array -->
         <div class="lg:col-span-8 space-y-1.5">
           <div class="flex justify-between items-center text-xs">
-            <span class="font-black uppercase flex items-center gap-1.5">
+            <span class="font-black uppercase flex items-center gap-1.5 text-xs sm:text-sm">
               <i class="fa-solid fa-code text-neoPurple"></i> Arreglo de Entrada editable:
             </span>
-            <span class="neo-badge bg-neoPink px-2 py-0.5 text-[11px] font-mono">
+            <span class="neo-badge bg-neoPink px-2.5 py-1 text-xs sm:text-sm font-mono font-bold">
               Elementos (n): <strong id="arrayLengthLabel">11</strong>
             </span>
           </div>
@@ -362,7 +823,7 @@
         <!-- Target & Speed Slider -->
         <div class="lg:col-span-4 bg-neoCream p-3 border-2 border-black space-y-2">
           <div class="flex items-center justify-between">
-            <label class="text-[11px] font-black uppercase">Target (Búsquedas):</label>
+            <label class="text-xs sm:text-sm font-black uppercase">Target (Búsquedas):</label>
             <div class="flex items-center gap-1">
               <input type="text" id="targetValueInput" value="67" 
                 class="w-20 bg-white border-2 border-black px-2 py-1 text-xs font-mono font-bold text-center">
@@ -371,11 +832,11 @@
               </button>
             </div>
           </div>
-          <div class="flex items-center justify-between text-xs pt-1 border-t border-black">
+          <div class="flex items-center justify-between text-xs sm:text-sm pt-1 border-t border-black">
             <span class="font-bold">Velocidad:</span>
             <input type="range" id="animSpeedSlider" min="20" max="600" value="220" step="20"
               class="w-32 h-2 bg-black rounded-none appearance-none cursor-pointer accent-neoYellow">
-            <span id="speedValueLabel" class="font-mono font-bold text-[11px] text-neoOrange">220 ms</span>
+            <span id="speedValueLabel" class="font-mono font-bold text-xs sm:text-sm font-bold text-neoOrange">220 ms</span>
           </div>
         </div>
       </div>
@@ -385,22 +846,22 @@
     <section id="laboratorio-algoritmos" class="space-y-3">
       <!-- Category Tabs -->
       <div class="flex flex-wrap gap-2">
-        <button onclick="filterAlgoCategory('all')" id="tab-all" class="neo-button bg-black text-white px-4 py-1.5 text-xs uppercase font-mono tracking-wider">
+        <button onclick="filterAlgoCategory('all')" id="tab-all" class="neo-button bg-black text-white px-4 py-2 text-xs sm:text-sm uppercase font-mono tracking-wider font-black">
           Todos (<span id="count-all">21</span>)
         </button>
-        <button onclick="filterAlgoCategory('sort')" id="tab-sort" class="neo-button bg-white text-black px-4 py-1.5 text-xs uppercase font-mono tracking-wider">
+        <button onclick="filterAlgoCategory('sort')" id="tab-sort" class="neo-button bg-white text-black px-4 py-2 text-xs sm:text-sm uppercase font-mono tracking-wider font-black">
           ⚡ Ordenamientos (9)
         </button>
-        <button onclick="filterAlgoCategory('search')" id="tab-search" class="neo-button bg-white text-black px-4 py-1.5 text-xs uppercase font-mono tracking-wider">
+        <button onclick="filterAlgoCategory('search')" id="tab-search" class="neo-button bg-white text-black px-4 py-2 text-xs sm:text-sm uppercase font-mono tracking-wider font-black">
           🔍 Búsquedas (6)
         </button>
-        <button onclick="filterAlgoCategory('complexity')" id="tab-complexity" class="neo-button bg-white text-black px-4 py-1.5 text-xs uppercase font-mono tracking-wider">
+        <button onclick="filterAlgoCategory('complexity')" id="tab-complexity" class="neo-button bg-white text-black px-4 py-2 text-xs sm:text-sm uppercase font-mono tracking-wider font-black">
           📐 Clases Big-O Puras (6)
         </button>
       </div>
 
-      <!-- Algorithmic Cards Grid -->
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-2.5" id="algoCardsGrid">
+      <!-- Algorithmic Cards Grid (Escalado Fluido Responsive 1 a 7 Columnas sin Desbordamiento) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-7 gap-2.5" id="algoCardsGrid">
         <!-- Injected via JavaScript -->
       </div>
     </section>
@@ -419,12 +880,12 @@
                 <span id="activeBadge" class="neo-badge bg-neoGreen text-black text-xs px-2.5 py-0.5 font-mono font-black">
                   O(n²)
                 </span>
-                <span id="activeTypeBadge" class="neo-badge bg-white text-black text-[10px] px-2 py-0.5 font-mono uppercase">
+                <span id="activeTypeBadge" class="neo-badge bg-white text-black text-xs sm:text-sm font-bold px-2 py-0.5 font-mono uppercase">
                   Ordenamiento
                 </span>
-                <h3 id="activeTitle" class="text-xl font-black text-black">Bubble Sort</h3>
+                <h3 id="activeTitle" class="text-xl sm:text-2xl md:text-3xl font-black text-black">Bubble Sort</h3>
               </div>
-              <p id="activeDescription" class="text-xs font-bold text-gray-700 mt-1">
+              <p id="activeDescription" class="text-sm sm:text-base font-bold text-gray-800 mt-1.5 leading-relaxed">
                 Compara pares adyacentes continuos e intercambia sus posiciones si están fuera de orden.
               </p>
             </div>
@@ -452,10 +913,10 @@
         <!-- ZERO-SCROLL LIVE EXECUTION MONITOR (Abajo del gráfico) -->
         <div class="border-3 border-black bg-white p-4 shadow-neoSm space-y-3">
           <div class="flex items-center justify-between border-b-2 border-black pb-2">
-            <span class="text-xs uppercase font-black tracking-wider flex items-center gap-2">
+            <span class="text-xs sm:text-sm uppercase font-black tracking-wider flex items-center gap-2">
               <i class="fa-solid fa-bolt text-neoOrange"></i> Monitor de Ejecución en Vivo:
             </span>
-            <span id="currentStepCounter" class="neo-badge bg-neoYellow text-black px-2 py-0.5 text-[10px] font-mono">
+            <span id="currentStepCounter" class="neo-badge bg-neoYellow text-black px-2 py-0.5 text-xs sm:text-sm font-bold font-mono">
               Paso: 0 / 0
             </span>
           </div>
@@ -467,10 +928,10 @@
                 STANDBY
               </span>
               <div>
-                <div id="spotlightMainText" class="text-xs md:text-sm font-black text-black">
+                <div id="spotlightMainText" class="text-sm sm:text-base font-black text-black">
                   Sistema preparado. Presiona "Ejecutar" o "Paso".
                 </div>
-                <div id="spotlightSubText" class="text-[11px] font-mono font-bold text-gray-700">
+                <div id="spotlightSubText" class="text-xs sm:text-sm font-mono font-bold text-gray-800">
                   Esperando activación del generador atómico...
                 </div>
               </div>
@@ -482,11 +943,11 @@
 
           <!-- Recent Operations Breadcrumb (Fixed 3-slot live feed, no scroll) -->
           <div>
-            <div class="text-[10px] font-black uppercase text-gray-600 mb-1">Últimos Eventos Procesados:</div>
+            <div class="text-xs sm:text-sm font-bold font-black uppercase text-gray-600 mb-1">Últimos Eventos Procesados:</div>
             <div id="liveStepHistory" class="space-y-1.5 font-mono text-xs">
               <div class="p-1.5 bg-white border border-black flex items-center justify-between text-gray-400">
                 <span>&bull; Esperando inicio...</span>
-                <span class="text-[10px]">-</span>
+                <span class="text-xs sm:text-sm font-bold">-</span>
               </div>
             </div>
           </div>
@@ -501,10 +962,10 @@
         <div>
           <div class="flex items-center justify-between pb-3 border-b-3 border-black">
             <div>
-              <h3 class="font-black text-black text-lg flex items-center gap-2">
+              <h3 class="font-black text-black text-lg sm:text-xl flex items-center gap-2">
                 <i class="fa-solid fa-cubes text-neoPurple"></i> Cinemática Espacial 3D (WebGL)
               </h3>
-              <p class="text-[11px] font-bold text-gray-700">Traslación física e interpolación en arco durante el swap.</p>
+              <p class="text-xs sm:text-sm font-bold text-gray-800">Traslación física e interpolación en arco durante el swap cinemático.</p>
             </div>
             <button onclick="reset3DCamera()" class="neo-button bg-white text-xs px-2.5 py-1" title="Restaurar Cámara">
               <i class="fa-solid fa-compass"></i>
@@ -515,7 +976,7 @@
           <div id="threeContainer" class="mt-4"></div>
 
           <!-- 3D Legend -->
-          <div class="pt-3 border-t-2 border-black grid grid-cols-2 sm:grid-cols-4 gap-2 text-[10px] font-mono font-bold">
+          <div class="pt-3 border-t-2 border-black grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono font-bold">
             <span class="flex items-center gap-1"><span class="w-3 h-3 bg-neoCyan border border-black inline-block"></span> Normal</span>
             <span class="flex items-center gap-1"><span class="w-3 h-3 bg-neoYellow border border-black inline-block"></span> Comparación</span>
             <span class="flex items-center gap-1"><span class="w-3 h-3 bg-neoPink border border-black inline-block"></span> Swap / Arco</span>
@@ -526,13 +987,13 @@
         <!-- FULL CODE VIEWER (100% VISIBLE EN LA DERECHA, SIN SCROLL) -->
         <div class="border-3 border-black bg-black p-4 shadow-neoSm space-y-2">
           <div class="flex items-center justify-between border-b border-gray-700 pb-2">
-            <span class="text-xs uppercase font-black text-white tracking-wider flex items-center gap-1.5">
+            <span class="text-xs sm:text-sm uppercase font-black text-white tracking-wider flex items-center gap-1.5">
               <i class="fa-solid fa-code text-neoCyan"></i> Código Fuente Completo del Algoritmo:
             </span>
-            <span class="neo-badge bg-neoYellow text-black px-2 py-0.5 text-[10px] font-mono font-bold">JavaScript Canónico</span>
+            <span class="neo-badge bg-neoYellow text-black px-2 py-0.5 text-xs sm:text-sm font-bold font-mono font-bold">JavaScript Canónico</span>
           </div>
           <!-- Full height pre tag, visible vertically & horizontally -->
-          <pre id="codePreview" class="font-mono text-xs leading-relaxed text-neoYellow bg-black p-1 m-0 whitespace-pre-wrap break-words overflow-visible w-full"></pre>
+          <pre id="codePreview" class="font-mono text-xs sm:text-sm leading-relaxed text-neoYellow bg-black p-2 m-0 whitespace-pre-wrap break-words overflow-visible w-full"></pre>
         </div>
 
       </div>
@@ -544,61 +1005,61 @@
       
       <!-- Metric 1: CPU Time -->
       <div class="neo-box p-3 bg-neoCyan">
-        <div class="text-[10px] font-black uppercase text-gray-800">Tiempo de CPU:</div>
+        <div class="text-xs font-black uppercase text-gray-900">Tiempo de CPU:</div>
         <div id="metricExecutionTime" class="text-xl md:text-2xl font-black font-mono">0.00 ms</div>
-        <div class="text-[9px] font-mono font-bold mt-0.5">performance.now()</div>
+        <div class="text-xs sm:text-sm font-mono font-bold mt-1 text-gray-800">performance.now()</div>
       </div>
 
       <!-- Metric 2: Comparisons -->
       <div class="neo-box p-3 bg-neoYellow">
-        <div class="text-[10px] font-black uppercase text-gray-800">Comparaciones:</div>
+        <div class="text-xs font-black uppercase text-gray-900">Comparaciones:</div>
         <div id="metricComparisons" class="text-xl md:text-2xl font-black font-mono">0</div>
-        <div class="text-[9px] font-mono font-bold mt-0.5" id="metricTheoreticalOps">f(n) teórico</div>
+        <div class="text-xs font-bold font-mono font-bold mt-0.5" id="metricTheoreticalOps">f(n) teórico</div>
       </div>
 
       <!-- Metric 3: Swaps -->
       <div class="neo-box p-3 bg-neoPink">
-        <div class="text-[10px] font-black uppercase text-gray-800">Intercambios / Swaps:</div>
+        <div class="text-xs font-black uppercase text-gray-900">Intercambios / Swaps:</div>
         <div id="metricSwaps" class="text-xl md:text-2xl font-black font-mono">0</div>
-        <div class="text-[9px] font-mono font-bold mt-0.5">Movimientos físicos</div>
+        <div class="text-xs sm:text-sm font-mono font-bold mt-1 text-gray-800">Movimientos físicos</div>
       </div>
 
       <!-- Metric 4: Memory Accesses -->
       <div class="neo-box p-3 bg-neoGreen">
-        <div class="text-[10px] font-black uppercase text-gray-800">Accesos Memoria:</div>
+        <div class="text-xs font-black uppercase text-gray-900">Accesos Memoria:</div>
         <div id="metricMemAccess" class="text-xl md:text-2xl font-black font-mono">0</div>
-        <div class="text-[9px] font-mono font-bold mt-0.5">Lecturas + Escrituras</div>
+        <div class="text-xs sm:text-sm font-mono font-bold mt-1 text-gray-800">Lecturas + Escrituras</div>
       </div>
 
       <!-- Metric 5: Auxiliary Space -->
       <div class="neo-box p-3 bg-neoOrange">
-        <div class="text-[10px] font-black uppercase text-black">Espacio Auxiliar:</div>
+        <div class="text-xs font-black uppercase text-black">Espacio Auxiliar:</div>
         <div id="metricAuxSpace" class="text-xl md:text-2xl font-black font-mono">O(1)</div>
-        <div class="text-[9px] font-mono font-bold mt-0.5" id="metricAuxDetail">In-place</div>
+        <div class="text-xs font-bold font-mono font-bold mt-0.5" id="metricAuxDetail">In-place</div>
       </div>
 
       <!-- Metric 6: Growth Grade -->
       <div class="neo-box p-3 bg-white">
-        <div class="text-[10px] font-black uppercase text-gray-800">Escalabilidad:</div>
+        <div class="text-xs font-black uppercase text-gray-900">Escalabilidad:</div>
         <div id="metricScalability" class="text-base md:text-lg font-black font-mono uppercase truncate">Óptima</div>
-        <div class="text-[9px] font-mono text-gray-600 truncate" id="metricFormulaLabel">f(n)</div>
+        <div class="text-xs font-bold font-mono text-gray-600 truncate" id="metricFormulaLabel">f(n)</div>
       </div>
 
     </div>
 
     <!-- COMPLETE COMPARATIVE MATRIX -->
-    <section class="neo-box-static p-5 bg-white mb-8">
+    <section id="matriz-comparativa" class="neo-box-static p-6 sm:p-8 bg-white mb-8">
       <div class="flex flex-col sm:flex-row justify-between sm:items-center pb-3 border-b-3 border-black gap-2 mb-3">
         <div>
-          <h3 class="font-black text-black text-xl uppercase flex items-center gap-2">
+          <h3 class="font-black text-black text-2xl sm:text-3xl uppercase flex items-center gap-2">
             <i class="fa-solid fa-table-cells text-neoOrange"></i> Matriz Comparativa General de Algoritmos
           </h3>
-          <p class="text-xs font-bold text-gray-600">Calculada en tiempo real para el arreglo cargado n = <strong class="text-black font-mono activeNVal">11</strong></p>
+          <p class="text-sm sm:text-base font-bold text-gray-700 mt-1">Calculada en tiempo real para el arreglo cargado n = <strong class="text-black font-mono activeNVal">11</strong></p>
         </div>
       </div>
 
       <div class="overflow-x-auto">
-        <table class="w-full text-left text-xs border-collapse">
+        <table class="w-full text-left text-xs sm:text-sm border-collapse">
           <thead>
             <tr class="bg-black text-white font-mono uppercase font-black">
               <th class="p-2.5 border-2 border-black">Algoritmo</th>
@@ -648,12 +1109,12 @@
             </div>
             
             <!-- PÁRRAFO 1: Trayectoria, Formación y Foco en I+D+i -->
-            <p class="mb-3">
+            <p class="mb-3 text-base sm:text-lg leading-relaxed">
               <strong>Ingeniero en Sistemas y Computación</strong> con Postgrado en <strong>Ingeniería de Software</strong> y Maestría en <strong>Sistemas Mención Gerencial</strong> (<em>Universidad Dominicana O&amp;M</em>). Con más de <strong>15 años de trayectoria</strong>, transformo problemas de alta complejidad en soluciones escalables. Durante el último año, he centrado mi trabajo en <strong>I+D+i (Investigación, Desarrollo e Innovación)</strong>, explorando arquitecturas de <strong>IA Generativa (RAG / LLMs)</strong>, integración de agentes autónomos con bases de datos y orquestación de APIs empresariales.
             </p>
     
             <!-- PÁRRAFO 2: ADN Técnico, Pasión por los Casos de Uso y Docencia Práctica -->
-            <p class="mb-0">
+            <p class="mb-0 text-base sm:text-lg leading-relaxed">
               🔬 <strong>Mi motor es el aprendizaje a través de los retos:</strong> me apasionan los <em>casos de uso reales</em>, las <strong>pruebas técnicas rigurosas</strong>, la investigación profunda y el diseño de soluciones directas a problemas de ingeniería. 🎓 Como <strong>docente universitario</strong> y creador del canal educativo <strong>@JuancitoDevV</strong>, comparto este conocimiento práctico mediante ejercicios y proyectos de código abierto para acercar la tecnología a problemas reales. 🚀
             </p>
     
@@ -781,7 +1242,7 @@
        DISEÑO DE 3 COLUMNAS EXPANDIDO HORIZONTAL Y VERTICALMENTE (CERO SCROLL EN ESCRITORIO)
   ========================================================================== -->
   <div id="bigOModal" class="fixed inset-0 z-[100] hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 big-o-modal-overlay" onclick="handleModalBackdropClick(event)" role="dialog" aria-modal="true" aria-labelledby="modalBigOTitle">
-    <div class="relative w-full max-w-[96vw] xl:max-w-[95vw] 2xl:max-w-[1720px] h-[92vh] max-h-[94vh] bg-[#FFFDF0] border-3 border-black shadow-neoLg rounded-lg flex flex-col overflow-hidden big-o-modal-content" onclick="event.stopPropagation()">
+    <div class="relative w-full max-w-[98vw] sm:max-w-[96vw] xl:max-w-[95vw] 2xl:max-w-[1720px] h-[94vh] sm:h-[92vh] max-h-[96vh] sm:max-h-[94vh] bg-[#FFFDF0] border-3 border-black shadow-neoLg rounded-lg flex flex-col overflow-hidden big-o-modal-content" onclick="event.stopPropagation()">
       
       <!-- Modal Header (Colores dinámicos según complejidad, compacto y legible) -->
       <div id="modalBigOHeader" class="py-2 px-4 sm:px-5 border-b-3 border-black flex items-center justify-between flex-wrap gap-2 bg-neoGreen transition-colors duration-200">
@@ -792,7 +1253,7 @@
               <h2 id="modalBigOTitle" class="text-xl sm:text-2xl font-black font-mono tracking-tight text-black">O(1) · Tiempo Constante</h2>
               <span id="modalBigOBadge" class="badge bg-black text-white px-2 py-0.5 text-xs uppercase font-mono tracking-wider font-bold">Óptimo Absoluto</span>
             </div>
-            <p id="modalBigOSubtitle" class="text-[11px] sm:text-xs font-bold text-gray-900 mt-0.5">Escala Universal de Eficiencia Algorítmica</p>
+            <p id="modalBigOSubtitle" class="text-xs sm:text-sm font-bold text-gray-900 mt-0.5">Escala Universal de Eficiencia Algorítmica</p>
           </div>
         </div>
 
@@ -837,25 +1298,25 @@
         </div>
       </div>
 
-      <!-- Modal Body (3 Columnas Panorámicas en Desktop, Cero Scroll Vertical en Pantalla Completa) -->
-      <div class="p-3 sm:p-4 flex-1 overflow-y-auto lg:overflow-hidden text-black font-sans leading-relaxed">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 h-full items-stretch">
+      <!-- Modal Body (Responsivo Multidispositivo: 1 Col en Móvil, 2 Cols en Laptop/Tablet, 3 Cols en Escritorio Grande) -->
+      <div class="p-3 sm:p-4 flex-1 overflow-y-auto text-black font-sans leading-relaxed custom-modal-scrollbar">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-start">
           
-          <!-- ================= COLUMNA 1: TEORÍA MATEMÁTICA, CRECIMIENTO & VIABILIDAD (4 cols) ================= -->
-          <div class="lg:col-span-4 flex flex-col justify-between gap-2.5 h-full">
+          <!-- ================= COLUMNA 1: TEORÍA MATEMÁTICA, CRECIMIENTO & VIABILIDAD ================= -->
+          <div class="col-span-12 lg:col-span-6 xl:col-span-4 flex flex-col gap-2.5">
             
             <!-- Definición Formal & Cinemática -->
             <div class="neo-box p-3 bg-white border-2 border-black flex flex-col justify-between">
               <div>
                 <div class="flex items-center justify-between mb-1 pb-1 border-b-2 border-black text-xs font-black uppercase tracking-wider text-neoOrange">
                   <span class="flex items-center gap-1.5"><i class="fa-solid fa-brain"></i> Fundamento Formal</span>
-                  <span class="badge bg-black text-white text-[10px] font-mono">Teoría Pura</span>
+                  <span class="badge bg-black text-white text-xs sm:text-sm font-bold font-mono">Teoría Pura</span>
                 </div>
                 <p id="modalBigODefinition" class="text-xs sm:text-sm font-bold text-gray-900 leading-snug">
                   Cargando definición...
                 </p>
               </div>
-              <div id="modalBigOKinetic" class="mt-2 p-2 bg-[#F8FAFC] border-2 border-black/80 font-mono text-[11px] sm:text-xs text-gray-800 rounded-sm">
+              <div id="modalBigOKinetic" class="mt-2 p-2 bg-[#F8FAFC] border-2 border-black/80 font-mono text-xs sm:text-sm font-bold text-gray-800 rounded-sm">
                 Cargando cinemática...
               </div>
             </div>
@@ -867,7 +1328,7 @@
                   <i class="fa-solid fa-chart-simple text-neoGreen"></i> Tasa de Crecimiento Matemático
                 </div>
                 <div class="overflow-x-auto">
-                  <table class="w-full text-left font-mono text-[11px] border-2 border-black">
+                  <table class="w-full text-left font-mono text-xs sm:text-sm font-bold border-2 border-black">
                     <thead class="bg-black text-white font-bold">
                       <tr>
                         <th class="p-1 border-r border-gray-600">Entrada (n)</th>
@@ -886,42 +1347,42 @@
               <div id="modalBigOViabilityBox" class="mt-2 p-2 border-2 border-black bg-neoGreen/20 flex items-center gap-2.5">
                 <i id="modalBigOViabilityIcon" class="fa-solid fa-circle-check text-xl text-green-700"></i>
                 <div>
-                  <div id="modalBigOViabilityTitle" class="font-black text-[11px] uppercase tracking-wider">Aprobado para Alta Escala</div>
-                  <div id="modalBigOViabilityDesc" class="text-[10px] text-gray-800 font-bold leading-tight">Comportamiento ideal en entornos de producción masiva.</div>
+                  <div id="modalBigOViabilityTitle" class="font-black text-xs sm:text-sm font-bold uppercase tracking-wider">Aprobado para Alta Escala</div>
+                  <div id="modalBigOViabilityDesc" class="text-xs sm:text-sm font-bold text-gray-800 font-bold leading-tight">Comportamiento ideal en entornos de producción masiva.</div>
                 </div>
               </div>
             </div>
 
           </div>
 
-          <!-- ================= COLUMNA 2: REPRESENTACIÓN ANIMADA (.GIF) & ALGORITMOS (4 cols) ================= -->
-          <div class="lg:col-span-4 flex flex-col justify-between gap-2.5 h-full">
+          <!-- ================= COLUMNA 2: REPRESENTACIÓN ANIMADA (.GIF) & ALGORITMOS ================= -->
+          <div class="col-span-12 lg:col-span-6 xl:col-span-4 flex flex-col gap-2.5">
             
             <!-- Contenedor del GIF Animado Oficial (Expandido al 100% de Ancho sin Deformación) -->
-            <div class="neo-box p-3 bg-white border-2 border-black flex-1 flex flex-col justify-between h-full">
-              <div class="flex-1 flex flex-col justify-between">
+            <div class="neo-box p-3 bg-white border-2 border-black flex flex-col gap-2">
+              <div>
                 <div class="flex items-center justify-between mb-1.5 pb-1 border-b-2 border-black flex-wrap gap-1">
                   <span class="text-xs font-black uppercase tracking-wider text-neoDark flex items-center gap-1.5">
                     <i class="fa-solid fa-film text-neoPurple"></i> Representación Animada (.GIF)
                   </span>
-                  <span id="modalBigOGifLabel" class="badge bg-black text-neoYellow border border-black font-mono text-[10px]">Asset Oficial</span>
+                  <span id="modalBigOGifLabel" class="badge bg-black text-neoYellow border border-black font-mono text-xs sm:text-sm font-bold">Asset Oficial</span>
                 </div>
                 
                 <!-- Marco del GIF al 100% de Ancho, Altura Adaptativa Proporcional -->
-                <div class="w-full flex-1 p-2 bg-[#F4EFE6] border-2 border-black shadow-neoSm flex flex-col items-center justify-center min-h-[240px] sm:min-h-[260px] lg:min-h-[285px] max-h-[305px] overflow-hidden">
-                  <img id="modalBigOGifImg" src="" alt="Animación Algoritmo" class="w-full h-auto max-h-[245px] sm:max-h-[260px] lg:max-h-[265px] object-contain border border-black rounded shadow-sm bg-white transition-transform duration-200">
-                  <div id="modalBigOGifCaption" class="mt-1.5 text-center font-mono font-bold text-[11px] text-gray-900 leading-tight w-full px-1">
+                <div class="w-full p-2 bg-[#F4EFE6] border-2 border-black shadow-neoSm flex flex-col items-center justify-center min-h-[200px] sm:min-h-[230px] lg:min-h-[250px] max-h-[280px] overflow-hidden">
+                  <img id="modalBigOGifImg" src="" alt="Animación Algoritmo" class="w-full h-auto max-h-[190px] sm:max-h-[210px] lg:max-h-[230px] object-contain border border-black rounded shadow-sm bg-white transition-transform duration-200">
+                  <div id="modalBigOGifCaption" class="mt-1.5 text-center font-mono font-bold text-xs sm:text-sm text-gray-900 leading-tight w-full px-1">
                     Cargando visualización...
                   </div>
                 </div>
               </div>
 
-              <!-- Lista de Algoritmos en este grupo (Ajuste Compacto para Preservar Cero Scroll) -->
-              <div class="mt-2 pt-1.5 border-t-2 border-black">
-                <div class="text-[11px] font-mono font-black text-black uppercase mb-1">
+              <!-- Lista de Algoritmos en este grupo -->
+              <div class="mt-1 pt-1.5 border-t-2 border-black">
+                <div class="text-xs sm:text-sm font-mono font-black text-black uppercase mb-1">
                   Algoritmos insignes en esta categoría:
                 </div>
-                <div id="modalBigOAlgList" class="flex flex-wrap gap-1 max-h-[80px] overflow-y-auto">
+                <div id="modalBigOAlgList" class="flex flex-wrap gap-1 max-h-[90px] overflow-y-auto">
                   <!-- Badges inyectados vía JS -->
                 </div>
               </div>
@@ -929,42 +1390,42 @@
 
           </div>
 
-          <!-- ================= COLUMNA 3: CÓDIGO CANÓNICO & USOS EN LA INDUSTRIA (4 cols) ================= -->
-          <div class="lg:col-span-4 flex flex-col justify-between gap-2.5 h-full">
+          <!-- ================= COLUMNA 3: CÓDIGO CANÓNICO & USOS EN LA INDUSTRIA ================= -->
+          <div class="col-span-12 lg:col-span-12 xl:col-span-4 flex flex-col gap-2.5">
             
             <!-- Código Canónico de Ejemplo -->
-            <div class="neo-box p-3 bg-white border-2 border-black flex-1 flex flex-col justify-between">
+            <div class="neo-box p-3 bg-white border-2 border-black flex flex-col gap-2">
               <div>
                 <div class="flex items-center justify-between mb-1 pb-1 border-b-2 border-black">
                   <span class="text-xs font-black uppercase tracking-wider text-neoDark flex items-center gap-1.5">
                     <i class="fa-solid fa-code text-neoOrange"></i> Código Modelo Canónico
                   </span>
-                  <span id="modalBigOCodeType" class="badge bg-neoCyan text-black border border-black font-mono text-[10px]">Patrón Canónico</span>
+                  <span id="modalBigOCodeType" class="badge bg-neoCyan text-black border border-black font-mono text-xs sm:text-sm font-bold">Patrón Canónico</span>
                 </div>
-                <pre id="modalBigOCode" class="p-2 bg-[#0D1117] text-[#54F18F] font-mono text-[11px] leading-relaxed rounded border-2 border-black overflow-x-auto shadow-inner max-h-[140px] sm:max-h-[160px] lg:max-h-[175px]">
+                <pre id="modalBigOCode" class="p-2 bg-[#0D1117] text-[#54F18F] font-mono text-xs sm:text-sm font-bold leading-relaxed rounded border-2 border-black overflow-x-auto shadow-inner max-h-[140px] sm:max-h-[160px] lg:max-h-[185px]">
                   // Código de ejemplo
                 </pre>
-                <p id="modalBigOCodeExplanation" class="text-[11px] font-bold text-gray-800 mt-1 leading-snug">
+                <p id="modalBigOCodeExplanation" class="text-xs sm:text-sm font-bold text-gray-800 mt-1 leading-snug">
                   Explicación del bloque de código.
                 </p>
               </div>
 
               <!-- Aplicaciones Industriales & Regla de Oro -->
-              <div class="mt-1.5 pt-1.5 border-t-2 border-black space-y-1.5">
+              <div class="mt-1 pt-1.5 border-t-2 border-black space-y-1.5">
                 <div>
-                  <div class="flex items-center gap-1 mb-1 text-[11px] font-black uppercase tracking-wider text-neoDark">
+                  <div class="flex items-center gap-1 mb-1 text-xs sm:text-sm font-black uppercase tracking-wider text-neoDark">
                     <i class="fa-solid fa-industry text-neoPink"></i> Usos en Arquitectura Real:
                   </div>
-                  <ul id="modalBigOUsesList" class="space-y-0.5 text-[10px] sm:text-[11px] font-bold text-gray-800 list-disc list-inside">
+                  <ul id="modalBigOUsesList" class="space-y-0.5 text-xs sm:text-sm font-bold text-gray-800 list-disc list-inside">
                     <!-- Generado dinámicamente -->
                   </ul>
                 </div>
 
                 <div class="p-1.5 bg-neoYellow/30 border-2 border-black rounded-sm">
-                  <div class="text-[10px] font-black uppercase tracking-wider text-neoOrange flex items-center gap-1">
+                  <div class="text-xs sm:text-sm font-black uppercase tracking-wider text-neoOrange flex items-center gap-1">
                     <i class="fa-solid fa-lightbulb"></i> Regla de Oro:
                   </div>
-                  <div id="modalBigOGoldenRule" class="text-[10px] sm:text-[11px] font-bold text-gray-900 mt-0.5 leading-tight">
+                  <div id="modalBigOGoldenRule" class="text-xs sm:text-sm font-bold text-gray-900 mt-0.5 leading-tight">
                     Regla práctica.
                   </div>
                 </div>
@@ -986,6 +1447,325 @@
             <i class="fa-solid fa-check me-1 text-neoGreen"></i> Entendido, Cerrar
           </button>
         </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL UNIVERSAL PANORÁMICO DE SIMULACIÓN Y LABORATORIO CINEMÁTICO 2D (JPV PRO)
+       REPRODUCE, EMULA, CONFIGURA DATASETS Y NARRA CUALQUIERA DE LOS 21 ALGORITMOS
+  ========================================================================== -->
+  <div id="algoSimulationModal" class="fixed inset-0 z-[100] hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 big-o-modal-overlay" onclick="handleAlgoModalBackdropClick(event)" role="dialog" aria-modal="true" aria-labelledby="modalAlgoTitle">
+    <div class="relative w-full max-w-[98vw] sm:max-w-[96vw] xl:max-w-[95vw] 2xl:max-w-[1720px] h-[94vh] sm:h-[92vh] max-h-[96vh] sm:max-h-[94vh] bg-[#FFFDF0] border-3 border-black shadow-neoLg rounded-lg flex flex-col overflow-hidden big-o-modal-content" onclick="event.stopPropagation()">
+      
+      <!-- Modal Header -->
+      <div id="modalAlgoHeader" class="py-2.5 px-4 sm:px-5 border-b-3 border-black flex items-center justify-between flex-wrap gap-2 bg-neoYellow transition-colors duration-200">
+        <div class="flex items-center gap-3">
+          <span id="modalAlgoIcon" class="text-3xl filter drop-shadow">⚡</span>
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <h2 id="modalAlgoTitle" class="text-xl sm:text-2xl font-black font-mono tracking-tight text-black">Bubble Sort</h2>
+              <span id="modalAlgoBigOBadge" class="badge bg-black text-white px-2 py-0.5 text-xs uppercase font-mono tracking-wider font-bold">O(n²)</span>
+              <span id="modalAlgoCategoryBadge" class="badge bg-white text-black border border-black px-2 py-0.5 text-xs uppercase font-mono font-bold">Ordenamiento</span>
+              <span id="modalAlgoSpaceBadge" class="badge bg-[#C084FC] text-black border border-black px-2 py-0.5 text-xs uppercase font-mono font-bold">Esp: O(1)</span>
+            </div>
+            <p id="modalAlgoSubtitle" class="text-xs sm:text-sm font-bold text-gray-900 mt-0.5">Laboratorio Cinemático &amp; Simulación Interactiva en Vivo</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <!-- Quick Selector Dropdown -->
+          <div class="flex items-center gap-1.5 bg-white border-2 border-black px-2 py-1 shadow-neoSm rounded-sm">
+            <label for="modalAlgoSelectDropdown" class="text-xs font-mono font-black uppercase text-black hidden sm:inline-flex items-center gap-1">
+              <i class="fa-solid fa-list-check text-neoOrange"></i> Algoritmo:
+            </label>
+            <select id="modalAlgoSelectDropdown" onchange="openAlgoModal(this.value)" class="bg-transparent font-mono font-bold text-xs sm:text-sm focus:outline-none cursor-pointer">
+              <!-- Dynamically populated -->
+            </select>
+          </div>
+
+          <button onclick="closeAlgoModal()" type="button" class="neo-button bg-white text-black hover:bg-neoRed hover:text-white px-3 py-1 text-xs sm:text-sm font-black transition-all flex items-center gap-1.5" title="Cerrar ventana (Esc)">
+            <i class="fa-solid fa-xmark"></i> <span>Cerrar</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Toolbar de Narración por Voz (Web Speech API - Estándar JPV Pro) -->
+      <div class="bg-white border-b-2 border-black py-1.5 px-4 sm:px-5 flex items-center justify-between flex-wrap gap-2 shadow-sm">
+        <div class="flex items-center gap-2 flex-wrap">
+          <button id="btnModalSpeechPlay" onclick="narrarAlgoModalActual()" type="button" class="neo-button bg-neoYellow px-3 py-1 text-xs uppercase font-black flex items-center gap-1.5 text-black" title="Escuchar explicación hablada">
+            <i class="fa-solid fa-play text-neoDark"></i> <span>Escuchar Explicación Completa</span>
+          </button>
+          <button id="btnModalSpeechPause" onclick="pausarNarracionAlgoModal()" type="button" class="neo-button bg-white px-3 py-1 text-xs uppercase font-black hidden items-center gap-1.5 text-black">
+            <i class="fa-solid fa-pause text-neoOrange"></i> <span>Pausar</span>
+          </button>
+          <button id="btnModalSpeechResume" onclick="reanudarNarracionAlgoModal()" type="button" class="neo-button bg-neoCyan px-3 py-1 text-xs uppercase font-black hidden items-center gap-1.5 text-black">
+            <i class="fa-solid fa-play text-neoDark"></i> <span>Reanudar</span>
+          </button>
+          <button id="btnModalSpeechStop" onclick="detenerNarracionAlgoModal()" type="button" class="neo-button bg-neoRed text-white px-3 py-1 text-xs uppercase font-black hidden items-center gap-1.5">
+            <i class="fa-solid fa-stop"></i> <span>Detener</span>
+          </button>
+
+          <!-- Indicador de Estado del Audio con Onda Verde Pulsante -->
+          <div id="modalSpeechStatusBadge" class="hidden items-center gap-2 px-2.5 py-0.5 bg-black text-white text-xs font-mono font-bold rounded-sm border border-black shadow-sm">
+            <span class="audio-wave-dot"></span>
+            <span id="modalSpeechStatusText">Narrando algoritmo...</span>
+          </div>
+        </div>
+
+        <!-- Widget de Control de Volumen Táctil y Slider Sincronizado -->
+        <div class="flex items-center gap-1.5 p-1 bg-[#FFFDF0] border-2 border-black rounded shadow-neoSm">
+          <button type="button" onclick="cambiarVolumenAlgoModal(-0.1)" class="neo-button bg-white px-2 py-0.5 text-xs font-black" title="Bajar volumen (-10%)">-</button>
+          <div class="flex items-center gap-1.5 px-1.5">
+            <i id="modalSpeechVolumeIcon" class="fa-solid fa-volume-high text-sm text-black"></i>
+            <input id="modalSpeechVolumeSlider" type="range" min="0" max="1" step="0.05" value="1" oninput="setVolumenAlgoModal(this.value)" class="tts-volume-slider w-20 sm:w-24 h-2" style="accent-color: #DA291C;">
+          </div>
+          <button type="button" onclick="cambiarVolumenAlgoModal(0.1)" class="neo-button bg-white px-2 py-0.5 text-xs font-black" title="Subir volumen (+10%)">+</button>
+          <span id="modalSpeechVolumeBadge" class="bg-black text-white px-2 py-0.5 text-xs font-mono font-bold rounded-sm border border-black min-w-[42px] text-center">100%</span>
+        </div>
+      </div>
+
+      <!-- Modal Body (2 Columnas Panorámicas Responsivas con Scrollbar Táctil sin Recortes) -->
+      <div class="p-3 sm:p-4 flex-1 overflow-y-auto text-black font-sans leading-relaxed custom-modal-scrollbar">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-start">
+          
+          <!-- COLUMNA IZQUIERDA: CONTROLES DE DATASET, STAGE 2D Y MONITOR -->
+          <div class="col-span-12 lg:col-span-7 flex flex-col gap-2.5">
+            
+            <!-- CONTROLES DE ENTRADA Y PRESETS DENTRO DEL MODAL -->
+            <div class="neo-box p-2.5 bg-white border-2 border-black space-y-2">
+              <div class="flex flex-wrap items-center justify-between gap-2 text-xs">
+                <!-- Data type pills -->
+                <div class="flex flex-wrap items-center gap-1">
+                  <span class="font-black uppercase text-xs flex items-center gap-1">
+                    <i class="fa-solid fa-shapes text-neoOrange"></i> Tipo:
+                  </span>
+                  <button onclick="setDataType('numbers')" id="btn-modal-type-numbers" class="neo-button bg-neoCyan px-2 py-0.5 text-xs uppercase font-mono font-bold">123 Números</button>
+                  <button onclick="setDataType('letters')" id="btn-modal-type-letters" class="neo-button bg-white px-2 py-0.5 text-xs uppercase font-mono font-bold">ABC Letras</button>
+                  <button onclick="setDataType('objects')" id="btn-modal-type-objects" class="neo-button bg-white px-2 py-0.5 text-xs uppercase font-mono font-bold">📦 Objetos (Peso/ID)</button>
+                  <button onclick="setDataType('colors')" id="btn-modal-type-colors" class="neo-button bg-white px-2 py-0.5 text-xs uppercase font-mono font-bold">🎨 Arcoíris</button>
+                </div>
+                <!-- Presets -->
+                <div class="flex flex-wrap items-center gap-1">
+                  <span class="font-bold text-gray-800 text-xs">Presets:</span>
+                  <button onclick="generateDatasetPreset('random')" class="neo-button bg-white px-2 py-0.5 text-xs font-mono"><i class="fa-solid fa-shuffle"></i> Aleatorio</button>
+                  <button onclick="generateDatasetPreset('sorted')" class="neo-button bg-neoGreen px-2 py-0.5 text-xs font-mono"><i class="fa-solid fa-arrow-up-1-9"></i> Ordenado</button>
+                  <button onclick="generateDatasetPreset('reverse')" class="neo-button bg-neoOrange px-2 py-0.5 text-xs font-mono"><i class="fa-solid fa-arrow-down-9-1"></i> Invertido</button>
+                  <button onclick="generateDatasetPreset('nearly')" class="neo-button bg-neoYellow px-2 py-0.5 text-xs font-mono"><i class="fa-solid fa-wave-square"></i> Casi</button>
+                </div>
+              </div>
+
+              <!-- Input text + Target + Count -->
+              <div class="flex items-center gap-2 flex-wrap sm:flex-nowrap">
+                <div class="flex-1 flex gap-1 items-center">
+                  <input type="text" id="modalDataInputBox" value="" class="w-full bg-[#FFFBEA] text-black font-mono font-bold text-xs sm:text-sm px-2.5 py-1 border-2 border-black focus:outline-none focus:bg-white" placeholder="Elementos separados por coma">
+                  <button onclick="applyModalCustomInput()" class="neo-button bg-neoGreen px-3 py-1 text-xs uppercase font-bold whitespace-nowrap">
+                    <i class="fa-solid fa-check"></i> Cargar
+                  </button>
+                </div>
+                <div class="flex items-center gap-1.5 text-xs">
+                  <span class="neo-badge bg-neoPink px-2 py-1 font-mono font-bold whitespace-nowrap">
+                    n = <strong id="modalArrayLengthLabel">11</strong>
+                  </span>
+                  <div class="flex items-center gap-1 bg-[#F8FAFC] border-2 border-black px-1.5 py-0.5">
+                    <span class="font-bold text-xs uppercase">Target:</span>
+                    <input type="text" id="modalTargetValueInput" value="19" class="w-14 bg-white border border-black text-center text-xs font-mono font-bold px-1 py-0.5">
+                    <button onclick="pickRandomTarget()" class="neo-button bg-neoYellow px-1.5 py-0.5 text-xs" title="Target al azar"><i class="fa-solid fa-crosshairs"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2D INTERACTIVE STAGE IN MODAL -->
+            <div class="neo-box p-3 bg-white border-2 border-black flex-1 flex flex-col justify-between">
+              <div class="flex items-center justify-between pb-1.5 mb-1.5 border-b-2 border-black">
+                <span class="text-xs font-black uppercase tracking-wider flex items-center gap-1.5 text-neoDark">
+                  <i class="fa-solid fa-chart-column text-neoCyan"></i> Cinemática de Animación 2D en Tiempo Real
+                </span>
+                <span id="modalCurrentStepCounter" class="neo-badge bg-neoYellow text-black px-2 py-0.5 text-xs font-mono font-bold">
+                  Paso: 0 / 0
+                </span>
+              </div>
+
+              <!-- Visual 2D Canvas Track -->
+              <div id="modalCanvasViewport" class="min-h-[220px] max-h-[250px] p-2 bg-[#FFFDF0] border-2 border-black flex items-end justify-center overflow-hidden relative shadow-neoSm">
+                <!-- Dynamically rendered bars -->
+              </div>
+
+              <!-- Playback controls & Speed -->
+              <div class="mt-2 pt-2 border-t-2 border-black flex items-center justify-between flex-wrap gap-2">
+                <div class="flex items-center gap-1.5">
+                  <button id="btnModalRunSim" onclick="togglePlayPause()" class="neo-button bg-neoYellow px-3.5 py-1.5 text-xs uppercase flex items-center gap-1.5 font-black text-black">
+                    <i id="btnModalRunIcon" class="fa-solid fa-play"></i> <span id="btnModalRunText">Ejecutar</span>
+                  </button>
+                  <button onclick="stepForwardSimulation()" class="neo-button bg-neoCyan px-3 py-1.5 text-xs font-mono font-bold" title="Avanzar un paso">
+                    <i class="fa-solid fa-forward-step"></i> Paso
+                  </button>
+                  <button onclick="resetSimulationView()" class="neo-button bg-white px-3 py-1.5 text-xs font-bold" title="Reiniciar visualización">
+                    <i class="fa-solid fa-rotate-left"></i> Reiniciar
+                  </button>
+                </div>
+                <div class="flex items-center gap-2 text-xs">
+                  <span class="font-bold">Velocidad:</span>
+                  <input type="range" id="modalAnimSpeedSlider" min="20" max="600" value="220" step="20" oninput="setSimulationSpeed(this.value)" class="w-24 sm:w-28 h-2 bg-black rounded-none appearance-none cursor-pointer accent-neoYellow">
+                  <span id="modalSpeedValueLabel" class="font-mono font-bold text-xs text-neoOrange">220 ms</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- LIVE MONITOR & KPIS -->
+            <div class="neo-box p-2.5 bg-white border-2 border-black space-y-2">
+              <div id="modalSpotlightCard" class="p-2 bg-[#FFFBEA] border-2 border-black flex items-center justify-between gap-2 shadow-neoSm">
+                <div class="flex items-center gap-2.5">
+                  <span id="modalSpotlightActionBadge" class="neo-badge bg-black text-white px-2 py-0.5 text-xs font-mono uppercase font-black">
+                    STANDBY
+                  </span>
+                  <div>
+                    <div id="modalSpotlightMainText" class="text-xs sm:text-sm font-black text-black">
+                      Sistema preparado. Presiona "Ejecutar" o "Paso".
+                    </div>
+                    <div id="modalSpotlightSubText" class="text-xs font-mono font-bold text-gray-800">
+                      Esperando activación del generador cinemático...
+                    </div>
+                  </div>
+                </div>
+                <div id="modalSpotlightIcon" class="text-xl text-neoOrange">
+                  <i class="fa-solid fa-circle-play"></i>
+                </div>
+              </div>
+
+              <!-- Metrics Row (Comparisons, Swaps, Memory, Time) -->
+              <div class="grid grid-cols-4 gap-1.5 text-center text-xs font-mono font-bold">
+                <div class="p-1 bg-[#F8FAFC] border border-black">
+                  <div class="text-[11px] text-gray-600 font-sans uppercase">Comparaciones</div>
+                  <div id="modalMetricComparisons" class="text-sm font-black text-black">0</div>
+                </div>
+                <div class="p-1 bg-[#F8FAFC] border border-black">
+                  <div class="text-[11px] text-gray-600 font-sans uppercase">Intercambios</div>
+                  <div id="modalMetricSwaps" class="text-sm font-black text-black">0</div>
+                </div>
+                <div class="p-1 bg-[#F8FAFC] border border-black">
+                  <div class="text-[11px] text-gray-600 font-sans uppercase">Accesos RAM</div>
+                  <div id="modalMetricMemAccess" class="text-sm font-black text-black">0</div>
+                </div>
+                <div class="p-1 bg-[#F8FAFC] border border-black">
+                  <div class="text-[11px] text-gray-600 font-sans uppercase">Tiempo CPU</div>
+                  <div id="modalMetricExecutionTime" class="text-sm font-black text-neoOrange">0.00 ms</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- COLUMNA DERECHA: EXPLICACIÓN, FICHA TÉCNICA, TIP DE ORO, CÓDIGO Y GIF -->
+          <div class="col-span-12 lg:col-span-5 flex flex-col gap-2.5">
+            
+            <!-- Cómo Funciona (Lógica Cinemática) -->
+            <div class="neo-box p-3 bg-white border-2 border-black">
+              <div class="flex items-center justify-between pb-1 mb-1 border-b-2 border-black">
+                <span class="text-xs font-black uppercase tracking-wider text-neoDark flex items-center gap-1.5">
+                  <i class="fa-solid fa-gears text-neoPurple"></i> ¿Cómo Funciona la Lógica Interna?
+                </span>
+                <span id="modalAlgoStableBadge" class="badge bg-black text-white text-xs font-mono">Estable: Sí</span>
+              </div>
+              <p id="modalAlgoHowItWorks" class="text-xs sm:text-sm font-bold text-gray-900 leading-snug">
+                Explicación pedagógica paso a paso...
+              </p>
+            </div>
+
+            <!-- Ficha Técnica de Complejidades -->
+            <div class="neo-box p-3 bg-white border-2 border-black">
+              <div class="flex items-center gap-1.5 pb-1 mb-1.5 border-b-2 border-black text-xs font-black uppercase tracking-wider text-neoDark">
+                <i class="fa-solid fa-chart-line text-neoGreen"></i> Matriz de Eficiencia Asintótica
+              </div>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 text-center text-xs font-mono font-bold">
+                <div class="p-1.5 bg-neoGreen/20 border border-black">
+                  <div class="text-[11px] font-sans text-gray-700 uppercase">Mejor Caso</div>
+                  <div id="modalAlgoBest" class="text-sm font-black text-black">O(n)</div>
+                </div>
+                <div class="p-1.5 bg-neoYellow/30 border border-black">
+                  <div class="text-[11px] font-sans text-gray-700 uppercase">Caso Promedio</div>
+                  <div id="modalAlgoAvg" class="text-sm font-black text-black">O(n²)</div>
+                </div>
+                <div class="p-1.5 bg-neoRed/20 border border-black">
+                  <div class="text-[11px] font-sans text-gray-700 uppercase">Peor Caso</div>
+                  <div id="modalAlgoWorst" class="text-sm font-black text-black">O(n²)</div>
+                </div>
+                <div class="p-1.5 bg-neoCyan/20 border border-black">
+                  <div class="text-[11px] font-sans text-gray-700 uppercase">Espacio Aux</div>
+                  <div id="modalAlgoSpace" class="text-sm font-black text-black">O(1)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tip de Oro de Arquitectura (Ing. Juancito Peña) -->
+            <div class="neo-box p-3 bg-neoYellow/30 border-2 border-black">
+              <div class="flex items-center gap-1.5 pb-1 mb-1 border-b-2 border-black text-xs font-black uppercase tracking-wider text-neoOrange">
+                <i class="fa-solid fa-lightbulb"></i> Tip de Oro de Arquitectura (Ing. Juancito Peña):
+              </div>
+              <div id="modalAlgoProTip" class="text-xs sm:text-sm font-bold text-gray-900 leading-snug">
+                Consejo profesional de arquitectura...
+              </div>
+            </div>
+
+            <!-- Representación Animada (.GIF) & Código Canónico con Pestañas y Copiado Rápido (Cero Espacio Desperdiciado) -->
+            <div class="neo-box p-3 bg-white border-2 border-black flex flex-col gap-2">
+              <div class="flex items-center justify-between pb-1.5 border-b-2 border-black flex-wrap gap-2">
+                <!-- Pestañas Interactivas -->
+                <div class="flex items-center gap-1.5">
+                  <button id="tabBtnAlgoCode" onclick="switchAlgoModalMediaTab('code')" type="button" class="neo-button bg-neoYellow text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 shadow-neoSm transition-all" title="Ver código canónico">
+                    <i class="fa-solid fa-code text-neoDark"></i> <span>Código Canónico</span>
+                  </button>
+                  <button id="tabBtnAlgoGif" onclick="switchAlgoModalMediaTab('gif')" type="button" class="neo-button bg-white text-black px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1.5 hover:bg-gray-100 transition-all" title="Ver animación cinemática">
+                    <i class="fa-solid fa-film text-neoPurple"></i> <span>Cinemática (.GIF)</span>
+                  </button>
+                </div>
+
+                <!-- Botón de Copiado y Lenguaje -->
+                <div class="flex items-center gap-1.5">
+                  <button id="btnCopyAlgoCode" onclick="copyModalAlgoCode()" type="button" class="neo-button bg-neoGreen text-black hover:bg-emerald-400 px-2.5 py-1 text-xs font-mono font-black flex items-center gap-1 shadow-neoSm transition-all" title="Copiar código al portapapeles">
+                    <i id="copyAlgoCodeIcon" class="fa-solid fa-copy"></i> <span id="copyAlgoCodeText">Copiar</span>
+                  </button>
+                  <span class="badge bg-black text-white font-mono text-xs font-bold px-2 py-0.5">JS / TS</span>
+                </div>
+              </div>
+              
+              <!-- Contenido Pestaña 1: Código Canónico (100% de Ancho, Legibilidad Óptima) -->
+              <div id="tabContentAlgoCode" class="w-full">
+                <pre id="modalAlgoCode" class="w-full p-2.5 bg-[#0D1117] text-[#54F18F] font-mono text-xs sm:text-sm font-bold leading-relaxed rounded border-2 border-black overflow-x-auto shadow-inner min-h-[140px] max-h-[190px] xl:max-h-[220px]">
+// Código fuente del algoritmo
+                </pre>
+                <div class="flex items-center justify-between mt-1 text-[11px] font-mono font-bold text-gray-600 px-0.5">
+                  <span><i class="fa-solid fa-circle-check text-neoGreen"></i> Algoritmo puro libre de dependencias</span>
+                  <span class="text-black font-mono">ES6+ / TypeScript</span>
+                </div>
+              </div>
+
+              <!-- Contenido Pestaña 2: Cinemática (.GIF) (100% de Ancho, Centrado y Nítido) -->
+              <div id="tabContentAlgoGif" class="w-full hidden">
+                <div class="w-full flex flex-col items-center justify-center p-2.5 bg-[#F4EFE6] border-2 border-black shadow-neoSm min-h-[140px] max-h-[190px] xl:max-h-[220px] overflow-hidden">
+                  <img id="modalAlgoGifImg" src="" alt="Animación Cinemática" class="w-auto max-w-full h-auto max-h-[135px] xl:max-h-[165px] object-contain border border-black rounded shadow-sm bg-white transition-transform duration-200">
+                  <div id="modalAlgoGifCaption" class="mt-1 font-mono font-black text-xs text-gray-900 text-center truncate max-w-full px-2">
+                    Asset Cinemático Oficial
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="py-2 px-4 sm:px-5 bg-[#F8FAFC] border-t-3 border-black flex items-center justify-between flex-wrap gap-2">
+        <span class="text-xs font-mono font-bold text-gray-700 flex items-center gap-1.5">
+          <i class="fa-solid fa-cube text-neoCyan"></i> Simulación Cinemática Activa · ALGO-MATRIX 3D
+        </span>
+        <button onclick="closeAlgoModal()" type="button" class="neo-button bg-black text-white hover:bg-gray-800 px-4 py-1 text-xs font-black uppercase">
+          <i class="fa-solid fa-check me-1 text-neoGreen"></i> Volver a la Enciclopedia
+        </button>
       </div>
 
     </div>
